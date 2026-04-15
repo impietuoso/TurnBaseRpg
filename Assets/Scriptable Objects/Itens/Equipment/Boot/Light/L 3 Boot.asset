@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 752560b9b4464f40b7d6eef2bd4c3adf, type: 3}
+  m_Name: L 3 Boot
+  m_EditorClassIdentifier: Assembly-CSharp::Equipment
+  <displayName>k__BackingField: Winged Boots
+  <description>k__BackingField: 
+  <sprite>k__BackingField: {fileID: 6443552889832449473, guid: dddafe4b573f13a448f2d511a5d903ef, type: 3}
+  <maxStack>k__BackingField: 99
+  equipmentType: {fileID: 11400000, guid: 3857c5fd3050ef94ab30194d6ce1d07b, type: 2}
+  categoryTag: {fileID: 11400000, guid: d448a3b0e1ca65448a2a11050e197a41, type: 2}
+  bonusValue:
+    <damage>k__BackingField: 0
+    <health>k__BackingField: 0
+    <shield>k__BackingField: 0
+    <mana>k__BackingField: 0
+    <speed>k__BackingField: 0
+    <armor>k__BackingField: 0
+    <resistance>k__BackingField: 0
+    <evade>k__BackingField: 0
+  equipmentSkill: {fileID: 0}

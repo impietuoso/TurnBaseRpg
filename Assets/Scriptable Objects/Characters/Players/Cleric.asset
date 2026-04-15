@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eb2f9a7c5a449c0812e8c345c2c09ab, type: 3}
+  m_Name: Cleric
+  m_EditorClassIdentifier: Assembly-CSharp::PartyMember
+  charName: Cleric
+  level: 1
+  usedStats:
+    strength: 5
+    intelligence: 5
+    dexterity: 5
+    vitality: 5
+    spirit: 5
+  profession: {fileID: 11400000, guid: fbbf1f4fb6f22be4f86b487aca70310c, type: 2}
+  equips:
+    list:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  equipedSkills:
+    list:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+  learnedSkills:
+    list: []
+  characterSprite: {fileID: 21300000, guid: b8acb029852c8f441a5fa483104fff8d, type: 3}
+  uiSprite: {fileID: -1016553476, guid: 8a571e18b6815624683ca98f6c701a59, type: 3}

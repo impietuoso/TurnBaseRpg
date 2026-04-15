@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
+  m_Name: Dummy Heal
+  m_EditorClassIdentifier: 
+  skillName: Dummy Healing
+  skillDescription: Heal a Small Health Amount
+  cost: 0
+  icon: {fileID: -2314491526054727294, guid: cd4ae80569f074442ad44e2e9c501290, type: 3}
+  animation:
+    rid: 3339743010432221420
+  skillEffects:
+  - rid: 3339743010432221426
+  references:
+    version: 2
+    RefIds:
+    - rid: 3339743010432221420
+      type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
+      data:
+        singleTarget: 1
+        targetEnemy: 0
+        targetDead: 0
+        hitCount: {x: 1, y: 1}
+        hitDelay: 1
+    - rid: 3339743010432221426
+      type: {class: HealSkill, ns: , asm: Assembly-CSharp}
+      data:
+        healAmount: 20
+        singleTarget: 1
+        isPercentageHeal: 0
+        healthPercentage: 0
+        healDelay: 0
+        revive: 0
+        statMultiplier: 1
+        healStatScale: 3

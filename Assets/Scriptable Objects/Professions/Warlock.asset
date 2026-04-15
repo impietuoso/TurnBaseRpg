@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97ac12204a7b45340872b46eddf249f6, type: 3}
+  m_Name: Warlock
+  m_EditorClassIdentifier: 
+  initialStats:
+    strength: 0
+    intelligence: 4
+    dexterity: 1
+    vitality: 1
+    spirit: 4
+  basicAttack: {fileID: 11400000, guid: d2f1460e11cceda4ab59790da2223d6e, type: 2}
+  starterSkills:
+  - {fileID: 11400000, guid: 1b7ac093147ac294abf5c77998f9feb7, type: 2}
+  - {fileID: 11400000, guid: bf045146d8b89b544a19d60645bb68b7, type: 2}
+  - {fileID: 11400000, guid: 4e8c624b59213ac4ea3d2101731e2db8, type: 2}
+  unlockableSkills: []

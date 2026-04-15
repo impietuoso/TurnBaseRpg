@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97ac12204a7b45340872b46eddf249f6, type: 3}
+  m_Name: Dev
+  m_EditorClassIdentifier: 
+  initialStats:
+    strength: 20
+    intelligence: 20
+    dexterity: 20
+    vitality: 20
+    spirit: 20
+  basicAttack: {fileID: 11400000, guid: f5d1059124a35da409c12dd5c8cbdb26, type: 2}
+  starterSkills: []
+  unlockableSkills: []

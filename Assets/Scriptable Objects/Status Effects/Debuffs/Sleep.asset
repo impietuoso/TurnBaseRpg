@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55bbbbcc1114409db066047c2c70d129, type: 3}
+  m_Name: Sleep
+  m_EditorClassIdentifier: Assembly-CSharp::StatusSO
+  statusIcon: {fileID: 21300000, guid: b295ffbf60f790245a7c72fda7089861, type: 3}
+  status:
+    rid: 3339743030628057263
+  statusType: 1
+  statusPopupColor: {r: 0.745283, g: 0.05273228, b: 0.28568095, a: 1}
+  references:
+    version: 2
+    RefIds:
+    - rid: 3339743030628057263
+      type: {class: SleepStatus, ns: , asm: Assembly-CSharp}
+      data:
+        statusName: Sleep
+        statusDescription: Make the target unable to play until it takes damage
+        opposite: {fileID: 0}
+        duration:
+          value: 3

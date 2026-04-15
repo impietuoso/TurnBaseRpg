@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55bbbbcc1114409db066047c2c70d129, type: 3}
+  m_Name: Silence
+  m_EditorClassIdentifier: Assembly-CSharp::StatusSO
+  statusIcon: {fileID: 21300000, guid: a04541149fb47324a9522bd9df1c4cd7, type: 3}
+  status:
+    rid: 6720660525144342684
+  statusType: 1
+  statusPopupColor: {r: 0.745283, g: 0.05273228, b: 0.28568095, a: 1}
+  references:
+    version: 2
+    RefIds:
+    - rid: 6720660525144342684
+      type: {class: Silence, ns: , asm: Assembly-CSharp}
+      data:
+        statusName: Silence
+        statusDescription: Unable the use of Skills
+        opposite: {fileID: 0}
+        duration:
+          value: 3

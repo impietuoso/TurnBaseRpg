@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11f039181a3e48eb9a75852ee9051aea, type: 3}
+  m_Name: Mana Potions (p)
+  m_EditorClassIdentifier: Assembly-CSharp::Consumable
+  <displayName>k__BackingField: Small Mana Potion
+  <description>k__BackingField: Restore a small amount of mana
+  <sprite>k__BackingField: {fileID: -1009742683727084556, guid: 093ec6b18acf456449c842e1f757f3be, type: 3}
+  <maxStack>k__BackingField: 99
+  skillEffect: {fileID: 11400000, guid: 72667189ccc29b8489a0fb694e56e7fa, type: 2}

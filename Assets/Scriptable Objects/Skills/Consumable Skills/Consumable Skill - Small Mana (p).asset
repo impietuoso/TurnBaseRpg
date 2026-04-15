@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
+  m_Name: Consumable Skill - Small Mana (p)
+  m_EditorClassIdentifier: 
+  skillName: Small Heal (p)
+  skillDescription: Heal a small amount of health
+  cost: 0
+  icon: {fileID: -4795914746179759440, guid: 862bf9c73e3445e418cc4ef66e0ee927, type: 3}
+  animation:
+    rid: 6720660755266404458
+  skillEffects:
+  - rid: 6720660755266404442
+  references:
+    version: 2
+    RefIds:
+    - rid: 6720660755266404442
+      type: {class: ManaBurnSkill, ns: , asm: Assembly-CSharp}
+      data:
+        useDamageDealt: 0
+        manaBurn: -60
+        damagePercentage: 0
+    - rid: 6720660755266404458
+      type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
+      data:
+        singleTarget: 1
+        targetEnemy: 0
+        targetDead: 0
+        hitCount: {x: 1, y: 1}
+        hitDelay: 1

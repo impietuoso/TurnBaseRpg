@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 752560b9b4464f40b7d6eef2bd4c3adf, type: 3}
+  m_Name: M 2 Shoulder
+  m_EditorClassIdentifier: Assembly-CSharp::Equipment
+  <displayName>k__BackingField: Scale Shoulders
+  <description>k__BackingField: 
+  <sprite>k__BackingField: {fileID: -5767400601841054944, guid: f95af12a88e1a6c44b80ec4e474e6464, type: 3}
+  <maxStack>k__BackingField: 99
+  equipmentType: {fileID: 11400000, guid: 844781a47f20d8a4583293a6ade36af4, type: 2}
+  categoryTag: {fileID: 11400000, guid: d7d34f46f3c324d4c9221164823b173f, type: 2}
+  bonusValue:
+    <damage>k__BackingField: 0
+    <health>k__BackingField: 0
+    <shield>k__BackingField: 0
+    <mana>k__BackingField: 0
+    <speed>k__BackingField: 0
+    <armor>k__BackingField: 0
+    <resistance>k__BackingField: 0
+    <evade>k__BackingField: 0
+  equipmentSkill: {fileID: 0}

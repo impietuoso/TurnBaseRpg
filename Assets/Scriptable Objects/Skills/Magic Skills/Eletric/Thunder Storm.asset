@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
+  m_Name: Thunder Storm
+  m_EditorClassIdentifier: 
+  skillName: Thunder Storm
+  skillDescription: 
+  cost: 10
+  icon: {fileID: 21300000, guid: 9945e62a5530c4c488a963123b011c2b, type: 3}
+  animation:
+    rid: 3339743010432221418
+  skillEffects:
+  - rid: 3339743010432221433
+  references:
+    version: 2
+    RefIds:
+    - rid: 3339743010432221418
+      type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
+      data:
+        singleTarget: 1
+        targetEnemy: 1
+        targetDead: 0
+        hitCount: {x: 1, y: 1}
+        hitDelay: 1
+    - rid: 3339743010432221433
+      type: {class: DamageSkill, ns: , asm: Assembly-CSharp}
+      data:
+        baseDamage: 10
+        ignoreShield: 0
+        isPercentageDamage: 0
+        healthPercentage: 0
+        hitChance: 80
+        criticalChance: 20
+        statMultiplier: 1.6
+        damageStatScale: 1
+        damageRange: 0.15

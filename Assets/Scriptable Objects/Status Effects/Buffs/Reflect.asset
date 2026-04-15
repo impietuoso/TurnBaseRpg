@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55bbbbcc1114409db066047c2c70d129, type: 3}
+  m_Name: Reflect
+  m_EditorClassIdentifier: Assembly-CSharp::StatusSO
+  statusIcon: {fileID: 21300000, guid: 8c857596d0aaf854184f9c5ba7d37e39, type: 3}
+  status:
+    rid: 7065366283678384130
+  statusType: 0
+  statusPopupColor: {r: 0.24702592, g: 0.10070309, b: 0.6886792, a: 1}
+  references:
+    version: 2
+    RefIds:
+    - rid: 7065366283678384130
+      type: {class: ReflectEffect, ns: , asm: Assembly-CSharp}
+      data:
+        statusName: Reflect
+        statusDescription: Deal 50% of the damage receive to the attacker
+        opposite: {fileID: 0}
+        reflectPercentage: 0.5
+        protectFromDamage: 0
+        duration:
+          value: 3

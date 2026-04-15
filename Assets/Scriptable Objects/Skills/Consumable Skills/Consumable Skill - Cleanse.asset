@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
+  m_Name: Consumable Skill - Cleanse
+  m_EditorClassIdentifier: 
+  skillName: Small Heal (p)
+  skillDescription: Heal a small amount of health
+  cost: 0
+  icon: {fileID: -1009742683727084556, guid: 093ec6b18acf456449c842e1f757f3be, type: 3}
+  animation:
+    rid: 6720660755266404457
+  skillEffects:
+  - rid: 6720660755266404441
+  references:
+    version: 2
+    RefIds:
+    - rid: 6720660755266404441
+      type: {class: StatusRemoval, ns: , asm: Assembly-CSharp}
+      data:
+        statusType: 1
+    - rid: 6720660755266404457
+      type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
+      data:
+        singleTarget: 1
+        targetEnemy: 0
+        targetDead: 0
+        hitCount: {x: 1, y: 1}
+        hitDelay: 1

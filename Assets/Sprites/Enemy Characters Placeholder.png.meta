@@ -1,0 +1,2913 @@
+fileFormatVersion: 2
+guid: 8a571e18b6815624683ca98f6c701a59
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3787881253514496562
+    second: Enemy Characters Placeholder_0
+  - first:
+      213: -1884346687436275628
+    second: Enemy Characters Placeholder_1
+  - first:
+      213: -414959137233294780
+    second: Enemy Characters Placeholder_2
+  - first:
+      213: -7308029095876914522
+    second: Enemy Characters Placeholder_3
+  - first:
+      213: 1199200560774861754
+    second: Enemy Characters Placeholder_4
+  - first:
+      213: -7223250554350581241
+    second: Enemy Characters Placeholder_5
+  - first:
+      213: 8834420851037608875
+    second: Enemy Characters Placeholder_6
+  - first:
+      213: -3901682832605075415
+    second: Enemy Characters Placeholder_7
+  - first:
+      213: -8522409493779007507
+    second: Enemy Characters Placeholder_8
+  - first:
+      213: -8107458173249376312
+    second: Enemy Characters Placeholder_9
+  - first:
+      213: 5444337620470308874
+    second: Enemy Characters Placeholder_10
+  - first:
+      213: 1554322068116838471
+    second: Enemy Characters Placeholder_11
+  - first:
+      213: -9060434079391007179
+    second: Enemy Characters Placeholder_12
+  - first:
+      213: -7976525217587781221
+    second: Enemy Characters Placeholder_13
+  - first:
+      213: -1087575298135688948
+    second: Enemy Characters Placeholder_14
+  - first:
+      213: 8389481027743721908
+    second: Enemy Characters Placeholder_15
+  - first:
+      213: 1141917760945321081
+    second: Enemy Characters Placeholder_16
+  - first:
+      213: -4244890348466431003
+    second: Enemy Characters Placeholder_17
+  - first:
+      213: 7554469510393099877
+    second: Enemy Characters Placeholder_18
+  - first:
+      213: 1911497100805703307
+    second: Enemy Characters Placeholder_19
+  - first:
+      213: -200321776775353546
+    second: Enemy Characters Placeholder_20
+  - first:
+      213: -3004024283302903926
+    second: Enemy Characters Placeholder_21
+  - first:
+      213: 681106481170934033
+    second: Enemy Characters Placeholder_22
+  - first:
+      213: 7768485692483807070
+    second: Enemy Characters Placeholder_23
+  - first:
+      213: -7173883231035327798
+    second: Enemy Characters Placeholder_24
+  - first:
+      213: 4582444949444853790
+    second: Enemy Characters Placeholder_25
+  - first:
+      213: 4867169866696309920
+    second: Enemy Characters Placeholder_26
+  - first:
+      213: 5688896024018043891
+    second: Enemy Characters Placeholder_27
+  - first:
+      213: 2076174068041270734
+    second: Enemy Characters Placeholder_28
+  - first:
+      213: 822123628467589118
+    second: Enemy Characters Placeholder_29
+  - first:
+      213: 6992240162716199401
+    second: Enemy Characters Placeholder_30
+  - first:
+      213: -2660666663882488044
+    second: Enemy Characters Placeholder_31
+  - first:
+      213: -8013049029440625647
+    second: Enemy Characters Placeholder_32
+  - first:
+      213: 8164462870264536744
+    second: Enemy Characters Placeholder_33
+  - first:
+      213: 3286451897867326211
+    second: Enemy Characters Placeholder_34
+  - first:
+      213: 8435344621643159381
+    second: Enemy Characters Placeholder_35
+  - first:
+      213: 2180524869925944820
+    second: Enemy Characters Placeholder_36
+  - first:
+      213: 1729601984001972102
+    second: Enemy Characters Placeholder_37
+  - first:
+      213: 7147478145006210394
+    second: Enemy Characters Placeholder_38
+  - first:
+      213: -7785030788206114324
+    second: Enemy Characters Placeholder_39
+  - first:
+      213: 4331738193175322976
+    second: Enemy Characters Placeholder_40
+  - first:
+      213: -5274002051532984689
+    second: Enemy Characters Placeholder_41
+  - first:
+      213: -9088553356970909047
+    second: Enemy Characters Placeholder_42
+  - first:
+      213: -6842396699320569548
+    second: Enemy Characters Placeholder_43
+  - first:
+      213: -8342678398346221692
+    second: Enemy Characters Placeholder_44
+  - first:
+      213: 4101181586641954385
+    second: Enemy Characters Placeholder_45
+  - first:
+      213: 4577579318927056841
+    second: Enemy Characters Placeholder_46
+  - first:
+      213: 8416316877392637593
+    second: Enemy Characters Placeholder_47
+  - first:
+      213: 7350095939840166647
+    second: Enemy Characters Placeholder_48
+  - first:
+      213: 3891364706109741628
+    second: Enemy Characters Placeholder_49
+  - first:
+      213: -2211246573832290463
+    second: Enemy Characters Placeholder_50
+  - first:
+      213: 726854907671802754
+    second: Enemy Characters Placeholder_51
+  - first:
+      213: 3594130101213413524
+    second: Enemy Characters Placeholder_52
+  - first:
+      213: -2120585455303325919
+    second: Enemy Characters Placeholder_53
+  - first:
+      213: -766236155434738925
+    second: Enemy Characters Placeholder_54
+  - first:
+      213: -280475958620346932
+    second: Enemy Characters Placeholder_55
+  - first:
+      213: -1220874971652857055
+    second: Enemy Characters Placeholder_56
+  - first:
+      213: -4755489691544622240
+    second: Enemy Characters Placeholder_57
+  - first:
+      213: -9136977544277506345
+    second: Enemy Characters Placeholder_58
+  - first:
+      213: -1949464480735505765
+    second: Enemy Characters Placeholder_59
+  - first:
+      213: 7991962576231511295
+    second: Enemy Characters Placeholder_60
+  - first:
+      213: -9056444902840029350
+    second: Enemy Characters Placeholder_61
+  - first:
+      213: 6775839429442369497
+    second: Enemy Characters Placeholder_62
+  - first:
+      213: -8655673160312095710
+    second: Enemy Characters Placeholder_63
+  - first:
+      213: -1899362795975634370
+    second: Enemy Characters Placeholder_64
+  - first:
+      213: -8565314713159178533
+    second: Enemy Characters Placeholder_65
+  - first:
+      213: -6924492439390594984
+    second: Enemy Characters Placeholder_66
+  - first:
+      213: -4600649967272014216
+    second: Enemy Characters Placeholder_67
+  - first:
+      213: -707449963922504301
+    second: Enemy Characters Placeholder_68
+  - first:
+      213: -4548556507312560499
+    second: Enemy Characters Placeholder_69
+  - first:
+      213: -2219746259481491954
+    second: Enemy Characters Placeholder_70
+  - first:
+      213: -797277667930958110
+    second: Enemy Characters Placeholder_71
+  - first:
+      213: -6513513437433706113
+    second: Enemy Characters Placeholder_72
+  - first:
+      213: 6623831813750427240
+    second: Enemy Characters Placeholder_73
+  - first:
+      213: -3459067167996313769
+    second: Enemy Characters Placeholder_74
+  - first:
+      213: -6301734163937588994
+    second: Enemy Characters Placeholder_75
+  - first:
+      213: 2670669436738805282
+    second: Enemy Characters Placeholder_76
+  - first:
+      213: -6440632900594075959
+    second: Enemy Characters Placeholder_77
+  - first:
+      213: -1537106507581629400
+    second: Enemy Characters Placeholder_78
+  - first:
+      213: -9060928100637222193
+    second: Enemy Characters Placeholder_79
+  - first:
+      213: 1855970618847659050
+    second: Enemy Characters Placeholder_80
+  - first:
+      213: -5325120344074824001
+    second: Enemy Characters Placeholder_81
+  - first:
+      213: 1541126211223835864
+    second: Enemy Characters Placeholder_82
+  - first:
+      213: 5748132016884898732
+    second: Enemy Characters Placeholder_83
+  - first:
+      213: 1354804066617884744
+    second: Enemy Characters Placeholder_84
+  - first:
+      213: -1264749680568587014
+    second: Enemy Characters Placeholder_85
+  - first:
+      213: -1791914422795803403
+    second: Enemy Characters Placeholder_86
+  - first:
+      213: -2721689118897915763
+    second: Enemy Characters Placeholder_87
+  - first:
+      213: 3844314107786956168
+    second: Enemy Characters Placeholder_88
+  - first:
+      213: 2729673776218955826
+    second: Enemy Characters Placeholder_89
+  - first:
+      213: 8587238673194767562
+    second: Enemy Characters Placeholder_90
+  - first:
+      213: -3336179012095763292
+    second: Enemy Characters Placeholder_91
+  - first:
+      213: 4607575414216590002
+    second: Enemy Characters Placeholder_92
+  - first:
+      213: 1748083793950040998
+    second: Enemy Characters Placeholder_93
+  - first:
+      213: -4589066435864507922
+    second: Enemy Characters Placeholder_94
+  - first:
+      213: -3744998697466277024
+    second: Enemy Characters Placeholder_95
+  - first:
+      213: -2774699275243862082
+    second: Enemy Characters Placeholder_96
+  - first:
+      213: -3317555630353881723
+    second: Enemy Characters Placeholder_97
+  - first:
+      213: -4053993945890409367
+    second: Enemy Characters Placeholder_98
+  - first:
+      213: 3922670759201369709
+    second: Enemy Characters Placeholder_99
+  - first:
+      213: -7337924909076445132
+    second: Enemy Characters Placeholder_100
+  - first:
+      213: -7105167047226534911
+    second: Enemy Characters Placeholder_101
+  - first:
+      213: 8705640130053328780
+    second: Enemy Characters Placeholder_102
+  - first:
+      213: 6745069054890085139
+    second: Enemy Characters Placeholder_103
+  - first:
+      213: -3231515023657145456
+    second: Enemy Characters Placeholder_104
+  - first:
+      213: 1991215445470236173
+    second: Enemy Characters Placeholder_105
+  - first:
+      213: -5779967994361166553
+    second: Enemy Characters Placeholder_106
+  - first:
+      213: 4705517604504317221
+    second: Enemy Characters Placeholder_107
+  - first:
+      213: -6214230399813398133
+    second: Enemy Characters Placeholder_108
+  - first:
+      213: 5604482429611448225
+    second: Enemy Characters Placeholder_109
+  - first:
+      213: 4772261084134534188
+    second: Enemy Characters Placeholder_110
+  - first:
+      213: 380459607349527450
+    second: Enemy Characters Placeholder_111
+  - first:
+      213: -7044992300626923291
+    second: Enemy Characters Placeholder_112
+  - first:
+      213: 5188708131911395389
+    second: Enemy Characters Placeholder_113
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 661
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23ac7175ee1419430800000000000000
+      internalID: 3787881253514496562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_1
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 661
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4504da5eba479d5e0800000000000000
+      internalID: -1884346687436275628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_2
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 661
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44a28ecfcd4cd3af0800000000000000
+      internalID: -414959137233294780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_3
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 661
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a29904c14aa49a90800000000000000
+      internalID: -7308029095876914522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_4
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 661
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab35f6f6e8a64a010800000000000000
+      internalID: 1199200560774861754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_5
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 661
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70a4a4824ebd1cb90800000000000000
+      internalID: -7223250554350581241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_6
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 661
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bab966e05fa2a9a70800000000000000
+      internalID: 8834420851037608875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_7
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 661
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 928a550c2207ad9c0800000000000000
+      internalID: -3901682832605075415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_8
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 661
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de7b2e418b15ab980800000000000000
+      internalID: -8522409493779007507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_9
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 661
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cf22202fb58c7f80800000000000000
+      internalID: -8107458173249376312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_10
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 596
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a00ad61783c2e8b40800000000000000
+      internalID: 5444337620470308874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_11
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 596
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74897a09faf029510800000000000000
+      internalID: 1554322068116838471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_12
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 596
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53e3e03853fd24280800000000000000
+      internalID: -9060434079391007179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_13
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 596
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b912cb77390bd4190800000000000000
+      internalID: -7976525217587781221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_14
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 596
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c09f120570828e0f0800000000000000
+      internalID: -1087575298135688948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_15
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 596
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b92b8c9b8c6d6470800000000000000
+      internalID: 8389481027743721908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_16
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 596
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 974fad74728e8df00800000000000000
+      internalID: 1141917760945321081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_17
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 596
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5eb9c2de7be1715c0800000000000000
+      internalID: -4244890348466431003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_18
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 596
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 566ff719efdd6d860800000000000000
+      internalID: 7554469510393099877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_19
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 596
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8686b25c70078a10800000000000000
+      internalID: 1911497100805703307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_20
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 531
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63ba786c760583df0800000000000000
+      internalID: -200321776775353546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_21
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 531
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8f351194df8f46d0800000000000000
+      internalID: -3004024283302903926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_22
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 531
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 119e8686cb6c37900800000000000000
+      internalID: 681106481170934033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_23
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 531
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e57a33ff3943fcb60800000000000000
+      internalID: 7768485692483807070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_24
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 531
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acaf102d53f317c90800000000000000
+      internalID: -7173883231035327798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_25
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 531
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e108176176d189f30800000000000000
+      internalID: 4582444949444853790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_26
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 531
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ac3be5d439ab8340800000000000000
+      internalID: 4867169866696309920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_27
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 531
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f34ab3fac403fe40800000000000000
+      internalID: 5688896024018043891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_28
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 531
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec54a79905d00dc10800000000000000
+      internalID: 2076174068041270734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_29
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 531
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eff04449515c86b00800000000000000
+      internalID: 822123628467589118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_30
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 466
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e92beaa16d690160800000000000000
+      internalID: 6992240162716199401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_31
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 466
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4178f8914c9631bd0800000000000000
+      internalID: -2660666663882488044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_32
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 466
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1142768dc5eebc090800000000000000
+      internalID: -8013049029440625647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_33
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 466
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8aedbfb29bffd4170800000000000000
+      internalID: 8164462870264536744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_34
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 466
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3035ac7b692db9d20800000000000000
+      internalID: 3286451897867326211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_35
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 466
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 557da03bd3d501570800000000000000
+      internalID: 8435344621643159381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_36
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 466
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fd37d7f0d7c24e10800000000000000
+      internalID: 2180524869925944820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_37
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 466
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6879f3337d7c00810800000000000000
+      internalID: 1729601984001972102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_38
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 466
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5d86f00181f03360800000000000000
+      internalID: 7147478145006210394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_39
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 466
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce9ce77beb306f390800000000000000
+      internalID: -7785030788206114324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_40
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 401
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0612538afec6d1c30800000000000000
+      internalID: 4331738193175322976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_41
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 401
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8ee1b5b31bfec6b0800000000000000
+      internalID: -5274002051532984689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_42
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 401
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 982a09300e8fed180800000000000000
+      internalID: -9088553356970909047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_43
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 401
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43131bc547cea01a0800000000000000
+      internalID: -6842396699320569548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_44
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 401
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 487af37b23ad83c80800000000000000
+      internalID: -8342678398346221692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_45
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 401
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 156aa2f8ce25ae830800000000000000
+      internalID: 4101181586641954385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_46
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 401
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cf52d33324d68f30800000000000000
+      internalID: 4577579318927056841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_47
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 401
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99eec12cb93ccc470800000000000000
+      internalID: 8416316877392637593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_48
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 401
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fac6379059c00660800000000000000
+      internalID: 7350095939840166647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_49
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 401
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3ad9273597e00630800000000000000
+      internalID: 3891364706109741628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_50
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 336
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16f3defe4f21051e0800000000000000
+      internalID: -2211246573832290463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_51
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 336
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 283f60fffae461a00800000000000000
+      internalID: 726854907671802754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_52
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 336
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4904d57d84ae0e130800000000000000
+      internalID: 3594130101213413524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_53
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 336
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12709c483ca2292e0800000000000000
+      internalID: -2120585455303325919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_54
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 336
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31b504db648cd55f0800000000000000
+      internalID: -766236155434738925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_55
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 336
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc5a5660a9c8b1cf0800000000000000
+      internalID: -280475958620346932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_56
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 336
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12367778ea49e0fe0800000000000000
+      internalID: -1220874971652857055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_57
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 336
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06b637a325b110eb0800000000000000
+      internalID: -4755489691544622240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_58
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 336
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d64e90555fe23180800000000000000
+      internalID: -9136977544277506345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_59
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 336
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b92d48b226c12f4e0800000000000000
+      internalID: -1949464480735505765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_60
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 271
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff4be7eae9729ee60800000000000000
+      internalID: 7991962576231511295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_61
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 271
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5fa25e085b015280800000000000000
+      internalID: -9056444902840029350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_62
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 271
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d77ff6af0e980e50800000000000000
+      internalID: 6775839429442369497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_63
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 271
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22cf6b3de1fd0e780800000000000000
+      internalID: -8655673160312095710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_64
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 271
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e32974ea99b14a5e0800000000000000
+      internalID: -1899362795975634370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_65
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 271
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd668bc36a3e12980800000000000000
+      internalID: -8565314713159178533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_66
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 271
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 858de3c50d247ef90800000000000000
+      internalID: -6924492439390594984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_67
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 271
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87ec6d4ea353720c0800000000000000
+      internalID: -4600649967272014216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_68
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 271
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 395490c8102ae26f0800000000000000
+      internalID: -707449963922504301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_69
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 271
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d86e7d4b4f740e0c0800000000000000
+      internalID: -4548556507312560499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_70
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 206
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e068a18a980e131e0800000000000000
+      internalID: -2219746259481491954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_71
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 206
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e69f976f208fe4f0800000000000000
+      internalID: -797277667930958110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_72
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 206
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f79c70ae90a5b95a0800000000000000
+      internalID: -6513513437433706113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_73
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 206
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86e8686a0f39ceb50800000000000000
+      internalID: 6623831813750427240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_74
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 206
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75ffc55dcbceeffc0800000000000000
+      internalID: -3459067167996313769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_75
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 206
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef88e897a2ebb88a0800000000000000
+      internalID: -6301734163937588994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_76
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 206
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22e1f41f3bf101520800000000000000
+      internalID: 2670669436738805282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_77
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 206
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c6756730864e96a0800000000000000
+      internalID: -6440632900594075959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_78
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 206
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82cd7a976c91baae0800000000000000
+      internalID: -1537106507581629400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_79
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 206
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcad92a36ed114280800000000000000
+      internalID: -9060928100637222193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_80
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 141
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a240af9c17bb1c910800000000000000
+      internalID: 1855970618847659050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_81
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 141
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb6d631c24f5916b0800000000000000
+      internalID: -5325120344074824001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_82
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 141
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d45a06bf1e236510800000000000000
+      internalID: 1541126211223835864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_83
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 141
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cab597c4d9775cf40800000000000000
+      internalID: 5748132016884898732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_84
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 141
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 840830bde1b3dc210800000000000000
+      internalID: 1354804066617884744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_85
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 141
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afcabefcdd4b27ee0800000000000000
+      internalID: -1264749680568587014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_86
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 141
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f46b519357d127e0800000000000000
+      internalID: -1791914422795803403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_87
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 141
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d883b0f9a2e9a3ad0800000000000000
+      internalID: -2721689118897915763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_88
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 76
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88d0aaf105fb95530800000000000000
+      internalID: 3844314107786956168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_89
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 76
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 230ea3846dfb1e520800000000000000
+      internalID: 2729673776218955826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_90
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 76
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac4554d73100c2770800000000000000
+      internalID: 8587238673194767562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_91
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 76
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ac1be44dd283b1d0800000000000000
+      internalID: -3336179012095763292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_92
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 76
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b204306d6561ff30800000000000000
+      internalID: 4607575414216590002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_93
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 76
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a36208e2f0724810800000000000000
+      internalID: 1748083793950040998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_94
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 76
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee9c0a7f36c5050c0800000000000000
+      internalID: -4589066435864507922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_95
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 76
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 063d839c687170cc0800000000000000
+      internalID: -3744998697466277024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_96
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 76
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb74e8cc5b94e79d0800000000000000
+      internalID: -2774699275243862082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_97
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 76
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 585e82a3bbca5f1d0800000000000000
+      internalID: -3317555630353881723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_98
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 11
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9643e953cf15db7c0800000000000000
+      internalID: -4053993945890409367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_99
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 11
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6e6205b540207630800000000000000
+      internalID: 3922670759201369709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_100
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 11
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43802065c247a2a90800000000000000
+      internalID: -7337924909076445132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Characters Placeholder_101
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 11
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10450402730656d90800000000000000
+      internalID: -7105167047226534911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KB Sa1
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 700
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d0504b761b650f46b02421b2da999b4
+      internalID: 1329982910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KB Sa2
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 699
+        width: 24
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a995ecf435939d40bde3acfd92bd2bb
+      internalID: -395514768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KB Sa3
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 633
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20269a4e92050dd4ebf4a73a9eee06a3
+      internalID: -1016553476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Enemy Characters Placeholder_0: 3787881253514496562
+      Enemy Characters Placeholder_1: -1884346687436275628
+      Enemy Characters Placeholder_10: 5444337620470308874
+      Enemy Characters Placeholder_100: -7337924909076445132
+      Enemy Characters Placeholder_101: -7105167047226534911
+      Enemy Characters Placeholder_11: 1554322068116838471
+      Enemy Characters Placeholder_12: -9060434079391007179
+      Enemy Characters Placeholder_13: -7976525217587781221
+      Enemy Characters Placeholder_14: -1087575298135688948
+      Enemy Characters Placeholder_15: 8389481027743721908
+      Enemy Characters Placeholder_16: 1141917760945321081
+      Enemy Characters Placeholder_17: -4244890348466431003
+      Enemy Characters Placeholder_18: 7554469510393099877
+      Enemy Characters Placeholder_19: 1911497100805703307
+      Enemy Characters Placeholder_2: -414959137233294780
+      Enemy Characters Placeholder_20: -200321776775353546
+      Enemy Characters Placeholder_21: -3004024283302903926
+      Enemy Characters Placeholder_22: 681106481170934033
+      Enemy Characters Placeholder_23: 7768485692483807070
+      Enemy Characters Placeholder_24: -7173883231035327798
+      Enemy Characters Placeholder_25: 4582444949444853790
+      Enemy Characters Placeholder_26: 4867169866696309920
+      Enemy Characters Placeholder_27: 5688896024018043891
+      Enemy Characters Placeholder_28: 2076174068041270734
+      Enemy Characters Placeholder_29: 822123628467589118
+      Enemy Characters Placeholder_3: -7308029095876914522
+      Enemy Characters Placeholder_30: 6992240162716199401
+      Enemy Characters Placeholder_31: -2660666663882488044
+      Enemy Characters Placeholder_32: -8013049029440625647
+      Enemy Characters Placeholder_33: 8164462870264536744
+      Enemy Characters Placeholder_34: 3286451897867326211
+      Enemy Characters Placeholder_35: 8435344621643159381
+      Enemy Characters Placeholder_36: 2180524869925944820
+      Enemy Characters Placeholder_37: 1729601984001972102
+      Enemy Characters Placeholder_38: 7147478145006210394
+      Enemy Characters Placeholder_39: -7785030788206114324
+      Enemy Characters Placeholder_4: 1199200560774861754
+      Enemy Characters Placeholder_40: 4331738193175322976
+      Enemy Characters Placeholder_41: -5274002051532984689
+      Enemy Characters Placeholder_42: -9088553356970909047
+      Enemy Characters Placeholder_43: -6842396699320569548
+      Enemy Characters Placeholder_44: -8342678398346221692
+      Enemy Characters Placeholder_45: 4101181586641954385
+      Enemy Characters Placeholder_46: 4577579318927056841
+      Enemy Characters Placeholder_47: 8416316877392637593
+      Enemy Characters Placeholder_48: 7350095939840166647
+      Enemy Characters Placeholder_49: 3891364706109741628
+      Enemy Characters Placeholder_5: -7223250554350581241
+      Enemy Characters Placeholder_50: -2211246573832290463
+      Enemy Characters Placeholder_51: 726854907671802754
+      Enemy Characters Placeholder_52: 3594130101213413524
+      Enemy Characters Placeholder_53: -2120585455303325919
+      Enemy Characters Placeholder_54: -766236155434738925
+      Enemy Characters Placeholder_55: -280475958620346932
+      Enemy Characters Placeholder_56: -1220874971652857055
+      Enemy Characters Placeholder_57: -4755489691544622240
+      Enemy Characters Placeholder_58: -9136977544277506345
+      Enemy Characters Placeholder_59: -1949464480735505765
+      Enemy Characters Placeholder_6: 8834420851037608875
+      Enemy Characters Placeholder_60: 7991962576231511295
+      Enemy Characters Placeholder_61: -9056444902840029350
+      Enemy Characters Placeholder_62: 6775839429442369497
+      Enemy Characters Placeholder_63: -8655673160312095710
+      Enemy Characters Placeholder_64: -1899362795975634370
+      Enemy Characters Placeholder_65: -8565314713159178533
+      Enemy Characters Placeholder_66: -6924492439390594984
+      Enemy Characters Placeholder_67: -4600649967272014216
+      Enemy Characters Placeholder_68: -707449963922504301
+      Enemy Characters Placeholder_69: -4548556507312560499
+      Enemy Characters Placeholder_7: -3901682832605075415
+      Enemy Characters Placeholder_70: -2219746259481491954
+      Enemy Characters Placeholder_71: -797277667930958110
+      Enemy Characters Placeholder_72: -6513513437433706113
+      Enemy Characters Placeholder_73: 6623831813750427240
+      Enemy Characters Placeholder_74: -3459067167996313769
+      Enemy Characters Placeholder_75: -6301734163937588994
+      Enemy Characters Placeholder_76: 2670669436738805282
+      Enemy Characters Placeholder_77: -6440632900594075959
+      Enemy Characters Placeholder_78: -1537106507581629400
+      Enemy Characters Placeholder_79: -9060928100637222193
+      Enemy Characters Placeholder_8: -8522409493779007507
+      Enemy Characters Placeholder_80: 1855970618847659050
+      Enemy Characters Placeholder_81: -5325120344074824001
+      Enemy Characters Placeholder_82: 1541126211223835864
+      Enemy Characters Placeholder_83: 5748132016884898732
+      Enemy Characters Placeholder_84: 1354804066617884744
+      Enemy Characters Placeholder_85: -1264749680568587014
+      Enemy Characters Placeholder_86: -1791914422795803403
+      Enemy Characters Placeholder_87: -2721689118897915763
+      Enemy Characters Placeholder_88: 3844314107786956168
+      Enemy Characters Placeholder_89: 2729673776218955826
+      Enemy Characters Placeholder_9: -8107458173249376312
+      Enemy Characters Placeholder_90: 8587238673194767562
+      Enemy Characters Placeholder_91: -3336179012095763292
+      Enemy Characters Placeholder_92: 4607575414216590002
+      Enemy Characters Placeholder_93: 1748083793950040998
+      Enemy Characters Placeholder_94: -4589066435864507922
+      Enemy Characters Placeholder_95: -3744998697466277024
+      Enemy Characters Placeholder_96: -2774699275243862082
+      Enemy Characters Placeholder_97: -3317555630353881723
+      Enemy Characters Placeholder_98: -4053993945890409367
+      Enemy Characters Placeholder_99: 3922670759201369709
+      KB Sa1: 1329982910
+      KB Sa2: -395514768
+      KB Sa3: -1016553476
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
