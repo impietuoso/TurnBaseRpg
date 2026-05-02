@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
-  m_Name: 1 - Blazing Spark
+  m_Name: 1 - Spark
   m_EditorClassIdentifier: 
-  skillName: Blazing Spark
-  skillDescription: Low Fire Damage to 1 Foe.
-  cost: 5
-  icon: {fileID: 21300000, guid: 81153f25372fe0d4583dbc34779e6204, type: 3}
+  skillName: Spark
+  skillDescription: Low Lightning Damage to 1 foe.
+  cost: 10
+  icon: {fileID: 21300000, guid: 41d888b9897aec84baa7c8cee9ffc9b2, type: 3}
   animation:
-    rid: 3339743010432221417
+    rid: 3339743010432221418
   skillEffects:
-  - rid: 3339743010432221434
+  - rid: 3339743010432221433
   references:
     version: 2
     RefIds:
-    - rid: 3339743010432221417
+    - rid: 3339743010432221418
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
         singleTarget: 1
         targetEnemy: 1
         targetDead: 0
         hitCount: {x: 1, y: 1}
-        hitDelay: 0
-    - rid: 3339743010432221434
+        hitDelay: 1
+    - rid: 3339743010432221433
       type: {class: DamageSkill, ns: , asm: Assembly-CSharp}
       data:
         baseDamage: 10
@@ -39,7 +39,7 @@ MonoBehaviour:
         isPercentageDamage: 0
         healthPercentage: 0
         hitChance: 80
-        criticalChance: 30
-        statMultiplier: 2
+        criticalChance: 20
+        statMultiplier: 1.6
         damageStatScale: 1
         damageRange: 0.15

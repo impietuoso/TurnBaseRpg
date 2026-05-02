@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
-  m_Name: Multi Zap
+  m_Name: 3 - Disruption Shock
   m_EditorClassIdentifier: 
-  skillName: Multi Zap
-  skillDescription: 
+  skillName: Disruption Shock
+  skillDescription: Medium Lightning Damage to 1 foe, ignore Shield, cause Stun.
   cost: 10
-  icon: {fileID: 21300000, guid: a4c4595acbf93d640bad455b532b8e60, type: 3}
+  icon: {fileID: 21300000, guid: 3441e39788175c14cbc69e7a09c3ae73, type: 3}
   animation:
     rid: 3339743010432221418
   skillEffects:
   - rid: 3339743010432221433
+  - rid: 9169536697585893463
   references:
     version: 2
     RefIds:
@@ -35,7 +36,7 @@ MonoBehaviour:
       type: {class: DamageSkill, ns: , asm: Assembly-CSharp}
       data:
         baseDamage: 10
-        ignoreShield: 0
+        ignoreShield: 1
         isPercentageDamage: 0
         healthPercentage: 0
         hitChance: 80
@@ -43,3 +44,8 @@ MonoBehaviour:
         statMultiplier: 1.6
         damageStatScale: 1
         damageRange: 0.15
+    - rid: 9169536697585893463
+      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
+      data:
+        status: {fileID: 11400000, guid: 520ba6d23ec609b44b05e6109ec88339, type: 2}
+        targetUser: 0

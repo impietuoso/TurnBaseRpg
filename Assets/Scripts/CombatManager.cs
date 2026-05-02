@@ -118,7 +118,7 @@ public class CombatManager : MonoBehaviour {
         combatUI.selectTargetPanel.SetActive(false);
         combatUI.actionsPanel.SetActive(false);
         combatUI.ResetSelections();
-        combatUI.ShowSelection(skill.animation.GetAffecterTargets(user, target).ToList());
+        combatUI.ShowSelection(skill.animation.GetAffectedTargets(user, target).ToList());
         skill.UseSkill(user, target, this);
         if(target != null) Debug.Log("Target Selected: " + target.characterName);
         var usedSlot = consumables.slots.FirstOrDefault(s => s.item.skillEffect == skill);

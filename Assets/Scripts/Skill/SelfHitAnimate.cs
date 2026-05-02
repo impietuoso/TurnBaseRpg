@@ -12,7 +12,7 @@ public class SelfHitAnimate : ISkillAnimation {
         else return false;
     }
     
-    public IEnumerable<Character> GetAffecterTargets(Character user, Character target) {
+    public IEnumerable<Character> GetAffectedTargets(Character user, Character target) {
         yield return target;
     }
 

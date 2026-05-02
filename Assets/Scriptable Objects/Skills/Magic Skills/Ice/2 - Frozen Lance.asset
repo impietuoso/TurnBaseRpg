@@ -10,27 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
-  m_Name: Bolt
+  m_Name: 2 - Frozen Lance
   m_EditorClassIdentifier: 
-  skillName: Bolt
-  skillDescription: 
+  skillName: Frozen Lance
+  skillDescription: Medium Ice Damage to 1 foe.
   cost: 10
-  icon: {fileID: 21300000, guid: 63bc03880d69ace4e8cbe8a56e7661ce, type: 3}
+  icon: {fileID: 21300000, guid: c57fd6d6ab96f0d4e878f614f8a5ad60, type: 3}
   animation:
-    rid: 3339743010432221418
+    rid: 9169536697585893492
   skillEffects:
   - rid: 3339743010432221433
   references:
     version: 2
     RefIds:
-    - rid: 3339743010432221418
-      type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
-      data:
-        singleTarget: 1
-        targetEnemy: 1
-        targetDead: 0
-        hitCount: {x: 1, y: 1}
-        hitDelay: 1
     - rid: 3339743010432221433
       type: {class: DamageSkill, ns: , asm: Assembly-CSharp}
       data:
@@ -43,3 +35,11 @@ MonoBehaviour:
         statMultiplier: 1.6
         damageStatScale: 1
         damageRange: 0.15
+    - rid: 9169536697585893492
+      type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
+      data:
+        singleTarget: 1
+        targetEnemy: 1
+        targetDead: 0
+        hitCount: {x: 1, y: 1}
+        hitDelay: 1

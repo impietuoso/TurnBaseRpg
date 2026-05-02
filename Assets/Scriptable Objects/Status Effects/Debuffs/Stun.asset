@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55bbbbcc1114409db066047c2c70d129, type: 3}
-  m_Name: Sleep
+  m_Name: Stun
   m_EditorClassIdentifier: Assembly-CSharp::StatusSO
-  statusIcon: {fileID: 21300000, guid: b295ffbf60f790245a7c72fda7089861, type: 3}
+  statusIcon: {fileID: 21300000, guid: d6cb909f374ab3642a3133c471ee580c, type: 3}
   status:
-    rid: 3339743030628057263
+    rid: 9169536697585893455
   statusType: 1
   statusPopupColor: {r: 0.745283, g: 0.05273228, b: 0.28568095, a: 1}
   references:
     version: 2
     RefIds:
-    - rid: 3339743030628057263
-      type: {class: SleepStatus, ns: , asm: Assembly-CSharp}
+    - rid: 9169536697585893455
+      type: {class: StunStatus, ns: , asm: Assembly-CSharp}
       data:
-        statusName: Sleep
-        statusDescription: Make the target unable to play until it takes damage
-        opposite: {fileID: 11400000, guid: 520ba6d23ec609b44b05e6109ec88339, type: 2}
+        statusName: Stun
+        statusDescription: Makes the Target loses the Next Tturn
+        opposite: {fileID: 11400000, guid: 420c41582add6b44e9ddf3f733801a28, type: 2}
         duration:
-          value: 3
+          value: 1

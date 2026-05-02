@@ -10,36 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
-  m_Name: 3 - Adorned in Flames
+  m_Name: 2 - Cozy Winter
   m_EditorClassIdentifier: 
-  skillName: Adorned in Flames
-  skillDescription: Gain Shield and Apply Reflect to the Party.
-  cost: 20
-  icon: {fileID: 21300000, guid: 5257e0050e560114da415dae2d057d78, type: 3}
+  skillName: Cozy Winter
+  skillDescription: Apply Slowed to all foes, if has Slowed, cause Sleep
+  cost: 10
+  icon: {fileID: 21300000, guid: 71bc6f50e0d1666448c72e7e31120299, type: 3}
   animation:
-    rid: 3339743010432221417
+    rid: 9169536697585893492
   skillEffects:
-  - rid: 7065366283678384128
-  - rid: 7065366283678384129
+  - rid: 9169536697585893504
   references:
     version: 2
     RefIds:
-    - rid: 3339743010432221417
+    - rid: 9169536697585893492
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
         singleTarget: 0
-        targetEnemy: 0
+        targetEnemy: 1
         targetDead: 0
         hitCount: {x: 1, y: 1}
-        hitDelay: 0
-    - rid: 7065366283678384128
-      type: {class: ShieldSkill, ns: , asm: Assembly-CSharp}
-      data:
-        shieldValue: 50
-        usePercentageOfHealth: 0
-        healthPercentage: 0
-    - rid: 7065366283678384129
+        hitDelay: 1
+    - rid: 9169536697585893504
       type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
       data:
-        status: {fileID: 11400000, guid: f474c624095fd08458727abcd6639916, type: 2}
+        status: {fileID: 11400000, guid: c836548f87c990f4babad01ebec25f63, type: 2}
         targetUser: 0

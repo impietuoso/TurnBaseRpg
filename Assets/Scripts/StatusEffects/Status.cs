@@ -20,4 +20,5 @@ public abstract class Status {
 
         return false;
     }
+    
 }

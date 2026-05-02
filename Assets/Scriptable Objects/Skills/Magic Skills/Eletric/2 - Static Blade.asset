@@ -10,36 +10,42 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
-  m_Name: 4 - Dragon's Breath
+  m_Name: 2 - Static Blade
   m_EditorClassIdentifier: 
-  skillName: Dragon's Breath
-  skillDescription: Massive Fire Damage to all Foes, Ignores Shield.
-  cost: 40
-  icon: {fileID: 21300000, guid: 3b7711c76abe56a40858a64476c44c5c, type: 3}
+  skillName: Static Blade
+  skillDescription: Medium Lightning Damage to 1 foe, ignore Shield, gain Quickning.
+  cost: 10
+  icon: {fileID: 21300000, guid: 9bda2c7c20fb0924b80d359b8b112af6, type: 3}
   animation:
-    rid: 3339743010432221417
+    rid: 3339743010432221418
   skillEffects:
-  - rid: 3339743010432221434
+  - rid: 3339743010432221433
+  - rid: 9169536697585893465
   references:
     version: 2
     RefIds:
-    - rid: 3339743010432221417
+    - rid: 3339743010432221418
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
-        singleTarget: 0
+        singleTarget: 1
         targetEnemy: 1
         targetDead: 0
         hitCount: {x: 1, y: 1}
-        hitDelay: 0
-    - rid: 3339743010432221434
+        hitDelay: 1
+    - rid: 3339743010432221433
       type: {class: DamageSkill, ns: , asm: Assembly-CSharp}
       data:
-        baseDamage: 35
+        baseDamage: 10
         ignoreShield: 1
         isPercentageDamage: 0
         healthPercentage: 0
-        hitChance: 85
-        criticalChance: 30
-        statMultiplier: 2
+        hitChance: 80
+        criticalChance: 20
+        statMultiplier: 1.6
         damageStatScale: 1
-        damageRange: 0.2
+        damageRange: 0.15
+    - rid: 9169536697585893465
+      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
+      data:
+        status: {fileID: 11400000, guid: c7e184ed8a45fa3438d3608535875785, type: 2}
+        targetUser: 1

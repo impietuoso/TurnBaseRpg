@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
-  m_Name: Lightning Breath
+  m_Name: 2 - High Voltage
   m_EditorClassIdentifier: 
-  skillName: Lightning Breath
-  skillDescription: 
+  skillName: High Voltage
+  skillDescription: Medium Lightning Damage to 1 foe, cause Stun.
   cost: 10
-  icon: {fileID: 21300000, guid: e2bde1f5acddc1847bc0f288153f826e, type: 3}
+  icon: {fileID: 21300000, guid: 8513520fc9691554284bfb6135d74ec2, type: 3}
   animation:
     rid: 3339743010432221418
   skillEffects:
   - rid: 3339743010432221433
+  - rid: 9169536697585893460
   references:
     version: 2
     RefIds:
@@ -43,3 +44,8 @@ MonoBehaviour:
         statMultiplier: 1.6
         damageStatScale: 1
         damageRange: 0.15
+    - rid: 9169536697585893460
+      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
+      data:
+        status: {fileID: 11400000, guid: 520ba6d23ec609b44b05e6109ec88339, type: 2}
+        targetUser: 0

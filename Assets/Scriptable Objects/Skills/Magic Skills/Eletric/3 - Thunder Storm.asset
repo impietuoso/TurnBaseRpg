@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
-  m_Name: Zap
+  m_Name: 3 - Thunder Storm
   m_EditorClassIdentifier: 
-  skillName: Zap
-  skillDescription: 
+  skillName: Thunder Storm
+  skillDescription: High Lightning Damage to all foes.
   cost: 10
-  icon: {fileID: 21300000, guid: 41d888b9897aec84baa7c8cee9ffc9b2, type: 3}
+  icon: {fileID: 21300000, guid: 9945e62a5530c4c488a963123b011c2b, type: 3}
   animation:
     rid: 3339743010432221418
   skillEffects:
@@ -26,7 +26,7 @@ MonoBehaviour:
     - rid: 3339743010432221418
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
-        singleTarget: 1
+        singleTarget: 0
         targetEnemy: 1
         targetDead: 0
         hitCount: {x: 1, y: 1}

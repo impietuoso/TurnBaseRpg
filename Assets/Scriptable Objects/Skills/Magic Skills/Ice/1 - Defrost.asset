@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
+  m_Name: 1 - Defrost
+  m_EditorClassIdentifier: 
+  skillName: Defrost
+  skillDescription: Removes Slow and Vulnerable from the Party.
+  cost: 10
+  icon: {fileID: 21300000, guid: 1dcadea0d51f314439c32915a71a4d76, type: 3}
+  animation:
+    rid: 9169536697585893492
+  skillEffects:
+  - rid: 9169536697585893493
+  - rid: 9169536697585893494
+  references:
+    version: 2
+    RefIds:
+    - rid: 9169536697585893492
+      type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
+      data:
+        singleTarget: 0
+        targetEnemy: 0
+        targetDead: 0
+        hitCount: {x: 1, y: 1}
+        hitDelay: 1
+    - rid: 9169536697585893493
+      type: {class: StatusRemoval, ns: , asm: Assembly-CSharp}
+      data:
+        statusType: 1
+        removeAll: 0
+        removedStatus: {fileID: 11400000, guid: c836548f87c990f4babad01ebec25f63, type: 2}
+    - rid: 9169536697585893494
+      type: {class: StatusRemoval, ns: , asm: Assembly-CSharp}
+      data:
+        statusType: 1
+        removeAll: 0
+        removedStatus: {fileID: 11400000, guid: fc3114906aedf3c418d48a44bad99f7c, type: 2}
