@@ -69,12 +69,6 @@ public class CombatManager : MonoBehaviour {
 
     [ContextMenu("Execute Turn Manager")]
     public void TurnManager() {
-        //Verify 
-        if (combatEvents.Count > 0) {
-            StartCoroutine(ExecuteCombatEvents());
-            return;
-        }
-        
         SetNextCharacter();
         combatUI.skillPanel.gameObject.SetActive(false);
 
@@ -119,10 +113,19 @@ public class CombatManager : MonoBehaviour {
         combatUI.actionsPanel.SetActive(false);
         combatUI.ResetSelections();
         combatUI.ShowSelection(skill.animation.GetAffectedTargets(user, target).ToList());
-        skill.UseSkill(user, target, this);
+        StartCoroutine(UsingSkill(skill.UseSkill(user, target, this)));
         if(target != null) Debug.Log("Target Selected: " + target.characterName);
         var usedSlot = consumables.slots.FirstOrDefault(s => s.item.skillEffect == skill);
         if (usedSlot != null) consumables.Remove(usedSlot.item, 1);
+    }
+
+    public IEnumerator UsingSkill(IEnumerator skillRoutine) {
+        yield return skillRoutine;
+        combatUI.ResetSelections();
+        while (combatEvents.TryDequeue(out var _event)) {
+            yield return _event;
+        }
+        TurnManager();
     }
 
     public void SetNextCharacter() {
@@ -142,12 +145,5 @@ public class CombatManager : MonoBehaviour {
 
     public void ReloadScene() {
         SceneManager.LoadSceneAsync(0);
-    }
-
-    public IEnumerator ExecuteCombatEvents() {
-        while (combatEvents.TryDequeue(out var _event)) {
-            yield return _event;
-        }
-        TurnManager();
     }
 }

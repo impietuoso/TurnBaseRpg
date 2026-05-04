@@ -58,7 +58,7 @@ public class EnemyBehaviour {
 
         Character targetCharacter = null;
         if (potentialTargets.Count > 0) {
-            targetCharacter = potentialTargets[UnityEngine.Random.Range(0, potentialTargets.Count)];
+            targetCharacter = potentialTargets[Random.Range(0, potentialTargets.Count)];
 
             // Highlight target in UI
             foreach (var template in cm.combatUI.characters) {
@@ -71,7 +71,7 @@ public class EnemyBehaviour {
 
         yield return new WaitForSeconds(1f);
         
-        user.derivedStats.mana.AddClampedBaseValue(skill.cost);
-        skill.UseSkill(user, targetCharacter, cm);
+        user.derivedStats.mana.AddClampedBaseValue(-skill.cost);
+        cm.UsingSkillOnTarget(user, skill, targetCharacter);
     }
 }

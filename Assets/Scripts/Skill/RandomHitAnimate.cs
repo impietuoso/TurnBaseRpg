@@ -21,8 +21,6 @@ public class RandomHitAnimate : ISkillAnimation {
         yield return cm.StartCoroutine(SingleTargetDamage(skill, user, targets, newHitCount));
         
         if (hitCount.y > 1) Debug.Log(newHitCount + " Hits");
-        yield return new WaitForSeconds(0.25f);
-        cm.TurnManager(); // Next Turn
     }
 
     public IEnumerable<Character> GetAffectedTargets(Character user, Character target) {

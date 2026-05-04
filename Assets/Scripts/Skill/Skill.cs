@@ -29,16 +29,10 @@ public class Skill : ScriptableObject {
         return true;
     }
     
-    public virtual void UseSkill(Character user, Character target, CombatManager combatManager) {
+    public virtual IEnumerator UseSkill(Character user, Character target, CombatManager combatManager) {
         Debug.Log(user.characterName + " used " + skillName);
-        combatManager.StartCoroutine(ResetTargetSelectionsFromUI(combatManager, animation.Play(this, user, target, combatManager)));
+        return animation.Play(this, user, target, combatManager);
     }
-
-    public IEnumerator ResetTargetSelectionsFromUI(CombatManager combatManager, IEnumerator skillUsage) {
-        yield return skillUsage;
-        combatManager.combatUI.ResetSelections();
-    }
-
 }
 
 public interface ISkillEffect {

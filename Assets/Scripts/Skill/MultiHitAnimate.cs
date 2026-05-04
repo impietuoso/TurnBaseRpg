@@ -38,8 +38,6 @@ public class MultiHitAnimate : ISkillAnimation {
         }
         
         if (hitCount.y > 1) Debug.Log(newHitCount + " Hits");
-        yield return new WaitForSeconds(0.25f);
-        cm.TurnManager(); // Next Turn
     }
 
     public IEnumerator SingleTargetDamage(Skill skill, Character user, Character target, int newHitCount) {

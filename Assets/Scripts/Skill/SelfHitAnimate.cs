@@ -30,7 +30,5 @@ public class SelfHitAnimate : ISkillAnimation {
         }
 
         args.Resolve();
-        yield return new WaitForSeconds(1);
-        cm.TurnManager(); // Next Turn
     }
 }
