@@ -10,7 +10,7 @@ public class RandomHitAnimate : ISkillAnimation {
     public bool targetDead;
     public Vector2Int hitCount = new Vector2Int(1, 1);
     public float hitDelay = 1;
-    public bool skipSelection => false;
+    public bool TrySkipSelection(Character user, Skill skill) => false;
 
     public IEnumerator Play(Skill skill, Character user, Character target, CombatManager cm) {
         yield return new WaitForSeconds(0.1f);
@@ -24,7 +24,7 @@ public class RandomHitAnimate : ISkillAnimation {
     }
 
     public IEnumerable<Character> GetAffectedTargets(Character user, Character target) {
-        foreach (var newTarget in CombatManager.instance.turnOrder) {
+        foreach (var newTarget in CombatManager.instance.characterList) {
             if (ValidateTarget(user, newTarget)) yield return newTarget;
         }
     }

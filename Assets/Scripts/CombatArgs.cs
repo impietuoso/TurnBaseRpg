@@ -56,13 +56,18 @@ public class CombatArgs {
         
         user?.derivedStats.mana.AddClampedBaseValue(manaHeal);
 
+        var resist = false;
+        
         foreach (var effect in statusEffects) {
             if (effect.statusType != StatusType.debuff) target?.StatusEffectList.Apply(effect);
             else {
                 var applyChance = Random.Range(0, 100);
                 if (applyChance <= 100 - target?.derivedStats.resistance.currentValue) {
                     target?.StatusEffectList.Apply(effect);
-                }
+                    resist = false;
+                    Debug.Log(effect.status + " was apply on " + target?.characterName + ".");
+                } else
+                    resist = true;
             }
         }
 
@@ -70,9 +75,10 @@ public class CombatArgs {
         result.deltaShield = (target?.derivedStats.shield.currentValue ?? 0) - previousShield;
         result.deltaHp = (target?.derivedStats.health.currentValue ?? 0) - previousHp;
         result.isCrit = currentCriticalChance <= criticalChance && !miss;
-        result.isFatal = (target?.derivedStats.health.currentValue == 0) && result.deltaHp < 0;
+        result.isFatal = target?.derivedStats.health.currentValue == 0 && result.deltaHp < 0;
         result.isRevive = previousHp == 0 && target?.derivedStats.health.currentValue > 0;
         result.miss = miss;
+        result.resistStatus = resist;
         result.deltaMp = (target?.derivedStats.mana.currentValue ?? 0) - previousMp;
 
         user?.OnResolveAttack?.Invoke(this);
@@ -92,4 +98,5 @@ public class CombatResult {
     public bool isFatal;
     public bool isRevive;
     public bool miss;
+    public bool resistStatus;
 }

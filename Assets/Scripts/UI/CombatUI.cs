@@ -50,8 +50,8 @@ public class CombatUI : MonoBehaviour {
             selectTargetPanel.SetActive(true);
             currentSkillNameText.text = "[" + skill.skillName + "]";
             currentSkillDescriptionText.text = skill.skillDescription;
-            if (skill.animation.skipSelection) {
-                CombatManager.instance.UsingSkillOnTarget(user, skill, null);
+            if (skill.animation.TrySkipSelection(user, skill)) {
+                CombatManager.instance.UsingSkillOnTarget(user, skill, user);
             } else VerifyTargets(user, skill);
         } else {
             Debug.Log("Don't have enough Mana");

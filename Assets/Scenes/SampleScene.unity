@@ -2343,7 +2343,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28.35
+  m_fontSize: 28.4
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7210,6 +7210,8 @@ MonoBehaviour:
     characterSprite: {fileID: 0}
     uiSprite: {fileID: 0}
     team: 
+    actionPoints:
+      value: 0
   arrow: {fileID: 0}
   targetButton: {fileID: 0}
   uiSprite: {fileID: 2113521994}
@@ -7217,6 +7219,7 @@ MonoBehaviour:
   healthView: {fileID: 1589081428}
   manaView: {fileID: 1480189012}
   shieldView: {fileID: 1438960522}
+  speedView: {fileID: 0}
   statusEffectView: {fileID: 0}
 --- !u!114 &402734688
 MonoBehaviour:
@@ -10864,7 +10867,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 724024424}
   m_HandleRect: {fileID: 724024423}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -10948,7 +10951,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 10}
-  m_SizeDelta: {x: -20, y: 0}
+  m_SizeDelta: {x: -20, y: 20}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &562209514
 MonoBehaviour:
@@ -12761,7 +12764,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2091395914}
   m_HandleRect: {fileID: 2091395913}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -13213,8 +13216,66 @@ MonoBehaviour:
   gameoverPanel: {fileID: 1534490434}
   allies: []
   enemies: []
-  turnOrder: []
-  currentCharacterIndex: 0
+  characterList: []
+  currentCharacter:
+    characterName: 
+    stats:
+      strength: 5
+      intelligence: 5
+      dexterity: 5
+      vitality: 5
+      spirit: 5
+    equipment: []
+    derivedStats:
+      <damage>k__BackingField:
+        <minValue>k__BackingField: 0
+        <maxValue>k__BackingField: 0
+        <baseValue>k__BackingField: 0
+        <currentValue>k__BackingField: 0
+      <health>k__BackingField:
+        <minValue>k__BackingField: 0
+        <maxValue>k__BackingField: 0
+        <baseValue>k__BackingField: 0
+        <currentValue>k__BackingField: 0
+      <shield>k__BackingField:
+        <minValue>k__BackingField: 0
+        <maxValue>k__BackingField: 0
+        <baseValue>k__BackingField: 0
+        <currentValue>k__BackingField: 0
+      <mana>k__BackingField:
+        <minValue>k__BackingField: 0
+        <maxValue>k__BackingField: 0
+        <baseValue>k__BackingField: 0
+        <currentValue>k__BackingField: 0
+      <speed>k__BackingField:
+        <minValue>k__BackingField: 0
+        <maxValue>k__BackingField: 0
+        <baseValue>k__BackingField: 0
+        <currentValue>k__BackingField: 0
+      <armor>k__BackingField:
+        <minValue>k__BackingField: 0
+        <maxValue>k__BackingField: 0
+        <baseValue>k__BackingField: 0
+        <currentValue>k__BackingField: 0
+      <resistance>k__BackingField:
+        <minValue>k__BackingField: 0
+        <maxValue>k__BackingField: 0
+        <baseValue>k__BackingField: 0
+        <currentValue>k__BackingField: 0
+      <evade>k__BackingField:
+        <minValue>k__BackingField: 0
+        <maxValue>k__BackingField: 0
+        <baseValue>k__BackingField: 0
+        <currentValue>k__BackingField: 0
+    level: 0
+    profession: {fileID: 0}
+    basicAttack: []
+    skills: []
+    characterSprite: {fileID: 0}
+    uiSprite: {fileID: 0}
+    team: 
+    actionPoints:
+      value: 0
   turnCount: 0
   consumables:
     slots:
@@ -13224,6 +13285,9 @@ MonoBehaviour:
       _amount: 20
     - _item: {fileID: 11400000, guid: babae630393dd5b43b3fc8c9748a83bd, type: 2}
       _amount: 20
+  combatWon: 0
+  selectedSkill: {fileID: 0}
+  maxSpeed: 0
 --- !u!114 &680555395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13671,7 +13735,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.9
+  m_fontSize: 19.95
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -13981,7 +14045,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5.0000305, y: 1124}
+  m_AnchoredPosition: {x: -5, y: 1124}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &701106124
@@ -15183,6 +15247,7 @@ GameObject:
   - component: {fileID: 767224544}
   - component: {fileID: 767224546}
   - component: {fileID: 767224545}
+  - component: {fileID: 767224547}
   m_Layer: 5
   m_Name: Speed Slider
   m_TagString: Untagged
@@ -15269,6 +15334,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 767224543}
   m_CullTransparentMesh: 1
+--- !u!114 &767224547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767224543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 749aa3b101892174384acc7931c8a15c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatView
+  owner:
+    <minValue>k__BackingField: 0
+    <maxValue>k__BackingField: 0
+    <baseValue>k__BackingField: 0
+    <currentValue>k__BackingField: 0
+  bar: {fileID: 767224545}
+  text: {fileID: 0}
 --- !u!1 &769393558
 GameObject:
   m_ObjectHideFlags: 0
@@ -15553,7 +15637,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28.35
+  m_fontSize: 28.4
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -15690,7 +15774,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32.15
+  m_fontSize: 32.3
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -19722,10 +19806,10 @@ RectTransform:
   - {fileID: 1797194909}
   m_Father: {fileID: 562209512}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 49.5, y: -20}
+  m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &934442098
 MonoBehaviour:
@@ -22718,7 +22802,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 29.95
+  m_fontSize: 30
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -23179,8 +23263,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1861495315}
   m_HandleRect: {fileID: 1861495314}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.99999976
+  m_Value: 1
+  m_Size: 0.9999998
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -23488,7 +23572,7 @@ RectTransform:
   m_Father: {fileID: 1259010491}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.75, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -25184,7 +25268,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28.35
+  m_fontSize: 28.4
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -26728,10 +26812,10 @@ RectTransform:
   - {fileID: 1429356401}
   m_Father: {fileID: 1950012523}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 49.5, y: -20}
+  m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1276197681
 MonoBehaviour:
@@ -30901,7 +30985,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28.35
+  m_fontSize: 28.4
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -31178,7 +31262,7 @@ RectTransform:
   m_Father: {fileID: 1950899987}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.42}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -33898,6 +33982,7 @@ GameObject:
   - component: {fileID: 1634602000}
   - component: {fileID: 1634602003}
   - component: {fileID: 1634602002}
+  - component: {fileID: 1634602004}
   m_Layer: 5
   m_Name: Speed Slider
   m_TagString: Untagged
@@ -33984,6 +34069,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634601999}
   m_CullTransparentMesh: 1
+--- !u!114 &1634602004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634601999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 749aa3b101892174384acc7931c8a15c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatView
+  owner:
+    <minValue>k__BackingField: 0
+    <maxValue>k__BackingField: 0
+    <baseValue>k__BackingField: 0
+    <currentValue>k__BackingField: 0
+  bar: {fileID: 1634602002}
+  text: {fileID: 0}
 --- !u!1 &1647680039
 GameObject:
   m_ObjectHideFlags: 0
@@ -34017,7 +34121,7 @@ RectTransform:
   m_Father: {fileID: 2129553651}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.75, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -34164,7 +34268,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28.35
+  m_fontSize: 28.4
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -38969,7 +39073,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50.95
+  m_fontSize: 51
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -39335,7 +39439,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32.5
+  m_fontSize: 32.6
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -40004,7 +40108,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: -10}
-  m_SizeDelta: {x: -20, y: 0}
+  m_SizeDelta: {x: -20, y: 20}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1950012524
 MonoBehaviour:
@@ -40543,7 +40647,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1961856736
 RectTransform:
   m_ObjectHideFlags: 0
@@ -40562,9 +40666,9 @@ RectTransform:
   - {fileID: 767224544}
   m_Father: {fileID: 2129304288}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 67.5, y: -64}
   m_SizeDelta: {x: 119, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1961856737
@@ -40718,6 +40822,8 @@ MonoBehaviour:
     characterSprite: {fileID: 0}
     uiSprite: {fileID: 0}
     team: 
+    actionPoints:
+      value: 0
   arrow: {fileID: 2128761837}
   targetButton: {fileID: 1961856740}
   uiSprite: {fileID: 0}
@@ -40725,6 +40831,7 @@ MonoBehaviour:
   healthView: {fileID: 0}
   manaView: {fileID: 0}
   shieldView: {fileID: 0}
+  speedView: {fileID: 767224545}
   statusEffectView: {fileID: 562209519}
 --- !u!1 &1977402374
 GameObject:
@@ -40810,7 +40917,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 47.8
+  m_fontSize: 47.85
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -41199,7 +41306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1993430287
 RectTransform:
   m_ObjectHideFlags: 0
@@ -41218,9 +41325,9 @@ RectTransform:
   - {fileID: 1634602000}
   m_Father: {fileID: 2047325099}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 471.43903, y: -64}
   m_SizeDelta: {x: 119, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1993430288
@@ -41330,6 +41437,8 @@ MonoBehaviour:
     characterSprite: {fileID: 0}
     uiSprite: {fileID: 0}
     team: 
+    actionPoints:
+      value: 0
   arrow: {fileID: 446839132}
   targetButton: {fileID: 1993430291}
   uiSprite: {fileID: 0}
@@ -41337,6 +41446,7 @@ MonoBehaviour:
   healthView: {fileID: 1570768512}
   manaView: {fileID: 0}
   shieldView: {fileID: 2093737171}
+  speedView: {fileID: 1634602002}
   statusEffectView: {fileID: 1950012529}
 --- !u!114 &1993430291
 MonoBehaviour:
@@ -43100,7 +43210,7 @@ RectTransform:
   m_Father: {fileID: 687757585}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.42}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -44017,7 +44127,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.6
+  m_fontSize: 39.65
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -44288,7 +44398,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 5
   m_Viewport: {fileID: 3326898}
   m_HorizontalScrollbar: {fileID: 560843290}
   m_VerticalScrollbar: {fileID: 1667767211}

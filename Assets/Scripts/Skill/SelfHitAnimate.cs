@@ -5,7 +5,10 @@ using UnityEngine;
 
 [Serializable]
 public class SelfHitAnimate : ISkillAnimation {
-    public bool skipSelection => true;
+    public bool TrySkipSelection(Character user, Skill skill) {
+        CombatManager.instance.UsingSkillOnTarget(user,skill,user);
+        return true;
+    }
 
     public bool ValidateTarget(Character user, Character target) {
         if (user == target) return true;

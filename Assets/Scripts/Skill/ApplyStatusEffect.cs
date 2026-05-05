@@ -7,8 +7,10 @@ public class ApplyStatusEffect : ISkillEffect {
     public bool targetUser;
 
     public void Prepare(CombatArgs args) {
-        if(targetUser) args.user?.StatusEffectList.Apply(status);
-        else args.statusEffects.Add(status);
-        Debug.Log(status.status + " was apply on " + (targetUser ? args.user.characterName : args.target.characterName) + ".");
+        if(args.hitChance == 0) args.hitChance = 100;
+        if (targetUser) {
+            args.user?.StatusEffectList.Apply(status);
+            Debug.Log(status.status + " was apply on " + args.user?.characterName + ".");
+        } else args.statusEffects.Add(status);
     }
 }

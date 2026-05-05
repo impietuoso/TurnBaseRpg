@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class CombatManager : MonoBehaviour {
     public static CombatManager instance;
@@ -14,32 +16,42 @@ public class CombatManager : MonoBehaviour {
     [Header("Runtime")]
     public List<Character> allies = new();
     public List<Character> enemies = new();
-    public List<Character> turnOrder = new();
-    public Character currentCharacter => turnOrder[currentCharacterIndex];
-    public int currentCharacterIndex;
+    [FormerlySerializedAs("turnOrder")]
+    public List<Character> characterList = new();
+    public Character currentCharacter;
     [SerializeField]
-    private int turnCount = 0;
+    public int turnCount = 0;
     public ListInventory<Consumable> consumables;
-    private EnemyBehaviour enemyBehaviour = new();
+    public EnemyBehaviour enemyBehaviour = new();
     public Queue<IEnumerator> combatEvents = new();
+    public List<ICombatPhase> setupPhases = new();
+    public List<ICombatPhase> loopPhases = new();
+    public List<ICombatPhase> endPhases = new();
+    public Coroutine currentPhase;
+    public bool combatWon;
+    public Skill selectedSkill;
+    [NonSerialized]
+    public Character selectedTarget;
+    public readonly Character skipTurnFlag = new();
+    public int maxSpeed;
 
     private void Awake() {
         instance = this;
+        setupPhases.Add(new SetupPhase());
+        loopPhases.Add(new WaitActionPhase());
+        loopPhases.Add(new CharacterPhase());
+        loopPhases.Add(new CombatEvents());
+        loopPhases.Add(new CheckResultPhase());
     }
 
     public void StartCombat(EnemyEncounter newEnemies, IEnumerable<PartyMember> party) {
-        combatUI.combatPanel.SetActive(true);
-        menuPanel.SetActive(false);
-        currentCharacterIndex = -1;
-
-        combatUI.consumablesView.SetData(consumables);
-        
         // Reset and clone allies
         allies.Clear();
         foreach (var ally in party) {
             if (ally == null) {
                 continue;
             }
+
             allies.Add(new(ally, "Player"));
         }
 
@@ -49,98 +61,45 @@ public class CombatManager : MonoBehaviour {
             if (newEnemy == null) {
                 continue;
             }
+
             enemies.Add(new(newEnemy, "Enemy"));
         }
 
-        turnOrder.Clear();
-        turnCount = 0;
-        SetTurn();
+        currentPhase = StartCoroutine(CombatLoop());
     }
 
-    private void SetTurn() {
-        turnCount++;
-        turnOrder = allies.Concat(enemies).OrderByDescending(c => c.derivedStats.speed.currentValue).ToList();
-        //foreach (var person in turnOrder) {
-        //    person.UpdateCombatValues();
-        //}
-        combatUI.ShowCharacters(turnOrder);
-        TurnManager();
+    public void FinishCombat(bool won) {
+        combatWon = won;
+        StopCoroutine(currentPhase);
+        StartCoroutine(CombatEnd());
     }
 
-    [ContextMenu("Execute Turn Manager")]
-    public void TurnManager() {
-        SetNextCharacter();
-        combatUI.skillPanel.gameObject.SetActive(false);
-
-        var enemiesAlive = enemies.Count;
-        foreach (var enemy in enemies) {
-            if (enemy.derivedStats.health.currentValue <= 0) enemiesAlive--;
-        }
-        
-        var alliesAlive = allies.Count;
-        foreach (var ally in allies) {
-            if (ally.derivedStats.health.currentValue <= 0) alliesAlive--;
-        }
-        
-        if (enemiesAlive == 0 || alliesAlive == 0) {
-            Debug.Log("Combat Ended");
-            gameoverPanel.SetActive(true);
-            return;
+    public IEnumerator CombatLoop() {
+        foreach (var phase in setupPhases) {
+            yield return phase.Execute(this);
         }
 
-        if (turnOrder[currentCharacterIndex].derivedStats.health.currentValue == 0) {
-            Debug.Log(turnOrder[currentCharacterIndex].characterName + " can't play");
-            TurnManager();
-            return;
+        while (true) {
+            foreach (var phase in loopPhases) {
+                yield return phase.Execute(this);
+            }
         }
-        
-        if (enemies.Contains(turnOrder[currentCharacterIndex])) {
-            //Vez do Inimigo
-            StartCoroutine(enemyBehaviour.EnemyTurn(this));
-        } else {
-            //Vez do Player
-            Debug.Log("Player Turn: " + turnOrder[currentCharacterIndex].characterName);
-            combatUI.actionsPanel.SetActive(true);
-            if(turnOrder[currentCharacterIndex].basicAttack.Count > 1) combatUI.secondBasicAttack.SetActive(true);
-            else combatUI.secondBasicAttack.SetActive(false);
-            combatUI.ShowSkills(turnOrder[currentCharacterIndex], this);
+    }
+
+    public IEnumerator CombatEnd() {
+        foreach (var phase in endPhases) {
+            yield return phase.Execute(this);
         }
+    }
+
+    [ContextMenu("Skip Turn ( ͡° ͜ʖ ͡°)")]
+    public void SkipTurn() {
+        selectedTarget = skipTurnFlag;
     }
 
     public void UsingSkillOnTarget(Character user, Skill skill, Character target) {
-        user.derivedStats.mana.AddClampedBaseValue(-skill.cost);
-        combatUI.selectTargetPanel.SetActive(false);
-        combatUI.actionsPanel.SetActive(false);
-        combatUI.ResetSelections();
-        combatUI.ShowSelection(skill.animation.GetAffectedTargets(user, target).ToList());
-        StartCoroutine(UsingSkill(skill.UseSkill(user, target, this)));
-        if(target != null) Debug.Log("Target Selected: " + target.characterName);
-        var usedSlot = consumables.slots.FirstOrDefault(s => s.item.skillEffect == skill);
-        if (usedSlot != null) consumables.Remove(usedSlot.item, 1);
-    }
-
-    public IEnumerator UsingSkill(IEnumerator skillRoutine) {
-        yield return skillRoutine;
-        combatUI.ResetSelections();
-        while (combatEvents.TryDequeue(out var _event)) {
-            yield return _event;
-        }
-        TurnManager();
-    }
-
-    public void SetNextCharacter() {
-        if (currentCharacterIndex >= 0) {
-            if(currentCharacter.derivedStats.health.currentValue != 0) currentCharacter.OnEndTurn?.Invoke(currentCharacter);
-        }
-            
-        currentCharacterIndex++;
-        if (currentCharacterIndex >= turnOrder.Count) {
-            turnOrder.Sort((b, a) => a.derivedStats.speed.currentValue.CompareTo(b.derivedStats.speed.currentValue));
-            currentCharacterIndex = 0;
-            turnCount++;
-        }
-        
-        if(currentCharacter.derivedStats.health.currentValue != 0) currentCharacter.OnStartTurn?.Invoke(currentCharacter);
+        selectedSkill = skill;
+        selectedTarget = target;
     }
 
     public void ReloadScene() {

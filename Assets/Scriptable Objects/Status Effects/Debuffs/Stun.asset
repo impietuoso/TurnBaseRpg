@@ -27,4 +27,4 @@ MonoBehaviour:
         statusDescription: Makes the Target loses the Next Tturn
         opposite: {fileID: 11400000, guid: 420c41582add6b44e9ddf3f733801a28, type: 2}
         duration:
-          value: 1
+          value: 3

@@ -19,6 +19,8 @@ public class CharacterUITemplate : MonoBehaviour {
     [SerializeField]
     private StatView shieldView;
     [SerializeField]
+    private Slider speedView;
+    [SerializeField]
     private StatusEffectListView statusEffectView;
 
     public void SetCharacterUIValues(Character newChar) {
@@ -31,6 +33,10 @@ public class CharacterUITemplate : MonoBehaviour {
         if (manaView) manaView.SetStat(newChar.derivedStats.mana);
         if (shieldView) shieldView.SetStat(newChar.derivedStats.shield);
         
+        if (speedView) speedView.value = newChar.actionPoints.Value;
+        if (speedView) speedView.maxValue = CombatManager.instance.maxSpeed;
+        if (speedView) owner.actionPoints.OnChange += UpdateSpeedSlider;
+        
         if(statusEffectView) statusEffectView.SetData(newChar.StatusEffectList);
 
         owner.OnResolveDefend += HandleHealthChanged;
@@ -38,6 +44,10 @@ public class CharacterUITemplate : MonoBehaviour {
         owner.OnStartTurn += ActiveArrow;
         owner.OnEndTurn += DisableArrow;
         gameObject.SetActive(true);
+    }
+
+    private void UpdateSpeedSlider(float newValue) {
+        speedView.value = newValue;
     }
 
     private void ActiveArrow(Character obj) {
@@ -61,6 +71,7 @@ public class CharacterUITemplate : MonoBehaviour {
     private void HandleHealthChanged(CombatArgs args) {
         Color damageColor = args.result switch {
             { miss: true } => Color.white,
+            { resistStatus: true } => Color.orange,
             { isCrit: true } => Color.yellow,
             { deltaHp: > 0 } => Color.green,
             { deltaHp: < 0 } => Color.red,
@@ -71,6 +82,9 @@ public class CharacterUITemplate : MonoBehaviour {
             _ => Color.deepPink
         };
 
+        var statusApplied = args.statusEffects.Count > 0 && !args.result.resistStatus;
+        if (statusApplied && args.damage == 0) return;
+            
         var popupValue = args.result.deltaShield + args.result.deltaHp;
         
         if (args.user == args.target && popupValue == 0) {
@@ -78,6 +92,14 @@ public class CharacterUITemplate : MonoBehaviour {
         }
 
         var popupText = args.result.miss ? "Miss" : popupValue.ToString();
+        if (!args.result.miss && args.result.resistStatus) {
+            if (popupValue == 0)
+                popupText = "Resist";
+            else {
+                popupText += "\nResist";
+            }
+        }
+        
 
         if (targetButton) CombatManager.instance.combatUI.callPopup.CreatePopup(popupText, damageColor, transform);
 

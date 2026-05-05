@@ -7,7 +7,7 @@ public class SpreadEffect : ISkillEffect {
     public float spreadDelay;
 
     public void Prepare(CombatArgs args) {
-        foreach (var newTarget in CombatManager.instance.turnOrder) {
+        foreach (var newTarget in CombatManager.instance.characterList) {
             if (ValidateTarget(args.user, newTarget)) {
                 CombatArgs newArgs = new();
                 newArgs.target = newTarget;

@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
+  m_Name: Sleep
+  m_EditorClassIdentifier: 
+  skillName: Sleep
+  skillDescription: Put the target to Sleep
+  cost: 2
+  icon: {fileID: 21300000, guid: a01ed348c2bcc4a4eb5d4df79e384377, type: 3}
+  animation:
+    rid: 3339743010432221419
+  skillEffects:
+  - rid: 9169536764867510362
+  references:
+    version: 2
+    RefIds:
+    - rid: 3339743010432221419
+      type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
+      data:
+        singleTarget: 1
+        targetEnemy: 1
+        targetDead: 0
+        hitCount: {x: 1, y: 1}
+        hitDelay: 1
+    - rid: 9169536764867510362
+      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
+      data:
+        status: {fileID: 11400000, guid: 420c41582add6b44e9ddf3f733801a28, type: 2}
+        targetUser: 0

@@ -25,7 +25,7 @@ public class StunStatus : Status {
     private void OnTurnStart(Character target) {
         if (CombatManager.instance.currentCharacter == target) {
             Debug.Log(target.characterName + " is stunned!");
-            CombatManager.instance.TurnManager();
+            CombatManager.instance.SkipTurn();
         }
     }
 

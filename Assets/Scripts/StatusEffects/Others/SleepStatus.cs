@@ -27,7 +27,7 @@ public class SleepStatus : Status {
     private void OnTurnStart(Character target) {
         if (CombatManager.instance.currentCharacter == target) {
             Debug.Log(target.characterName + " is sleeping and skips turn!");
-            CombatManager.instance.TurnManager();
+            CombatManager.instance.SkipTurn();
         }
     }
 

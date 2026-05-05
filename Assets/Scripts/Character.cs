@@ -18,6 +18,10 @@ public class Character{
         UpdateCombatValues();
     }
     
+    public Character() {
+        
+    }
+    
     public string characterName;
     [Header("Base Stats")]
     [SerializeField]
@@ -44,6 +48,8 @@ public class Character{
     public Action<CombatArgs> OnAttack;
     public Action<CombatArgs> OnResolveDefend;
     public Action<CombatArgs> OnResolveAttack;
+
+    public Observable<float> actionPoints = new();
 
     private void UpdateCombatValues() {
         StatusEffectList = new StatusEffectList(this);
