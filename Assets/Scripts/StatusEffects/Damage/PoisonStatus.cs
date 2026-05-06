@@ -6,6 +6,7 @@ public class PoisonStatus : Status {
     public Observable<int> duration = new (3);
     public int damage = 10;
     public float healReduction = 0.6f; // 40% reduction means heal * 0.6
+    public Element element;
 
     public override void Apply(Character target) {
         if (TryNullifyOpposite(target)) return;
@@ -20,7 +21,7 @@ public class PoisonStatus : Status {
 
     public override void Stack(Character target, Status other) {
         if (other is PoisonStatus otherStatus) {
-            this.duration = otherStatus.duration;
+            duration.Value = otherStatus.duration.Value;
         }
     }
 
@@ -32,6 +33,7 @@ public class PoisonStatus : Status {
 
     private void OnTurnEnd(Character target) {
         CombatArgs args = new();
+        args.skillElement = element;
         args.source = this;
         args.unavoidable = true;
         args.ignoreShield = true;

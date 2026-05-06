@@ -21,6 +21,7 @@ MonoBehaviour:
     vitality: 5
     spirit: 5
   profession: {fileID: 11400000, guid: fbbf1f4fb6f22be4f86b487aca70310c, type: 2}
+  element: {fileID: 0}
   equips:
     list:
     - {fileID: 0}
@@ -35,10 +36,10 @@ MonoBehaviour:
     - {fileID: 0}
   equipedSkills:
     list:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 249c6d3dcfb45d5448fc1e87b8172796, type: 2}
+    - {fileID: 11400000, guid: 1414bb009e84ff847902bff25ce86d3e, type: 2}
+    - {fileID: 11400000, guid: bb373be8ec3371648ad2536fe4cebe07, type: 2}
+    - {fileID: 11400000, guid: b23844e8b616cc548b1a4c2e27d27316, type: 2}
   learnedSkills:
     list: []
   characterSprite: {fileID: 21300000, guid: b8acb029852c8f441a5fa483104fff8d, type: 3}

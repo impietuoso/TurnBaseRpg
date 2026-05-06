@@ -34,7 +34,7 @@ MonoBehaviour:
         criticalChance: 0
         statMultiplier: 0
         damageStatScale: 4
-        damageRange: 0
+        damageRange: 1
     - rid: 3339743010432221460
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:

@@ -16,10 +16,12 @@ MonoBehaviour:
   skillDescription: Low Lightning Damage to 3 random foes.
   cost: 10
   icon: {fileID: 21300000, guid: e2bde1f5acddc1847bc0f288153f826e, type: 3}
+  element: {fileID: 11400000, guid: 6ec57968da821214f96bb7f73d266c05, type: 2}
   animation:
     rid: 9169536697585893459
   skillEffects:
   - rid: 3339743010432221433
+  - rid: 9169536779501174976
   references:
     version: 2
     RefIds:
@@ -41,4 +43,9 @@ MonoBehaviour:
         targetEnemy: 1
         targetDead: 0
         hitCount: {x: 3, y: 3}
-        hitDelay: 1
+        hitDelay: 0.2
+    - rid: 9169536779501174976
+      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
+      data:
+        status: {fileID: 11400000, guid: c0a28ed87dfb4e84fb9a900d7706797a, type: 2}
+        targetUser: 0

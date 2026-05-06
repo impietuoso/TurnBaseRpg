@@ -19,7 +19,11 @@ public class StatusEffectList {
             existingStatus.Stack(target, so.status);
         } else {
             Status newStatus = so.Clone();
-            if (newStatus != null) {
+            if (newStatus == null)
+                return;
+            if (so.status.opposite && statusList.ContainsKey(so.status.opposite)) {
+                Remove(so.status.opposite);
+            } else {
                 statusList.Add(so, newStatus);
                 newStatus.Apply(target);
                 OnStatusAdded?.Invoke(newStatus);

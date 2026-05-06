@@ -17,11 +17,11 @@ MonoBehaviour:
     all foes.
   cost: 5
   icon: {fileID: 412842708545245901, guid: 15ac24e280babdb43bb27639131c29ec, type: 3}
+  element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
   animation:
     rid: 3339743010432221414
   skillEffects:
   - rid: 3339743010432221428
-  - rid: 6720660871797014617
   references:
     version: 2
     RefIds:
@@ -45,8 +45,3 @@ MonoBehaviour:
         statMultiplier: 2
         damageStatScale: 0
         damageRange: 0.15
-    - rid: 6720660871797014617
-      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
-      data:
-        status: {fileID: 11400000, guid: eb311f5b4446eb040be50d6034fcd8c2, type: 2}
-        targetUser: 0

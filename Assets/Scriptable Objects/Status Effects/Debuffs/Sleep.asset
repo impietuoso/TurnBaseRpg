@@ -27,4 +27,4 @@ MonoBehaviour:
         statusDescription: Make the target unable to play until it takes damage
         opposite: {fileID: 11400000, guid: 520ba6d23ec609b44b05e6109ec88339, type: 2}
         duration:
-          value: 3
+          value: 5

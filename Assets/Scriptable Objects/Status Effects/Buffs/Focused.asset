@@ -27,5 +27,5 @@ MonoBehaviour:
         statusDescription: Increase Hit Chance
         opposite: {fileID: 11400000, guid: a32a7be209201274881a7e4ddc3d12b0, type: 2}
         duration:
-          value: 3
+          value: 5
         hitBonus: 30

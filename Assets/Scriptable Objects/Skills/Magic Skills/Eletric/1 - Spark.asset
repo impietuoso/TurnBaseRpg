@@ -16,6 +16,7 @@ MonoBehaviour:
   skillDescription: Low Lightning Damage to 1 foe.
   cost: 10
   icon: {fileID: 21300000, guid: 41d888b9897aec84baa7c8cee9ffc9b2, type: 3}
+  element: {fileID: 11400000, guid: 6ec57968da821214f96bb7f73d266c05, type: 2}
   animation:
     rid: 3339743010432221418
   skillEffects:

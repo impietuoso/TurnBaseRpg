@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,6 +8,7 @@ public class CombatArgs {
     public object source;
     public Character user;
     public Character target;
+    public Skill skill;
     public bool unavoidable;
     public bool ignoreShield;
     public bool ignoreArmor;
@@ -18,10 +20,11 @@ public class CombatArgs {
     public int shield;
     public int criticalChance;
     public int hitChance;
+    public Element skillElement;
     public CombatResult result;
     public List<StatusSO> statusEffects = new();
     public Action<CombatArgs> OnResolve;
-
+    
     public void Resolve() {
         if (result != null) return;
         user?.OnAttack?.Invoke(this);
@@ -48,24 +51,34 @@ public class CombatArgs {
             }
         } else {
             damage = 0;
-        }        
-        
+        }
+
+        if (target?.element.weak.Contains(skillElement)??false)
+            damage = (int)(damage * 1.2f);
+        else if (skillElement.weak.Contains(target?.element))
+            damage = (int)(damage * 0.8f);
+
         target?.derivedStats.health.AddClampedBaseValue(heal - damage);
         target?.derivedStats.mana.AddClampedBaseValue(mana);
         target?.derivedStats.shield.AddClampedBaseValue(shield);
-        
+
         user?.derivedStats.mana.AddClampedBaseValue(manaHeal);
 
         var resist = false;
-        
+
         foreach (var effect in statusEffects) {
             if (effect.statusType != StatusType.debuff) target?.StatusEffectList.Apply(effect);
             else {
+                if (CombatManager.instance.combatEvents.Any(e => e is ApplyStatusEffectEvent
+                        asf && asf.status == effect && asf.target == target)) {
+                    continue;
+                }
                 var applyChance = Random.Range(0, 100);
                 if (applyChance <= 100 - target?.derivedStats.resistance.currentValue) {
-                    target?.StatusEffectList.Apply(effect);
+                    var applyStatusEvent = new ApplyStatusEffectEvent(target, effect);
+                    CombatManager.instance.combatEvents.Enqueue(applyStatusEvent);
                     resist = false;
-                    Debug.Log(effect.status + " was apply on " + target?.characterName + ".");
+                    Debug.Log(effect.status + " was add to queue " + target?.characterName + ".");
                 } else
                     resist = true;
             }

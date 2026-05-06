@@ -27,5 +27,5 @@ MonoBehaviour:
         statusDescription: Deals Damage if the Target Attacks
         opposite: {fileID: 0}
         duration:
-          value: 3
+          value: 4
         damage: 10

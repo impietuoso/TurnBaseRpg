@@ -19,7 +19,7 @@ public class CritStatus : Status {
 
     public override void Stack(Character target, Status other) {
         if (other is CritStatus otherStatus) {
-            this.duration = otherStatus.duration;
+            duration.Value = otherStatus.duration.Value;
         }
     }
 

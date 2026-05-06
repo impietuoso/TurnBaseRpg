@@ -29,6 +29,7 @@ public class DamageSkill : ISkillEffect {
             finalDamage = Mathf.RoundToInt((baseDamage + damageStatValue) * rangedDamage);
         }
 
+        args.skillElement = args.skill.element;
         args.ignoreShield = ignoreShield;
         args.damage = finalDamage;
         args.criticalChance = criticalChance;

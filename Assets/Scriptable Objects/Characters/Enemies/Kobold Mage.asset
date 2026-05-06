@@ -15,19 +15,20 @@ MonoBehaviour:
   charName: Kobold 2
   level: 1
   usedStats:
-    strength: 5
-    intelligence: 5
-    dexterity: 5
+    strength: 3
+    intelligence: 3
+    dexterity: 3
     vitality: 3
     spirit: 5
   profession: {fileID: 11400000, guid: ffb99c29d02008e45868fdb5bbd75dbb, type: 2}
+  element: {fileID: 11400000, guid: c87196e2f5f35ce40b6d119ad1826d23, type: 2}
   equips:
     list:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-    - {fileID: 11400000, guid: 8cadb888fe5f2ef47839a1e97911f3ca, type: 2}
+    - {fileID: 11400000, guid: be3377aafb7cc644d8da5d04dfe9aa8e, type: 2}
     - {fileID: 11400000, guid: 9bdbd5fb0372c9f4f90b892c4458a968, type: 2}
     - {fileID: 0}
     - {fileID: 0}
@@ -36,7 +37,8 @@ MonoBehaviour:
   equipedSkills:
     list:
     - {fileID: 11400000, guid: 60c1f2050a92ff24cb70d622f696b609, type: 2}
-    - {fileID: 11400000, guid: 47488b28d63b72647bcc85595a0b2e59, type: 2}
+    - {fileID: 11400000, guid: a7989c3359a4d964d95ac181a4770572, type: 2}
+    - {fileID: 11400000, guid: 29dfbedf5a4b7c8419b027f626405cd5, type: 2}
   learnedSkills:
     list: []
   characterSprite: {fileID: 3594130101213413524, guid: 8a571e18b6815624683ca98f6c701a59, type: 3}

@@ -16,11 +16,12 @@ MonoBehaviour:
   skillDescription: Removes all Debuffs from the Caster and Gains Rage
   cost: 15
   icon: {fileID: 21300000, guid: 8c857596d0aaf854184f9c5ba7d37e39, type: 3}
+  element: {fileID: 11400000, guid: c87196e2f5f35ce40b6d119ad1826d23, type: 2}
   animation:
     rid: 3339743010432221417
   skillEffects:
-  - rid: 7065366262496624912
   - rid: 7065366262496624913
+  - rid: 7065366262496624912
   references:
     version: 2
     RefIds:

@@ -16,6 +16,7 @@ MonoBehaviour:
   skillDescription: Gain Shield and Apply Reflect to the Party.
   cost: 20
   icon: {fileID: 21300000, guid: 5257e0050e560114da415dae2d057d78, type: 3}
+  element: {fileID: 11400000, guid: c87196e2f5f35ce40b6d119ad1826d23, type: 2}
   animation:
     rid: 3339743010432221417
   skillEffects:

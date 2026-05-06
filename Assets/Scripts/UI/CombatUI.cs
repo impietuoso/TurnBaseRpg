@@ -10,6 +10,8 @@ public class CombatUI : MonoBehaviour {
     public GameObject skillPanel;
     public GameObject selectTargetPanel;
     public GameObject secondBasicAttack;
+    public GameObject currentActionPanel;
+    public TextMeshProUGUI currentActionText;
     public Button skillTemplate;
     public IInventoryView consumablesView;
     public TextMeshProUGUI currentSkillNameText;
@@ -144,5 +146,12 @@ public class CombatUI : MonoBehaviour {
 
     public void ShowCurrentStatusEffects(StatusEffectListView statusEffectListView) {
         statusEffectsDescription.SetData(statusEffectListView.owner);
+    }
+
+    public void ShowCurrentAction(string userName, string actionName) {
+        if (currentActionPanel.activeInHierarchy)
+            currentActionPanel.SetActive(false);
+        currentActionPanel.SetActive(true);
+        currentActionText.text = userName + " uses " + actionName;
     }
 }

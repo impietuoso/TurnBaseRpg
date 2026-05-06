@@ -27,6 +27,6 @@ MonoBehaviour:
         statusDescription: Deal Damage at the End of the Turn
         opposite: {fileID: 0}
         duration:
-          value: 3
+          value: 4
         damage: 10
         healReduction: 0.6

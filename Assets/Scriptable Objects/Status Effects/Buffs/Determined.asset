@@ -27,5 +27,5 @@ MonoBehaviour:
         statusDescription: Increase Critical Chance
         opposite: {fileID: 0}
         duration:
-          value: 3
-        bonusValue: 30
+          value: 4
+        bonusValue: 50

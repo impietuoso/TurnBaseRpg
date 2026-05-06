@@ -27,6 +27,7 @@ public class WaitActionPhase : ICombatPhase {
         var fastest = cm.characterList[0];
         while (cm.currentCharacter == null) {
             foreach (var newChar in cm.characterList) {
+                if (newChar.derivedStats.health.currentValue <= 0) continue;
                 newChar.actionPoints.Value += newChar.derivedStats.speed.currentValue * Time.deltaTime;
                 if (fastest.actionPoints.Value < newChar.actionPoints.Value) {
                     fastest = newChar;
@@ -86,6 +87,7 @@ public class CharacterPhase : ICombatPhase {
         if (cm.selectedTarget != null) Debug.Log("Target Selected: " + cm.selectedTarget.characterName);
         var usedSlot = cm.consumables.slots.FirstOrDefault(s => s.item.skillEffect == cm.selectedSkill);
         if (usedSlot != null) cm.consumables.Remove(usedSlot.item, 1);
+        cm.combatUI.ShowCurrentAction(user.characterName, cm.selectedSkill.skillName);
         yield return cm.selectedSkill.UseSkill(user, cm.selectedTarget, cm);
     }
 }
@@ -94,7 +96,7 @@ public class CombatEvents : ICombatPhase {
     public IEnumerator Execute(CombatManager cm) {
         cm.combatUI.ResetSelections();
         while (cm.combatEvents.TryDequeue(out var _event)) {
-            yield return _event;
+            yield return _event.Execute(cm);
         }
     }
 }

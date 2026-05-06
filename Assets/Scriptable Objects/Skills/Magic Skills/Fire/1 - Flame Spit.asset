@@ -16,6 +16,7 @@ MonoBehaviour:
   skillDescription: Low Fire Damage to all Foes.
   cost: 10
   icon: {fileID: 21300000, guid: 37d78963524929745a0baa9107b5fbb5, type: 3}
+  element: {fileID: 11400000, guid: c87196e2f5f35ce40b6d119ad1826d23, type: 2}
   animation:
     rid: 3339743010432221417
   skillEffects:

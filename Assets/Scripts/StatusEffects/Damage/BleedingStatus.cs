@@ -5,6 +5,7 @@ public class BleedingStatus: Status {
     public override Observable<int> DisplayValue => duration;
     public Observable<int> duration = new (3);
     public int damage = 10;
+    public Element element;
     
     public override void Apply(Character target) {
         if (TryNullifyOpposite(target)) return;
@@ -25,6 +26,8 @@ public class BleedingStatus: Status {
     
     private void OnAttack(CombatArgs args) {
         CombatArgs newArgs = new();
+        newArgs.skill = args.skill;
+        newArgs.skillElement = element;
         newArgs.source = this;
         newArgs.unavoidable = true;
         newArgs.ignoreShield = true;

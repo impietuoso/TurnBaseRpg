@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,26 +23,42 @@ public class CharacterUITemplate : MonoBehaviour {
     [SerializeField]
     private Slider speedView;
     [SerializeField]
+    private Image elementIcon;
+    [SerializeField]
     private StatusEffectListView statusEffectView;
+    public Color normalSpeedColor;
+    public Color fastSpeedColor;
+    public Color slowSpeedColor;
+    
+    private void ChangeSpeedColor(int value) {
+        if (!speedView) return;
+        var baseValue = owner.derivedStats.speed.baseValue;
+        var sliderColor = value == baseValue ? normalSpeedColor : value > baseValue ? fastSpeedColor : slowSpeedColor;
+        speedView.fillRect.GetComponent<Image>().color = sliderColor;
+    }
 
     public void SetCharacterUIValues(Character newChar) {
         owner = newChar;
 
         if (uiSprite) uiSprite.sprite = newChar.uiSprite;
         if (characterSprite) characterSprite.sprite = newChar.characterSprite;
-
+        owner.StatusEffectList.OnStatusAdded += HandleNewStat;
         if (healthView) healthView.SetStat(newChar.derivedStats.health);
         if (manaView) manaView.SetStat(newChar.derivedStats.mana);
         if (shieldView) shieldView.SetStat(newChar.derivedStats.shield);
         
+        if (elementIcon) elementIcon.sprite = newChar.element.elementSprite;
+        if (elementIcon) elementIcon.color = newChar.element.elementColor;
+        
         if (speedView) speedView.value = newChar.actionPoints.Value;
+        ChangeSpeedColor(owner.derivedStats.speed.currentValue);
         if (speedView) speedView.maxValue = CombatManager.instance.maxSpeed;
         if (speedView) owner.actionPoints.OnChange += UpdateSpeedSlider;
         
         if(statusEffectView) statusEffectView.SetData(newChar.StatusEffectList);
 
         owner.OnResolveDefend += HandleHealthChanged;
-        owner.StatusEffectList.OnStatusAdded += HandleNewStat;
+        owner.derivedStats.speed.OnChange += ChangeSpeedColor;
         owner.OnStartTurn += ActiveArrow;
         owner.OnEndTurn += DisableArrow;
         gameObject.SetActive(true);
@@ -66,6 +84,7 @@ public class CharacterUITemplate : MonoBehaviour {
             owner.OnStartTurn -= ActiveArrow;
             owner.OnEndTurn -= DisableArrow;
         }
+        owner.derivedStats.speed.OnChange -= ChangeSpeedColor;
     }
 
     private void HandleHealthChanged(CombatArgs args) {
@@ -109,7 +128,8 @@ public class CharacterUITemplate : MonoBehaviour {
     
     private void HandleNewStat(Status newStatus) {
         var NewStatusPopup = CombatManager.instance.combatUI.callPopup.Pop(newStatus.statusName, newStatus.source.statusPopupColor, transform, 0);
-        CombatManager.instance.combatEvents.Enqueue(NewStatusPopup);
+        var genericEvent = new GenericCombatEvent(NewStatusPopup);
+        CombatManager.instance.combatEvents.Enqueue(genericEvent);
     }
     
     public void SetButtonAction(Action selectAction) {

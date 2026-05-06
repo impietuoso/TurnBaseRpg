@@ -11,6 +11,7 @@ public class Skill : ScriptableObject {
     public int cost;
     public Sprite icon;
     [Header("Config")]
+    public Element element;
     [SerializeReference, TypeDropdown(typeof(ISkillAnimation))]
     public ISkillAnimation animation;
     [SerializeReference, Effect]

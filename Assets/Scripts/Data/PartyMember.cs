@@ -7,6 +7,7 @@ public class PartyMember : ScriptableObject {
     public int level;
     public BaseStats usedStats;
     public Profession profession;
+    public Element element;
     [ShowEquipmentTypeAtribute] public ObservableList<Equipment> equips;
     public ObservableList<Skill> equipedSkills;
     public ObservableList<Skill> learnedSkills;

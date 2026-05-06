@@ -20,8 +20,7 @@ MonoBehaviour:
     rid: 3339743010432221460
   skillEffects:
   - rid: 3339743010432221459
-  - rid: 7065366216047853730
-  - rid: 7065366216047853729
+  - rid: 9169536779501174871
   references:
     version: 2
     RefIds:
@@ -45,13 +44,7 @@ MonoBehaviour:
         targetDead: 0
         hitCount: {x: 1, y: 1}
         hitDelay: 1
-    - rid: 7065366216047853729
-      type: {class: ManaDrainSkill, ns: , asm: Assembly-CSharp}
+    - rid: 9169536779501174871
+      type: {class: ManaHealSkill, ns: , asm: Assembly-CSharp}
       data:
-        damagePercentage: 0.8
-    - rid: 7065366216047853730
-      type: {class: ManaBurnSkill, ns: , asm: Assembly-CSharp}
-      data:
-        useDamageDealt: 0
-        manaBurn: 20
-        damagePercentage: 0.2
+        manaHealPercentage: 0.2

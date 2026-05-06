@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
-  m_Name: Healing Wave
+  m_Name: 1 - Cleasing Waters
   m_EditorClassIdentifier: 
-  skillName: Healing Wave
-  skillDescription: Heal a Light amount of Health from all allies.
+  skillName: Cleasing Waters
+  skillDescription: Remove all Debuffs from the Party
   cost: 5
-  icon: {fileID: 3817523372586217017, guid: 10cf28bf10686254bb7f51e03655922c, type: 3}
+  icon: {fileID: 21300000, guid: 0078c4184aba9244a98576f605ad1e95, type: 3}
+  element: {fileID: 11400000, guid: 832f2c12e4ad773419255f5ea7573eb9, type: 2}
   animation:
     rid: 3339743010432221421
   skillEffects:
-  - rid: 3339743010432221425
   - rid: 6720660598503243869
   references:
     version: 2
@@ -32,18 +32,9 @@ MonoBehaviour:
         targetDead: 0
         hitCount: {x: 1, y: 1}
         hitDelay: 1
-    - rid: 3339743010432221425
-      type: {class: HealSkill, ns: , asm: Assembly-CSharp}
-      data:
-        healAmount: 10
-        singleTarget: 0
-        isPercentageHeal: 0
-        healthPercentage: 0.2
-        healDelay: 1
-        revive: 0
-        statMultiplier: 1.2
-        healStatScale: 0
     - rid: 6720660598503243869
       type: {class: StatusRemoval, ns: , asm: Assembly-CSharp}
       data:
         statusType: 1
+        removeAll: 1
+        removedStatus: {fileID: 0}

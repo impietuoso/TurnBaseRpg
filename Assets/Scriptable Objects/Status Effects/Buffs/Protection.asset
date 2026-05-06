@@ -27,5 +27,5 @@ MonoBehaviour:
         statusDescription: Increase Armor
         opposite: {fileID: 11400000, guid: fc3114906aedf3c418d48a44bad99f7c, type: 2}
         duration:
-          value: 3
+          value: 4
         multiplier: 1.3

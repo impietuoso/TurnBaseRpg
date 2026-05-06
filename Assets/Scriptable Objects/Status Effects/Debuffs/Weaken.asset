@@ -27,5 +27,5 @@ MonoBehaviour:
         statusDescription: Reduce Damage
         opposite: {fileID: 11400000, guid: 77372ca0ea6690147911f39555834f8a, type: 2}
         duration:
-          value: 3
+          value: 4
         multiplier: 0.7

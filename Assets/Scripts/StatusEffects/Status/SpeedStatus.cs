@@ -19,7 +19,7 @@ public class SpeedStatus : Status {
 
     public override void Stack(Character target, Status other) {
         if (other is SpeedStatus otherStatus) {
-            this.duration = otherStatus.duration;
+            duration.Value = otherStatus.duration.Value;
         }
     }
 

@@ -16,6 +16,7 @@ MonoBehaviour:
   skillDescription: Medium Lightning Damage to all foes and gain Quickning.
   cost: 10
   icon: {fileID: 21300000, guid: a4c4595acbf93d640bad455b532b8e60, type: 3}
+  element: {fileID: 11400000, guid: 6ec57968da821214f96bb7f73d266c05, type: 2}
   animation:
     rid: 3339743010432221418
   skillEffects:

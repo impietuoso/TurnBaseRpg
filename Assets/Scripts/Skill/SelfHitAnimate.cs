@@ -24,6 +24,7 @@ public class SelfHitAnimate : ISkillAnimation {
 
         Debug.Log(user.characterName + " Defends!");
         CombatArgs args = new CombatArgs();
+        args.skill = skill;
         args.user = user;
         args.target = user;
         args.source = this;

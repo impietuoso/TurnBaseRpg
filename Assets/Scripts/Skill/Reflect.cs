@@ -20,7 +20,7 @@ public class ReflectEffect : Status {
 
     public override void Stack(Character target, Status other) {
         if (other is ReflectEffect otherStatus) {
-            duration = otherStatus.duration;
+            duration.Value = otherStatus.duration.Value;
         }
     }
 
@@ -30,14 +30,16 @@ public class ReflectEffect : Status {
         args.damage -= protectFromDamage ? damageReflected : 0;
         
         CombatArgs newArgs = new();
+        newArgs.skill = args.skill;
         newArgs.source = this;
         newArgs.unavoidable = true;
         newArgs.target = args.user;
         newArgs.damage = damageReflected;
         newArgs.stopReactionAttacks = true;
-        CombatManager.instance.combatEvents.Enqueue(ReflectDamage(newArgs));
+        var genericEvent = new GenericCombatEvent(ReflectDamage(newArgs));
+        CombatManager.instance.combatEvents.Enqueue(genericEvent);
     }
-
+    
     public IEnumerator ReflectDamage (CombatArgs args) {
         yield return null;
         args.Resolve();

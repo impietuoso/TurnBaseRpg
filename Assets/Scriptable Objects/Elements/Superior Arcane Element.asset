@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 208c10548156f8b4ba708110a0783483, type: 3}
+  m_Name: Superior Arcane Element
+  m_EditorClassIdentifier: Assembly-CSharp::Element
+  elementName: Arcane
+  elementSprite: {fileID: 21300000, guid: d72ab2807651bb549b6acc2a79f0c4b9, type: 3}
+  elementColor: {r: 0.48067555, g: 0.048059803, b: 0.6792453, a: 1}
+  weak: []

@@ -14,6 +14,7 @@ public class Character{
         characterSprite = member.characterSprite;
         uiSprite = member.uiSprite;
         team = newTeam;
+        element = member.element;
         derivedStats = new();
         UpdateCombatValues();
     }
@@ -41,6 +42,7 @@ public class Character{
     public Sprite uiSprite;
     public string team;
     public StatusEffectList StatusEffectList;
+    public Element element;
 
     public Action<Character> OnStartTurn;
     public Action<Character> OnEndTurn;

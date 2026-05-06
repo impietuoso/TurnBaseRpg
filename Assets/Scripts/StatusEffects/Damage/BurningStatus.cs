@@ -5,6 +5,7 @@ public class BurningStatus : Status {
     public override Observable<int> DisplayValue => duration;
     public Observable<int> duration = new (3);
     public int damage = 10;
+    public Element element;
 
     public override void Apply(Character target) {
         if (TryNullifyOpposite(target)) return;
@@ -19,12 +20,13 @@ public class BurningStatus : Status {
 
     public override void Stack(Character target, Status other) {
         if (other is BurningStatus otherStatus) {
-            this.duration = otherStatus.duration;
+            duration.Value = otherStatus.duration.Value;
         }
     }
 
     private void OnTurnStart(Character target) {
         CombatArgs args = new();
+        args.skillElement = element;
         args.source = this;
         args.unavoidable = true;
         args.ignoreShield = true;

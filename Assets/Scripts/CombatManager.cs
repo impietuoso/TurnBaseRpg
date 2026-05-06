@@ -1,10 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public class CombatManager : MonoBehaviour {
     public static CombatManager instance;
@@ -16,19 +14,23 @@ public class CombatManager : MonoBehaviour {
     [Header("Runtime")]
     public List<Character> allies = new();
     public List<Character> enemies = new();
-    [FormerlySerializedAs("turnOrder")]
+    [NonSerialized]
     public List<Character> characterList = new();
+    [NonSerialized]
     public Character currentCharacter;
     [SerializeField]
     public int turnCount = 0;
     public ListInventory<Consumable> consumables;
+    [Header("Combat Phases")]
     public EnemyBehaviour enemyBehaviour = new();
-    public Queue<IEnumerator> combatEvents = new();
+    public Queue<ICombatPhase> combatEvents = new();
     public List<ICombatPhase> setupPhases = new();
     public List<ICombatPhase> loopPhases = new();
     public List<ICombatPhase> endPhases = new();
     public Coroutine currentPhase;
+    [HideInInspector]
     public bool combatWon;
+    [Header("Debug Variables")]
     public Skill selectedSkill;
     [NonSerialized]
     public Character selectedTarget;
@@ -95,6 +97,7 @@ public class CombatManager : MonoBehaviour {
     [ContextMenu("Skip Turn ( ͡° ͜ʖ ͡°)")]
     public void SkipTurn() {
         selectedTarget = skipTurnFlag;
+        combatUI.actionsPanel.SetActive(false);
     }
 
     public void UsingSkillOnTarget(Character user, Skill skill, Character target) {
@@ -104,5 +107,17 @@ public class CombatManager : MonoBehaviour {
 
     public void ReloadScene() {
         SceneManager.LoadSceneAsync(0);
+    }
+}
+
+public class GenericCombatEvent : ICombatPhase {
+    private IEnumerator function;
+
+    public GenericCombatEvent(IEnumerator function) {
+        this.function = function;
+    }
+
+    public IEnumerator Execute(CombatManager cm) {
+        yield return function;
     }
 }

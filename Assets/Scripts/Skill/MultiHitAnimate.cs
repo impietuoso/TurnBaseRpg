@@ -44,6 +44,7 @@ public class MultiHitAnimate : ISkillAnimation {
         for (int i = 0; i < newHitCount; i++) {
 
             CombatArgs args = new CombatArgs();
+            args.skill = skill;
             args.target = target;
             args.user = user;
             args.source = this;
@@ -55,6 +56,7 @@ public class MultiHitAnimate : ISkillAnimation {
             args.Resolve();
             yield return new WaitForSeconds(hitDelay);
         }
+        yield return new WaitForSeconds(1.2f);
     }
 
     public bool ValidateTarget(Character user, Character target) {

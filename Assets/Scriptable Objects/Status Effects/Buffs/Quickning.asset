@@ -27,5 +27,5 @@ MonoBehaviour:
         statusDescription: Increase Speed
         opposite: {fileID: 11400000, guid: c836548f87c990f4babad01ebec25f63, type: 2}
         duration:
-          value: 3
+          value: 5
         multiplier: 1.3

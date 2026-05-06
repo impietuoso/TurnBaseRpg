@@ -27,5 +27,5 @@ MonoBehaviour:
         statusDescription: Reduce Armor
         opposite: {fileID: 11400000, guid: 6e526d327d141f9469f737ceddc48ea4, type: 2}
         duration:
-          value: 3
+          value: 5
         multiplier: 0.7

@@ -17,5 +17,6 @@ public class CallPopupText : MonoBehaviour {
         var newPopup = Instantiate(popup, target.position, Quaternion.identity, target);
         newPopup.GetComponent<PopupText>().Message(message, color);
         newPopup.gameObject.SetActive(true);
+        //yield return new WaitForSeconds(1.75f);
     }
 }

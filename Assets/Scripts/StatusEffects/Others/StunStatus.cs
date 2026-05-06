@@ -18,7 +18,7 @@ public class StunStatus : Status {
 
     public override void Stack(Character target, Status other) {
         if (other is SleepStatus otherStatus) {
-            this.duration = otherStatus.duration;
+            duration.Value = otherStatus.duration.Value;
         }
     }
 

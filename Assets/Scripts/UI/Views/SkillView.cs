@@ -16,6 +16,7 @@ public class SkillView : DataView<Skill> {
 
     public override void Subscribe() {
         if (skillNameText) skillNameText.text = data.skillName;
+        if (skillNameText) skillNameText.color = data.element.elementColor;
         if (descriptionText) descriptionText.text = data.skillDescription;
         if (costText) costText.text = data.cost + " MP";
         if (icon) icon.overrideSprite = data.icon;

@@ -70,8 +70,6 @@ public class EnemyBehaviour {
         }
 
         yield return new WaitForSeconds(1f);
-        
-        user.derivedStats.mana.AddClampedBaseValue(-skill.cost);
         cm.UsingSkillOnTarget(user, skill, targetCharacter);
     }
 }

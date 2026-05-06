@@ -8,12 +8,14 @@ public class SpreadEffect : ISkillEffect {
 
     public void Prepare(CombatArgs args) {
         foreach (var newTarget in CombatManager.instance.characterList) {
-            if (ValidateTarget(args.user, newTarget)) {
+            if (ValidateTarget(args.target, newTarget)) {
                 CombatArgs newArgs = new();
+                newArgs.skill = args.skill;
                 newArgs.target = newTarget;
                 newArgs.user = args.user;
                 newArgs.source = args.source;
-                effect.Prepare(args);
+                newArgs.unavoidable = true;
+                effect.Prepare(newArgs);
                 args.OnResolve += _=> CombatManager.instance.StartCoroutine(ResolveSpread(newArgs));
             }
         }
