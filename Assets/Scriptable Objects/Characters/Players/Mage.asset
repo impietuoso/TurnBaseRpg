@@ -21,6 +21,7 @@ MonoBehaviour:
     vitality: 5
     spirit: 5
   profession: {fileID: 11400000, guid: ffb99c29d02008e45868fdb5bbd75dbb, type: 2}
+  element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
   equips:
     list:
     - {fileID: 0}
@@ -29,7 +30,7 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 517a43311b83d104db5776ce7474262d, type: 2}
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
@@ -55,7 +56,6 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 80f3334ce15765746ad7627e266593f0, type: 2}
     - {fileID: 11400000, guid: 6a1295754c85b9e468deb286d791a55d, type: 2}
     - {fileID: 11400000, guid: f46328cb73424684fba81c2412c16c4e, type: 2}
-    - {fileID: 11400000, guid: afdac186127a69641a6d7bf03b32ec59, type: 2}
     - {fileID: 11400000, guid: 07f8708e00b69a742be61dcf8f6d8964, type: 2}
   characterSprite: {fileID: 21300000, guid: 2f54ccae5767b3849bfc6bc5723f553f, type: 3}
   uiSprite: {fileID: -395514768, guid: 8a571e18b6815624683ca98f6c701a59, type: 3}

@@ -22,7 +22,7 @@ public class StatusRemoval : ISkillEffect {
                 args.target.StatusEffectList.Remove(so);
             } 
         } else {
-            var so = new StatusSO();
+            StatusSO so = null;
             foreach (var kvp in statusList) {
                 if (kvp.Key.status == removedStatus.status) {
                     so = kvp.Key;

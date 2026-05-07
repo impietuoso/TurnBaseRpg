@@ -7,7 +7,7 @@ using System.Linq;
 public class Character{
     public Character(PartyMember member, string newTeam) {
         stats = member.usedStats;
-        skills = member.equipedSkills.ToList();
+        skills = member.equipedSkills.Where(s => s && s.passiva == null).ToList();
         equipment = member.equips.ToList();
         characterName = member.charName;
         profession = member.profession;
@@ -15,7 +15,21 @@ public class Character{
         uiSprite = member.uiSprite;
         team = newTeam;
         element = member.element;
+        this.member = member;
         derivedStats = new();
+
+        foreach (var newEquip in member.equips) {
+            if (newEquip && newEquip.passiva!= null) {
+                passives.Add(newEquip.passiva);
+            }
+        }
+
+        foreach (var Skill in member.equipedSkills) {
+            if (Skill && Skill.passiva!= null) {
+                passives.Add(Skill.passiva);
+            }
+        }
+        
         UpdateCombatValues();
     }
     
@@ -43,7 +57,9 @@ public class Character{
     public string team;
     public StatusEffectList StatusEffectList;
     public Element element;
+    public PartyMember member;
 
+    public Action<Character> OnSetup;
     public Action<Character> OnStartTurn;
     public Action<Character> OnEndTurn;
     public Action<CombatArgs> OnDefend;
@@ -51,8 +67,22 @@ public class Character{
     public Action<CombatArgs> OnResolveDefend;
     public Action<CombatArgs> OnResolveAttack;
 
+    public List<IPassiveSkill> passives = new();
+
     public Observable<float> actionPoints = new();
 
+    public void SubscribePassives() {
+        foreach (var passive in passives) {
+            passive.Subscribe(this);
+        }
+    }
+    
+    public void UnsubscribePassives() {
+        foreach (var passive in passives) {
+            passive.Unsubscribe(this);
+        }
+    }
+    
     private void UpdateCombatValues() {
         StatusEffectList = new StatusEffectList(this);
         derivedStats.CalculateDeviredStats(stats, profession, equipment, level);

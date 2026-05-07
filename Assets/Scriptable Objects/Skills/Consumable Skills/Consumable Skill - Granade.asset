@@ -16,6 +16,7 @@ MonoBehaviour:
   skillDescription: Fire a granade that explose on Impact
   cost: 0
   icon: {fileID: -2035840135098207376, guid: ac9902f814a219e4ea10255084762e0c, type: 3}
+  element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
   animation:
     rid: 6720660755266404458
   skillEffects:
@@ -42,3 +43,4 @@ MonoBehaviour:
         criticalChance: 0
         statMultiplier: 0
         damageStatScale: 0
+        damageRange: 0.15

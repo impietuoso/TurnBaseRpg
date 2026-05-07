@@ -6,12 +6,9 @@ using UnityEngine;
 [Serializable]
 public class HealSkill : ISkillEffect {
     public int healAmount;
-    public bool singleTarget;
     public bool isPercentageHeal;
     [Range(0f, 1f)]
     public float healthPercentage = 0.2f;
-    public float healDelay = 1;
-    public bool revive;
     public float statMultiplier;
     public StatName healStatScale;
     

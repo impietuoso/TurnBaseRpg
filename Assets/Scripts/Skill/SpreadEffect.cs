@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+[Serializable]
 public class SpreadEffect : ISkillEffect {
     [SerializeReference, TypeDropdown(typeof(ISkillEffect))]
     public ISkillEffect effect;

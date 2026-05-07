@@ -16,6 +16,7 @@ MonoBehaviour:
   skillDescription: Heal a small amount of health
   cost: 0
   icon: {fileID: -1009742683727084556, guid: 093ec6b18acf456449c842e1f757f3be, type: 3}
+  element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
   animation:
     rid: 6720660755266404457
   skillEffects:
@@ -27,6 +28,8 @@ MonoBehaviour:
       type: {class: StatusRemoval, ns: , asm: Assembly-CSharp}
       data:
         statusType: 1
+        removeAll: 0
+        removedStatus: {fileID: 0}
     - rid: 6720660755266404457
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:

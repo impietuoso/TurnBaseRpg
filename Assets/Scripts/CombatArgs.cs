@@ -53,10 +53,12 @@ public class CombatArgs {
             damage = 0;
         }
 
-        if (target?.element.weak.Contains(skillElement)??false)
-            damage = (int)(damage * 1.2f);
-        else if (skillElement.weak.Contains(target?.element))
-            damage = (int)(damage * 0.8f);
+        if (skillElement) {
+            if (target?.element.weak.Contains(skillElement)??false)
+                damage = (int)(damage * 1.2f);
+            else if (skillElement.weak.Contains(target?.element))
+                damage = (int)(damage * 0.8f);
+        }
 
         target?.derivedStats.health.AddClampedBaseValue(heal - damage);
         target?.derivedStats.mana.AddClampedBaseValue(mana);

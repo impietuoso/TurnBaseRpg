@@ -16,6 +16,7 @@ MonoBehaviour:
   skillDescription: It almost Hurt...
   cost: 0
   icon: {fileID: 21300000, guid: cb1619254d776f943b9ff64bfda9a340, type: 3}
+  element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
   animation:
     rid: 3339743010432221460
   skillEffects:

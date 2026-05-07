@@ -21,6 +21,7 @@ MonoBehaviour:
     vitality: 5
     spirit: 5
   profession: {fileID: 11400000, guid: 433634abdd52c5448be187944d15da46, type: 2}
+  element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
   equips:
     list:
     - {fileID: 0}

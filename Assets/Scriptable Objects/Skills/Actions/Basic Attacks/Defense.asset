@@ -16,7 +16,7 @@ MonoBehaviour:
   skillDescription: Common defense that reduces damage taken
   cost: 0
   icon: {fileID: 0}
-  skillElement: 9
+  element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
   animation:
     rid: 6720660525144342614
   skillEffects:

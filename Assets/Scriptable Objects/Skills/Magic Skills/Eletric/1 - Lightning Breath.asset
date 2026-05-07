@@ -21,10 +21,13 @@ MonoBehaviour:
     rid: 9169536697585893459
   skillEffects:
   - rid: 3339743010432221433
-  - rid: 9169536779501174976
+  passiva:
+    rid: -2
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 3339743010432221433
       type: {class: DamageSkill, ns: , asm: Assembly-CSharp}
       data:
@@ -36,16 +39,11 @@ MonoBehaviour:
         criticalChance: 20
         statMultiplier: 1.6
         damageStatScale: 1
-        damageRange: 0.15
+        damageRange: 0
     - rid: 9169536697585893459
       type: {class: RandomHitAnimate, ns: , asm: Assembly-CSharp}
       data:
         targetEnemy: 1
         targetDead: 0
-        hitCount: {x: 3, y: 3}
+        hitCount: {x: 1, y: 1}
         hitDelay: 0.2
-    - rid: 9169536779501174976
-      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
-      data:
-        status: {fileID: 11400000, guid: c0a28ed87dfb4e84fb9a900d7706797a, type: 2}
-        targetUser: 0

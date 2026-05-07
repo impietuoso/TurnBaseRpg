@@ -28,5 +28,16 @@ MonoBehaviour:
     <resistance>k__BackingField: 0
     <evade>k__BackingField: 0
   equipmentSkill: {fileID: 0}
-  twoHanded: 0
-  basicAttack: {fileID: 11400000, guid: 38fcbf2ac46866b42958d2d334fed669, type: 2}
+  passiva:
+    rid: 9169536801840824531
+  twoHanded: 1
+  basicAttack: {fileID: 11400000, guid: d2f1460e11cceda4ab59790da2223d6e, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 9169536801840824531
+      type: {class: OnDealDamage, ns: , asm: Assembly-CSharp}
+      data:
+        element: {fileID: 11400000, guid: c87196e2f5f35ce40b6d119ad1826d23, type: 2}
+        selfUseSkill: {fileID: 11400000, guid: 6125204065c104544a5e89791365d5b9, type: 2}
+        castOnSelf: 1

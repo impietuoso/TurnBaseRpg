@@ -21,10 +21,13 @@ MonoBehaviour:
     rid: 3339743010432221421
   skillEffects:
   - rid: 3339743010432221425
-  - rid: 6720660598503243869
+  passiva:
+    rid: -2
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 3339743010432221421
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
@@ -37,16 +40,7 @@ MonoBehaviour:
       type: {class: HealSkill, ns: , asm: Assembly-CSharp}
       data:
         healAmount: 25
-        singleTarget: 0
         isPercentageHeal: 0
         healthPercentage: 0.2
-        healDelay: 1
-        revive: 0
         statMultiplier: 1.2
         healStatScale: 4
-    - rid: 6720660598503243869
-      type: {class: StatusRemoval, ns: , asm: Assembly-CSharp}
-      data:
-        statusType: 1
-        removeAll: 0
-        removedStatus: {fileID: 0}

@@ -13,6 +13,7 @@ public class DefenseSkill : ISkillEffect {
     }
 
     public void Prepare(CombatArgs args) {
+        args.skillElement = args.skill.element;
         args.user.OnStartTurn += OnStartTurn;
         args.user.OnDefend += OnDefend;
         args.unavoidable = true;

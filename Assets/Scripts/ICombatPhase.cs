@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public interface ICombatPhase {
@@ -8,13 +9,17 @@ public interface ICombatPhase {
 
 public class SetupPhase : ICombatPhase {
     public IEnumerator Execute(CombatManager cm) {
+        cm.characterList = cm.allies.Concat(cm.enemies).ToList();
+        cm.maxSpeed = cm.characterList.Max(c=> c.derivedStats.speed.currentValue);
+
+        foreach (var newCharacter in cm.characterList) {
+            newCharacter.SubscribePassives();
+        }
+        
         cm.combatUI.combatPanel.SetActive(true);
         cm.menuPanel.SetActive(false);
         cm.combatUI.consumablesView.SetData(cm.consumables);
-        cm.characterList.Clear();
         cm.turnCount = 1;
-        cm.characterList = cm.allies.Concat(cm.enemies).OrderByDescending(c => c.derivedStats.speed.currentValue).ToList();
-        cm.maxSpeed = cm.characterList.Max(c=> c.derivedStats.speed.currentValue);
         cm.combatUI.ShowCharacters(cm.characterList);
         
         yield break;
@@ -120,4 +125,6 @@ public class CheckResultPhase : ICombatPhase {
         }
         yield break;
     }
+    
+    
 }

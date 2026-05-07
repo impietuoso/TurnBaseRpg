@@ -26,6 +26,7 @@ public class SkillView : DataView<Skill> {
     public override void Unsubscribe() {
         if (interactable) interactable.interactable = false;
         if (skillNameText) skillNameText.text = "Empty";
+        if (skillNameText) skillNameText.color = Color.white;
         if (descriptionText) descriptionText.text = "-";
         if (costText) costText.text = "-";
         if (icon) icon.overrideSprite = null;

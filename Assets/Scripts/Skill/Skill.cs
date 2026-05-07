@@ -16,6 +16,7 @@ public class Skill : ScriptableObject {
     public ISkillAnimation animation;
     [SerializeReference, Effect]
     public ISkillEffect[] skillEffects;
+    [SerializeReference, TypeDropdown(typeof(IPassiveSkill))] public IPassiveSkill passiva;
     
     public bool Available(Character user) {
         foreach (var status in user.StatusEffectList.StatusList) {
