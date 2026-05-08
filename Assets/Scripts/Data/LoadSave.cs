@@ -44,6 +44,6 @@ public class LoadSave : MonoBehaviour {
     }
 
     public void StartBattle(EnemyEncounterView encounter) {
-        CombatManager.instance.StartCombat(encounter.data, save.currentParty);
+        CombatManager.instance.StartCombat(encounter.Data, save.currentParty);
     }
 }

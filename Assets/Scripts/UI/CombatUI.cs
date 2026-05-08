@@ -83,7 +83,7 @@ public class CombatUI : MonoBehaviour {
 
     public void PrepareSkillForCurrentPlayer(IItemView itemView) {
         var currentPlayer = CombatManager.instance.currentCharacter;
-        PrepareSkill(currentPlayer, ((Consumable)itemView.data).skillEffect);
+        PrepareSkill(currentPlayer, ((Consumable)itemView.Data).skillEffect);
     }
     
     public void VerifyTargets(Character user, Skill skill) {

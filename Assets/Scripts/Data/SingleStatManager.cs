@@ -14,12 +14,12 @@ public class SingleStatManager : MonoBehaviour {
     public Button downButton;
 
     public void LevelUp() {
-        if (member.data.GetUnusedPoints() > 0) member.data.usedStats[statName]++;
+        if (member.Data.GetUnusedPoints() > 0) member.Data.usedStats[statName]++;
         manager.UpdateStatsValue();
     }
 
     public void LevelDown() {
-        if (member.data.usedStats[statName] > 5) member.data.usedStats[statName]--;
+        if (member.Data.usedStats[statName] > 5) member.Data.usedStats[statName]--;
         manager.UpdateStatsValue();
     }
 

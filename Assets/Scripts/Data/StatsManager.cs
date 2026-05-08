@@ -16,12 +16,12 @@ public class StatsManager : MonoBehaviour {
     public TextMeshProUGUI resistenceText;
 
     public void RouboUp() {
-        if(memberView.data.level < 20) memberView.data.level++;
+        if(memberView.Data.level < 20) memberView.Data.level++;
         UpdateStatsValue();
     }
 
     public void RouboDown() {
-        if(memberView.data.level > 1)memberView.data.level--;
+        if(memberView.Data.level > 1)memberView.Data.level--;
         UpdateStatsValue();
     }
 
@@ -35,23 +35,23 @@ public class StatsManager : MonoBehaviour {
     }
     
     public void UpdateStatsValue() {
-        var hasPointsLeft = memberView.data.GetUnusedPoints() > 0;
+        var hasPointsLeft = memberView.Data.GetUnusedPoints() > 0;
         foreach (var stat in stats) {
             stat.upButton.interactable = hasPointsLeft;
             
-            if (memberView.data.usedStats[stat.statName] <= 5) stat.downButton.interactable = false;
+            if (memberView.Data.usedStats[stat.statName] <= 5) stat.downButton.interactable = false;
             else stat.downButton.interactable = true;
 
-            var characterStat = memberView.data.usedStats[stat.statName];
-            var professionStats = memberView.data.profession.initialStats[stat.statName];
+            var characterStat = memberView.Data.usedStats[stat.statName];
+            var professionStats = memberView.Data.profession.initialStats[stat.statName];
             stat.atributeValueText.text = (characterStat + professionStats).ToString();
         }
 
-        var memberStats = memberView.data.usedStats;
-        var memberProfession = memberView.data.profession;
-        var memberEquips = memberView.data.equips;
-        derivedStats.CalculateDeviredStats(memberStats, memberProfession, memberEquips, memberView.data.level);
-        availablePointsText.text = memberView.data.GetUnusedPoints() + " points left";
+        var memberStats = memberView.Data.usedStats;
+        var memberProfession = memberView.Data.profession;
+        var memberEquips = memberView.Data.equips;
+        derivedStats.CalculateDeviredStats(memberStats, memberProfession, memberEquips, memberView.Data.level);
+        availablePointsText.text = memberView.Data.GetUnusedPoints() + " points left";
         UpdateDerivedStatsUI();
     }
 }

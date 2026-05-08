@@ -3,13 +3,13 @@
     public ListView availableView;
     public IInventoryView inventoryView;
 
-    public override void Subscribe() {
-        if (partyView) partyView.SetData(data.currentParty);
-        if (availableView) availableView.SetData(data.players);
-        if (inventoryView) inventoryView.SetData(data.inventory);
+    protected override void Subscribe() {
+        if (partyView) partyView.SetData(Data.currentParty);
+        if (availableView) availableView.SetData(Data.players);
+        if (inventoryView) inventoryView.SetData(Data.inventory);
     }
 
-    public override void Unsubscribe() {
+    protected override void Unsubscribe() {
         if (partyView) partyView.SetData(null);
         if (availableView) availableView.SetData(null);
         if (inventoryView) inventoryView.SetData(null);

@@ -5,10 +5,10 @@ public class PartyManager : MonoBehaviour {
     public LoadSave loadView;
     
     public void SwapPartyMember(GameObject drop, PointerEventData eventData) {
-        var target = drop.GetComponent<PartyMemberView>().data;
-        var data = eventData.pointerDrag.GetComponent<PartyMemberView>().data;
-        var dropParentList = (ObservableList<PartyMember>)drop.GetComponentInParent<ListView>().data;
-        var eventParentList = (ObservableList<PartyMember>)eventData.pointerDrag.GetComponentInParent<ListView>().data;
+        var target = drop.GetComponent<PartyMemberView>().Data;
+        var data = eventData.pointerDrag.GetComponent<PartyMemberView>().Data;
+        var dropParentList = (ObservableList<PartyMember>)drop.GetComponentInParent<ListView>().Data;
+        var eventParentList = (ObservableList<PartyMember>)eventData.pointerDrag.GetComponentInParent<ListView>().Data;
         var targetIndex = drop.transform.GetSiblingIndex() - 1;
         var dataIndex = eventData.pointerDrag.transform.GetSiblingIndex() - 1;
         dropParentList[targetIndex] = data;
@@ -16,7 +16,7 @@ public class PartyManager : MonoBehaviour {
     }
 
     public void RemoveFromParty(PartyMemberView view) {
-        if (view.data == null) return;
+        if (view.Data == null) return;
         
         var targetIndex = view.transform.GetSiblingIndex() - 1;
         var removedCharacter = loadView.save.currentParty[targetIndex];

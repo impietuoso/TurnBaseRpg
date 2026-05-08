@@ -17,16 +17,16 @@ public class PartyMemberView : DataView<PartyMember> {
     private DerivedStats derivedStats = new();
 
     private void Start() {
-        if (interactable && !data) interactable.interactable = false;
+        if (interactable && !Data) interactable.interactable = false;
     }
 
     public string AllStats() {
         StringBuilder all = new StringBuilder();
         for (int i = 0; i < 5; i++) {
             var currentStat = (StatName)i;
-            TrippleAppend(all, currentStat.ToString(), " - ", data.usedStats[currentStat].ToString());
+            TrippleAppend(all, currentStat.ToString(), " - ", Data.usedStats[currentStat].ToString());
         }
-        derivedStats.CalculateDeviredStats(data.usedStats, data.profession, data.equips, data.level);
+        derivedStats.CalculateDeviredStats(Data.usedStats, Data.profession, Data.equips, Data.level);
         TrippleAppend(all, "Damage", " - ", derivedStats.damage.currentValue.ToString());
         TrippleAppend(all, "Health", " - ", derivedStats.health.currentValue.ToString());
         TrippleAppend(all, "Mana", " - ", derivedStats.mana.currentValue.ToString());
@@ -43,23 +43,23 @@ public class PartyMemberView : DataView<PartyMember> {
         all.AppendLine(c);
     }
 
-    public override void Subscribe() {
-        if (nameText) nameText.text = data.charName;
-        if (levelText) levelText.text = $"Lv. {data.level}";
-        if (professionText) professionText.text = data.profession.name;
+    protected override void Subscribe() {
+        if (nameText) nameText.text = Data.charName;
+        if (levelText) levelText.text = $"Lv. {Data.level}";
+        if (professionText) professionText.text = Data.profession.name;
         if (allStatsText) allStatsText.text = AllStats();
-        if (equipedSkills) equipedSkills.SetData(data.equipedSkills);
-        if (avaliableSkills) avaliableSkills.SetData(data.learnedSkills);
+        if (equipedSkills) equipedSkills.SetData(Data.equipedSkills);
+        if (avaliableSkills) avaliableSkills.SetData(Data.learnedSkills);
         if (equipments) {
             var sortedEquips = GameConfig.Instance.equipmentDrawOrder
-                .Select(type => data.equips[type]);
+                .Select(type => Data.equips[type]);
             equipments.SetData(sortedEquips);
         }
-        if (icon) icon.overrideSprite = data.uiSprite;
+        if (icon) icon.overrideSprite = Data.uiSprite;
         if (interactable) interactable.interactable = true;
     }
 
-    public override void Unsubscribe() {
+    protected override void Unsubscribe() {
         if (interactable) interactable.interactable = false;
         if (nameText) nameText.text = "Empty";
         if (levelText) levelText.text = "";

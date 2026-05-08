@@ -11,19 +11,19 @@ public class SkillView : DataView<Skill> {
     public CanvasGroup interactable;
 
     private void Start() {
-        if (interactable && !data) interactable.interactable = false;
+        if (interactable && !Data) interactable.interactable = false;
     }
 
-    public override void Subscribe() {
-        if (skillNameText) skillNameText.text = data.skillName;
-        if (skillNameText) skillNameText.color = data.element.elementColor;
-        if (descriptionText) descriptionText.text = data.skillDescription;
-        if (costText) costText.text = data.cost + " MP";
-        if (icon) icon.overrideSprite = data.icon;
+    protected override void Subscribe() {
+        if (skillNameText) skillNameText.text = Data.skillName;
+        if (skillNameText) skillNameText.color = Data.element.elementColor;
+        if (descriptionText) descriptionText.text = Data.skillDescription;
+        if (costText) costText.text = Data.cost + " MP";
+        if (icon) icon.overrideSprite = Data.icon;
         if (interactable) interactable.interactable = true;
     }
 
-    public override void Unsubscribe() {
+    protected override void Unsubscribe() {
         if (interactable) interactable.interactable = false;
         if (skillNameText) skillNameText.text = "Empty";
         if (skillNameText) skillNameText.color = Color.white;
