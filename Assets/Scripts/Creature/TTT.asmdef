@@ -1,0 +1,20 @@
+{
+    "name": "TTT",
+    "rootNamespace": "",
+    "references": [
+        "DraftsSearch",
+        "DraftsDatabase",
+        "Unity.Cinemachine",
+        "Unity.TextMeshPro",
+        "Inventory"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

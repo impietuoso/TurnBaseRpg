@@ -1,0 +1,21 @@
+{
+    "name": "TTTUI",
+    "rootNamespace": "",
+    "references": [
+        "TTT",
+        "DraftsDatabase",
+        "DraftsSearch",
+        "Unity.Cinemachine",
+        "Unity.TextMeshPro",
+        "Inventory"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
