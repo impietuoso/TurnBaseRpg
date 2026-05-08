@@ -10,18 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
-  m_Name: 1 - Hunter's Mark
+  m_Name: 2 - Double Shot
   m_EditorClassIdentifier: Assembly-CSharp::Skill
-  skillName: Hunter's Mark
-  skillDescription: Apply Vulnerable on Target and Gain Focused on Caster
+  skillName: Double Shot
+  skillDescription: Deals 2 hits of Low Damage to 1 foe.
   cost: 10
-  icon: {fileID: 21300000, guid: ca34a9eb3cda1374dbafa691804b02e5, type: 3}
+  icon: {fileID: 21300000, guid: b81dd847ed9c27f438b35f69b6375dd5, type: 3}
   element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
   animation:
     rid: 9169536824337498295
   skillEffects:
-  - rid: 9169536824337498297
-  - rid: 9169536824337498298
+  - rid: 9169536824337498303
   passiva:
     rid: -2
   references:
@@ -37,16 +36,18 @@ MonoBehaviour:
         targetDead: 0
         hitCount: {x: 1, y: 1}
         damageDelay: 0.5
-        hitDelay: 0
+        hitDelay: 0.5
         castingParticle: {fileID: 0}
         skillParticle: {fileID: 0}
-    - rid: 9169536824337498297
-      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
+    - rid: 9169536824337498303
+      type: {class: DamageSkill, ns: , asm: Assembly-CSharp}
       data:
-        status: {fileID: 11400000, guid: fc3114906aedf3c418d48a44bad99f7c, type: 2}
-        targetUser: 0
-    - rid: 9169536824337498298
-      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
-      data:
-        status: {fileID: 11400000, guid: 736558fac4207974bb831624f2464173, type: 2}
-        targetUser: 1
+        baseDamage: 10
+        ignoreShield: 0
+        isPercentageDamage: 0
+        healthPercentage: 0.2
+        hitChance: 80
+        criticalChance: 30
+        statMultiplier: 2
+        damageStatScale: 2
+        damageRange: 0.2
