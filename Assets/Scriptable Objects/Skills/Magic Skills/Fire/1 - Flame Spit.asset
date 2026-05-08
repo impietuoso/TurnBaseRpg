@@ -35,7 +35,10 @@ MonoBehaviour:
         targetEnemy: 1
         targetDead: 0
         hitCount: {x: 1, y: 1}
+        damageDelay: 0.5
         hitDelay: 0
+        castingParticle: {fileID: 421367333960824435, guid: e6941c34bd9c5944fa56b0321f8a8cd6, type: 3}
+        skillParticle: {fileID: 2888857490702743408, guid: ecc66a7ae4213c14d968c9f100207538, type: 3}
     - rid: 3339743010432221434
       type: {class: DamageSkill, ns: , asm: Assembly-CSharp}
       data:
@@ -45,6 +48,6 @@ MonoBehaviour:
         healthPercentage: 0
         hitChance: 80
         criticalChance: 30
-        statMultiplier: 2
+        statMultiplier: 1
         damageStatScale: 1
-        damageRange: 0
+        damageRange: 0.2

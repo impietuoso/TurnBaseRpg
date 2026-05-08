@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -22,6 +23,11 @@ public class CombatUI : MonoBehaviour {
     public StatusEffectListView statusEffectsDescription;
     public List<CharacterUITemplate> characters = new();
     public CallPopupText callPopup;
+    public Camera cam;
+
+    private void Start() {
+        cam = Camera.main;
+    }
 
     public void ShowSkills(Character newChar, CombatManager combatManager) {
         foreach (Transform child in skillTemplate.transform.parent) {
@@ -153,5 +159,14 @@ public class CombatUI : MonoBehaviour {
             currentActionPanel.SetActive(false);
         currentActionPanel.SetActive(true);
         currentActionText.text = userName + " uses " + actionName;
+    }
+
+    public Vector2 GetCharacterWorldPosition(Character character) {
+        Vector2 position = Vector2.zero;
+        foreach (var newChar in characters) {
+            //if (newChar.owner == character) position = cam.ScreenToWorldPoint(newChar.transform.position);
+            if (newChar.owner == character) position = newChar.transform.position;
+        }
+        return position;
     }
 }

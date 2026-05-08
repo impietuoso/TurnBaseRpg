@@ -22,9 +22,13 @@ MonoBehaviour:
   skillEffects:
   - rid: 3339743010432221459
   - rid: 9169536779501174873
+  passiva:
+    rid: -2
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 3339743010432221459
       type: {class: DamageSkill, ns: , asm: Assembly-CSharp}
       data:
@@ -36,7 +40,7 @@ MonoBehaviour:
         criticalChance: 5
         statMultiplier: 1
         damageStatScale: 1
-        damageRange: 0.15
+        damageRange: 0.2
     - rid: 3339743010432221460
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
@@ -44,7 +48,10 @@ MonoBehaviour:
         targetEnemy: 1
         targetDead: 0
         hitCount: {x: 1, y: 1}
+        damageDelay: 1
         hitDelay: 1
+        castingParticle: {fileID: 0}
+        skillParticle: {fileID: 1159766142003876151, guid: f74792c182c90a3419ce0e1f02b02f0a, type: 3}
     - rid: 9169536779501174873
       type: {class: ManaHealSkill, ns: , asm: Assembly-CSharp}
       data:

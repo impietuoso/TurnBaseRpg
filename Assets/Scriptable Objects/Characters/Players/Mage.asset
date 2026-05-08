@@ -46,16 +46,16 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 29dfbedf5a4b7c8419b027f626405cd5, type: 2}
     - {fileID: 11400000, guid: 79c113ef45d18b647939e7c0a1b1d6f2, type: 2}
     - {fileID: 11400000, guid: 4a8e39b5c1915d3409ff655dfae52d93, type: 2}
+    - {fileID: 11400000, guid: 7541bfe6fd3cd484db9125ee2c2ee4b4, type: 2}
     - {fileID: 11400000, guid: 06faa7cf26554d845be30e63b85bbc1a, type: 2}
     - {fileID: 11400000, guid: 6125204065c104544a5e89791365d5b9, type: 2}
-    - {fileID: 11400000, guid: 7056c9b11afab494e87691ede62c12eb, type: 2}
-    - {fileID: 11400000, guid: db15d3bcdfc36254da1e2c470b02db50, type: 2}
     - {fileID: 11400000, guid: 631e77db5d2324a428d818aead68e30f, type: 2}
+    - {fileID: 11400000, guid: db15d3bcdfc36254da1e2c470b02db50, type: 2}
     - {fileID: 11400000, guid: daebf7ea1613cfb4a80e65cc9f0bd8d2, type: 2}
+    - {fileID: 11400000, guid: 7056c9b11afab494e87691ede62c12eb, type: 2}
     - {fileID: 11400000, guid: f7ae7b54d9167dd4da5c9b7d0de0255e, type: 2}
     - {fileID: 11400000, guid: 80f3334ce15765746ad7627e266593f0, type: 2}
     - {fileID: 11400000, guid: 6a1295754c85b9e468deb286d791a55d, type: 2}
     - {fileID: 11400000, guid: f46328cb73424684fba81c2412c16c4e, type: 2}
-    - {fileID: 11400000, guid: 07f8708e00b69a742be61dcf8f6d8964, type: 2}
   characterSprite: {fileID: 21300000, guid: 2f54ccae5767b3849bfc6bc5723f553f, type: 3}
   uiSprite: {fileID: -395514768, guid: 8a571e18b6815624683ca98f6c701a59, type: 3}

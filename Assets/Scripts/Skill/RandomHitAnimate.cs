@@ -9,11 +9,23 @@ public class RandomHitAnimate : ISkillAnimation {
     public bool targetEnemy;
     public bool targetDead;
     public Vector2Int hitCount = new Vector2Int(1, 1);
+    public float damageDelay = 1;
     public float hitDelay = 1;
+    public GameObject castingParticle;
+    public GameObject skillParticle;
     public bool TrySkipSelection(Character user, Skill skill) => false;
 
     public IEnumerator Play(Skill skill, Character user, Character target, CombatManager cm) {
-        yield return new WaitForSeconds(0.1f);
+        var ui = CombatManager.instance.combatUI;
+        if (castingParticle) {
+            var particle = UnityEngine.Object.Instantiate(
+                castingParticle,
+                ui.GetCharacterWorldPosition(user),
+                Quaternion.identity);
+            yield return new WaitWhile(() => particle);
+        } else {
+            yield return new WaitForSeconds(0.1f);
+        }
 
         int newHitCount = Random.Range(hitCount.x, hitCount.y + 1);
 
@@ -42,6 +54,10 @@ public class RandomHitAnimate : ISkillAnimation {
                 effect.Prepare(args);
             }
 
+            var ui = CombatManager.instance.combatUI;
+            UnityEngine.Object.Instantiate(skillParticle, ui.GetCharacterWorldPosition(args.target), Quaternion.identity);
+            yield return new WaitForSeconds(damageDelay);
+            
             args.Resolve();
             yield return new WaitForSeconds(hitDelay);
         }

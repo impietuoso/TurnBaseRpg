@@ -1,6 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Linq;
-
+[Serializable]
 public class OnTakeDamage : IPassiveSkill {
     public Element element;
     public Skill counterSkill;

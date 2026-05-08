@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
+  m_Name: 1 - Swirling Blade
+  m_EditorClassIdentifier: 
+  skillName: Swirling Blade
+  skillDescription: Low Wind Damage to all Foes.
+  cost: 10
+  icon: {fileID: 21300000, guid: 36c6939d75112264bae50348fdb6fa0e, type: 3}
+  element: {fileID: 11400000, guid: 6e11067072e285a4cb15c48aa5e3d94b, type: 2}
+  animation:
+    rid: 9169536697585893492
+  skillEffects:
+  - rid: 9169536824337498188
+  passiva:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 9169536697585893492
+      type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
+      data:
+        singleTarget: 0
+        targetEnemy: 1
+        targetDead: 0
+        hitCount: {x: 1, y: 1}
+        damageDelay: 0.5
+        hitDelay: 0
+        castingParticle: {fileID: 0}
+        skillParticle: {fileID: 0}
+    - rid: 9169536824337498188
+      type: {class: DamageSkill, ns: , asm: Assembly-CSharp}
+      data:
+        baseDamage: 10
+        ignoreShield: 0
+        isPercentageDamage: 0
+        healthPercentage: 0.2
+        hitChance: 80
+        criticalChance: 30
+        statMultiplier: 1
+        damageStatScale: 1
+        damageRange: 0.2

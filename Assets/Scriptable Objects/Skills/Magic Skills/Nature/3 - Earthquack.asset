@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
+  m_Name: 3 - Earthquack
+  m_EditorClassIdentifier: 
+  skillName: Earthquake
+  skillDescription: Between 3 and 6 Medium Nature Damage to all foes.
+  cost: 5
+  icon: {fileID: -3042107026998017643, guid: f04dcc4869a471c47bcc3b9642e7b143, type: 3}
+  element: {fileID: 11400000, guid: ddc9f8a417eb7a94d8b94dd5cc3fbdd5, type: 2}
+  animation:
+    rid: 3339743010432221417
+  skillEffects:
+  - rid: 9169536824337498222
+  passiva:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 3339743010432221417
+      type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
+      data:
+        singleTarget: 0
+        targetEnemy: 1
+        targetDead: 0
+        hitCount: {x: 3, y: 6}
+        damageDelay: 0.5
+        hitDelay: 0
+        castingParticle: {fileID: 421367333960824435, guid: e6941c34bd9c5944fa56b0321f8a8cd6, type: 3}
+        skillParticle: {fileID: 1601998662364245037, guid: 61ddfba2ee7db1b4cb5dcd0116c2cc89, type: 3}
+    - rid: 9169536824337498222
+      type: {class: DamageSkill, ns: , asm: Assembly-CSharp}
+      data:
+        baseDamage: 10
+        ignoreShield: 0
+        isPercentageDamage: 0
+        healthPercentage: 0.2
+        hitChance: 80
+        criticalChance: 30
+        statMultiplier: 1
+        damageStatScale: 1
+        damageRange: 0.2

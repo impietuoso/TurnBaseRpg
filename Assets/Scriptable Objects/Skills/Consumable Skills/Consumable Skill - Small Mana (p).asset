@@ -21,9 +21,13 @@ MonoBehaviour:
     rid: 6720660755266404458
   skillEffects:
   - rid: 6720660755266404442
+  passiva:
+    rid: -2
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 6720660755266404442
       type: {class: ManaBurnSkill, ns: , asm: Assembly-CSharp}
       data:
@@ -37,4 +41,7 @@ MonoBehaviour:
         targetEnemy: 0
         targetDead: 0
         hitCount: {x: 1, y: 1}
+        damageDelay: 1
         hitDelay: 1
+        castingParticle: {fileID: 0}
+        skillParticle: {fileID: 421367333960824435, guid: e317f1eb13ba4a14b9742ae5e02282b8, type: 3}

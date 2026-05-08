@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 3 - Thunder Bolt
   m_EditorClassIdentifier: 
   skillName: Thunder Bolt
-  skillDescription: Medium Lightning Damage to 1 foe, ignore Shield, cause Stun.
+  skillDescription: Medium Lightning Damage to all foes, ignore Shield, cause Stun.
   cost: 10
   icon: {fileID: 21300000, guid: 63bc03880d69ace4e8cbe8a56e7661ce, type: 3}
   element: {fileID: 11400000, guid: 6ec57968da821214f96bb7f73d266c05, type: 2}
@@ -22,17 +22,24 @@ MonoBehaviour:
   skillEffects:
   - rid: 3339743010432221433
   - rid: 9169536697585893461
+  passiva:
+    rid: -2
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 3339743010432221418
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
-        singleTarget: 1
+        singleTarget: 0
         targetEnemy: 1
         targetDead: 0
         hitCount: {x: 1, y: 1}
-        hitDelay: 1
+        damageDelay: 0.5
+        hitDelay: 0
+        castingParticle: {fileID: 0}
+        skillParticle: {fileID: 0}
     - rid: 3339743010432221433
       type: {class: DamageSkill, ns: , asm: Assembly-CSharp}
       data:

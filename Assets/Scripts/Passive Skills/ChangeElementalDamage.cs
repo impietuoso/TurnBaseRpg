@@ -1,14 +1,21 @@
 ﻿using UnityEngine;
 public class ChangeElementalDamage : IPassiveSkill {
     public Element element;
+    public bool changeAttack = true;
     [Range(0,2)]
     public float damageIncrease = 1;
     public void Subscribe(Character character) {
-        character.OnAttack += IncreaseDamage;
+        if (changeAttack)
+            character.OnAttack += IncreaseDamage;
+        else
+            character.OnDefend += IncreaseDamage;
     }
 
     public void Unsubscribe(Character character) {
-        character.OnAttack -= IncreaseDamage;
+        if (changeAttack)
+            character.OnAttack -= IncreaseDamage;
+        else
+            character.OnDefend -= IncreaseDamage;
     }
 
     public void IncreaseDamage(CombatArgs args) {

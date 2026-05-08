@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
+  m_Name: 2 - Holy Veil
+  m_EditorClassIdentifier: 
+  skillName: Holy Veil
+  skillDescription: Gain Shield, Apply Protection and Determined.
+  cost: 5
+  icon: {fileID: 21300000, guid: 7c98ebe0d375e244eb1088fa174ee338, type: 3}
+  element: {fileID: 11400000, guid: 1780e3a8d3c6e2143a20683dba6786f1, type: 2}
+  animation:
+    rid: 3339743010432221421
+  skillEffects:
+  - rid: 9169536824337498255
+  - rid: 9169536824337498256
+  - rid: 9169536824337498257
+  passiva:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 3339743010432221421
+      type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
+      data:
+        singleTarget: 1
+        targetEnemy: 0
+        targetDead: 0
+        hitCount: {x: 1, y: 1}
+        damageDelay: 0.5
+        hitDelay: 0
+        castingParticle: {fileID: 7720143017274099389, guid: 384afcf14cb562c4a987566fdfbaeb47, type: 3}
+        skillParticle: {fileID: 421367333960824435, guid: e317f1eb13ba4a14b9742ae5e02282b8, type: 3}
+    - rid: 9169536824337498255
+      type: {class: ShieldSkill, ns: , asm: Assembly-CSharp}
+      data:
+        shieldValue: 0
+        usePercentageOfHealth: 1
+        healthPercentage: 40
+    - rid: 9169536824337498256
+      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
+      data:
+        status: {fileID: 11400000, guid: 6e526d327d141f9469f737ceddc48ea4, type: 2}
+        targetUser: 0
+    - rid: 9169536824337498257
+      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
+      data:
+        status: {fileID: 11400000, guid: dd31e747ea55043409809fe623937aa6, type: 2}
+        targetUser: 0

@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: 1 - Lightning Breath
   m_EditorClassIdentifier: 
   skillName: Lightning Breath
-  skillDescription: Low Lightning Damage to 3 random foes.
+  skillDescription: Low Lightning Damage all foes.
   cost: 10
   icon: {fileID: 21300000, guid: e2bde1f5acddc1847bc0f288153f826e, type: 3}
   element: {fileID: 11400000, guid: 6ec57968da821214f96bb7f73d266c05, type: 2}
   animation:
-    rid: 9169536697585893459
+    rid: 9169536824337498210
   skillEffects:
   - rid: 3339743010432221433
   passiva:
@@ -39,11 +39,15 @@ MonoBehaviour:
         criticalChance: 20
         statMultiplier: 1.6
         damageStatScale: 1
-        damageRange: 0
-    - rid: 9169536697585893459
-      type: {class: RandomHitAnimate, ns: , asm: Assembly-CSharp}
+        damageRange: 0.2
+    - rid: 9169536824337498210
+      type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
+        singleTarget: 0
         targetEnemy: 1
         targetDead: 0
         hitCount: {x: 1, y: 1}
-        hitDelay: 0.2
+        damageDelay: 1
+        hitDelay: 0
+        castingParticle: {fileID: 0}
+        skillParticle: {fileID: 0}

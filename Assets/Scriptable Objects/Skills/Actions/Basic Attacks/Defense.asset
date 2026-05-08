@@ -21,13 +21,20 @@ MonoBehaviour:
     rid: 6720660525144342614
   skillEffects:
   - rid: 6720660525144342615
+  passiva:
+    rid: -2
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 6720660525144342614
       type: {class: SelfHitAnimate, ns: , asm: Assembly-CSharp}
-      data: 
+      data:
+        damageDelay: 1
+        castingParticle: {fileID: 0}
+        skillParticle: {fileID: 5181673948492790000, guid: 62fab3d899ecc34409b621fdf72e4399, type: 3}
     - rid: 6720660525144342615
       type: {class: DefenseSkill, ns: , asm: Assembly-CSharp}
       data:
-        damageReduction: 0.45
+        damageReduction: 0.4

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 1 - Cleasing Waters
   m_EditorClassIdentifier: 
   skillName: Cleasing Waters
-  skillDescription: Remove all Debuffs from the Party
+  skillDescription: Remove all Debuffs from one Party Member
   cost: 5
   icon: {fileID: 21300000, guid: 0078c4184aba9244a98576f605ad1e95, type: 3}
   element: {fileID: 11400000, guid: 832f2c12e4ad773419255f5ea7573eb9, type: 2}
@@ -21,17 +21,24 @@ MonoBehaviour:
     rid: 3339743010432221421
   skillEffects:
   - rid: 6720660598503243869
+  passiva:
+    rid: -2
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 3339743010432221421
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
-        singleTarget: 0
+        singleTarget: 1
         targetEnemy: 0
         targetDead: 0
         hitCount: {x: 1, y: 1}
-        hitDelay: 1
+        damageDelay: 1
+        hitDelay: 0
+        castingParticle: {fileID: 0}
+        skillParticle: {fileID: 0}
     - rid: 6720660598503243869
       type: {class: StatusRemoval, ns: , asm: Assembly-CSharp}
       data:

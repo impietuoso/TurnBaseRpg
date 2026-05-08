@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
+  m_Name: 2 - Heal
+  m_EditorClassIdentifier: 
+  skillName: Heal
+  skillDescription: Heal a Medium amount of Health from all allies.
+  cost: 5
+  icon: {fileID: 21300000, guid: 7fcd675f7216fe84e95d8fa3cd91b64b, type: 3}
+  element: {fileID: 11400000, guid: 1780e3a8d3c6e2143a20683dba6786f1, type: 2}
+  animation:
+    rid: 3339743010432221421
+  skillEffects:
+  - rid: 3339743010432221425
+  passiva:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 3339743010432221421
+      type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
+      data:
+        singleTarget: 0
+        targetEnemy: 0
+        targetDead: 0
+        hitCount: {x: 1, y: 1}
+        damageDelay: 0.5
+        hitDelay: 0
+        castingParticle: {fileID: 7720143017274099389, guid: 384afcf14cb562c4a987566fdfbaeb47, type: 3}
+        skillParticle: {fileID: 421367333960824435, guid: e317f1eb13ba4a14b9742ae5e02282b8, type: 3}
+    - rid: 3339743010432221425
+      type: {class: HealSkill, ns: , asm: Assembly-CSharp}
+      data:
+        healAmount: 75
+        isPercentageHeal: 0
+        healthPercentage: 0.2
+        statMultiplier: 1.5
+        healStatScale: 4

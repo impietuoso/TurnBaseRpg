@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
+  m_Name: 2 - Wind Barrier
+  m_EditorClassIdentifier: 
+  skillName: Wind Shield
+  skillDescription: Apply Shield and removes Confusion and Slow from party.
+  cost: 10
+  icon: {fileID: 21300000, guid: 3dae6f4f8c047f64eadbd7d30b111f37, type: 3}
+  element: {fileID: 11400000, guid: 6e11067072e285a4cb15c48aa5e3d94b, type: 2}
+  animation:
+    rid: 9169536697585893492
+  skillEffects:
+  - rid: 9169536824337498202
+  - rid: 9169536824337498204
+  - rid: 9169536824337498205
+  passiva:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 9169536697585893492
+      type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
+      data:
+        singleTarget: 0
+        targetEnemy: 0
+        targetDead: 0
+        hitCount: {x: 1, y: 1}
+        damageDelay: 0.5
+        hitDelay: 0
+        castingParticle: {fileID: 0}
+        skillParticle: {fileID: 0}
+    - rid: 9169536824337498202
+      type: {class: ShieldSkill, ns: , asm: Assembly-CSharp}
+      data:
+        shieldValue: 0
+        usePercentageOfHealth: 1
+        healthPercentage: 40
+    - rid: 9169536824337498204
+      type: {class: StatusRemoval, ns: , asm: Assembly-CSharp}
+      data:
+        statusType: 1
+        removeAll: 0
+        removedStatus: {fileID: 11400000, guid: a32a7be209201274881a7e4ddc3d12b0, type: 2}
+    - rid: 9169536824337498205
+      type: {class: StatusRemoval, ns: , asm: Assembly-CSharp}
+      data:
+        statusType: 1
+        removeAll: 0
+        removedStatus: {fileID: 11400000, guid: c836548f87c990f4babad01ebec25f63, type: 2}

@@ -13,25 +13,21 @@ MonoBehaviour:
   m_Name: 2 - Eletric Barrage
   m_EditorClassIdentifier: 
   skillName: Eletric Barrage
-  skillDescription: 3 hits of Low Lightning Damage to 1 foe.
+  skillDescription: 3 hits of Low Lightning Damage to random foes.
   cost: 10
   icon: {fileID: 21300000, guid: 0e50ddbb07a160b499fb1b0f39e55c1c, type: 3}
   element: {fileID: 11400000, guid: 6ec57968da821214f96bb7f73d266c05, type: 2}
   animation:
-    rid: 3339743010432221418
+    rid: 9169536824337498211
   skillEffects:
   - rid: 3339743010432221433
+  passiva:
+    rid: -2
   references:
     version: 2
     RefIds:
-    - rid: 3339743010432221418
-      type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
-      data:
-        singleTarget: 1
-        targetEnemy: 1
-        targetDead: 0
-        hitCount: {x: 3, y: 3}
-        hitDelay: 1
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 3339743010432221433
       type: {class: DamageSkill, ns: , asm: Assembly-CSharp}
       data:
@@ -44,3 +40,13 @@ MonoBehaviour:
         statMultiplier: 1.6
         damageStatScale: 1
         damageRange: 0.15
+    - rid: 9169536824337498211
+      type: {class: RandomHitAnimate, ns: , asm: Assembly-CSharp}
+      data:
+        targetEnemy: 1
+        targetDead: 0
+        hitCount: {x: 3, y: 3}
+        damageDelay: 0.5
+        hitDelay: 0.5
+        castingParticle: {fileID: 0}
+        skillParticle: {fileID: 0}
