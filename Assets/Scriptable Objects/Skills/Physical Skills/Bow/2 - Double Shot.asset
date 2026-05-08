@@ -34,7 +34,7 @@ MonoBehaviour:
         singleTarget: 1
         targetEnemy: 1
         targetDead: 0
-        hitCount: {x: 1, y: 1}
+        hitCount: {x: 2, y: 2}
         damageDelay: 0.5
         hitDelay: 0.5
         castingParticle: {fileID: 0}
