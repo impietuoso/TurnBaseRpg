@@ -4,9 +4,10 @@
     "references": [
         "DraftsSearch",
         "DraftsDatabase",
-        "Unity.Cinemachine",
         "Unity.TextMeshPro",
-        "Inventory"
+        "Inventory",
+        "Unity.Cinemachine",
+        "Unity.InputSystem"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
