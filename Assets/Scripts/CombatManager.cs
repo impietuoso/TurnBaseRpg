@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[Obsolete]
 public class CombatManager : MonoBehaviour {
     public static CombatManager instance;
     public Skill basicDefense;
@@ -54,7 +55,7 @@ public class CombatManager : MonoBehaviour {
                 continue;
             }
 
-            allies.Add(new(ally, "Player"));
+            //allies.Add(new(ally, "Player"));
         }
 
         // Clone enemies
@@ -64,7 +65,7 @@ public class CombatManager : MonoBehaviour {
                 continue;
             }
 
-            enemies.Add(new(newEnemy, "Enemy"));
+            //enemies.Add(new(newEnemy, "Enemy"));
         }
 
         currentPhase = StartCoroutine(CombatLoop());

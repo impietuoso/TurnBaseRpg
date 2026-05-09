@@ -3,6 +3,7 @@
     "com.impietuoso.inventory": "file:D:/Unity/Repository/Inventory-Package",
     "com.drafts.database": "git@github.com:bydrafts/database.git",
     "com.drafts.search": "git@github.com:bydrafts/searchattribute.git",
+    "com.unity.cinemachine": "3.1.6",
     "com.unity.collab-proxy": "2.11.3",
     "com.unity.device-simulator.devices": "1.0.1",
     "com.unity.feature.2d": "2.0.2",

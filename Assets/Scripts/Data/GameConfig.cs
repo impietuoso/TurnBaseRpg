@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Serialization;
 
 [CreateAssetMenu(menuName = "Scriptable/GameConfig", fileName = "New Game Config")]

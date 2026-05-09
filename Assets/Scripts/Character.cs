@@ -3,9 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-[Serializable]
-public class Character{
-    public Character(PartyMember member, string newTeam) {
+public partial class Character
+{
+    public void Initialize(PartyMember member, string newTeam)
+    {
         stats = member.usedStats;
         skills = member.equipedSkills.Where(s => s && s.passiva == null).ToList();
         equipment = member.equips.ToList();
@@ -18,25 +19,24 @@ public class Character{
         this.member = member;
         derivedStats = new();
 
-        foreach (var newEquip in member.equips) {
-            if (newEquip && newEquip.passiva!= null) {
-                passives.Add(newEquip.passiva);
-            }
-        }
+        passives = member.equips.Where(e => e && e.passiva != null).Select(e => e.passiva)
+            .Concat(member.equipedSkills.Where(s => s && s.passiva != null).Select(e => e.passiva))
+            .ToList();
 
-        foreach (var Skill in member.equipedSkills) {
-            if (Skill && Skill.passiva!= null) {
+        foreach (var Skill in member.equipedSkills)
+        {
+            if (Skill && Skill.passiva != null)
+            {
                 passives.Add(Skill.passiva);
             }
         }
-        
+
         UpdateCombatValues();
+        UpdateBehaviour();
     }
-    
-    public Character() {
-        
-    }
-    
+
+    public Character() { }
+
     public string characterName;
     [Header("Base Stats")]
     [SerializeField]
@@ -71,35 +71,46 @@ public class Character{
 
     public Observable<float> actionPoints = new();
 
-    public void SubscribePassives() {
-        foreach (var passive in passives) {
+    public void SubscribePassives()
+    {
+        foreach (var passive in passives)
+        {
             passive.Subscribe(this);
         }
     }
-    
-    public void UnsubscribePassives() {
-        foreach (var passive in passives) {
+
+    public void UnsubscribePassives()
+    {
+        foreach (var passive in passives)
+        {
             passive.Unsubscribe(this);
         }
     }
-    
-    private void UpdateCombatValues() {
+
+    private void UpdateCombatValues()
+    {
         StatusEffectList = new StatusEffectList(this);
         derivedStats.CalculateDeviredStats(stats, profession, equipment, level);
-        foreach (var equip in equipment) {
+        foreach (var equip in equipment)
+        {
             if (equip == null || equip.equipmentSkill == null)
                 continue;
 
-            if (equip is Weapon w) {
+            if (equip is Weapon w)
+            {
                 basicAttack.Add(w.basicAttack);
-            } else {
-                if (!skills.Contains(equip.equipmentSkill)) {
+            }
+            else
+            {
+                if (!skills.Contains(equip.equipmentSkill))
+                {
                     skills.Add(equip.equipmentSkill);
                 }
             }
         }
 
-        if (basicAttack.Count == 0) {
+        if (basicAttack.Count == 0)
+        {
             basicAttack.Add(profession.basicAttack);
         }
     }

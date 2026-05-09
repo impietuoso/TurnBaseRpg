@@ -1,5 +1,3 @@
-using System.Collections.ObjectModel;
-
 public class SaveFile {
     public ObservableList<PartyMember> currentParty;
     public ObservableList<PartyMember> players;

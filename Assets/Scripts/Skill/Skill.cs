@@ -17,7 +17,7 @@ public class Skill : ScriptableObject {
     [SerializeReference, Effect]
     public ISkillEffect[] skillEffects;
     [SerializeReference, TypeDropdown(typeof(IPassiveSkill))] public IPassiveSkill passiva;
-    
+
     public bool Available(Character user) {
         foreach (var status in user.StatusEffectList.StatusList) {
             if (status.Value is Silence) return false;

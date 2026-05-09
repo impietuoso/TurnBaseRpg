@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-[System.Serializable]
+﻿[System.Serializable]
 public class ArmorStatus : Status {
     public override Observable<int> DisplayValue => duration;
     public Observable<int> duration = new (3);

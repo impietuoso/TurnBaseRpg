@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public interface ICombatPhase {
@@ -125,6 +124,4 @@ public class CheckResultPhase : ICombatPhase {
         }
         yield break;
     }
-    
-    
 }

@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 362186474063455908}
-  - component: {fileID: -7817066855472506466}
+  - component: {fileID: 238037714887060948}
   - component: {fileID: 99204131745100044}
   m_Layer: 3
-  m_Name: Creature
+  m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 5142497389364050109}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-7817066855472506466
+--- !u!114 &238037714887060948
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,10 +43,71 @@ MonoBehaviour:
   m_GameObject: {fileID: 160308594299746852}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2191953766748ee983d0a82e763c133, type: 3}
+  m_Script: {fileID: 11500000, guid: 3c434145d8d58cc40bb1f84dcc23a35a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: TTT::TricksAndTreatsOrThreats.Behaviour.CreatureBehaviour
-  speedStat: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::Character
+  characterName: 
+  stats:
+    strength: 5
+    intelligence: 5
+    dexterity: 5
+    vitality: 5
+    spirit: 5
+  equipment: []
+  derivedStats:
+    <damage>k__BackingField:
+      <minValue>k__BackingField: 0
+      <maxValue>k__BackingField: 0
+      <baseValue>k__BackingField: 0
+      <currentValue>k__BackingField: 0
+    <health>k__BackingField:
+      <minValue>k__BackingField: 0
+      <maxValue>k__BackingField: 0
+      <baseValue>k__BackingField: 0
+      <currentValue>k__BackingField: 0
+    <shield>k__BackingField:
+      <minValue>k__BackingField: 0
+      <maxValue>k__BackingField: 0
+      <baseValue>k__BackingField: 0
+      <currentValue>k__BackingField: 0
+    <mana>k__BackingField:
+      <minValue>k__BackingField: 0
+      <maxValue>k__BackingField: 0
+      <baseValue>k__BackingField: 0
+      <currentValue>k__BackingField: 0
+    <speed>k__BackingField:
+      <minValue>k__BackingField: 0
+      <maxValue>k__BackingField: 0
+      <baseValue>k__BackingField: 0
+      <currentValue>k__BackingField: 0
+    <armor>k__BackingField:
+      <minValue>k__BackingField: 0
+      <maxValue>k__BackingField: 0
+      <baseValue>k__BackingField: 0
+      <currentValue>k__BackingField: 0
+    <resistance>k__BackingField:
+      <minValue>k__BackingField: 0
+      <maxValue>k__BackingField: 0
+      <baseValue>k__BackingField: 0
+      <currentValue>k__BackingField: 0
+    <evade>k__BackingField:
+      <minValue>k__BackingField: 0
+      <maxValue>k__BackingField: 0
+      <baseValue>k__BackingField: 0
+      <currentValue>k__BackingField: 0
+  level: 1
+  profession: {fileID: 0}
+  basicAttack: []
+  skills: []
+  characterSprite: {fileID: 0}
+  uiSprite: {fileID: 0}
+  team: 
+  element: {fileID: 0}
+  member: {fileID: 0}
+  actionPoints:
+    value: 0
+  <Animator>k__BackingField: {fileID: 6024170110994726956}
+  <SpriteRenderer>k__BackingField: {fileID: 7813933632093615630}
 --- !u!114 &99204131745100044
 MonoBehaviour:
   m_ObjectHideFlags: 0

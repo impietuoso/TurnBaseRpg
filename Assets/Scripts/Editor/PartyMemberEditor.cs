@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using UnityEditor;
+﻿using UnityEditor;
 
 [CustomEditor(typeof(PartyMember))]
 public class PartyMemberEditor : Editor {
