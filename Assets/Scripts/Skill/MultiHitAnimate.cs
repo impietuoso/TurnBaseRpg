@@ -14,11 +14,13 @@ public class MultiHitAnimate : ISkillAnimation {
     public float hitDelay = 1;
     public GameObject castingParticle;
     public GameObject skillParticle;
-    public bool TrySkipSelection(Character user, Skill skill) => false;
-
+    
+    public bool NeedTarget => true;
+    
+    [Obsolete] public bool TrySkipSelection(Character user, Skill skill) => false;
     [Obsolete] public IEnumerable<Character> GetAffectedTargets(Character user, Character target) => throw new InvalidOperationException();
     [Obsolete] public IEnumerator Play(Skill skill, Character user, Character target, CombatManager cm) => throw new InvalidOperationException();
-
+    
     public IEnumerable<ITarget> GetAffectedTargets(Character user, ITarget target) {
         if (singleTarget) {
             yield return target;

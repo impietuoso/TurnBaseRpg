@@ -13,7 +13,8 @@ public partial class Character : MonoBehaviour, ITarget {
     public Vector3 Position => transform.position;
     public Vector3 Center => transform.position + Vector3.up;
     public bool IsValid => this;
-    public CharacterCombatMenu Menu => _menu ??= new (this, new ());
+    public ListInventory<Consumable> Pouch { get; set; }
+    public CharacterCombatMenu Menu => _menu ??= new (this, Pouch);
 
     private void Start() {
         CreateActionsArgs();

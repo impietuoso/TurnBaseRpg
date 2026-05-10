@@ -9,6 +9,8 @@ public class SelfHitAnimate : ISkillAnimation {
     public GameObject castingParticle;
     public GameObject skillParticle;
 
+    public bool NeedTarget => false;
+    
     public bool ValidateTarget(Character user, ITarget tgt) {
         if (tgt is not Character target) return false;
         return user == target;

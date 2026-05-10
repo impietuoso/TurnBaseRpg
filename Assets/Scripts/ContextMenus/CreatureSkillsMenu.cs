@@ -20,7 +20,7 @@ namespace TTT.ContextMenus
             foreach (var skill in Creature.skills)
             {
                 if (!Actions.TryGetValue(skill, out var action))
-                    Actions[skill] = action = new UseSkillMenuItem(Creature, skill);
+                    Actions[skill] = action = new SkillMenuItem(Creature, skill);
                 yield return action;
             }
 

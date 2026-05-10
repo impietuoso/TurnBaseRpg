@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Drafts;
@@ -11,10 +12,13 @@ namespace TricksAndTreatsOrThreats.Behaviour {
     public class CombatController : MonoBehaviour {
         public static CombatController Instance { get; private set; }
 
+        [SerializeField, Prefab] private Character characterPrefab;
+        [SerializeField] private Skill basicDefendSkill;
         [SerializeField] private LayerMask floorLayer;
         [SerializeField] private LayerMask creatureLayer;
         [SerializeField] private ContextMenuView contextMenu;
-        [SerializeField, Prefab] private Character characterPrefab;
+        [SerializeField] private CallPopupText callPopup;
+
         [SerializeField] private float maxActionPoints = 10f;
         [SerializeField] private float manaRegenPercent = .1f;
 
@@ -24,11 +28,14 @@ namespace TricksAndTreatsOrThreats.Behaviour {
         public List<object> TaskList { get; } = new ();
         public bool IsBusy => TaskList.Count > 0;
         public float MaxActionPoints => maxActionPoints;
+        public CallPopupText CallPopup => callPopup;
+        public Skill BasicDefendSkill => basicDefendSkill;
+
+        [Obsolete] public ListInventory<Consumable> playerInventory;
 
         private readonly HashSet<Character> _characters = new ();
         private readonly Dictionary<string, List<Character>> _teams = new ();
         private Camera _camera;
-        public CallPopupText callPopup;
 
         private void Awake() {
             if (Instance) {
@@ -52,6 +59,9 @@ namespace TricksAndTreatsOrThreats.Behaviour {
                 _teams[team] = t = new ();
             t.Add(clone);
             _characters.Add(clone);
+
+            if (team == "player") //TODO
+                clone.Pouch = playerInventory;
 
             return clone;
         }
@@ -84,7 +94,7 @@ namespace TricksAndTreatsOrThreats.Behaviour {
 
         private static void TickStatuses(Character character) {
             foreach (var status in character.StatusEffectList.StatusList)
-                ; //TODO status.Value.Tick(Time.deltaTime);
+                status.Value.Tick(character, Time.deltaTime);
         }
 
         private void HandleClicks() {

@@ -14,7 +14,9 @@ public class RandomHitAnimate : ISkillAnimation {
     public float hitDelay = 1;
     public GameObject castingParticle;
     public GameObject skillParticle;
-    public bool TrySkipSelection(Character user, Skill skill) => false;
+
+    public bool NeedTarget => true;
+    [Obsolete] public bool TrySkipSelection(Character user, Skill skill) => false;
 
     public IEnumerator Play(Skill skill, Character user, ITarget target) {
         if (castingParticle) {
@@ -23,11 +25,10 @@ public class RandomHitAnimate : ISkillAnimation {
                 target.Position,
                 Quaternion.identity);
             yield return new WaitWhile(() => particle);
-        } else {
+        } else 
             yield return new WaitForSeconds(0.1f);
-        }
 
-        int newHitCount = Random.Range(hitCount.x, hitCount.y + 1);
+        var newHitCount = Random.Range(hitCount.x, hitCount.y + 1);
 
         List<Character> targets = new(GetAffectedTargets(user, target).OfType<Character>());
         yield return SingleTargetDamage(skill, user, targets, newHitCount);
@@ -43,8 +44,8 @@ public class RandomHitAnimate : ISkillAnimation {
     
     public IEnumerator SingleTargetDamage(Skill skill, Character user, List<Character> targets, int newHitCount) {
         
-        for (int i = 0; i < newHitCount; i++) {
-            CombatArgs args = new CombatArgs();
+        for (var i = 0; i < newHitCount; i++) {
+            var args = new CombatArgs();
             args.skill = skill;
             args.target = targets[Random.Range(0, targets.Count)];
             args.user = user;
@@ -64,8 +65,8 @@ public class RandomHitAnimate : ISkillAnimation {
     
     public bool ValidateTarget(Character user, ITarget tgt) {
         if (tgt is not Character target) return false;
-        bool sameTeam = user.team == target.team;
-        bool alive = target.derivedStats.health.currentValue > 0;
+        var sameTeam = user.team == target.team;
+        var alive = target.derivedStats.health.currentValue > 0;
         return sameTeam ^ targetEnemy && alive ^ targetDead;
     }
 }

@@ -26,8 +26,9 @@ namespace TTT.ContextMenus
         {
             foreach (var slot in Pouch.slots)
             {
+                if(!slot.item) continue;
                 if (!Actions.TryGetValue(slot.item, out var action))
-                    Actions[slot.item] = action = new UseItemMenuItem(Creature, slot);
+                    Actions[slot.item] = action = new UseItemMenuItem(Creature, Pouch, slot);
                 yield return action;
             }
 

@@ -47,6 +47,7 @@ namespace TricksAndTreatsOrThreats.Behaviour
             icon.sprite = args.Icon;
             icon.enabled = true;
             gameObject.SetActive(true);
+            Update();
         }
 
         private void Update()
