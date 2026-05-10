@@ -15,7 +15,7 @@ public class CallPopupText : MonoBehaviour {
 
     public IEnumerator Pop(string message, Color color, Transform target, float delay) {
         yield return new WaitForSeconds(delay);
-        var newPopup = Instantiate(popup, target.position, Quaternion.identity, target);
+        var newPopup = Instantiate(popup, target);
         newPopup.GetComponent<PopupText>().Message(message, color);
         newPopup.gameObject.SetActive(true);
         //yield return new WaitForSeconds(1.75f);
