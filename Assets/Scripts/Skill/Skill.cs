@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Linq;
+using TricksAndTreatsOrThreats.Behaviour;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Scriptable/Skill", fileName = "New Skill")]
-public class Skill : ScriptableObject {
+public class Skill : ScriptableObject, IAction {
     [Header("Ui")]
     public string skillName;
     [TextArea(3, 6)]
@@ -18,6 +19,8 @@ public class Skill : ScriptableObject {
     public ISkillEffect[] skillEffects;
     [SerializeReference, TypeDropdown(typeof(IPassiveSkill))] public IPassiveSkill passiva;
 
+    public float Range => 10;
+
     public bool Available(Character user) {
         foreach (var status in user.StatusEffectList.StatusList) {
             if (status.Value is Silence) return false;
@@ -30,7 +33,12 @@ public class Skill : ScriptableObject {
 
         return true;
     }
-    
+
+    public IEnumerator Execute(Character user, ITarget target)
+    {
+        return animation.Play(this, user, target);
+    }
+
     public virtual IEnumerator UseSkill(Character user, Character target, CombatManager combatManager) {
         Debug.Log(user.characterName + " used " + skillName);
         return animation.Play(this, user, target, combatManager);

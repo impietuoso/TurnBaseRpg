@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace TricksAndTreatsOrThreats.Behaviour
 {
@@ -8,14 +9,18 @@ namespace TricksAndTreatsOrThreats.Behaviour
         public static TargetPicker Instance { get; private set; }
 
         [SerializeField] private LineRenderer line;
+        [SerializeField] private SpriteRenderer targetMarker;
+        [SerializeField] private Image icon;
         [SerializeField] private LayerMask floorLayer;
+        [SerializeField] private LayerMask creatureLayer;
+        [SerializeField] private Vector2 iconOffset;
         [SerializeField] private int resolution = 20;
         [SerializeField] private float arcHeight = 2f;
 
-        private Transform _source;
+        private TargetPickerArgs _args;
         private Camera _camera;
 
-        private void Start()
+        private void Awake()
         {
             if (Instance)
             {
@@ -24,46 +29,83 @@ namespace TricksAndTreatsOrThreats.Behaviour
             }
 
             Instance = this;
+        }
+
+        private void Start()
+        {
             _camera = Camera.main;
             line.enabled = false;
             gameObject.SetActive(false);
         }
 
-        public void ShowArrow(Transform src, Color color)
+        public void ShowArrow(TargetPickerArgs args)
         {
-            _source = src;
-            line.startColor = color;
-            line.endColor = color;
+            _args = args;
+            line.startColor = args.ArrowColor;
+            line.endColor = args.ArrowColor;
             line.enabled = true;
+            icon.sprite = args.Icon;
+            icon.enabled = true;
             gameObject.SetActive(true);
         }
 
         private void Update()
         {
+            if (_args == null) return;
             var mouse = Mouse.current;
             if (mouse == null) return;
 
-            if (Mouse.current.rightButton.wasPressedThisFrame)
+            if (mouse.rightButton.wasPressedThisFrame)
             {
+                _args = null;
                 gameObject.SetActive(false);
                 return;
             }
 
-            var ray = _camera.ScreenPointToRay(mouse.position.ReadValue());
+            var mousePos = mouse.position.ReadValue();
+            var ray = _camera.ScreenPointToRay(mousePos);
             Vector3 targetPos;
+            Character target = null;
 
-            if (Physics.Raycast(ray, out var hit, Mathf.Infinity, floorLayer))
-                targetPos = hit.point;
+            if (Physics.Raycast(ray, out var hit, Mathf.Infinity, creatureLayer | floorLayer))
+            {
+                target = hit.collider.GetComponentInParent<Character>();
+                if (target && !_args.Validate(target)) target = null;
+                targetPos = target ? target.Position : hit.point;
+            }
             else
                 targetPos = ray.GetPoint(10f);
 
-            DrawBezier(targetPos);
+            DrawBezierArrow(targetPos);
+            DrawTargetMarker(target);
+            icon.transform.position = mousePos + iconOffset;
+
+            if (!mouse.leftButton.wasPressedThisFrame || !target) return;
+            if (!_args.Validate(target)) return;
+            _args.Confirm(target);
+            _args = null;
+            gameObject.SetActive(false);
         }
 
-        private void DrawBezier(Vector3 targetPos)
+        private void DrawTargetMarker(Character target)
+        {
+            if (!target)
+            {
+                targetMarker.enabled = false;
+                return;
+            }
+
+            var pos = targetMarker.transform.position;
+            pos.x = target.Position.x;
+            pos.z = target.Position.z;
+            targetMarker.enabled = target;
+            targetMarker.transform.position = pos;
+        }
+
+        private void DrawBezierArrow(Vector3 targetPos)
         {
             line.positionCount = resolution;
-            var startPos = _source.position;
+            var startPos = _args.User.Position;
 
             // Midpoint with an offset for the arc
             var midPoint = Vector3.Lerp(startPos, targetPos, 0.5f);

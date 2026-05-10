@@ -1,51 +1,36 @@
-using System;
-using System.Collections;
+using System.Collections.Generic;
 using TTT.ContextMenus;
 using UnityEngine;
 
-public partial class Character : MonoBehaviour
+public partial class Character : MonoBehaviour, ITarget
 {
+    public static HashSet<Character> Instances { get; } = new();
+
     [field: SerializeField] public Animator Animator { get; private set; }
     [field: SerializeField] public SpriteRenderer SpriteRenderer { get; private set; }
 
-    private Coroutine _moveCoroutine;
     private CharacterCombatMenu _menu;
+
+    public Vector3 Position => transform.position;
+    public Vector3 Center => transform.position + Vector3.up;
+    public bool IsValid => this;
     public CharacterCombatMenu Menu => _menu ??= new(this, new());
+
+    private void OnEnable() => Instances.Add(this);
+    private void OnDisable() => Instances.Remove(this);
+
+    private void Start()
+    {
+        CreateActionsArgs();
+    }
 
     private void UpdateBehaviour()
     {
         SpriteRenderer.sprite = characterSprite;
     }
 
-    public void MoveTo(Vector3 position)
+    private void Update()
     {
-        if (_moveCoroutine != null) StopCoroutine(_moveCoroutine);
-        _moveCoroutine = StartCoroutine(MoveRoutine(position));
-    }
-
-    public void UseSkill(Skill skill, Character target)
-    {
-        throw new NotImplementedException();
-    }
-
-    private IEnumerator MoveRoutine(Vector3 position)
-    {
-        if (Vector3.Distance(transform.position, position) <= 0.01f)
-            yield break;
-
-        if (!Animator.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
-            Animator.Play("Walk");
-
-        var speed = 2;
-
-        while (Vector3.Distance(transform.position, position) > 0.01f)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, position, speed * Time.deltaTime);
-            yield return null;
-        }
-
-        transform.position = position;
-        Animator.Play("Idle");
-        _moveCoroutine = null;
+        HandleAction();
     }
 }

@@ -5,71 +5,74 @@ using UnityEngine;
 
 [Serializable]
 public class MultiHitAnimate : ISkillAnimation {
+    public float range = 10;
     public bool singleTarget;
     public bool targetEnemy;
     public bool targetDead;
-    public Vector2Int hitCount = new Vector2Int(1, 1);
+    public Vector2Int hitCount = new (1, 1);
     public float damageDelay = 1;
     public float hitDelay = 1;
     public GameObject castingParticle;
     public GameObject skillParticle;
     public bool TrySkipSelection(Character user, Skill skill) => false;
 
-    public IEnumerable<Character> GetAffectedTargets(Character user, Character target) {
-        if (singleTarget) {
+    [Obsolete] public IEnumerable<Character> GetAffectedTargets(Character user, Character target) => throw new InvalidOperationException();
+    [Obsolete] public IEnumerator Play(Skill skill, Character user, Character target, CombatManager cm) => throw new InvalidOperationException();
+
+    public IEnumerable<ITarget> GetAffectedTargets(Character user, ITarget target) {
+        if (singleTarget)
+        {
             yield return target;
-        } else {
-            foreach (var newTarget in CombatManager.instance.characterList) {
-                if (ValidateTarget(user, newTarget)) yield return newTarget;
-            }
+            yield break;
         }
+        foreach (var newChar in Character.Instances)
+            if(InRange(target.Position, newChar.Position))
+                if (ValidateTarget(user, newChar))
+                    yield return newChar;
     }
 
-    public IEnumerator Play(Skill skill, Character user, Character target, CombatManager cm) {
-        var ui = CombatManager.instance.combatUI;
+    private bool InRange(Vector3 a, Vector3 b) => (a - b).magnitude < range;
+
+    public IEnumerator Play(Skill skill, Character user, ITarget target) {
         if (castingParticle) {
             var particle = UnityEngine.Object.Instantiate(
-                castingParticle,
-                ui.GetCharacterWorldPosition(user),
-                Quaternion.identity);
+                castingParticle, user.Center, Quaternion.identity);
             yield return new WaitWhile(() => particle);
-        } else {
+        } else 
             yield return new WaitForSeconds(0.1f);
-        }
-
-        int newHitCount = UnityEngine.Random.Range(hitCount.x, hitCount.y + 1);
-
-        List<Coroutine> executores = new();
+        
+        var newHitCount = UnityEngine.Random.Range(hitCount.x, hitCount.y + 1);
+        var executores = new List<Coroutine>();
 
         foreach (var newTarget in GetAffectedTargets(user, target)) {
-            executores.Add(cm.StartCoroutine(SingleTargetDamage(skill, user, newTarget, newHitCount)));
+            var dmgRoutine = SingleTargetDamage(skill, user, newTarget, newHitCount);
+            executores.Add(user.StartCoroutine(dmgRoutine));
         }
 
-        foreach (var exe in executores) {
+        foreach (var exe in executores) 
             yield return exe;
-        }
 
         if (hitCount.y > 1) Debug.Log(newHitCount + " Hits");
     }
 
-    public IEnumerator SingleTargetDamage(Skill skill, Character user, Character target, int newHitCount) {
-        for (int i = 0; i < newHitCount; i++) {
+    public IEnumerator SingleTargetDamage(Skill skill, Character user, ITarget tgt, int newHitCount) {
+        if(tgt is not Character target) yield break;
+        for (var i = 0; i < newHitCount; i++) {
 
-            CombatArgs args = new CombatArgs();
+            var args = new CombatArgs();
             args.skill = skill;
             args.target = target;
             args.user = user;
             args.source = this;
 
-            foreach (var effect in skill.skillEffects) {
+            foreach (var effect in skill.skillEffects)
                 effect.Prepare(args);
-            }
 
-            var ui = CombatManager.instance.combatUI;
             if (skillParticle)
-                UnityEngine.Object.Instantiate(skillParticle, ui.GetCharacterWorldPosition(args.target), Quaternion.identity);
+                UnityEngine.Object.Instantiate(skillParticle, target.Center, Quaternion.identity);
             else
-                Debug.Log("No Particle, add it to: " + skill.skillName);
+                Debug.LogError("No Particle, add it to: " + skill.skillName, skill);
+            
             yield return new WaitForSeconds(damageDelay);
             args.Resolve();
             yield return new WaitForSeconds(hitDelay);
@@ -78,9 +81,11 @@ public class MultiHitAnimate : ISkillAnimation {
         yield return new WaitForSeconds(1.2f);
     }
 
-    public bool ValidateTarget(Character user, Character target) {
-        bool sameTeam = user.team == target.team;
-        bool alive = target.derivedStats.health.currentValue > 0;
+    public bool ValidateTarget(Character user, ITarget tgt)
+    {
+        if (tgt is not Character target) return false;
+        var sameTeam = user.team == target.team;
+        var alive = target.derivedStats.health.currentValue > 0;
         return sameTeam ^ targetEnemy && alive ^ targetDead;
     }
 }

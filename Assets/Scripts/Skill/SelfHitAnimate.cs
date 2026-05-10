@@ -14,9 +14,9 @@ public class SelfHitAnimate : ISkillAnimation {
         return true;
     }
 
-    public bool ValidateTarget(Character user, Character target) {
-        if (user == target) return true;
-        else return false;
+    public bool ValidateTarget(Character user, ITarget tgt) {
+        if (tgt is not Character target) return false;
+        return user == target;
     }
 
     public IEnumerable<Character> GetAffectedTargets(Character user, Character target) {

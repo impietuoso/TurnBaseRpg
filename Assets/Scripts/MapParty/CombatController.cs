@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Drafts;
 using TTT.ContextMenus;
 using UnityEngine;
@@ -16,17 +17,20 @@ namespace TricksAndTreatsOrThreats.Behaviour
         [SerializeField] private LayerMask creatureLayer;
         [SerializeField] private ContextMenuView contextMenu;
         [SerializeField, Prefab] private Character characterPrefab;
-        [SerializeField] private float maxSpeed = 10f;
+        [SerializeField] private float maxActionPoints = 10f;
         [SerializeField] private float manaRegenPercent = .1f;
 
+        public IReadOnlyCollection<Character> Characters => _characters;
+        public IEnumerable<Character> GetTeam(string team) => _teams.TryGetValue(team, out var t) ? t : Enumerable.Empty<Character>();
         public Character Target { get; private set; }
-        public Dictionary<string, List<Character>> Teams { get; } = new();
         public List<object> TaskList { get; } = new();
         public bool IsBusy => TaskList.Count > 0;
 
+        private readonly HashSet<Character> _characters = new();
+        private readonly Dictionary<string, List<Character>> _teams = new();
         private Camera _camera;
 
-        private void Start()
+        private void Awake()
         {
             if (Instance)
             {
@@ -35,6 +39,10 @@ namespace TricksAndTreatsOrThreats.Behaviour
             }
 
             Instance = this;
+        }
+
+        private void Start()
+        {
             _camera = Camera.main;
             contextMenu.gameObject.SetActive(false);
         }
@@ -44,15 +52,15 @@ namespace TricksAndTreatsOrThreats.Behaviour
             var clone = Instantiate(characterPrefab, transform);
             clone.transform.position = position;
             clone.Initialize(member, team);
-            if (!Teams.TryGetValue(team, out var t))
-                Teams[team] = t = new();
+            if (!_teams.TryGetValue(team, out var t))
+                _teams[team] = t = new();
             t.Add(clone);
             return clone;
         }
 
         private void Update()
         {
-            foreach (var team in Teams.Values)
+            foreach (var team in _teams.Values)
             foreach (var character in team)
             {
                 TickStatuses(character);
@@ -74,14 +82,14 @@ namespace TricksAndTreatsOrThreats.Behaviour
             if (newChar.derivedStats.health.currentValue <= 0) return;
             newChar.actionPoints.Value += newChar.derivedStats.speed.currentValue * Time.deltaTime;
 
-            if (newChar.actionPoints.Value >= maxSpeed)
+            if (newChar.actionPoints.Value >= maxActionPoints)
             {
-                newChar.actionPoints.Value -= maxSpeed;
+                newChar.actionPoints.Value -= maxActionPoints;
                 //TODO Take Action
             }
         }
 
-        private void TickStatuses(Character character)
+        private static void TickStatuses(Character character)
         {
             foreach (var status in character.StatusEffectList.StatusList)
                 ; //TODO status.Value.Tick(Time.deltaTime);
@@ -89,7 +97,7 @@ namespace TricksAndTreatsOrThreats.Behaviour
 
         private void HandleClicks()
         {
-            if(IsBusy) return;
+            if (IsBusy) return;
             if (EventSystem.current.IsPointerOverGameObject()) return;
 
             var mouse = Mouse.current;
@@ -116,7 +124,7 @@ namespace TricksAndTreatsOrThreats.Behaviour
             {
                 var ray = _camera.ScreenPointToRay(mouse.position.ReadValue());
                 if (Physics.Raycast(ray, out var hit, Mathf.Infinity, floorLayer))
-                    foreach (var creature in Teams["player"])
+                    foreach (var creature in _teams["player"])
                         creature.MoveTo(hit.point);
             }
         }

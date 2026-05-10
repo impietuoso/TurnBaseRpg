@@ -8,11 +8,15 @@ namespace TricksAndTreatsOrThreats
     {
         public CombatController combatController;
         public CreatureSpawn[] startingCreatures;
+        public CreatureSpawn[] startingEnemies;
 
         private void Start()
         {
             foreach (var c in startingCreatures)
                 combatController.Spawn(c.creature, "player", c.position.position);
+            
+            foreach (var c in startingEnemies)
+                combatController.Spawn(c.creature, "wild", c.position.position);
         }
 
         [Serializable]

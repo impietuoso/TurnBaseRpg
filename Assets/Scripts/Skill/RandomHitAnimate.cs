@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 public class RandomHitAnimate : ISkillAnimation {
     public bool targetEnemy;
     public bool targetDead;
-    public Vector2Int hitCount = new Vector2Int(1, 1);
+    public Vector2Int hitCount = new (1, 1);
     public float damageDelay = 1;
     public float hitDelay = 1;
     public GameObject castingParticle;
@@ -63,7 +63,8 @@ public class RandomHitAnimate : ISkillAnimation {
         }
     }
     
-    public bool ValidateTarget(Character user, Character target) {
+    public bool ValidateTarget(Character user, ITarget tgt) {
+        if (tgt is not Character target) return false;
         bool sameTeam = user.team == target.team;
         bool alive = target.derivedStats.health.currentValue > 0;
         return sameTeam ^ targetEnemy && alive ^ targetDead;
