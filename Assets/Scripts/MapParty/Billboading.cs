@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace TricksAndTreatsOrThreats.Behaviour
         [SerializeField] private Vector3 angleOffset;
         private Camera _mainCamera;
 
+        public bool IsVisible { get; private set; }
         private void Awake() => Instances.Add(this);
         private void OnDestroy() => Instances.Remove(this);
 
@@ -25,5 +27,8 @@ namespace TricksAndTreatsOrThreats.Behaviour
                 _mainCamera.transform.rotation * Vector3.up);
             transform.Rotate(angleOffset, Space.Self);
         }
+
+        private void OnBecameVisible() => IsVisible = true;
+        private void OnBecameInvisible() => IsVisible = false;
     }
 }

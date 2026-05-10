@@ -1,3 +1,4 @@
+using TricksAndTreatsOrThreats.Behaviour;
 using TTT.ContextMenus;
 using UnityEngine;
 
@@ -6,7 +7,9 @@ public partial class Character : MonoBehaviour, ITarget {
     [field: SerializeField] public SpriteRenderer SpriteRenderer { get; private set; }
 
     private CharacterCombatMenu _menu;
+    private Billboarding _billboarding;
 
+    public bool IsVisible => _billboarding.IsVisible;
     public Vector3 Position => transform.position;
     public Vector3 Center => transform.position + Vector3.up;
     public bool IsValid => this;
@@ -14,6 +17,7 @@ public partial class Character : MonoBehaviour, ITarget {
 
     private void Start() {
         CreateActionsArgs();
+        _billboarding = GetComponentInChildren<Billboarding>();
     }
 
     private void UpdateBehaviour() {
