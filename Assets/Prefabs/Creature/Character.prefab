@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 362186474063455908}
   - component: {fileID: 238037714887060948}
   - component: {fileID: 99204131745100044}
+  - component: {fileID: 7484934684978506550}
   m_Layer: 3
   m_Name: Character
   m_TagString: Untagged
@@ -46,6 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c434145d8d58cc40bb1f84dcc23a35a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Character
+  <Animator>k__BackingField: {fileID: 6024170110994726956}
+  <SpriteRenderer>k__BackingField: {fileID: 7813933632093615630}
   characterName: 
   stats:
     strength: 5
@@ -106,8 +109,6 @@ MonoBehaviour:
   member: {fileID: 0}
   actionPoints:
     value: 0
-  <Animator>k__BackingField: {fileID: 6024170110994726956}
-  <SpriteRenderer>k__BackingField: {fileID: 7813933632093615630}
   stopDistance: 0.01
 --- !u!114 &99204131745100044
 MonoBehaviour:
@@ -123,6 +124,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: TTT::TricksAndTreatsOrThreats.Behaviour.SpriteMesh
   spriteRenderer: {fileID: 7813933632093615630}
   meshFilter: {fileID: 2212806823793281863}
+--- !u!114 &7484934684978506550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160308594299746852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5efa4757000fdbc42a5102747c9f541d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterFeedbacks
+  owner: {fileID: 238037714887060948}
+  characterSprite: {fileID: 7813933632093615630}
+  healthView: {fileID: 0}
+  manaView: {fileID: 0}
+  shieldView: {fileID: 0}
+  speedView: {fileID: 0}
+  statusEffectView: {fileID: 0}
+  normalSpeedColor: {r: 0, g: 0, b: 0, a: 0}
+  fastSpeedColor: {r: 0, g: 0, b: 0, a: 0}
+  slowSpeedColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &4875773434849251596
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 
 public class PopupText : MonoBehaviour {
-    public TextMeshProUGUI text;
+    public TMP_Text text;
 
     public void Message(string message, Color color) {
         text.text = message;

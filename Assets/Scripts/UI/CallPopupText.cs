@@ -1,8 +1,9 @@
 using System.Collections;
+using Drafts;
 using UnityEngine;
 
 public class CallPopupText : MonoBehaviour {
-    public PopupText popup;
+    [Prefab] public PopupText popup;
     
     public void CreatePopup(string message, Color color, Transform target) {
         StartCoroutine(Pop(message, color, target, 0));

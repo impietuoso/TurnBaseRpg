@@ -5,12 +5,12 @@ using System.Linq;
 using TricksAndTreatsOrThreats.Behaviour;
 
 public partial class Character {
-    
     public void Initialize(CombatController cc, PartyMember member, string newTeam) {
+        name = $"{member.charName} ({newTeam})";
         CombatController = cc;
         this.member = member;
         team = newTeam;
-        
+
         stats = member.usedStats;
         skills = member.equipedSkills.Where(s => s && s.passiva == null).ToList();
         equipment = member.equips.ToList();
@@ -66,15 +66,13 @@ public partial class Character {
     public Observable<float> actionPoints = new ();
 
     public void SubscribePassives() {
-        foreach (var passive in passives) {
+        foreach (var passive in passives)
             passive.Subscribe(this);
-        }
     }
 
     public void UnsubscribePassives() {
-        foreach (var passive in passives) {
+        foreach (var passive in passives)
             passive.Unsubscribe(this);
-        }
     }
 
     private void UpdateCombatValues() {
@@ -87,14 +85,12 @@ public partial class Character {
             if (equip is Weapon w) {
                 basicAttack.Add(w.basicAttack);
             } else {
-                if (!skills.Contains(equip.equipmentSkill)) {
+                if (!skills.Contains(equip.equipmentSkill))
                     skills.Add(equip.equipmentSkill);
-                }
             }
         }
 
-        if (basicAttack.Count == 0) {
+        if (basicAttack.Count == 0) 
             basicAttack.Add(profession.basicAttack);
-        }
     }
 }
