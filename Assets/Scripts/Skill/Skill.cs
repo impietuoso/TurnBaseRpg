@@ -34,9 +34,9 @@ public class Skill : ScriptableObject, IAction {
         return true;
     }
 
-    public IEnumerator Execute(Character user, ITarget target)
+    public IEnumerator Execute(ActionArgs args)
     {
-        return animation.Play(this, user, target);
+        return animation.Play(this, args.User, args.Target);
     }
 
     public virtual IEnumerator UseSkill(Character user, Character target, CombatManager combatManager) {
