@@ -14,7 +14,7 @@ public partial class Character
 
     private void CreateActionsArgs()
     {
-        _moveArgs = new(this, _targetPosition, null);
+        _moveArgs = new(null, this, _targetPosition);
     }
 
     public void MoveTo(Vector3 position)
