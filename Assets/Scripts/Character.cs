@@ -2,11 +2,15 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TricksAndTreatsOrThreats.Behaviour;
 
-public partial class Character
-{
-    public void Initialize(PartyMember member, string newTeam)
-    {
+public partial class Character {
+    
+    public void Initialize(CombatController cc, PartyMember member, string newTeam) {
+        CombatController = cc;
+        this.member = member;
+        team = newTeam;
+        
         stats = member.usedStats;
         skills = member.equipedSkills.Where(s => s && s.passiva == null).ToList();
         equipment = member.equips.ToList();
@@ -14,28 +18,18 @@ public partial class Character
         profession = member.profession;
         characterSprite = member.characterSprite;
         uiSprite = member.uiSprite;
-        team = newTeam;
         element = member.element;
-        this.member = member;
-        derivedStats = new();
+        derivedStats = new ();
 
         passives = member.equips.Where(e => e && e.passiva != null).Select(e => e.passiva)
             .Concat(member.equipedSkills.Where(s => s && s.passiva != null).Select(e => e.passiva))
             .ToList();
 
-        foreach (var Skill in member.equipedSkills)
-        {
-            if (Skill && Skill.passiva != null)
-            {
-                passives.Add(Skill.passiva);
-            }
-        }
-
         UpdateCombatValues();
         UpdateBehaviour();
     }
 
-    public Character() { }
+    public CombatController CombatController { get; private set; }
 
     public string characterName;
     [Header("Base Stats")]
@@ -50,8 +44,8 @@ public partial class Character
     [SerializeField]
     public int level = 1;
     public Profession profession;
-    public List<Skill> basicAttack = new();
-    public List<Skill> skills = new();
+    public List<Skill> basicAttack = new ();
+    public List<Skill> skills = new ();
     public Sprite characterSprite;
     public Sprite uiSprite;
     public string team;
@@ -67,50 +61,39 @@ public partial class Character
     public Action<CombatArgs> OnResolveDefend;
     public Action<CombatArgs> OnResolveAttack;
 
-    public List<IPassiveSkill> passives = new();
+    public List<IPassiveSkill> passives = new ();
 
-    public Observable<float> actionPoints = new();
+    public Observable<float> actionPoints = new ();
 
-    public void SubscribePassives()
-    {
-        foreach (var passive in passives)
-        {
+    public void SubscribePassives() {
+        foreach (var passive in passives) {
             passive.Subscribe(this);
         }
     }
 
-    public void UnsubscribePassives()
-    {
-        foreach (var passive in passives)
-        {
+    public void UnsubscribePassives() {
+        foreach (var passive in passives) {
             passive.Unsubscribe(this);
         }
     }
 
-    private void UpdateCombatValues()
-    {
+    private void UpdateCombatValues() {
         StatusEffectList = new StatusEffectList(this);
         derivedStats.CalculateDeviredStats(stats, profession, equipment, level);
-        foreach (var equip in equipment)
-        {
+        foreach (var equip in equipment) {
             if (equip == null || equip.equipmentSkill == null)
                 continue;
 
-            if (equip is Weapon w)
-            {
+            if (equip is Weapon w) {
                 basicAttack.Add(w.basicAttack);
-            }
-            else
-            {
-                if (!skills.Contains(equip.equipmentSkill))
-                {
+            } else {
+                if (!skills.Contains(equip.equipmentSkill)) {
                     skills.Add(equip.equipmentSkill);
                 }
             }
         }
 
-        if (basicAttack.Count == 0)
-        {
+        if (basicAttack.Count == 0) {
             basicAttack.Add(profession.basicAttack);
         }
     }

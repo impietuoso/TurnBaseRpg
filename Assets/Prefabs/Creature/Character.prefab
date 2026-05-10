@@ -108,6 +108,7 @@ MonoBehaviour:
     value: 0
   <Animator>k__BackingField: {fileID: 6024170110994726956}
   <SpriteRenderer>k__BackingField: {fileID: 7813933632093615630}
+  stopDistance: 0.01
 --- !u!114 &99204131745100044
 MonoBehaviour:
   m_ObjectHideFlags: 0

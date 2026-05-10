@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 [Obsolete]
 public class CombatManager : MonoBehaviour {
     public static CombatManager instance;
+    
     public Skill basicDefense;
     public CombatUI combatUI;
     public GameObject menuPanel;
