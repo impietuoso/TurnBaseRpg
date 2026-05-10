@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using TricksAndTreatsOrThreats.Behaviour;
 
 [Serializable]
 public class OnDealDamage : IPassiveSkill {
@@ -19,11 +20,11 @@ public class OnDealDamage : IPassiveSkill {
         if (element && args.skillElement != element) return;
         if (args.result.deltaHp >= 0) return;
         if (args.stopReactionAttacks) return;
-
         if (!args.actionArgs.Flags.Add(this)) return;
         
         var cc = args.user.CombatController;
         var newTarget = castOnSelf ? args.user : args.target;
-        cc.StartCoroutine(selfUseSkill.animation.Play(selfUseSkill, args.user, newTarget));
+        var aArgs = new ActionArgs(args.skill, args.user, newTarget);
+        cc.StartCoroutine(selfUseSkill.animation.Play(selfUseSkill, aArgs));
     }
 }

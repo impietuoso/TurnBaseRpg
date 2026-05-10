@@ -6,6 +6,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class CombatArgs {
+    public ActionArgs actionArgs;
     public object source;
     public Character user;
     public Character target;
@@ -25,7 +26,6 @@ public class CombatArgs {
     public CombatResult result;
     public List<StatusSO> statusEffects = new();
     public Action<CombatArgs> OnResolve;
-    public ActionArgs actionArgs;
     
     public void Resolve() {
         if (result != null) return;

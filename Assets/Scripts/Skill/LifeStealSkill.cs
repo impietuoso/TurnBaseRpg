@@ -15,6 +15,7 @@ public class LifeStealSkill : ISkillEffect {
         var stealHeal = args.result.deltaHp * damagePercentage;
         if (stealHeal == 0) return;
         CombatArgs newArgs = new CombatArgs();
+        newArgs.actionArgs = args.actionArgs;
         newArgs.skill = args.skill;
         newArgs.heal = (int)stealHeal;
         newArgs.user = args.user;

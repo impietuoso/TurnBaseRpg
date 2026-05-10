@@ -16,6 +16,7 @@ public class ManaDrainSkill : ISkillEffect {
         var stealMana = args.result.deltaMp * damagePercentage;
         if (stealMana == 0) return;
         CombatArgs newArgs = new CombatArgs();
+        newArgs.actionArgs = args.actionArgs;
         newArgs.skill = args.skill;
         newArgs.mana = -(int)stealMana;
         newArgs.user = args.user;

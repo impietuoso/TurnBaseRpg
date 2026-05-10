@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TricksAndTreatsOrThreats.Behaviour;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -18,11 +19,11 @@ public class RandomHitAnimate : ISkillAnimation {
     public bool NeedTarget => true;
     [Obsolete] public bool TrySkipSelection(Character user, Skill skill) => false;
 
-    public IEnumerator Play(Skill skill, Character user, ITarget target) {
+    public IEnumerator Play(Skill skill, ActionArgs aArgs) {
         if (castingParticle) {
             var particle = UnityEngine.Object.Instantiate(
                 castingParticle,
-                target.Position,
+                aArgs.Target.Position,
                 Quaternion.identity);
             yield return new WaitWhile(() => particle);
         } else 
@@ -30,8 +31,8 @@ public class RandomHitAnimate : ISkillAnimation {
 
         var newHitCount = Random.Range(hitCount.x, hitCount.y + 1);
 
-        List<Character> targets = new(GetAffectedTargets(user, target).OfType<Character>());
-        yield return SingleTargetDamage(skill, user, targets, newHitCount);
+        List<Character> targets = new(GetAffectedTargets(aArgs.User, aArgs.Target).OfType<Character>());
+        yield return SingleTargetDamage(skill, aArgs, targets, newHitCount);
         
         if (hitCount.y > 1) Debug.Log(newHitCount + " Hits");
     }
@@ -42,13 +43,14 @@ public class RandomHitAnimate : ISkillAnimation {
         }
     }
     
-    public IEnumerator SingleTargetDamage(Skill skill, Character user, List<Character> targets, int newHitCount) {
+    public IEnumerator SingleTargetDamage(Skill skill, ActionArgs aArgs, List<Character> targets, int newHitCount) {
         
         for (var i = 0; i < newHitCount; i++) {
             var args = new CombatArgs();
+            args.actionArgs = aArgs;
             args.skill = skill;
             args.target = targets[Random.Range(0, targets.Count)];
-            args.user = user;
+            args.user = aArgs.User;
             args.source = this;
 
             foreach (var effect in skill.skillEffects) {

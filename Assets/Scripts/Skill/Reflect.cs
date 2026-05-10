@@ -26,11 +26,12 @@ public class ReflectEffect : Status {
     }
 
     private void OnTakeDamage(CombatArgs args) {
-        if (args.user == null || args.stopReactionAttacks) return;
+        if (!args.user || args.stopReactionAttacks) return;
         var damageReflected = (int)(args.damage * reflectPercentage);
         args.damage -= protectFromDamage ? damageReflected : 0;
         
-        CombatArgs newArgs = new();
+        var newArgs = new CombatArgs();
+        newArgs.actionArgs = args.actionArgs;
         newArgs.skill = args.skill;
         newArgs.source = this;
         newArgs.unavoidable = true;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TricksAndTreatsOrThreats.Behaviour;
 using UnityEngine;
 
 [Serializable]
@@ -34,10 +35,10 @@ public class MultiHitAnimate : ISkillAnimation {
 
     private bool InRange(Vector3 a, Vector3 b) => (a - b).magnitude < range;
 
-    public IEnumerator Play(Skill skill, Character user, ITarget target) {
+    public IEnumerator Play(Skill skill, ActionArgs aArgs) {
         if (castingParticle) {
             var particle = UnityEngine.Object.Instantiate(
-                castingParticle, user.Center, Quaternion.identity);
+                castingParticle, aArgs.User.Center, Quaternion.identity);
             yield return new WaitWhile(() => particle);
         } else
             yield return new WaitForSeconds(0.1f);
@@ -45,9 +46,9 @@ public class MultiHitAnimate : ISkillAnimation {
         var newHitCount = UnityEngine.Random.Range(hitCount.x, hitCount.y + 1);
         var executores = new List<Coroutine>();
 
-        foreach (var newTarget in GetAffectedTargets(user, target)) {
-            var dmgRoutine = SingleTargetDamage(skill, user, newTarget, newHitCount);
-            executores.Add(user.StartCoroutine(dmgRoutine));
+        foreach (var newTarget in GetAffectedTargets(aArgs.User, aArgs.Target)) {
+            var dmgRoutine = SingleTargetDamage(skill, aArgs, newTarget, newHitCount);
+            executores.Add(aArgs.User.StartCoroutine(dmgRoutine));
         }
 
         foreach (var exe in executores)
@@ -56,14 +57,15 @@ public class MultiHitAnimate : ISkillAnimation {
         if (hitCount.y > 1) Debug.Log(newHitCount + " Hits");
     }
 
-    public IEnumerator SingleTargetDamage(Skill skill, Character user, ITarget tgt, int newHitCount) {
+    public IEnumerator SingleTargetDamage(Skill skill, ActionArgs aArgs, ITarget tgt, int newHitCount) {
         if (tgt is not Character target) yield break;
         for (var i = 0; i < newHitCount; i++) {
 
             var args = new CombatArgs();
+            args.actionArgs = aArgs;
             args.skill = skill;
             args.target = target;
-            args.user = user;
+            args.user = aArgs.User;
             args.source = this;
 
             foreach (var effect in skill.skillEffects)

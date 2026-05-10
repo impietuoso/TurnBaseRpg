@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Linq;
+using TricksAndTreatsOrThreats.Behaviour;
+
 [Serializable]
 public class OnTakeDamage : IPassiveSkill {
     public Element element;
@@ -24,6 +26,7 @@ public class OnTakeDamage : IPassiveSkill {
         
         var cc = args.user.CombatController;
         var newTarget = castOnSelf ? args.target : args.user;
-        cc.StartCoroutine(counterSkill.animation.Play(counterSkill, args.user, newTarget));
+        var aArgs = new ActionArgs(args.skill, args.user, newTarget);
+        cc.StartCoroutine(counterSkill.animation.Play(counterSkill, aArgs));
     }
 }

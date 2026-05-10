@@ -37,14 +37,11 @@ public class Skill : ScriptableObject, IAction {
         return false;
     }
 
-    public IEnumerator Execute(ActionArgs args)
-    {
-        return animation.Play(this, args.User, args.Target);
-    }
+    public IEnumerator Execute(ActionArgs args) => animation.Play(this, args);
 
     [Obsolete] public virtual IEnumerator UseSkill(Character user, Character target, CombatManager cm) {
         Debug.Log(user.characterName + " used " + skillName);
-        return animation.Play(this, user, target);
+        throw new NotImplementedException();
     }
 }
 

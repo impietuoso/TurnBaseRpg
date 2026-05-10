@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TricksAndTreatsOrThreats.Behaviour;
 using UnityEngine;
 
 [Serializable]
@@ -20,22 +21,23 @@ public class SelfHitAnimate : ISkillAnimation {
         yield return target;
     }
 
-    public IEnumerator Play(Skill skill, Character user, ITarget target) {
+    public IEnumerator Play(Skill skill, ActionArgs aArgs) {
         if (castingParticle) {
             var particle = UnityEngine.Object.Instantiate(
                 castingParticle,
-                user.Position,
+                aArgs.User.Position,
                 Quaternion.identity);
             yield return new WaitWhile(() => particle);
         } else {
             yield return new WaitForSeconds(0.1f);
         }
 
-        Debug.Log(user.characterName + " Defends!");
-        CombatArgs args = new CombatArgs();
+        Debug.Log(aArgs.User.characterName + " Defends!");
+        var args = new CombatArgs();
+        args.actionArgs = aArgs;
         args.skill = skill;
-        args.user = user;
-        args.target = user;
+        args.user = aArgs.User;
+        args.target = aArgs.User;
         args.source = this;
 
         foreach (var effect in skill.skillEffects) {

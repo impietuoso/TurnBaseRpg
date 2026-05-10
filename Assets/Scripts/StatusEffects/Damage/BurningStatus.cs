@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TricksAndTreatsOrThreats.Behaviour;
+using UnityEngine;
 
 [System.Serializable]
 public class BurningStatus : Status {
@@ -25,7 +26,7 @@ public class BurningStatus : Status {
     }
 
     private void OnTurnStart(Character target) {
-        CombatArgs args = new();
+        var args = new CombatArgs();
         args.skillElement = element;
         args.source = this;
         args.unavoidable = true;

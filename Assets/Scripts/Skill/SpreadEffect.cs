@@ -11,7 +11,8 @@ public class SpreadEffect : ISkillEffect {
     public void Prepare(CombatArgs args) {
         foreach (var newTarget in args.user.CombatController.Characters) {
             if (ValidateTarget(args.target, newTarget)) {
-                CombatArgs newArgs = new();
+                var newArgs = new CombatArgs();
+                newArgs.actionArgs = args.actionArgs;
                 newArgs.skill = args.skill;
                 newArgs.target = newTarget;
                 newArgs.user = args.user;

@@ -25,7 +25,8 @@ public class BleedingStatus: Status {
     }
     
     private void OnAttack(CombatArgs args) {
-        CombatArgs newArgs = new();
+        var newArgs = new CombatArgs();
+        newArgs.actionArgs = args.actionArgs;
         newArgs.skill = args.skill;
         newArgs.skillElement = element;
         newArgs.source = this;
