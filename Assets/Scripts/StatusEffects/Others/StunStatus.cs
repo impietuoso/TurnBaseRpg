@@ -7,25 +7,16 @@ public class StunStatus : Status {
 
     public override void Apply(Character target) {
         target.StatusEffectList.Remove(opposite);
-        target.OnStartTurn += OnTurnStart;
         target.OnEndTurn += OnTurnEnd;
     }
 
     public override void Remove(Character target) {
-        target.OnStartTurn -= OnTurnStart;
         target.OnEndTurn -= OnTurnEnd;
     }
 
     public override void Stack(Character target, Status other) {
         if (other is SleepStatus otherStatus) {
             duration.Value = otherStatus.duration.Value;
-        }
-    }
-
-    private void OnTurnStart(Character target) {
-        if (CombatManager.instance.currentCharacter == target) {
-            Debug.Log(target.characterName + " is stunned!");
-            CombatManager.instance.SkipTurn();
         }
     }
 

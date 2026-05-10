@@ -50,7 +50,7 @@ public class CharacterUITemplate : MonoBehaviour {
         
         if (speedView) speedView.value = newChar.actionPoints.Value;
         ChangeSpeedColor(owner.derivedStats.speed.currentValue);
-        if (speedView) speedView.maxValue = CombatManager.instance.maxSpeed;
+        if (speedView) speedView.maxValue = newChar.CombatController.MaxActionPoints;
         if (speedView) owner.actionPoints.OnChange += UpdateSpeedSlider;
         
         if(statusEffectView) statusEffectView.SetData(newChar.StatusEffectList);
@@ -118,16 +118,15 @@ public class CharacterUITemplate : MonoBehaviour {
         }
         
 
-        if (targetButton) CombatManager.instance.combatUI.callPopup.CreatePopup(popupText, damageColor, transform);
+        if (targetButton) owner.CombatController.callPopup.CreatePopup(popupText, damageColor, transform);
 
         if (args.result.isFatal && characterSprite) characterSprite.color = new Color(1, 1, 1, 0.5f);
         if (args.result.isRevive && characterSprite) characterSprite.color = new Color(1, 1, 1, 1f);
     }
     
     private void HandleNewStat(Status newStatus) {
-        var NewStatusPopup = CombatManager.instance.combatUI.callPopup.Pop(newStatus.statusName, newStatus.source.statusPopupColor, transform, 0);
-        var genericEvent = new GenericCombatEvent(NewStatusPopup);
-        CombatManager.instance.combatEvents.Enqueue(genericEvent);
+        var NewStatusPopup = owner.CombatController.callPopup.Pop(newStatus.statusName, newStatus.source.statusPopupColor, transform, 0);
+        StartCoroutine(NewStatusPopup);
     }
     
     public void SetButtonAction(Action selectAction) {

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 [Obsolete]
 public class CombatManager : MonoBehaviour {
-    public static CombatManager instance;
+    public static CombatManager instance2;
     
     public Skill basicDefense;
     public CombatUI combatUI;
@@ -40,7 +40,7 @@ public class CombatManager : MonoBehaviour {
     public int maxSpeed;
 
     private void Awake() {
-        instance = this;
+        instance2 = this;
         setupPhases.Add(new SetupPhase());
         loopPhases.Add(new WaitActionPhase());
         loopPhases.Add(new CharacterPhase());

@@ -20,25 +20,10 @@ public class OnTakeDamage : IPassiveSkill {
         if (args.result.deltaHp >= 0) return;
         if (args.stopReactionAttacks) return;
         
+        if (!args.actionArgs.Flags.Add(this)) return;
         
-        
-        if (CombatManager.instance.combatEvents.Any(e => e is OnTakeDamageEvent
-                otd && otd.thisEvent == this && otd.args.target == args.target)) return;
-        
-        var combatEvent = new OnTakeDamageEvent(args, this);
-        CombatManager.instance.combatEvents.Enqueue(combatEvent);
-    }
-}
-public class OnTakeDamageEvent : ICombatPhase {
-    public CombatArgs args;
-    public OnTakeDamage thisEvent;
-
-    public OnTakeDamageEvent(CombatArgs args, OnTakeDamage thisEvent) {
-        this.args = args;
-        this.thisEvent = thisEvent;
-    }
-
-    public IEnumerator Execute(CombatManager cm) {
-        yield return thisEvent.counterSkill.UseSkill(args.target, thisEvent.castOnSelf ? args.target : args.user, CombatManager.instance);
+        var cc = args.user.CombatController;
+        var newTarget = castOnSelf ? args.target : args.user;
+        cc.StartCoroutine(counterSkill.animation.Play(counterSkill, args.user, newTarget));
     }
 }

@@ -23,10 +23,12 @@ namespace TricksAndTreatsOrThreats.Behaviour {
         public Character Target { get; private set; }
         public List<object> TaskList { get; } = new ();
         public bool IsBusy => TaskList.Count > 0;
+        public float MaxActionPoints => maxActionPoints;
 
         private readonly HashSet<Character> _characters = new ();
         private readonly Dictionary<string, List<Character>> _teams = new ();
         private Camera _camera;
+        public CallPopupText callPopup;
 
         private void Awake() {
             if (Instance) {

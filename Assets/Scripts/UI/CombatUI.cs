@@ -58,7 +58,7 @@ public class CombatUI : MonoBehaviour {
             currentSkillNameText.text = "[" + skill.skillName + "]";
             currentSkillDescriptionText.text = skill.skillDescription;
             if (skill.animation.TrySkipSelection(user, skill)) {
-                CombatManager.instance.UsingSkillOnTarget(user, skill, user);
+                CombatManager.instance2.UsingSkillOnTarget(user, skill, user);
             } else VerifyTargets(user, skill);
         } else {
             Debug.Log("Don't have enough Mana");
@@ -66,22 +66,22 @@ public class CombatUI : MonoBehaviour {
     }
 
     public void PrepareAttack1ForCurrentPlayer() {
-        var currentPlayer = CombatManager.instance.currentCharacter;
+        var currentPlayer = CombatManager.instance2.currentCharacter;
         PrepareSkill(currentPlayer, currentPlayer.basicAttack[0]);
     }
     
     public void PrepareAttack2ForCurrentPlayer() {
-        var currentPlayer = CombatManager.instance.currentCharacter;
+        var currentPlayer = CombatManager.instance2.currentCharacter;
         PrepareSkill(currentPlayer, currentPlayer.basicAttack[1]);
     }
     
     public void PrepareDefenseForCurrentPlayer() {
-        var currentPlayer = CombatManager.instance.currentCharacter;
-        PrepareSkill(currentPlayer, CombatManager.instance.basicDefense);
+        var currentPlayer = CombatManager.instance2.currentCharacter;
+        PrepareSkill(currentPlayer, CombatManager.instance2.basicDefense);
     }
 
     public void PrepareSkillForCurrentPlayer(IItemView itemView) {
-        var currentPlayer = CombatManager.instance.currentCharacter;
+        var currentPlayer = CombatManager.instance2.currentCharacter;
         PrepareSkill(currentPlayer, ((Consumable)itemView.Data).skillEffect);
     }
     
@@ -90,7 +90,7 @@ public class CombatUI : MonoBehaviour {
         foreach (var target in searchList) {
             bool active = skill.animation.ValidateTarget(user ,target.owner);
             if (active) {
-                target.SetButtonAction(() => CombatManager.instance.UsingSkillOnTarget(user, skill, target.owner));
+                target.SetButtonAction(() => CombatManager.instance2.UsingSkillOnTarget(user, skill, target.owner));
             } else {
                 target.SetButtonAction(null);
             }

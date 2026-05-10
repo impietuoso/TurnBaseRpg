@@ -6,9 +6,10 @@ public class SpreadEffect : ISkillEffect {
     [SerializeReference, TypeDropdown(typeof(ISkillEffect))]
     public ISkillEffect effect;
     public float spreadDelay;
+    public float radius = 10f;
 
     public void Prepare(CombatArgs args) {
-        foreach (var newTarget in CombatManager.instance.characterList) {
+        foreach (var newTarget in args.user.CombatController.Characters) {
             if (ValidateTarget(args.target, newTarget)) {
                 CombatArgs newArgs = new();
                 newArgs.skill = args.skill;
@@ -17,7 +18,7 @@ public class SpreadEffect : ISkillEffect {
                 newArgs.source = args.source;
                 newArgs.unavoidable = true;
                 effect.Prepare(newArgs);
-                args.OnResolve += _=> CombatManager.instance.StartCoroutine(ResolveSpread(newArgs));
+                args.OnResolve += _=> args.user.CombatController.StartCoroutine(ResolveSpread(newArgs));
             }
         }
     }

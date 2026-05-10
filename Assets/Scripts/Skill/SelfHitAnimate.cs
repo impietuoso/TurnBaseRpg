@@ -9,26 +9,20 @@ public class SelfHitAnimate : ISkillAnimation {
     public GameObject castingParticle;
     public GameObject skillParticle;
 
-    public bool TrySkipSelection(Character user, Skill skill) {
-        CombatManager.instance.UsingSkillOnTarget(user, skill, user);
-        return true;
-    }
-
     public bool ValidateTarget(Character user, ITarget tgt) {
         if (tgt is not Character target) return false;
         return user == target;
     }
 
-    public IEnumerable<Character> GetAffectedTargets(Character user, Character target) {
+    public IEnumerable<ITarget> GetAffectedTargets(Character user, ITarget target) {
         yield return target;
     }
 
-    public IEnumerator Play(Skill skill, Character user, Character target, CombatManager cm) {
-        var ui = CombatManager.instance.combatUI;
+    public IEnumerator Play(Skill skill, Character user, ITarget target) {
         if (castingParticle) {
             var particle = UnityEngine.Object.Instantiate(
                 castingParticle,
-                ui.GetCharacterWorldPosition(user),
+                user.Position,
                 Quaternion.identity);
             yield return new WaitWhile(() => particle);
         } else {
@@ -46,7 +40,7 @@ public class SelfHitAnimate : ISkillAnimation {
             effect.Prepare(args);
         }
 
-        UnityEngine.Object.Instantiate(skillParticle, ui.GetCharacterWorldPosition(args.target), Quaternion.identity);
+        UnityEngine.Object.Instantiate(skillParticle, args.target.Position, Quaternion.identity);
         yield return new WaitForSeconds(damageDelay);
 
         args.Resolve();

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using TricksAndTreatsOrThreats.Behaviour;
 using UnityEngine;
 
 [System.Serializable]
@@ -36,12 +37,11 @@ public class ReflectEffect : Status {
         newArgs.target = args.user;
         newArgs.damage = damageReflected;
         newArgs.stopReactionAttacks = true;
-        var genericEvent = new GenericCombatEvent(ReflectDamage(newArgs));
-        CombatManager.instance.combatEvents.Enqueue(genericEvent);
+        args.user.CombatController.StartCoroutine(ReflectDamage(newArgs));
     }
     
     public IEnumerator ReflectDamage (CombatArgs args) {
-        yield return null;
+        yield return new WaitForSeconds(0.5f);
         args.Resolve();
         Debug.Log(args.target.characterName + " takes " + args.damage + " reflect damage.");
     }

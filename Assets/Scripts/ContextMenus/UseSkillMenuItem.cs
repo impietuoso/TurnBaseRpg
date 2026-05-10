@@ -25,7 +25,7 @@ namespace TTT.ContextMenus
         public Color Color => ContextMenuAssets.Instance.SkillColor;
         public bool Enabled => User.derivedStats.mana.currentValue >= Skill.cost;
         public void Execute() => TargetPicker.Instance.ShowArrow(PickerArgs);
-        public void Cast(ITarget tgt) => User.NextAction= new(User,tgt, Skill);
+        public void Cast(ITarget tgt) => User.NextAction= new(Skill,User,tgt);
         public bool Validate(ITarget tgt) => Skill.animation.ValidateTarget(User, tgt);
     }
 }

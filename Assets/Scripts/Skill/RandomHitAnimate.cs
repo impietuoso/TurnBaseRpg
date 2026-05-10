@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -15,12 +16,11 @@ public class RandomHitAnimate : ISkillAnimation {
     public GameObject skillParticle;
     public bool TrySkipSelection(Character user, Skill skill) => false;
 
-    public IEnumerator Play(Skill skill, Character user, Character target, CombatManager cm) {
-        var ui = CombatManager.instance.combatUI;
+    public IEnumerator Play(Skill skill, Character user, ITarget target) {
         if (castingParticle) {
             var particle = UnityEngine.Object.Instantiate(
                 castingParticle,
-                ui.GetCharacterWorldPosition(user),
+                target.Position,
                 Quaternion.identity);
             yield return new WaitWhile(() => particle);
         } else {
@@ -29,21 +29,21 @@ public class RandomHitAnimate : ISkillAnimation {
 
         int newHitCount = Random.Range(hitCount.x, hitCount.y + 1);
 
-        List<Character> targets = new(GetAffectedTargets(user, target));
-        yield return cm.StartCoroutine(SingleTargetDamage(skill, user, targets, newHitCount));
+        List<Character> targets = new(GetAffectedTargets(user, target).OfType<Character>());
+        yield return SingleTargetDamage(skill, user, targets, newHitCount);
         
         if (hitCount.y > 1) Debug.Log(newHitCount + " Hits");
     }
 
-    public IEnumerable<Character> GetAffectedTargets(Character user, Character target) {
-        foreach (var newTarget in CombatManager.instance.characterList) {
+    public IEnumerable<ITarget> GetAffectedTargets(Character user, ITarget target) {
+        foreach (var newTarget in user.CombatController.Characters) {
             if (ValidateTarget(user, newTarget)) yield return newTarget;
         }
     }
     
     public IEnumerator SingleTargetDamage(Skill skill, Character user, List<Character> targets, int newHitCount) {
+        
         for (int i = 0; i < newHitCount; i++) {
-
             CombatArgs args = new CombatArgs();
             args.skill = skill;
             args.target = targets[Random.Range(0, targets.Count)];
@@ -54,8 +54,7 @@ public class RandomHitAnimate : ISkillAnimation {
                 effect.Prepare(args);
             }
 
-            var ui = CombatManager.instance.combatUI;
-            UnityEngine.Object.Instantiate(skillParticle, ui.GetCharacterWorldPosition(args.target), Quaternion.identity);
+            UnityEngine.Object.Instantiate(skillParticle,  args.target.Position, Quaternion.identity);
             yield return new WaitForSeconds(damageDelay);
             
             args.Resolve();

@@ -87,7 +87,7 @@ public class CharacterPhase : ICombatPhase {
         cm.combatUI.selectTargetPanel.SetActive(false);
         cm.combatUI.actionsPanel.SetActive(false);
         cm.combatUI.ResetSelections();
-        cm.combatUI.ShowSelection(cm.selectedSkill.animation.GetAffectedTargets(user, cm.selectedTarget).ToList());
+        cm.combatUI.ShowSelection(cm.selectedSkill.animation.GetAffectedTargets(user, cm.selectedTarget).OfType<Character>().ToList());
         if (cm.selectedTarget != null) Debug.Log("Target Selected: " + cm.selectedTarget.characterName);
         var usedSlot = cm.consumables.slots.FirstOrDefault(s => s.item.skillEffect == cm.selectedSkill);
         if (usedSlot != null) cm.consumables.Remove(usedSlot.item, 1);

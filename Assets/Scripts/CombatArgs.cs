@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TricksAndTreatsOrThreats.Behaviour;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -24,6 +25,7 @@ public class CombatArgs {
     public CombatResult result;
     public List<StatusSO> statusEffects = new();
     public Action<CombatArgs> OnResolve;
+    public ActionArgs actionArgs;
     
     public void Resolve() {
         if (result != null) return;
@@ -71,14 +73,12 @@ public class CombatArgs {
         foreach (var effect in statusEffects) {
             if (effect.statusType != StatusType.debuff) target?.StatusEffectList.Apply(effect);
             else {
-                if (CombatManager.instance.combatEvents.Any(e => e is ApplyStatusEffectEvent
-                        asf && asf.status == effect && asf.target == target)) {
+                if (!actionArgs.Flags.Add(effect)) {
                     continue;
                 }
                 var applyChance = Random.Range(0, 100);
                 if (applyChance <= 100 - target?.derivedStats.resistance.currentValue) {
-                    var applyStatusEvent = new ApplyStatusEffectEvent(target, effect);
-                    CombatManager.instance.combatEvents.Enqueue(applyStatusEvent);
+                    target.StatusEffectList.Apply(effect);
                     resist = false;
                     Debug.Log(effect.status + " was add to queue " + target?.characterName + ".");
                 } else

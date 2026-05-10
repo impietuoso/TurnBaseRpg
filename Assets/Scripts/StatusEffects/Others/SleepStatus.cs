@@ -7,13 +7,11 @@ public class SleepStatus : Status {
 
     public override void Apply(Character target) {
         if (TryNullifyOpposite(target)) return;
-        target.OnStartTurn += OnTurnStart;
         target.OnDefend += OnDefend;
         target.OnEndTurn += OnTurnEnd;
     }
 
     public override void Remove(Character target) {
-        target.OnStartTurn -= OnTurnStart;
         target.OnDefend -= OnDefend;
         target.OnEndTurn -= OnTurnEnd;
     }
@@ -21,13 +19,6 @@ public class SleepStatus : Status {
     public override void Stack(Character target, Status other) {
         if (other is SleepStatus otherStatus) {
             duration.Value = otherStatus.duration.Value;
-        }
-    }
-
-    private void OnTurnStart(Character target) {
-        if (CombatManager.instance.currentCharacter == target) {
-            Debug.Log(target.characterName + " is sleeping and skips turn!");
-            CombatManager.instance.SkipTurn();
         }
     }
 

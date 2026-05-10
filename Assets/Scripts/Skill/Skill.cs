@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Linq;
 using TricksAndTreatsOrThreats.Behaviour;
@@ -28,20 +29,21 @@ public class Skill : ScriptableObject, IAction {
         
         if (user.derivedStats.mana.currentValue < cost) return false;
 
-        if (CombatManager.instance.combatUI.characters.All
-                (c => !animation.ValidateTarget(user, c.owner))) return false;
+        foreach (var c in user.CombatController.Characters) {
+            if (!c.IsVisible) continue;
+            if (animation.ValidateTarget(user, c)) return true;
+        }
 
-        return true;
+        return false;
     }
 
-    public IEnumerator Execute(Character user, ITarget target)
-    {
+    public IEnumerator Execute(Character user, ITarget target) {
         return animation.Play(this, user, target);
     }
 
-    public virtual IEnumerator UseSkill(Character user, Character target, CombatManager combatManager) {
+    [Obsolete] public virtual IEnumerator UseSkill(Character user, Character target, CombatManager cm) {
         Debug.Log(user.characterName + " used " + skillName);
-        return animation.Play(this, user, target, combatManager);
+        return animation.Play(this, user, target);
     }
 }
 
