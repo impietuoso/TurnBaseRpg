@@ -4,14 +4,21 @@ using UnityEngine.UI;
 
 public class CharacterUI : DataView<Character> {
     [SerializeField] private SpriteRenderer characterSprite;
-    [SerializeField] private RadialBarConfig healthBar;
-    [SerializeField] private RadialBarConfig manaBar;
-    [SerializeField] private RadialBarConfig shieldBar;
-    [SerializeField] private RadialBarConfig speedBar;
+    [SerializeField] private FillStatView healthBar;
+    [SerializeField] private FillStatView manaBar;
+    [SerializeField] private FillStatView shieldBar;
+    [SerializeField] private FillStatView speedBar;
     [SerializeField] private StatusEffectListView statusEffectView;
     public Color normalSpeedColor;
     public Color fastSpeedColor;
     public Color slowSpeedColor;
+
+    private void Start() {
+        healthBar.Max = healthBar.image.fillAmount;
+        manaBar.Max = manaBar.image.fillAmount;
+        shieldBar.Max = shieldBar.image.fillAmount;
+        speedBar.Max = speedBar.image.fillAmount;
+    }
 
     protected override void Subscribe() {
         healthBar.Stat = Data.derivedStats.health;
@@ -40,7 +47,7 @@ public class CharacterUI : DataView<Character> {
 
         Data.derivedStats.health.OnChange -= ChangePortraitAlpha;
         Data.derivedStats.speed.OnChange -= ChangeSpeedColor;
-        
+
         if (statusEffectView) statusEffectView.SetData(null);
     }
 
@@ -55,10 +62,10 @@ public class CharacterUI : DataView<Character> {
     }
 
     [Serializable]
-    public class RadialBarConfig {
+    public class FillStatView {
         public Image image;
-        public float max;
+        public float Max { get; set; }
         public Stat Stat { get; set; }
-        public void Update(int _) => image.fillAmount = Stat.Normalized * max;
+        public void Update(int _) => image.fillAmount = Stat.Normalized * Max;
     }
 }
