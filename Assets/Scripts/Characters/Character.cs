@@ -31,7 +31,6 @@ public partial class Character {
     private List<IPassiveSkill> passives = new ();
 
     public PartyMember Member => member;
-    public Observable<float> actionPoints = new ();
     public DataMap DataMap = new ();
 
     public void Initialize(CombatController cc, PartyMember memberOjb, bool allyTeam) {

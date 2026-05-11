@@ -29,10 +29,11 @@ public class CharacterUI : DataView<Character> {
         Data.derivedStats.shield.OnChange += shieldBar.Update;
 
         Data.derivedStats.health.OnChange += ChangePortraitAlpha;
+        Data.derivedStats.speed.OnChange += ChangeSpeedColor;
 
         if (statusEffectView) statusEffectView.SetData(Data.StatusEffectList);
+        
         ChangeSpeedColor(Data.derivedStats.speed.currentValue);
-        gameObject.SetActive(true);
     }
 
     protected override void Unsubscribe() {
@@ -47,7 +48,8 @@ public class CharacterUI : DataView<Character> {
     }
 
     private void Update() {
-        speedBar.SetPercent(Data.actionPoints.Value / Data.CombatController.MaxActionPoints);
+        if (Data.InAction) speedBar.SetPercent(1);
+        else speedBar.SetPercent(Data.NextAction?.Progress ?? 0);
     }
 
     private void ChangePortraitAlpha(int i) {

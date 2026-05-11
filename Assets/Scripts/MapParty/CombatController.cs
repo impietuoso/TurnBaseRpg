@@ -21,6 +21,7 @@ namespace TricksAndTreatsOrThreats.Behaviour {
 
         [SerializeField] private float maxActionPoints = 10f;
         [SerializeField] private float manaRegenPercent = .1f;
+        [SerializeField] private bool enablePlayerBehaviour;
         [SerializeField] private bool enableEnemyBehaviour;
 
         public IReadOnlyCollection<Character> Characters => _characters;
@@ -28,7 +29,6 @@ namespace TricksAndTreatsOrThreats.Behaviour {
         public IReadOnlyList<Character> Enemies => _enemies;
         public List<object> TaskList { get; } = new ();
         public bool IsBusy => TaskList.Count > 0;
-        public float MaxActionPoints => maxActionPoints;
         public CallPopupText CallPopup => callPopup;
         public Skill BasicDefendSkill => basicDefendSkill;
 
@@ -72,7 +72,7 @@ namespace TricksAndTreatsOrThreats.Behaviour {
         private void Update() {
             foreach (var character in Characters) {
                 TickStatuses(character);
-                UpdateActionPoints(character);
+                ChargeAction(character);
                 ApplyManaRegen(character);
             }
 
@@ -84,16 +84,19 @@ namespace TricksAndTreatsOrThreats.Behaviour {
             character.derivedStats.mana.AddClampedBaseValue((int)amt);
         }
 
-        private void UpdateActionPoints(Character character) {
+        private void ChargeAction(Character character) {
+            if (character.InAction) return;
             if (character.derivedStats.health.currentValue <= 0) return;
-            character.actionPoints.Value += character.derivedStats.speed.currentValue * Time.deltaTime;
 
-            if (character.actionPoints.Value >= maxActionPoints) {
-                character.actionPoints.Value -= maxActionPoints;
-                if (enableEnemyBehaviour && !character.isAlly)
-                    _enemyBehaviour.ChooseNextAction(this, character);
-                //TODO Take Action
+            if (character.NextAction != null) {
+                character.NextAction.Charge(Time.deltaTime);
+                return;
             }
+
+            if (enablePlayerBehaviour && character.isAlly)
+                _enemyBehaviour.ChooseNextAction(this, character);
+            if (enableEnemyBehaviour && !character.isAlly)
+                _enemyBehaviour.ChooseNextAction(this, character);
         }
 
         private static void TickStatuses(Character character) {

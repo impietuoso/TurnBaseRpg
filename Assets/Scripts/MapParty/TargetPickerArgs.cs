@@ -28,14 +28,20 @@ namespace TricksAndTreatsOrThreats.Behaviour {
             Action = action;
             User = user;
             Target = target;
+            ChargeTime = action.GetChargeTime(user);
         }
 
-        public IAction Action;
-        public Character User;
-        public ITarget Target;
-        
+        public IAction Action { get; }
+        public Character User { get; }
+        public ITarget Target { get; }
+        public float ChargeTime { get; }
+        public float Timer { get; private set; }
         public HashSet<object> Flags { get; } = new ();
 
+        public float Progress => Timer / ChargeTime;
+        public bool Ready => Timer >= ChargeTime;
+
+        public void Charge(float amt) => Timer = Math.Min(Timer + amt, ChargeTime);
         public IEnumerator Execute() => Action.Execute(this);
     }
 }
