@@ -3,7 +3,7 @@ using TricksAndTreatsOrThreats.Behaviour;
 using UnityEngine;
 
 public partial class Character {
-    [SerializeField] private float stopDistance = .2f;
+    private static readonly MoveAction MoveAction = new ();
 
     private readonly TargetPosition _targetPosition = new ();
     private ActionArgs _moveArgs;
@@ -13,7 +13,7 @@ public partial class Character {
     public bool InAction => _currentAction != null;
 
     private void CreateActionsArgs() {
-        _moveArgs = new (null, this, _targetPosition);
+        _moveArgs = new (MoveAction, this, _targetPosition);
     }
 
     public void MoveTo(Vector3 position) {
@@ -28,18 +28,15 @@ public partial class Character {
         var curr = transform.position;
         var tgt = NextAction.Target.Position;
         var speed = 2 * Time.deltaTime;
-        var next = Vector3.MoveTowards(curr, tgt, speed);
-        var dist = (next - tgt).sqrMagnitude;
-        transform.position = next;
+        var range = NextAction.Action.Range;
+        var dist = (curr - tgt).sqrMagnitude;
 
-        if (NextAction.Action == null) {
-            if (dist <= stopDistance)
-                NextAction = null;
+        if (dist > range * range) {
+            var next = Vector3.MoveTowards(curr, tgt, speed);
+            transform.position = next;
             return;
         }
 
-        var range = NextAction.Action.Range;
-        if (dist > range * range) return;
         if (!NextAction.Ready) return;
         _currentAction = StartCoroutine(ExecuteNextAction());
 
@@ -48,7 +45,7 @@ public partial class Character {
     }
 
     private IEnumerator ExecuteNextAction() {
-        var ie = NextAction.Execute();
+        var ie = NextAction?.Execute();
         NextAction = null;
         yield return ie;
         _currentAction = null;

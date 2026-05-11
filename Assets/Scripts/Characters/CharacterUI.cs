@@ -1,4 +1,5 @@
 using System;
+using Drafts;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,7 @@ public class CharacterUI : DataView<Character> {
         healthBar.Max = healthBar.image.fillAmount;
         manaBar.Max = manaBar.image.fillAmount;
         shieldBar.Max = shieldBar.image.fillAmount;
+        speedBar.Max = speedBar.image.fillAmount;
     }
 
     protected override void Subscribe() {
@@ -32,7 +34,8 @@ public class CharacterUI : DataView<Character> {
         Data.derivedStats.speed.OnChange += ChangeSpeedColor;
 
         if (statusEffectView) statusEffectView.SetData(Data.StatusEffectList);
-        
+        characterSprite.TrySetSprite(Data.Member.uiSprite);
+
         ChangeSpeedColor(Data.derivedStats.speed.currentValue);
     }
 

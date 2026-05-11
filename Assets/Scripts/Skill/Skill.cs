@@ -32,7 +32,11 @@ public class Skill : DatabaseItem, IAction {
     }
 
     public float GetChargeTime(Character user) => user.derivedStats.speed.currentValue / 10f;
-    public IEnumerator Execute(ActionArgs args) => animation.Play(this, args);
+
+    public IEnumerator Execute(ActionArgs args) {
+        args.User?.derivedStats.mana.AddClampedBaseValue(-cost);
+        return animation.Play(this, args);
+    }
 }
 
 public interface ISkillEffect {

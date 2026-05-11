@@ -11,7 +11,7 @@ public class SelfHitAnimate : ISkillAnimation {
     public GameObject skillParticle;
 
     public bool NeedTarget => false;
-    
+
     public bool ValidateTarget(Character user, ITarget tgt) {
         if (tgt is not Character target) return false;
         return user == target;
@@ -23,14 +23,11 @@ public class SelfHitAnimate : ISkillAnimation {
 
     public IEnumerator Play(Skill skill, ActionArgs aArgs) {
         if (castingParticle) {
-            var particle = UnityEngine.Object.Instantiate(
-                castingParticle,
-                aArgs.User.Position,
-                Quaternion.identity);
+            var vfxParent = aArgs.User.SpriteRenderer.transform;
+            var particle = UnityEngine.Object.Instantiate(castingParticle, vfxParent);
             yield return new WaitWhile(() => particle);
-        } else {
+        } else
             yield return new WaitForSeconds(0.1f);
-        }
 
         Debug.Log(aArgs.User.Member.charName + " Defends!");
         var args = new CombatArgs();
@@ -40,11 +37,11 @@ public class SelfHitAnimate : ISkillAnimation {
         args.target = aArgs.User;
         args.source = this;
 
-        foreach (var effect in skill.skillEffects) {
+        foreach (var effect in skill.skillEffects)
             effect.Prepare(args);
-        }
 
-        UnityEngine.Object.Instantiate(skillParticle, args.target.Position, Quaternion.identity);
+        var parent = args.target.SpriteRenderer.transform;
+        UnityEngine.Object.Instantiate(skillParticle, parent);
         yield return new WaitForSeconds(damageDelay);
 
         args.Resolve();

@@ -80,6 +80,7 @@ namespace TricksAndTreatsOrThreats.Behaviour {
         }
 
         private void ApplyManaRegen(Character character) {
+            if (character.derivedStats.mana.Normalized >= 1) return;
             var amt = character.derivedStats.mana.maxValue * manaRegenPercent;
             character.derivedStats.mana.AddClampedBaseValue((int)amt);
         }

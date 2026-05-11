@@ -20,19 +20,17 @@ public class RandomHitAnimate : ISkillAnimation {
 
     public IEnumerator Play(Skill skill, ActionArgs aArgs) {
         if (castingParticle) {
-            var particle = UnityEngine.Object.Instantiate(
-                castingParticle,
-                aArgs.Target.Position,
-                Quaternion.identity);
+            var vfxParent = aArgs.User.SpriteRenderer.transform;
+            var particle = UnityEngine.Object.Instantiate(castingParticle, vfxParent);
             yield return new WaitWhile(() => particle);
-        } else 
+        } else
             yield return new WaitForSeconds(0.1f);
 
         var newHitCount = Random.Range(hitCount.x, hitCount.y + 1);
 
-        List<Character> targets = new(GetAffectedTargets(aArgs.User, aArgs.Target).OfType<Character>());
+        List<Character> targets = new (GetAffectedTargets(aArgs.User, aArgs.Target).OfType<Character>());
         yield return SingleTargetDamage(skill, aArgs, targets, newHitCount);
-        
+
         if (hitCount.y > 1) Debug.Log(newHitCount + " Hits");
     }
 
@@ -41,9 +39,9 @@ public class RandomHitAnimate : ISkillAnimation {
             if (ValidateTarget(user, newTarget)) yield return newTarget;
         }
     }
-    
+
     public IEnumerator SingleTargetDamage(Skill skill, ActionArgs aArgs, List<Character> targets, int newHitCount) {
-        
+
         for (var i = 0; i < newHitCount; i++) {
             var args = new CombatArgs();
             args.actionArgs = aArgs;
@@ -56,14 +54,15 @@ public class RandomHitAnimate : ISkillAnimation {
                 effect.Prepare(args);
             }
 
-            UnityEngine.Object.Instantiate(skillParticle,  args.target.Position, Quaternion.identity);
+            var parent = args.target.SpriteRenderer.transform;
+            UnityEngine.Object.Instantiate(skillParticle, parent);
             yield return new WaitForSeconds(damageDelay);
-            
+
             args.Resolve();
             yield return new WaitForSeconds(hitDelay);
         }
     }
-    
+
     public bool ValidateTarget(Character user, ITarget tgt) {
         if (tgt is not Character target) return false;
         var sameTeam = user.isAlly == target.isAlly;

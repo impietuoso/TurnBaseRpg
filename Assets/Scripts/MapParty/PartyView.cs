@@ -1,3 +1,4 @@
+using System.Collections;
 using Drafts;
 using TricksAndTreatsOrThreats.Behaviour;
 using UnityEngine;
@@ -5,8 +6,11 @@ using UnityEngine;
 public class PartyView : MonoBehaviour {
     [SerializeField] private CombatController controller;
     [SerializeField] private CollectionView party;
+    [SerializeField] private CollectionView enemies;
 
-    private void Start() {
+    private IEnumerator Start() {
+        yield return null;
         party.SetData(controller.Allies);
+        enemies.SetData(controller.Enemies);
     }
 }

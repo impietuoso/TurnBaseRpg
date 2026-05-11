@@ -33,8 +33,8 @@ public class MultiHitAnimate : ISkillAnimation {
 
     public IEnumerator Play(Skill skill, ActionArgs aArgs) {
         if (castingParticle) {
-            var particle = UnityEngine.Object.Instantiate(
-                castingParticle, aArgs.User.Center, Quaternion.identity);
+            var vfxParent = aArgs.User.SpriteRenderer.transform;
+            var particle = UnityEngine.Object.Instantiate(castingParticle, vfxParent);
             yield return new WaitWhile(() => particle);
         } else
             yield return new WaitForSeconds(0.1f);
@@ -67,9 +67,10 @@ public class MultiHitAnimate : ISkillAnimation {
             foreach (var effect in skill.skillEffects)
                 effect.Prepare(args);
 
-            if (skillParticle)
-                UnityEngine.Object.Instantiate(skillParticle, target.Center, Quaternion.identity);
-            else
+            if (skillParticle) {
+                var parent = target.SpriteRenderer.transform;
+                UnityEngine.Object.Instantiate(skillParticle, parent);
+            } else
                 Debug.LogError("No Particle, add it to: " + skill.skillName, skill);
 
             yield return new WaitForSeconds(damageDelay);
