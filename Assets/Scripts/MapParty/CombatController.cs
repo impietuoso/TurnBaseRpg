@@ -16,6 +16,7 @@ namespace TricksAndTreatsOrThreats.Behaviour {
         [SerializeField] private Skill basicDefendSkill;
         [SerializeField] private LayerMask floorLayer;
         [SerializeField] private LayerMask creatureLayer;
+        [SerializeField] private FormationController formationController;
         [SerializeField] private ContextMenuView contextMenu;
         [SerializeField] private CallPopupText callPopup;
 
@@ -128,8 +129,7 @@ namespace TricksAndTreatsOrThreats.Behaviour {
             if (mouse.leftButton.wasPressedThisFrame) {
                 var ray = _camera.ScreenPointToRay(mouse.position.ReadValue());
                 if (Physics.Raycast(ray, out var hit, Mathf.Infinity, floorLayer))
-                    foreach (var creature in _allies)
-                        creature.MoveTo(hit.point);
+                    formationController.MoveTo(_allies, hit.point);
             }
         }
     }

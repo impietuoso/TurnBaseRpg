@@ -8,7 +8,7 @@ public class Skill : DatabaseItem, IAction {
     public string skillName;
     [TextArea(3, 6)]
     public string skillDescription;
-    [field: SerializeField] public float Range { get; private set; } = 10;
+    [field: SerializeField] public float Range { get; private set; } = 5;
     [SerializeField] private int cost;
     public Element element;
 
