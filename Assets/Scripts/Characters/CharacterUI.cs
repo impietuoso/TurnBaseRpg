@@ -17,22 +17,18 @@ public class CharacterUI : DataView<Character> {
         healthBar.Max = healthBar.image.fillAmount;
         manaBar.Max = manaBar.image.fillAmount;
         shieldBar.Max = shieldBar.image.fillAmount;
-        speedBar.Max = speedBar.image.fillAmount;
     }
 
     protected override void Subscribe() {
         healthBar.Stat = Data.derivedStats.health;
         manaBar.Stat = Data.derivedStats.mana;
         shieldBar.Stat = Data.derivedStats.shield;
-        speedBar.Stat = Data.derivedStats.speed;
 
         Data.derivedStats.health.OnChange += healthBar.Update;
         Data.derivedStats.mana.OnChange += manaBar.Update;
         Data.derivedStats.shield.OnChange += shieldBar.Update;
-        Data.derivedStats.speed.OnChange += speedBar.Update;
 
         Data.derivedStats.health.OnChange += ChangePortraitAlpha;
-        Data.derivedStats.speed.OnChange += ChangeSpeedColor;
 
         if (statusEffectView) statusEffectView.SetData(Data.StatusEffectList);
         ChangeSpeedColor(Data.derivedStats.speed.currentValue);
@@ -43,12 +39,15 @@ public class CharacterUI : DataView<Character> {
         Data.derivedStats.health.OnChange -= healthBar.Update;
         Data.derivedStats.mana.OnChange -= manaBar.Update;
         Data.derivedStats.shield.OnChange -= shieldBar.Update;
-        Data.derivedStats.speed.OnChange -= speedBar.Update;
 
         Data.derivedStats.health.OnChange -= ChangePortraitAlpha;
         Data.derivedStats.speed.OnChange -= ChangeSpeedColor;
 
         if (statusEffectView) statusEffectView.SetData(null);
+    }
+
+    private void Update() {
+        speedBar.SetPercent(Data.actionPoints.Value / Data.CombatController.MaxActionPoints);
     }
 
     private void ChangePortraitAlpha(int i) {
@@ -67,5 +66,6 @@ public class CharacterUI : DataView<Character> {
         public float Max { get; set; }
         public Stat Stat { get; set; }
         public void Update(int _) => image.fillAmount = Stat.Normalized * Max;
+        public void SetPercent(float p) => image.fillAmount = p * Max;
     }
 }
