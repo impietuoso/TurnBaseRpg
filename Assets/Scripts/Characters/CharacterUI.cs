@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CharacterUI : DataView<Character> {
-    [SerializeField] private SpriteRenderer characterSprite;
+    [SerializeField] private Image characterSprite;
     [SerializeField] private FillStatView healthBar;
     [SerializeField] private FillStatView manaBar;
     [SerializeField] private FillStatView shieldBar;

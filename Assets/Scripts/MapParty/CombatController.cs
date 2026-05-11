@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Drafts;
 using TTT.ContextMenus;
 using UnityEngine;
@@ -9,6 +8,7 @@ using UnityEngine.InputSystem;
 
 namespace TricksAndTreatsOrThreats.Behaviour {
     // manage all creature behaviour
+
     public class CombatController : MonoBehaviour {
         public static CombatController Instance { get; private set; }
 
