@@ -30,7 +30,7 @@ public class SpreadEffect : ISkillEffect {
     }
     
     public bool ValidateTarget(Character user, Character target) {
-        bool sameTeam = user.team == target.team;
+        bool sameTeam = user.isAlly == target.isAlly;
         bool alive = target.derivedStats.health.currentValue > 0;
         bool notSelf = target != user;
         return sameTeam && alive && notSelf;

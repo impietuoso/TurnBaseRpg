@@ -15,7 +15,7 @@ public partial class Character {
 
     [Header("Info")]
     private PartyMember member;
-    public string team;
+    public bool isAlly;
     public Profession profession;
     public Element element;
     public List<Equipment> equipment;
@@ -34,11 +34,12 @@ public partial class Character {
     public Observable<float> actionPoints = new ();
     public DataMap DataMap = new ();
 
-    public void Initialize(CombatController cc, PartyMember member, string newTeam) {
+    public void Initialize(CombatController cc, PartyMember memberOjb, bool allyTeam) {
         CombatController = cc;
-        this.member = member;
-        name = $"{member.charName} ({newTeam})";
-        team = newTeam;
+        member = memberOjb;
+        name = member.charName;
+        isAlly = allyTeam;
+        if (!allyTeam) name += " (wild)";
 
         stats = member.usedStats;
         skills = member.equipedSkills.Where(s => s && s.passiva == null).ToList();

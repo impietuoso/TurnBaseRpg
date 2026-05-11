@@ -21,10 +21,11 @@ namespace TricksAndTreatsOrThreats.Behaviour {
 
         [SerializeField] private float maxActionPoints = 10f;
         [SerializeField] private float manaRegenPercent = .1f;
+        [SerializeField] private bool enableEnemyBehaviour;
 
         public IReadOnlyCollection<Character> Characters => _characters;
-        public IEnumerable<Character> GetTeam(string team) => _teams.TryGetValue(team, out var t) ? t : Enumerable.Empty<Character>();
-        public Character Target { get; private set; }
+        public IObservableList<Character> Allies => _allies;
+        public IReadOnlyList<Character> Enemies => _enemies;
         public List<object> TaskList { get; } = new ();
         public bool IsBusy => TaskList.Count > 0;
         public float MaxActionPoints => maxActionPoints;
@@ -35,7 +36,9 @@ namespace TricksAndTreatsOrThreats.Behaviour {
 
         private readonly EnemyBehaviour _enemyBehaviour = new ();
         private readonly HashSet<Character> _characters = new ();
-        private readonly Dictionary<string, List<Character>> _teams = new ();
+        private readonly ObservableList<Character> _allies = new ();
+        private readonly List<Character> _enemies = new ();
+
         private Camera _camera;
 
         private void Awake() {
@@ -52,24 +55,22 @@ namespace TricksAndTreatsOrThreats.Behaviour {
             contextMenu.gameObject.SetActive(false);
         }
 
-        public Character Spawn(PartyMember member, string team, Vector3 position) {
+        public Character Spawn(PartyMember member, bool isAlly, Vector3 position) {
             var clone = Instantiate(characterPrefab, transform);
             clone.transform.position = position;
-            clone.Initialize(this, member, team);
-            if (!_teams.TryGetValue(team, out var t))
-                _teams[team] = t = new ();
-            t.Add(clone);
-            _characters.Add(clone);
+            clone.Initialize(this, member, isAlly);
 
-            if (team == "player") //TODO
-                clone.Pouch = playerInventory;
+            _characters.Add(clone);
+            if (isAlly) _allies.Add(clone);
+            else _enemies.Add(clone);
+
+            if (isAlly) clone.Pouch = playerInventory; //TODO
 
             return clone;
         }
 
         private void Update() {
-            foreach (var team in _teams.Values)
-            foreach (var character in team) {
+            foreach (var character in Characters) {
                 TickStatuses(character);
                 UpdateActionPoints(character);
                 ApplyManaRegen(character);
@@ -89,7 +90,7 @@ namespace TricksAndTreatsOrThreats.Behaviour {
 
             if (character.actionPoints.Value >= maxActionPoints) {
                 character.actionPoints.Value -= maxActionPoints;
-                if (character.team != "player")
+                if (enableEnemyBehaviour && !character.isAlly)
                     _enemyBehaviour.ChooseNextAction(this, character);
                 //TODO Take Action
             }
@@ -111,19 +112,19 @@ namespace TricksAndTreatsOrThreats.Behaviour {
             if (mouse.rightButton.wasPressedThisFrame) {
                 var ray = _camera.ScreenPointToRay(mouse.position.ReadValue());
                 if (Physics.Raycast(ray, out var hit, Mathf.Infinity, creatureLayer)) {
-                    Target = hit.collider.GetComponentInParent<Character>();
-                    if (Target) {
+                    var target = hit.collider.GetComponentInParent<Character>();
+                    if (target) {
                         contextMenu.gameObject.SetActive(true);
-                        contextMenu.SetData(Target.Menu);
+                        contextMenu.SetData(target.Menu);
                     }
-                } else Target = null;
+                }
             }
 
             // right click on floor: all selected MoveTo
             if (mouse.leftButton.wasPressedThisFrame) {
                 var ray = _camera.ScreenPointToRay(mouse.position.ReadValue());
                 if (Physics.Raycast(ray, out var hit, Mathf.Infinity, floorLayer))
-                    foreach (var creature in _teams["player"])
+                    foreach (var creature in _allies)
                         creature.MoveTo(hit.point);
             }
         }

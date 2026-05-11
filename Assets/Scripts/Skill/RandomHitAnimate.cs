@@ -66,7 +66,7 @@ public class RandomHitAnimate : ISkillAnimation {
     
     public bool ValidateTarget(Character user, ITarget tgt) {
         if (tgt is not Character target) return false;
-        var sameTeam = user.team == target.team;
+        var sameTeam = user.isAlly == target.isAlly;
         var alive = target.derivedStats.health.currentValue > 0;
         return sameTeam ^ targetEnemy && alive ^ targetDead;
     }
