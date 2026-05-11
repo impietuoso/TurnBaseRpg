@@ -10,12 +10,12 @@ public class BleedingStatus: Status {
     public override void Apply(Character target) {
         if (TryNullifyOpposite(target)) return;
         target.OnAttack += OnAttack;
-        target.OnEndTurn += OnTurnEnd; // To tick duration
+        //target.OnEndTurn += OnTurnEnd; // To tick duration
     }
 
     public override void Remove(Character target) {
         target.OnAttack -= OnAttack;
-        target.OnEndTurn -= OnTurnEnd;
+        //target.OnEndTurn -= OnTurnEnd;
     }
 
     public override void Stack(Character target, Status other) {
@@ -37,7 +37,7 @@ public class BleedingStatus: Status {
         newArgs.target = args.user;
         newArgs.damage = damage;
         newArgs.Resolve();
-        Debug.Log(newArgs.target.characterName + " takes " + damage + " bleed damage.");
+        Debug.Log(newArgs.target.Member.charName + " takes " + damage + " bleed damage.");
     }
 
     private void OnTurnEnd(Character target) {

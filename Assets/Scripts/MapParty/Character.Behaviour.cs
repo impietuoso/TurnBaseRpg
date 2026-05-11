@@ -22,7 +22,7 @@ public partial class Character : MonoBehaviour, ITarget {
     }
 
     private void UpdateBehaviour() {
-        SpriteRenderer.sprite = characterSprite;
+        SpriteRenderer.sprite = Member.characterSprite;
     }
 
     private void Update() {

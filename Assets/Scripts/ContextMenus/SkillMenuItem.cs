@@ -9,21 +9,21 @@ namespace TTT.ContextMenus {
             PickerArgs = new (Validate, Enqueue)
             {
                 User = user,
-                Icon = Skill.icon,
+                Icon = Skill.Icon,
                 ArrowColor = Color.green,
             };
         }
 
         public Character User { get; }
         public Skill Skill { get; }
-        public TargetPickerArgs PickerArgs { get; }
+        private TargetPickerArgs PickerArgs { get; }
         public virtual string Title => Skill.skillName;
-        public virtual Sprite Icon => Skill.icon;
+        public virtual Sprite Icon => Skill.Icon;
         public virtual Color Color => ContextMenuAssets.Instance.SkillColor;
-        public bool Enabled => User.derivedStats.mana.currentValue >= Skill.cost;
-        
-        public void Enqueue(ITarget tgt) => User.NextAction = new (Skill, User, tgt);
-        public bool Validate(ITarget tgt) => Skill.animation.ValidateTarget(User, tgt);
+        public bool Enabled => User.derivedStats.mana.currentValue >= Skill.Cost;
+
+        private void Enqueue(ITarget tgt) => User.NextAction = new (Skill, User, tgt);
+        private bool Validate(ITarget tgt) => Skill.animation.ValidateTarget(User, tgt);
         public void Execute() {
             if (Skill.animation.NeedTarget)
                 TargetPicker.Instance.ShowArrow(PickerArgs);

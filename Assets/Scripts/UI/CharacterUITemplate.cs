@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
+[Obsolete]
 public class CharacterUITemplate : MonoBehaviour {
     public Character owner;
     [SerializeField] private Transform arrow;
@@ -34,8 +35,8 @@ public class CharacterUITemplate : MonoBehaviour {
     public void SetCharacterUIValues(Character newChar) {
         owner = newChar;
 
-        if (uiSprite) uiSprite.sprite = newChar.uiSprite;
-        if (characterSprite) characterSprite.sprite = newChar.characterSprite;
+        if (uiSprite) uiSprite.sprite = newChar.Member.uiSprite;
+        if (characterSprite) characterSprite.sprite = newChar.Member.characterSprite;
         owner.StatusEffectList.OnStatusAdded += HandleNewStat;
         if (healthView) healthView.SetStat(newChar.derivedStats.health);
         if (manaView) manaView.SetStat(newChar.derivedStats.mana);
@@ -53,8 +54,6 @@ public class CharacterUITemplate : MonoBehaviour {
 
         owner.OnResolveDefend += HandleHealthChanged;
         owner.derivedStats.speed.OnChange += ChangeSpeedColor;
-        owner.OnStartTurn += ActiveArrow;
-        owner.OnEndTurn += DisableArrow;
         gameObject.SetActive(true);
     }
 
@@ -62,21 +61,9 @@ public class CharacterUITemplate : MonoBehaviour {
         speedView.value = newValue;
     }
 
-    private void ActiveArrow(Character obj) {
-        if (!arrow) return;
-        arrow.gameObject.SetActive(true);
-    }
-
-    private void DisableArrow(Character obj) {
-        if (!arrow) return;
-        arrow.gameObject.SetActive(false);
-    }
-
     private void OnDestroy() {
         if (owner && owner.derivedStats.health != null) {
             owner.OnResolveDefend -= HandleHealthChanged;
-            owner.OnStartTurn -= ActiveArrow;
-            owner.OnEndTurn -= DisableArrow;
         }
         owner.derivedStats.speed.OnChange -= ChangeSpeedColor;
     }
@@ -123,26 +110,5 @@ public class CharacterUITemplate : MonoBehaviour {
     private void HandleNewStat(Status newStatus) {
         var NewStatusPopup = owner.CombatController.CallPopup.Pop(newStatus.statusName, newStatus.source.statusPopupColor, transform, 0);
         StartCoroutine(NewStatusPopup);
-    }
-
-    public void SetButtonAction(Action selectAction) {
-        if (!targetButton) return;
-
-        targetButton.onClick.RemoveAllListeners();
-        if (selectAction == null) {
-            targetButton.interactable = false;
-        } else {
-            targetButton.interactable = true;
-            targetButton.onClick.AddListener(selectAction.Invoke);
-        }
-    }
-
-    public void EnableSelection() {
-        targetButton.interactable = true;
-    }
-
-    public void ShowSelectedTarget(bool state) {
-        if (!targetButton) return;
-        targetButton.interactable = state;
     }
 }

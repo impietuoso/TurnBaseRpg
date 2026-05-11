@@ -3,7 +3,7 @@
 [CreateAssetMenu(menuName = "Scriptable/Status", fileName = "New Status")]
 public class StatusSO : ScriptableObject {
     public Sprite statusIcon;
-    [SerializeReference, TypeDropdown(typeof(Status))]
+    [SerializeReference, TypeDropdown]
     public Status status;
     public StatusType statusType;
     public Color statusPopupColor;

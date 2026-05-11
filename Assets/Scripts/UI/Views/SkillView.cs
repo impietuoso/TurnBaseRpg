@@ -17,8 +17,8 @@ public class SkillView : DataView<Skill> {
         if (skillNameText) skillNameText.text = Data.skillName;
         if (skillNameText) skillNameText.color = Data.element.elementColor;
         if (descriptionText) descriptionText.text = Data.skillDescription;
-        if (costText) costText.text = Data.cost + " MP";
-        if (icon) icon.overrideSprite = Data.icon;
+        if (costText) costText.text = Data.Cost + " MP";
+        if (icon) icon.overrideSprite = Data.Icon;
         if (interactable) interactable.interactable = true;
     }
 

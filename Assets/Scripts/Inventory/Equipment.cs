@@ -6,7 +6,7 @@ public class Equipment : Item {
     public Tag categoryTag;
     public DerivedStatsBase bonusValue;
     public Skill equipmentSkill;
-    [SerializeReference, TypeDropdown(typeof(IPassiveSkill))] public IPassiveSkill passiva;
+    [SerializeReference, TypeDropdown] public IPassiveSkill passiva;
 
     public string BonusText() {
         var resume = "<b>" + displayName + ":</b>\n";

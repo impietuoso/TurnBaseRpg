@@ -7,15 +7,17 @@ public class TypeDropdownAttributeDrawer : PropertyDrawer {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
         EditorGUI.BeginProperty(position, label, property);
 
-        bool hasValue = property.managedReferenceValue != null;
-        string typeName = hasValue ? property.managedReferenceValue.GetType().Name : "None (Select Effect)";
-
-        Rect labelRect = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
+        var hasValue = property.managedReferenceValue != null;
+        var typeName = hasValue ? property.managedReferenceValue.GetType().Name : "None (Select Effect)";
+        var labelRect = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
         
+        var type = fieldInfo.FieldType;
+        if (type.IsArray) type = type.GetElementType();
+        else if (property.isArray) type = type.GetGenericArguments()[0];
+
         // Foldout / Selection Button
         if (GUI.Button(labelRect, new GUIContent(label.text + ": " + typeName), EditorStyles.popup)) {
-            var attributeType = (attribute as TypeDropdownAttribute).type;
-            var iSkillEffect = TypeCache.GetTypesDerivedFrom(attributeType);
+            var iSkillEffect = TypeCache.GetTypesDerivedFrom(type);
             var myMenu = new GenericMenu();
             
             myMenu.AddItem(new GUIContent("None"), !hasValue, () => {
@@ -38,24 +40,10 @@ public class TypeDropdownAttributeDrawer : PropertyDrawer {
         // Draw child properties if value exists
         if (hasValue) {
             EditorGUI.indentLevel++;
-            Rect fieldRect = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing, position.width, EditorGUIUtility.singleLineHeight);
+            var fieldRect = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing, position.width, EditorGUIUtility.singleLineHeight);
             fieldRect.height = EditorGUI.GetPropertyHeight(property, true);
 
             EditorGUI.PropertyField(fieldRect, property, GUIContent.none, true);
-
-            //SerializedProperty iterator = property.Copy();
-            //SerializedProperty endProperty = iterator.GetEndProperty();
-
-            /*if (iterator.NextVisible(true)) {
-                do {
-                    if (SerializedProperty.EqualContents(iterator, endProperty)) break;
-
-                    float height = EditorGUI.GetPropertyHeight(iterator, true);
-                    fieldRect.height = height;
-                    EditorGUI.PropertyField(fieldRect, iterator, true);
-                    fieldRect.y += height + EditorGUIUtility.standardVerticalSpacing;
-                } while (iterator.NextVisible(false));
-            }*/
             EditorGUI.indentLevel--;
         }
 
@@ -63,22 +51,9 @@ public class TypeDropdownAttributeDrawer : PropertyDrawer {
     }
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label) {
-        float height = EditorGUIUtility.singleLineHeight;
-
-        height += EditorGUI.GetPropertyHeight(property, label, true);
-        
-        /*if (property.managedReferenceValue != null) {
-            SerializedProperty iterator = property.Copy();
-            SerializedProperty endProperty = iterator.GetEndProperty();
-
-            if (iterator.NextVisible(true)) {
-                do {
-                    if (SerializedProperty.EqualContents(iterator, endProperty)) break;
-                    height += EditorGUI.GetPropertyHeight(iterator, true) + EditorGUIUtility.standardVerticalSpacing;
-                } while (iterator.NextVisible(false));
-            }
-        }*/
-
+        var height = EditorGUIUtility.singleLineHeight;
+        if (property.managedReferenceValue != null) 
+            height += EditorGUI.GetPropertyHeight(property, true) + EditorGUIUtility.standardVerticalSpacing;
         return height;
     }
 }

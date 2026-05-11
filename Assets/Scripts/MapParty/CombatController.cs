@@ -33,6 +33,7 @@ namespace TricksAndTreatsOrThreats.Behaviour {
 
         [Obsolete] public ListInventory<Consumable> playerInventory;
 
+        private readonly EnemyBehaviour _enemyBehaviour = new ();
         private readonly HashSet<Character> _characters = new ();
         private readonly Dictionary<string, List<Character>> _teams = new ();
         private Camera _camera;
@@ -82,12 +83,14 @@ namespace TricksAndTreatsOrThreats.Behaviour {
             character.derivedStats.mana.AddClampedBaseValue((int)amt);
         }
 
-        private void UpdateActionPoints(Character newChar) {
-            if (newChar.derivedStats.health.currentValue <= 0) return;
-            newChar.actionPoints.Value += newChar.derivedStats.speed.currentValue * Time.deltaTime;
+        private void UpdateActionPoints(Character character) {
+            if (character.derivedStats.health.currentValue <= 0) return;
+            character.actionPoints.Value += character.derivedStats.speed.currentValue * Time.deltaTime;
 
-            if (newChar.actionPoints.Value >= maxActionPoints) {
-                newChar.actionPoints.Value -= maxActionPoints;
+            if (character.actionPoints.Value >= maxActionPoints) {
+                character.actionPoints.Value -= maxActionPoints;
+                if (character.team != "player")
+                    _enemyBehaviour.ChooseNextAction(this, character);
                 //TODO Take Action
             }
         }

@@ -2,22 +2,48 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DefaultNamespace;
 using TricksAndTreatsOrThreats.Behaviour;
 
 public partial class Character {
+    public CombatController CombatController { get; private set; }
+
+    [Header("Stats")]
+    public int level = 1;
+    public BaseStats stats;
+    public DerivedStats derivedStats;
+
+    [Header("Info")]
+    private PartyMember member;
+    public string team;
+    public Profession profession;
+    public Element element;
+    public List<Equipment> equipment;
+    public List<Skill> basicAttack = new ();
+    public List<Skill> skills = new ();
+    public StatusEffectList StatusEffectList;
+
+    public Action<CombatArgs> OnDefend;
+    public Action<CombatArgs> OnAttack;
+    public Action<CombatArgs> OnResolveDefend;
+    public Action<CombatArgs> OnResolveAttack;
+
+    private List<IPassiveSkill> passives = new ();
+
+    public PartyMember Member => member;
+    public Observable<float> actionPoints = new ();
+    public DataMap DataMap = new ();
+
     public void Initialize(CombatController cc, PartyMember member, string newTeam) {
-        name = $"{member.charName} ({newTeam})";
         CombatController = cc;
         this.member = member;
+        name = $"{member.charName} ({newTeam})";
         team = newTeam;
 
         stats = member.usedStats;
         skills = member.equipedSkills.Where(s => s && s.passiva == null).ToList();
         equipment = member.equips.ToList();
-        characterName = member.charName;
         profession = member.profession;
-        characterSprite = member.characterSprite;
-        uiSprite = member.uiSprite;
         element = member.element;
         derivedStats = new ();
 
@@ -27,50 +53,15 @@ public partial class Character {
 
         UpdateCombatValues();
         UpdateBehaviour();
+        SubscribePassives();
     }
 
-    public CombatController CombatController { get; private set; }
-
-    public string characterName;
-    [Header("Base Stats")]
-    [SerializeField]
-    public BaseStats stats;
-    public List<Equipment> equipment;
-
-    [Header("Player Combat Info")]
-    public DerivedStats derivedStats;
-
-    [Header("Advancement Info")]
-    [SerializeField]
-    public int level = 1;
-    public Profession profession;
-    public List<Skill> basicAttack = new ();
-    public List<Skill> skills = new ();
-    public Sprite characterSprite;
-    public Sprite uiSprite;
-    public string team;
-    public StatusEffectList StatusEffectList;
-    public Element element;
-    public PartyMember member;
-
-    public Action<Character> OnSetup;
-    public Action<Character> OnStartTurn;
-    public Action<Character> OnEndTurn;
-    public Action<CombatArgs> OnDefend;
-    public Action<CombatArgs> OnAttack;
-    public Action<CombatArgs> OnResolveDefend;
-    public Action<CombatArgs> OnResolveAttack;
-
-    public List<IPassiveSkill> passives = new ();
-
-    public Observable<float> actionPoints = new ();
-
-    public void SubscribePassives() {
+    private void SubscribePassives() {
         foreach (var passive in passives)
             passive.Subscribe(this);
     }
 
-    public void UnsubscribePassives() {
+    private void UnsubscribePassives() {
         foreach (var passive in passives)
             passive.Unsubscribe(this);
     }
@@ -79,18 +70,17 @@ public partial class Character {
         StatusEffectList = new StatusEffectList(this);
         derivedStats.CalculateDeviredStats(stats, profession, equipment, level);
         foreach (var equip in equipment) {
-            if (equip == null || equip.equipmentSkill == null)
-                continue;
+            if (!equip || !equip.equipmentSkill) continue;
 
-            if (equip is Weapon w) {
+            if (equip is Weapon w)
                 basicAttack.Add(w.basicAttack);
-            } else {
+            else {
                 if (!skills.Contains(equip.equipmentSkill))
                     skills.Add(equip.equipmentSkill);
             }
         }
 
-        if (basicAttack.Count == 0) 
+        if (basicAttack.Count == 0)
             basicAttack.Add(profession.basicAttack);
     }
 }

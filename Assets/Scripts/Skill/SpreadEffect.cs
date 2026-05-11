@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 [Serializable]
 public class SpreadEffect : ISkillEffect {
-    [SerializeReference, TypeDropdown(typeof(ISkillEffect))]
+    [SerializeReference, TypeDropdown]
     public ISkillEffect effect;
     public float spreadDelay;
     public float radius = 10f;

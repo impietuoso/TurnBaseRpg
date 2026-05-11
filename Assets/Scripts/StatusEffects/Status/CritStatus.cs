@@ -7,12 +7,12 @@ public class CritStatus : Status {
     public override void Apply(Character target) {
         if (TryNullifyOpposite(target)) return;
         target.OnAttack += OnAttack;
-        target.OnEndTurn += OnTurnEnd;
+        //target.OnEndTurn += OnTurnEnd;
     }
 
     public override void Remove(Character target) {
         target.OnAttack -= OnAttack;
-        target.OnEndTurn -= OnTurnEnd;
+        //target.OnEndTurn -= OnTurnEnd;
     }
 
     public override void Stack(Character target, Status other) {

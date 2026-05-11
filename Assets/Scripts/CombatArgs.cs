@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using TricksAndTreatsOrThreats.Behaviour;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -80,7 +79,7 @@ public class CombatArgs {
                 if (applyChance <= 100 - target?.derivedStats.resistance.currentValue) {
                     target.StatusEffectList.Apply(effect);
                     resist = false;
-                    Debug.Log(effect.status + " was add to queue " + target?.characterName + ".");
+                    Debug.Log(effect.status + " was add to queue " + target?.Member.charName + ".");
                 } else
                     resist = true;
             }

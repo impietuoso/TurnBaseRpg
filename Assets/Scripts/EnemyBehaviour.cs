@@ -1,75 +1,50 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TricksAndTreatsOrThreats.Behaviour;
 using UnityEngine;
 
 public class EnemyBehaviour {
     private int GetWeightedRandomIndex(float[] weights) {
-        float totalWeight = weights.Sum();
-        float randomValue = Random.Range(0, totalWeight);
+        var totalWeight = weights.Sum();
+        var randomValue = Random.Range(0, totalWeight);
         float currentSum = 0;
 
-        for (int i = 0; i < weights.Length; i++) {
+        for (var i = 0; i < weights.Length; i++) {
             currentSum += weights[i];
-            if (randomValue <= currentSum) {
+            if (randomValue <= currentSum)
                 return i;
-            }
         }
 
         return 0;
     }
 
-    public IEnumerator EnemyTurn(CombatManager cm) {
-        Character currentEnemy = cm.currentCharacter;
-        Debug.Log("Enemy Turn: " + currentEnemy.characterName);
-
-        yield return new WaitForSeconds(0.3f);
-
-        List<Skill> availableSkills = currentEnemy.skills.Where(s => s.Available(currentEnemy)).ToList();
-        Skill selectedSkill = null;
+    public void ChooseNextAction(CombatController cc, Character user) {
+        Debug.Log("Enemy Turn: " + user.Member.charName);
+        var availableSkills = user.skills.Where(s => s.Available(user)).ToList();
+        Skill skill;
 
         if (availableSkills.Count > 0) {
             // Usa Skill (60%), Ataca (30%) ou Defende (10%)
-            int choice = GetWeightedRandomIndex(new float[] { 60, 30, 10 });
-            if (choice == 0) {
-                selectedSkill = availableSkills[Random.Range(0, availableSkills.Count)];
-            } else if (choice == 1) {
-                selectedSkill = currentEnemy.basicAttack[0];
-            } else {
-                selectedSkill = cm.basicDefense;
-            }
+            var choice = GetWeightedRandomIndex(new float[] { 60, 30, 10 });
+            if (choice == 0)
+                skill = availableSkills[Random.Range(0, availableSkills.Count)];
+            else if (choice == 1)
+                skill = user.basicAttack[0];
+            else
+                skill = cc.BasicDefendSkill;
         } else {
             // Ataca (80%) ou Defende (20%)
-            int choice = GetWeightedRandomIndex(new float[] { 80, 20 });
-            var attack = currentEnemy.basicAttack[0];
-            selectedSkill = choice == 0 ? attack : cm.basicDefense;
-        }
-        
-        yield return ExecuteSkill(currentEnemy, selectedSkill, cm);
-    }
-
-    private IEnumerator ExecuteSkill(Character user, Skill skill, CombatManager cm) {
-        List<Character> potentialTargets = new List<Character>();
-        foreach (var template in cm.combatUI.characters) {
-            if (skill.animation.ValidateTarget(user, template.owner)) {
-                potentialTargets.Add(template.owner);
-            }
+            var choice = GetWeightedRandomIndex(new float[] { 80, 20 });
+            var attack = user.basicAttack[0];
+            skill = choice == 0 ? attack : cc.BasicDefendSkill;
         }
 
-        Character targetCharacter = null;
-        if (potentialTargets.Count > 0) {
-            targetCharacter = potentialTargets[Random.Range(0, potentialTargets.Count)];
+        var potentialTargets = new List<Character>();
+        foreach (var character in cc.Characters)
+            if (skill.animation.ValidateTarget(user, character))
+                potentialTargets.Add(character);
 
-            // Highlight target in UI
-            foreach (var template in cm.combatUI.characters) {
-                if (template.owner == targetCharacter) {
-                    template.ShowSelectedTarget(true);
-                    break;
-                }
-            }
-        }
-
-        yield return new WaitForSeconds(1f);
-        cm.UsingSkillOnTarget(user, skill, targetCharacter);
+        var target = potentialTargets[Random.Range(0, potentialTargets.Count)];
+        user.NextAction = potentialTargets.Count == 0 ? null : new ActionArgs(skill, user, target);
     }
 }

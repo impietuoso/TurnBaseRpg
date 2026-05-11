@@ -11,12 +11,12 @@ public class PoisonStatus : Status {
     public override void Apply(Character target) {
         if (TryNullifyOpposite(target)) return;
         target.OnDefend += OnDefend;
-        target.OnEndTurn += OnTurnEnd;
+        //target.OnEndTurn += OnTurnEnd;
     }
 
     public override void Remove(Character target) {
         target.OnDefend -= OnDefend;
-        target.OnEndTurn -= OnTurnEnd;
+        //target.OnEndTurn -= OnTurnEnd;
     }
 
     public override void Stack(Character target, Status other) {
@@ -42,7 +42,7 @@ public class PoisonStatus : Status {
         args.target = target;
         args.damage = damage;
         args.Resolve();
-        Debug.Log(target.characterName + " takes " + damage + " poison damage.");
+        Debug.Log(target.Member.charName + " takes " + damage + " poison damage.");
         
         duration.Value--;
         if (duration.Value <= 0) {

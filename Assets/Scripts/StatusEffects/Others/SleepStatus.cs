@@ -8,12 +8,12 @@ public class SleepStatus : Status {
     public override void Apply(Character target) {
         if (TryNullifyOpposite(target)) return;
         target.OnDefend += OnDefend;
-        target.OnEndTurn += OnTurnEnd;
+        //target.OnEndTurn += OnTurnEnd;
     }
 
     public override void Remove(Character target) {
         target.OnDefend -= OnDefend;
-        target.OnEndTurn -= OnTurnEnd;
+        //target.OnEndTurn -= OnTurnEnd;
     }
 
     public override void Stack(Character target, Status other) {
@@ -24,7 +24,7 @@ public class SleepStatus : Status {
 
     private void OnDefend(CombatArgs args) {
         if (args.damage > 0) {
-            Debug.Log(args.target.characterName + " woke up from damage!");
+            Debug.Log(args.target.Member.charName + " woke up from damage!");
             args.target.StatusEffectList.Remove(source);
         }
     }

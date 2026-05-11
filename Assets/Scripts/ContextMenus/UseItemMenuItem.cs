@@ -37,6 +37,8 @@ namespace TTT.ContextMenus {
             else Enqueue(User);
         }
 
+        public float GetChargeTime(Character user) => 1;
+
         IEnumerator IAction.Execute(ActionArgs args) {
             Pouch.Remove(Slot.item, 1);
             yield return Slot.item.skillEffect.Execute(args);

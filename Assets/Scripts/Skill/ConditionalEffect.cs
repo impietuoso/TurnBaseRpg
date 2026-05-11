@@ -5,7 +5,7 @@ using UnityEngine;
 [Serializable]
 public class ConditionalEffect : ISkillEffect {
     public StatusSO status;
-    [SerializeReference, TypeDropdown(typeof(ISkillEffect))]
+    [SerializeReference, TypeDropdown]
     public List<ISkillEffect> effect;
 
     public void Prepare(CombatArgs args) {

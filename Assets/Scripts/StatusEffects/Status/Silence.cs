@@ -5,11 +5,11 @@ public class Silence : Status {
 
     public override void Apply(Character target) {
         if (TryNullifyOpposite(target)) return;
-        target.OnEndTurn += OnTurnEnd;
+        //target.OnEndTurn += OnTurnEnd;
     }
 
     public override void Remove(Character target) {
-        target.OnEndTurn -= OnTurnEnd;
+        //target.OnEndTurn -= OnTurnEnd;
     }
 
     public override void Stack(Character target, Status other) {

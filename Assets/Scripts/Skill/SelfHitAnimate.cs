@@ -32,7 +32,7 @@ public class SelfHitAnimate : ISkillAnimation {
             yield return new WaitForSeconds(0.1f);
         }
 
-        Debug.Log(aArgs.User.characterName + " Defends!");
+        Debug.Log(aArgs.User.Member.charName + " Defends!");
         var args = new CombatArgs();
         args.actionArgs = aArgs;
         args.skill = skill;

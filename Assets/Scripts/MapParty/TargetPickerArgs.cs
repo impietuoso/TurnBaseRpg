@@ -19,6 +19,7 @@ namespace TricksAndTreatsOrThreats.Behaviour {
 
     public interface IAction {
         float Range { get; }
+        float GetChargeTime(Character user);
         IEnumerator Execute(ActionArgs args);
     }
 

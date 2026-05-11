@@ -1,5 +1,4 @@
-﻿using TricksAndTreatsOrThreats.Behaviour;
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class BurningStatus : Status {
@@ -10,13 +9,13 @@ public class BurningStatus : Status {
 
     public override void Apply(Character target) {
         if (TryNullifyOpposite(target)) return;
-        target.OnStartTurn += OnTurnStart;
-        target.OnEndTurn += OnTurnEnd; // To tick duration
+        //target.OnStartTurn += OnTurnStart;
+        //target.OnEndTurn += OnTurnEnd; // To tick duration
     }
 
     public override void Remove(Character target) {
-        target.OnStartTurn -= OnTurnStart;
-        target.OnEndTurn -= OnTurnEnd;
+        //target.OnStartTurn -= OnTurnStart;
+        //target.OnEndTurn -= OnTurnEnd;
     }
 
     public override void Stack(Character target, Status other) {
@@ -36,7 +35,7 @@ public class BurningStatus : Status {
         args.target = target;
         args.damage = damage;
         args.Resolve();
-        Debug.Log(target.characterName + " takes " + damage + " burning damage.");
+        Debug.Log(target.Member.charName + " takes " + damage + " burning damage.");
     }
 
     private void OnTurnEnd(Character target) {

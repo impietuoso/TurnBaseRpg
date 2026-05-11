@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Scripting;
 
+[Preserve, Serializable]
 public class ApplySkillEffect : IPassiveSkill {
     public Element element;
-    [SerializeReference, Effect]
+    [SerializeReference, TypeDropdown]
     public ISkillEffect effect;
     public void Subscribe(Character character) {
         character.OnAttack += ApplyEffect;

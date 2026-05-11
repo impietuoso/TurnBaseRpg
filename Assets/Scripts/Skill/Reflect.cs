@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using TricksAndTreatsOrThreats.Behaviour;
 using UnityEngine;
 
 [System.Serializable]
@@ -11,12 +10,12 @@ public class ReflectEffect : Status {
     public Observable<int> duration = new (3);
     public override void Apply(Character target) {
         if (TryNullifyOpposite(target)) return;
-        target.OnEndTurn += OnTurnEnd;
+        //target.OnEndTurn += OnTurnEnd;
         target.OnDefend += OnTakeDamage;
     }
 
     public override void Remove(Character target) {
-        target.OnEndTurn -= OnTurnEnd;
+        //target.OnEndTurn -= OnTurnEnd;
     }
 
     public override void Stack(Character target, Status other) {
@@ -44,7 +43,7 @@ public class ReflectEffect : Status {
     public IEnumerator ReflectDamage (CombatArgs args) {
         yield return new WaitForSeconds(0.5f);
         args.Resolve();
-        Debug.Log(args.target.characterName + " takes " + args.damage + " reflect damage.");
+        Debug.Log(args.target.Member.charName + " takes " + args.damage + " reflect damage.");
     }
     
     private void OnTurnEnd(Character target) {

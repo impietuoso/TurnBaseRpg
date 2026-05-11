@@ -12,7 +12,7 @@ namespace TTT.ContextMenus {
         public IEnumerable<IContextMenuItem> GetItems() => Actions;
 
         public CharacterCombatMenu(Character creature, ListInventory<Consumable> pouch) {
-            Title = creature.characterName;
+            Title = creature.Member.charName;
             Actions.Add(new AttackMenuItem(creature));
             Actions.Add(new DefendMenuItem(creature));
             Actions.Add(new CreatureSkillsMenu(creature));

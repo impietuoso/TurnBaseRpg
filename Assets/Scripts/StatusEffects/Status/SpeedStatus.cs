@@ -7,12 +7,12 @@ public class SpeedStatus : Status {
     public override void Apply(Character target) {
         if (TryNullifyOpposite(target)) return;
         target.derivedStats.speed.AddBonus(this, multiplier);
-        target.OnEndTurn += OnTurnEnd;
+        //target.OnEndTurn += OnTurnEnd;
     }
 
     public override void Remove(Character target) {
         target.derivedStats.speed.RemoveBonus(this);
-        target.OnEndTurn -= OnTurnEnd;
+        //target.OnEndTurn -= OnTurnEnd;
     }
 
     public override void Stack(Character target, Status other) {

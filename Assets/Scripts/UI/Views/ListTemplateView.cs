@@ -8,9 +8,9 @@ public class ListTemplateView : MonoBehaviour {
     public TextMeshProUGUI extraText;
 
     public void UpdateTemplateUI(Skill skill) {
-        if(icon) icon.sprite = skill.icon;
+        if(icon) icon.sprite = skill.Icon;
         if(nameText) nameText.text = skill.skillName;
-        if(extraText) extraText.text = skill.cost + "\n <size=14>MP</size>";
+        if(extraText) extraText.text = skill.Cost + "\n <size=14>MP</size>";
     }
     
     public void UpdateTemplateUI(Status status) {

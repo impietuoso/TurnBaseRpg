@@ -1,17 +1,15 @@
-﻿using UnityEngine;
-
-[System.Serializable]
+﻿[System.Serializable]
 public class StunStatus : Status {
     public override Observable<int> DisplayValue => duration;
     public Observable<int> duration = new (1);
 
     public override void Apply(Character target) {
         target.StatusEffectList.Remove(opposite);
-        target.OnEndTurn += OnTurnEnd;
+        //target.OnEndTurn += OnTurnEnd;
     }
 
     public override void Remove(Character target) {
-        target.OnEndTurn -= OnTurnEnd;
+        //target.OnEndTurn -= OnTurnEnd;
     }
 
     public override void Stack(Character target, Status other) {

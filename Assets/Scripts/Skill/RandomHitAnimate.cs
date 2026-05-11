@@ -17,7 +17,6 @@ public class RandomHitAnimate : ISkillAnimation {
     public GameObject skillParticle;
 
     public bool NeedTarget => true;
-    [Obsolete] public bool TrySkipSelection(Character user, Skill skill) => false;
 
     public IEnumerator Play(Skill skill, ActionArgs aArgs) {
         if (castingParticle) {
