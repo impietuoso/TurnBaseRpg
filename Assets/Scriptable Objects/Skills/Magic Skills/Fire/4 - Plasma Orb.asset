@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 4 - Plasma Orb
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: fed6ac13ef2ed21409361c8a44b09a5e, type: 3}
   skillName: Plasma Orb
   skillDescription: Massive Fire Damage to one Foe, Ignores Shield.
+  <Range>k__BackingField: 5
   cost: 35
-  icon: {fileID: 21300000, guid: fed6ac13ef2ed21409361c8a44b09a5e, type: 3}
   element: {fileID: 11400000, guid: c87196e2f5f35ce40b6d119ad1826d23, type: 2}
   animation:
     rid: 3339743010432221417
@@ -31,6 +32,7 @@ MonoBehaviour:
     - rid: 3339743010432221417
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
+        radius: 10
         singleTarget: 1
         targetEnemy: 1
         targetDead: 0

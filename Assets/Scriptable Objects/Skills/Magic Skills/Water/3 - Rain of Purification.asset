@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 3 - Rain of Purification
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 0078c4184aba9244a98576f605ad1e95, type: 3}
   skillName: Rain of Purification
   skillDescription: Medium Heal and Remove all Debuffs from the Party.
+  <Range>k__BackingField: 5
   cost: 5
-  icon: {fileID: 21300000, guid: 0078c4184aba9244a98576f605ad1e95, type: 3}
   element: {fileID: 11400000, guid: 832f2c12e4ad773419255f5ea7573eb9, type: 2}
   animation:
     rid: 3339743010432221421
@@ -32,6 +33,7 @@ MonoBehaviour:
     - rid: 3339743010432221421
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
+        radius: 10
         singleTarget: 0
         targetEnemy: 0
         targetDead: 0

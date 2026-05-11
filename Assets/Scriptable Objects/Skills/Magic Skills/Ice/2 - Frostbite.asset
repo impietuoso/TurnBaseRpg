@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Frostbite
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 5686c8dda73f7cb468ce31e7537a38aa, type: 3}
   skillName: Frostbite
   skillDescription: 'Low Ice Damage to 1 foe, if has Burning, removes Burning, cause
     Vulnerable and Deal Medium Ice Damage. '
+  <Range>k__BackingField: 5
   cost: 10
-  icon: {fileID: 21300000, guid: 5686c8dda73f7cb468ce31e7537a38aa, type: 3}
   element: {fileID: 11400000, guid: da5641991f7be5f469f5aae812cff879, type: 2}
   animation:
     rid: 9169536697585893492
@@ -33,6 +34,7 @@ MonoBehaviour:
     - rid: 9169536697585893492
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
+        radius: 10
         singleTarget: 1
         targetEnemy: 1
         targetDead: 0

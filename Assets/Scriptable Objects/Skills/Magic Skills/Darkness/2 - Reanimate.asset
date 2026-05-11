@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Reanimate
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: adc44f21e4a0b4542a647c6698ae9f70, type: 3}
   skillName: Reanimate
   skillDescription: Revives an ally with 65% max Health but with Stun and Weaken.
+  <Range>k__BackingField: 5
   cost: 10
-  icon: {fileID: 21300000, guid: adc44f21e4a0b4542a647c6698ae9f70, type: 3}
   element: {fileID: 11400000, guid: fa6150d78113bf84681d1d19061623c2, type: 2}
   animation:
     rid: 3339743010432221422
@@ -33,6 +34,7 @@ MonoBehaviour:
     - rid: 3339743010432221422
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
+        radius: 10
         singleTarget: 1
         targetEnemy: 0
         targetDead: 1

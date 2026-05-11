@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: Blade Storm
   m_EditorClassIdentifier: 
+  icon: {fileID: 412842708545245901, guid: 15ac24e280babdb43bb27639131c29ec, type: 3}
   skillName: Blade Storm
   skillDescription: Spin Attack that deals between 2 to 5 Light Physical damage to
     all foes.
+  <Range>k__BackingField: 5
   cost: 5
-  icon: {fileID: 412842708545245901, guid: 15ac24e280babdb43bb27639131c29ec, type: 3}
   element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
   animation:
     rid: 3339743010432221414
@@ -32,6 +33,7 @@ MonoBehaviour:
     - rid: 3339743010432221414
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
+        radius: 10
         singleTarget: 0
         targetEnemy: 1
         targetDead: 0

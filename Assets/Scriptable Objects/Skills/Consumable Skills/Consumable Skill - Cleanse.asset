@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: Consumable Skill - Cleanse
   m_EditorClassIdentifier: 
+  icon: {fileID: -1009742683727084556, guid: 093ec6b18acf456449c842e1f757f3be, type: 3}
   skillName: Small Heal (p)
   skillDescription: Heal a small amount of health
+  <Range>k__BackingField: 5
   cost: 0
-  icon: {fileID: -1009742683727084556, guid: 093ec6b18acf456449c842e1f757f3be, type: 3}
   element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
   animation:
     rid: 6720660755266404457
@@ -37,6 +38,7 @@ MonoBehaviour:
     - rid: 6720660755266404457
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
+        radius: 10
         singleTarget: 1
         targetEnemy: 0
         targetDead: 0

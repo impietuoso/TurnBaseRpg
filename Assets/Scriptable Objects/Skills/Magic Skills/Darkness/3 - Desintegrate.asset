@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 3 - Desintegrate
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  icon: {fileID: 21300000, guid: 84e109d77bb5d174890418fff67a7728, type: 3}
   skillName: 3 - Desintegrate
   skillDescription: 'Heavy Darkness Damage to one foe, ignores Shield, and Mana Burn. '
+  <Range>k__BackingField: 5
   cost: 10
-  icon: {fileID: 21300000, guid: 84e109d77bb5d174890418fff67a7728, type: 3}
   element: {fileID: 11400000, guid: fa6150d78113bf84681d1d19061623c2, type: 2}
   animation:
     rid: 9169536824337498264
@@ -33,6 +34,7 @@ MonoBehaviour:
     - rid: 9169536824337498264
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
+        radius: 10
         singleTarget: 1
         targetEnemy: 1
         targetDead: 0

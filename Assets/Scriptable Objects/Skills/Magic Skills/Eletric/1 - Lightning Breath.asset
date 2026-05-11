@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 1 - Lightning Breath
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: e2bde1f5acddc1847bc0f288153f826e, type: 3}
   skillName: Lightning Breath
   skillDescription: Low Lightning Damage all foes.
+  <Range>k__BackingField: 5
   cost: 10
-  icon: {fileID: 21300000, guid: e2bde1f5acddc1847bc0f288153f826e, type: 3}
   element: {fileID: 11400000, guid: 6ec57968da821214f96bb7f73d266c05, type: 2}
   animation:
     rid: 9169536824337498210
@@ -43,6 +44,7 @@ MonoBehaviour:
     - rid: 9169536824337498210
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
+        radius: 10
         singleTarget: 0
         targetEnemy: 1
         targetDead: 0

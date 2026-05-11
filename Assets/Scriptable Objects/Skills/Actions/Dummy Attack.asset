@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: Dummy Attack
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  icon: {fileID: 21300000, guid: cb1619254d776f943b9ff64bfda9a340, type: 3}
   skillName: Training Dummy Attack
   skillDescription: It almost Hurt...
+  <Range>k__BackingField: 5
   cost: 0
-  icon: {fileID: 21300000, guid: cb1619254d776f943b9ff64bfda9a340, type: 3}
   element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
   animation:
     rid: 3339743010432221460
@@ -43,6 +44,7 @@ MonoBehaviour:
     - rid: 3339743010432221460
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
+        radius: 10
         singleTarget: 1
         targetEnemy: 0
         targetDead: 0

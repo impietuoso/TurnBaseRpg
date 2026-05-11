@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Earth Shatter
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 8d528ddec1ea42a4bb264275c63c4743, type: 3}
   skillName: Earth Shatter
   skillDescription: Medium Nature Damage to 1 foe, Apply Vulnerability.
+  <Range>k__BackingField: 5
   cost: 5
-  icon: {fileID: 21300000, guid: 8d528ddec1ea42a4bb264275c63c4743, type: 3}
   element: {fileID: 11400000, guid: ddc9f8a417eb7a94d8b94dd5cc3fbdd5, type: 2}
   animation:
     rid: 3339743010432221417
@@ -32,6 +33,7 @@ MonoBehaviour:
     - rid: 3339743010432221417
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
+        radius: 10
         singleTarget: 1
         targetEnemy: 1
         targetDead: 0

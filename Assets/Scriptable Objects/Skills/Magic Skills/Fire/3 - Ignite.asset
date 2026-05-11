@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 3 - Ignite
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 655b6955474ea1d47a19968e8e70fa22, type: 3}
   skillName: Ignite
   skillDescription: Medium Fire Damage to 1 foe, if has Burning, Spread Damage and
     cause Burning.
+  <Range>k__BackingField: 5
   cost: 25
-  icon: {fileID: 21300000, guid: 655b6955474ea1d47a19968e8e70fa22, type: 3}
   element: {fileID: 11400000, guid: c87196e2f5f35ce40b6d119ad1826d23, type: 2}
   animation:
     rid: 3339743010432221417
@@ -33,6 +34,7 @@ MonoBehaviour:
     - rid: 3339743010432221417
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
+        radius: 10
         singleTarget: 1
         targetEnemy: 1
         targetDead: 0
@@ -66,6 +68,7 @@ MonoBehaviour:
         effect:
           rid: 9169536697585893486
         spreadDelay: 0.5
+        radius: 10
     - rid: 9169536697585893486
       type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
       data:

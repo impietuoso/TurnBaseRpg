@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Holy Smith
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: a91d3d7b7ab40a74bb3909f31de63f21, type: 3}
   skillName: Holy Smith
   skillDescription: Medium Holy Damage to 1 foe.
+  <Range>k__BackingField: 5
   cost: 5
-  icon: {fileID: 21300000, guid: a91d3d7b7ab40a74bb3909f31de63f21, type: 3}
   element: {fileID: 11400000, guid: 1780e3a8d3c6e2143a20683dba6786f1, type: 2}
   animation:
     rid: 3339743010432221417
@@ -31,6 +32,7 @@ MonoBehaviour:
     - rid: 3339743010432221417
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
+        radius: 10
         singleTarget: 1
         targetEnemy: 1
         targetDead: 0

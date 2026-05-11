@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 4 - Chaos Vortex
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 37d9a3ffc2557c043b8a65b89ae31d59, type: 3}
   skillName: Mistral Strike
   skillDescription: Between 3 to 6 hits of Heavy Wind Damage to all Foes, If has
     Confusion gains Vulnerable and Apply Determined to Caster.
+  <Range>k__BackingField: 5
   cost: 10
-  icon: {fileID: 21300000, guid: 37d9a3ffc2557c043b8a65b89ae31d59, type: 3}
   element: {fileID: 11400000, guid: 6e11067072e285a4cb15c48aa5e3d94b, type: 2}
   animation:
     rid: 9169536697585893492
@@ -33,6 +34,7 @@ MonoBehaviour:
     - rid: 9169536697585893492
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
+        radius: 10
         singleTarget: 0
         targetEnemy: 1
         targetDead: 0

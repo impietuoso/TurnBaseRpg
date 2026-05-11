@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Freezing Shot
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  icon: {fileID: 21300000, guid: a177565445ff99c4c9041e72116c49e7, type: 3}
   skillName: Freezing Shot
   skillDescription: 
+  <Range>k__BackingField: 5
   cost: 0
-  icon: {fileID: 21300000, guid: a177565445ff99c4c9041e72116c49e7, type: 3}
   element: {fileID: 11400000, guid: da5641991f7be5f469f5aae812cff879, type: 2}
   animation:
     rid: 9169536824337498295
@@ -31,6 +32,7 @@ MonoBehaviour:
     - rid: 9169536824337498295
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
+        radius: 10
         singleTarget: 1
         targetEnemy: 1
         targetDead: 0

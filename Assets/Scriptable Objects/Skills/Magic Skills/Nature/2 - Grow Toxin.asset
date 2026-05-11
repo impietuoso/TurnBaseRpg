@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Grow Toxin
   m_EditorClassIdentifier: 
+  icon: {fileID: 1680889114686643296, guid: 7d2cba3bb5537fe4ab23d7026f1f0223, type: 3}
   skillName: Grow Toxin
   skillDescription: Low Nature Damage to all foes and Apply Poison.
+  <Range>k__BackingField: 5
   cost: 5
-  icon: {fileID: 1680889114686643296, guid: 7d2cba3bb5537fe4ab23d7026f1f0223, type: 3}
   element: {fileID: 11400000, guid: ddc9f8a417eb7a94d8b94dd5cc3fbdd5, type: 2}
   animation:
     rid: 3339743010432221417
@@ -33,6 +34,7 @@ MonoBehaviour:
     - rid: 3339743010432221417
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
+        radius: 10
         singleTarget: 1
         targetEnemy: 1
         targetDead: 0

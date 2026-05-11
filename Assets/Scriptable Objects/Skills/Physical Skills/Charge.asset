@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: Charge
   m_EditorClassIdentifier: Assembly-CSharp::Skill
+  icon: {fileID: 21300000, guid: 7641375d63a404b4bbb76a954fba4163, type: 3}
   skillName: Charge
   skillDescription: Charge!
+  <Range>k__BackingField: 5
   cost: 10
-  icon: {fileID: 21300000, guid: 7641375d63a404b4bbb76a954fba4163, type: 3}
   element: {fileID: 11400000, guid: c816b1abfa08e484995980d5c00bc367, type: 2}
   animation:
     rid: 7065366262496624755
@@ -49,6 +50,7 @@ MonoBehaviour:
     - rid: 7065366262496624755
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
+        radius: 10
         singleTarget: 0
         targetEnemy: 1
         targetDead: 0

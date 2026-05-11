@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 2 - Chain Lightning
   m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: a4c4595acbf93d640bad455b532b8e60, type: 3}
   skillName: Chain Lightning
   skillDescription: Medium Lightning Damage to all foes and gain Quickning.
+  <Range>k__BackingField: 5
   cost: 10
-  icon: {fileID: 21300000, guid: a4c4595acbf93d640bad455b532b8e60, type: 3}
   element: {fileID: 11400000, guid: 6ec57968da821214f96bb7f73d266c05, type: 2}
   animation:
     rid: 3339743010432221418
@@ -32,6 +33,7 @@ MonoBehaviour:
     - rid: 3339743010432221418
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
+        radius: 10
         singleTarget: 0
         targetEnemy: 1
         targetDead: 0

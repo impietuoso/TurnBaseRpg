@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c2bca7e4d9f4242babbdef274e2d92, type: 3}
   m_Name: 3 - Splinter Crown
   m_EditorClassIdentifier: 
+  icon: {fileID: -8067978381563143127, guid: 7c1bc47564cf71b4ba142d6c41282902, type: 3}
   skillName: Quicksand
   skillDescription: Medium Nature Damage to 1 foe, Apply Vulnerable and Bleeding.
+  <Range>k__BackingField: 5
   cost: 5
-  icon: {fileID: -8067978381563143127, guid: 7c1bc47564cf71b4ba142d6c41282902, type: 3}
   element: {fileID: 11400000, guid: ddc9f8a417eb7a94d8b94dd5cc3fbdd5, type: 2}
   animation:
     rid: 3339743010432221417
@@ -33,6 +34,7 @@ MonoBehaviour:
     - rid: 3339743010432221417
       type: {class: MultiHitAnimate, ns: , asm: Assembly-CSharp}
       data:
+        radius: 10
         singleTarget: 1
         targetEnemy: 1
         targetDead: 0
