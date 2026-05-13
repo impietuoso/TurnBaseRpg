@@ -1,25 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-[Serializable, CreateAssetMenu(fileName = "New Party Member", menuName = "Scriptable/PartyMember")]
-public class PartyMember : ScriptableObject {
+[Serializable, CreateAssetMenu(menuName = "Scriptable/PartyMember")]
+public class PartyMember : ScriptableObject, IAttributes, IStats {
     public string charName;
     public int level;
-    public BaseStats usedStats;
+    public Attributes usedStats;
     public Profession profession;
     public Element element;
-    [ShowEquipmentTypeAtribute] public ObservableList<Equipment> equips;
+    [EquipArray] public ObservableList<Equipment> equips;
     public ObservableList<Skill> equipedSkills;
     public ObservableList<Skill> learnedSkills;
     public Sprite characterSprite;
     public Sprite uiSprite;
 
-    public int GetUnusedPoints() {
-        var maxPoints = (level - 1) * 2 + 25;
-        var usedPoints = 0;
-        foreach (var stat in usedStats) {
-            usedPoints += stat;
-        }
-        return maxPoints - usedPoints;
+    public int GetUnusedPoints() => level * 2 - usedStats.Sum();
+
+    public IEnumerable<IStats> GetStatsBonus() {
+        foreach (var equip in equips)
+            if (equip is IStats s)
+                yield return s;
     }
+
+    public int this[Attribute a] => usedStats[a] + profession.InitialStats[a] + equips.Sum(i => i[a]);
+    public int this[Stat s] => equips.Sum(i => i[s]);
 }

@@ -11,7 +11,7 @@ public class DefenseSkill : ISkillEffect {
         return user == target;
     }
 
-    public void Prepare(CombatArgs args) {
+    public void PrepareArgs(CombatArgs args) {
         args.skillElement = args.skill.element;
         //TODO args.user.OnStartTurn += OnStartTurn;
         args.user.OnDefend += OnDefend;

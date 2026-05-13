@@ -5,7 +5,7 @@ public class LoadSave : MonoBehaviour {
     public SaveFile save;
     public List<PartyMember> initialParty;
     public List<PartyMember> availableCharacters;
-    public ListInventory<Item> initialItens;
+    public ListInventory<InventoryItem> initialItens;
     public List<EnemyEncounter> encounters;
     public SaveView views;
     public ListView encounterListView;

@@ -8,10 +8,10 @@ public class ConditionalEffect : ISkillEffect {
     [SerializeReference, TypeDropdown]
     public List<ISkillEffect> effect;
 
-    public void Prepare(CombatArgs args) {
+    public void PrepareArgs(CombatArgs args) {
         if (args.target.StatusEffectList.Contain(status)) {
             foreach (var item in effect) {
-                item.Prepare(args);
+                item.PrepareArgs(args);
             }
         }
     }

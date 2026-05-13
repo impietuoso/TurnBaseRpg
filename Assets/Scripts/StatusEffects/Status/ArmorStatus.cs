@@ -1,17 +1,19 @@
-﻿[System.Serializable]
+﻿using System;
+
+[Obsolete,Serializable]
 public class ArmorStatus : Status {
     public override Observable<int> DisplayValue => duration;
     public Observable<int> duration = new (3);
     public float multiplier = 1.3f;
 
     public override void Apply(Character target) {
-        if (TryNullifyOpposite(target)) return;
-        target.derivedStats.armor.AddBonus(this, multiplier);
-        //target.OnEndTurn += OnTurnEnd;
+        // if (TryNullifyOpposite(target)) return;
+        // target.derivedStats.armor.AddBonus(this, multiplier);
+        // //target.OnEndTurn += OnTurnEnd;
     }
 
     public override void Remove(Character target) {
-        target.derivedStats.armor.RemoveBonus(this);
+        // target.derivedStats.armor.RemoveBonus(this);
         //target.OnEndTurn -= OnTurnEnd;
     }
 

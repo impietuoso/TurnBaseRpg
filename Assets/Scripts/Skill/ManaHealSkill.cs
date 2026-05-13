@@ -7,14 +7,14 @@ public class ManaHealSkill : ISkillEffect {
     [Range(0f, 1f)]
     public float manaHealPercentage = 0.2f;
 
-    public void Prepare(CombatArgs args) {
+    public void PrepareArgs(CombatArgs args) {
         args.OnResolve += HealMana;
     }
 
     public void HealMana(CombatArgs args) {
-        args.OnResolve -= HealMana;////manaHeal
-        var heal = args.user.derivedStats.mana.maxValue * manaHealPercentage;
+        args.OnResolve -= HealMana; ////manaHeal
+        var heal = args.user.Mana.Max * manaHealPercentage;
         if (heal == 0 || args.result.miss) return;
-        args.user.derivedStats.mana.AddClampedBaseValue((int)heal);
+        args.user.Mana.Current += (int)heal;
     }
 }

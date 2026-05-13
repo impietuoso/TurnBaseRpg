@@ -8,13 +8,13 @@ namespace TricksAndTreatsOrThreats
     public class Species : DatabaseItem
     {
         [SerializeField] private List<Race> races;
-        private ScoreList<Stat> _stats;
+        private ScoreList<BonusStat> _stats;
         private ScoreList<Activity> _activities;
 
         public IReadOnlyList<Race> Races => races ??= GetRaces(this);
 
-        public IScoreList<Stat> Stats => _stats ??= Races.Aggregate(
-            new ScoreList<Stat>(), (result, r) =>
+        public IScoreList<BonusStat> Stats => _stats ??= Races.Aggregate(
+            new ScoreList<BonusStat>(), (result, r) =>
             {
                 foreach (var pair in r.Stats)
                     if (pair.Score > result[pair.Key])

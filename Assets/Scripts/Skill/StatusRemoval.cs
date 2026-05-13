@@ -7,7 +7,7 @@ public class StatusRemoval : ISkillEffect {
     public bool removeAll;
     public StatusSO removedStatus;
 
-    public void Prepare(CombatArgs args) {
+    public void PrepareArgs(CombatArgs args) {
         var statusList = args.target.StatusEffectList.StatusList;
         if (removeAll) {
             var toRemove = new List<StatusSO>();

@@ -17,7 +17,7 @@ namespace TricksAndTreatsOrThreats
         {
             var species = a.race.Species;
             var race = DRandom.From(a.race, b.race);
-            var stats = species.Stats.Select(max => new ScoreT<Stat>(max.Key,
+            var stats = species.Stats.Select(max => new ScoreT<BonusStat>(max.Key,
                 RollStat(args, a.stats[max.Key], b.stats[max.Key], max.Score)));
 
             return new Creature

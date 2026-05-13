@@ -9,9 +9,9 @@ public enum Retarget {
 }
 
 [Preserve, Serializable]
-public abstract class CombatArgsPassive : IPassiveSkill {
+public abstract class CombatArgsPassive : IPassive {
     [SerializeReference, TypeInstance] private ICombatArgsFilter condition;
-    [SerializeReference, TypeInstance] private Retarget retarget = Retarget.User;
+    [SerializeField] private Retarget retarget = Retarget.User;
     [SerializeReference, TypeInstance] private ISkillEffect[] effects;
 
     protected abstract void SubscribeCondition(Character character);
@@ -29,7 +29,7 @@ public abstract class CombatArgsPassive : IPassiveSkill {
         triggerArgs.user = args.user;
         triggerArgs.target = retarget == Retarget.User ? args.user : args.target;
 
-        foreach (var e in effects) e.Prepare(triggerArgs);
+        foreach (var e in effects) e.PrepareArgs(triggerArgs);
         triggerArgs.Resolve();
     }
 }

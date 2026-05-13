@@ -8,15 +8,15 @@ public class HealSkill : ISkillEffect {
     [Range(0f, 1f)]
     public float healthPercentage = 0.2f;
     public float statMultiplier;
-    public StatName healStatScale;
+    public Attribute healEStatScale;
     
-    public void Prepare(CombatArgs args) {
-        int finalHeal = 0;
+    public void PrepareArgs(CombatArgs args) {
+        var finalHeal = 0;
         if (isPercentageHeal) {
-            finalHeal = Mathf.RoundToInt(args.target.derivedStats.health.maxValue * healthPercentage);
+            finalHeal = Mathf.RoundToInt(args.target.Health.Max * healthPercentage);
         } else {
-            var healStat = healStatScale;
-            var healStatValue = args.user.stats[healStat] * statMultiplier;
+            var healStat = healEStatScale;
+            var healStatValue = args.user[healStat] * statMultiplier;
 
             finalHeal = Mathf.RoundToInt(healAmount + healStatValue);
         }

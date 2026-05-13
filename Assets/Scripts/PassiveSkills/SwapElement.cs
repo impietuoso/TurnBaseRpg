@@ -1,4 +1,4 @@
-﻿public class SwapSkillElement : IPassiveSkill {
+﻿public class SwapElement : IPassive {
     public Element originalElement;
     public Element newElement;
     public void Subscribe(Character character) {

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class SingleStatManager : MonoBehaviour {
     public PartyMemberView member;
     public StatsManager manager;
-    public StatName statName;
+    public Attribute eStat;
 
     [Header("UI")]
     public TextMeshProUGUI atributeValueText;
@@ -13,12 +13,12 @@ public class SingleStatManager : MonoBehaviour {
     public Button downButton;
 
     public void LevelUp() {
-        if (member.Data.GetUnusedPoints() > 0) member.Data.usedStats[statName]++;
+        if (member.Data.GetUnusedPoints() > 0) member.Data.usedStats[eStat]++;
         manager.UpdateStatsValue();
     }
 
     public void LevelDown() {
-        if (member.Data.usedStats[statName] > 5) member.Data.usedStats[statName]--;
+        if (member.Data.usedStats[eStat] > 5) member.Data.usedStats[eStat]--;
         manager.UpdateStatsValue();
     }
 

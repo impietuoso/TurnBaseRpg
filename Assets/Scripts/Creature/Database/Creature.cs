@@ -7,7 +7,7 @@ namespace TricksAndTreatsOrThreats
     {
         public string nickname;
         public Race race;
-        public ScoreList<Stat> stats;
+        public ScoreList<BonusStat> stats;
         public ScoreList<Activity> activities;
         public Anatomy anatomy;
 

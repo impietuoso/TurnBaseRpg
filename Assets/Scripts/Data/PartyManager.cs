@@ -21,7 +21,7 @@ public class PartyManager : MonoBehaviour {
         var targetIndex = view.transform.GetSiblingIndex() - 1;
         var removedCharacter = loadView.save.currentParty[targetIndex];
         loadView.save.currentParty[targetIndex] = null;
-        for (int i = 0; i < loadView.save.players.Count; i++) {
+        for (var i = 0; i < loadView.save.players.Count; i++) {
             if (loadView.save.players[i] == null) {
                 loadView.save.players[i] = removedCharacter;
                 break;

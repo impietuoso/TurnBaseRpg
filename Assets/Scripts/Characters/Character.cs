@@ -8,18 +8,11 @@ using TricksAndTreatsOrThreats.Behaviour;
 public partial class Character {
     public CombatController CombatController { get; private set; }
 
-    [Header("Stats")]
-    public int level = 1;
-    public BaseStats stats;
-    public DerivedStats derivedStats;
-
     [Header("Info")]
     private PartyMember member;
     public bool isAlly;
-    public Profession profession;
     public Element element;
-    public List<Equipment> equipment;
-    public List<Skill> basicAttack = new ();
+    [Obsolete] public List<Skill> basicAttack = new ();
     public List<Skill> skills = new ();
     public StatusEffectList StatusEffectList;
 
@@ -28,59 +21,47 @@ public partial class Character {
     public Action<CombatArgs> OnResolveDefend;
     public Action<CombatArgs> OnResolveAttack;
 
-    private List<IPassiveSkill> passives = new ();
+    private List<IPassive> passives = new ();
 
     public PartyMember Member => member;
     public DataMap DataMap = new ();
 
-    public void Initialize(CombatController cc, PartyMember memberOjb, bool allyTeam) {
+    public void Spawn(CombatController cc, PartyMember memberOjb, bool allyTeam) {
         CombatController = cc;
         member = memberOjb;
         name = member.charName;
         isAlly = allyTeam;
         if (!allyTeam) name += " (wild)";
 
-        stats = member.usedStats;
-        skills = member.equipedSkills.Where(s => s && s.passiva == null).ToList();
-        equipment = member.equips.ToList();
-        profession = member.profession;
         element = member.element;
-        derivedStats = new ();
+        skills = member.equipedSkills.Where(s => s && s.animation != null).ToList();
 
-        passives = member.equips.Where(e => e && e.passiva != null).Select(e => e.passiva)
-            .Concat(member.equipedSkills.Where(s => s && s.passiva != null).Select(e => e.passiva))
-            .ToList();
 
-        UpdateCombatValues();
+        InitializeStats();
         UpdateBehaviour();
         SubscribePassives();
     }
 
+    public void Despawn() {
+        UnsubscribePassives();
+        Destroy(gameObject);
+    }
+
     private void SubscribePassives() {
-        foreach (var passive in passives)
-            passive.Subscribe(this);
+        foreach (var equip in member.equips)
+            if (equip && equip.passive != null)
+                equip.passive.Subscribe(this);
+        foreach (var skill in member.equipedSkills)
+            if (skill && skill.passiva != null)
+                skill.passiva.Subscribe(this);
     }
 
     private void UnsubscribePassives() {
-        foreach (var passive in passives)
-            passive.Unsubscribe(this);
-    }
-
-    private void UpdateCombatValues() {
-        StatusEffectList = new StatusEffectList(this);
-        derivedStats.CalculateDeviredStats(stats, profession, equipment, level);
-        foreach (var equip in equipment) {
-            if (!equip || !equip.equipmentSkill) continue;
-
-            if (equip is Weapon w)
-                basicAttack.Add(w.basicAttack);
-            else {
-                if (!skills.Contains(equip.equipmentSkill))
-                    skills.Add(equip.equipmentSkill);
-            }
-        }
-
-        if (basicAttack.Count == 0)
-            basicAttack.Add(profession.basicAttack);
+        foreach (var equip in member.equips)
+            if (equip && equip.passive != null)
+                equip.passive.Unsubscribe(this);
+        foreach (var skill in member.equipedSkills)
+            if (skill && skill.passiva != null)
+                skill.passiva.Unsubscribe(this);
     }
 }

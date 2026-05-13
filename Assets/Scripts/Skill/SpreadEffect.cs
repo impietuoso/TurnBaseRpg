@@ -8,7 +8,7 @@ public class SpreadEffect : ISkillEffect {
     public float spreadDelay;
     public float radius = 10f;
 
-    public void Prepare(CombatArgs args) {
+    public void PrepareArgs(CombatArgs args) {
         foreach (var newTarget in args.user.CombatController.Characters) {
             if (ValidateTarget(args.target, newTarget)) {
                 var newArgs = new CombatArgs();
@@ -18,7 +18,7 @@ public class SpreadEffect : ISkillEffect {
                 newArgs.user = args.user;
                 newArgs.source = args.source;
                 newArgs.unavoidable = true;
-                effect.Prepare(newArgs);
+                effect.PrepareArgs(newArgs);
                 args.OnResolve += _=> args.user.CombatController.StartCoroutine(ResolveSpread(newArgs));
             }
         }
@@ -30,9 +30,9 @@ public class SpreadEffect : ISkillEffect {
     }
     
     public bool ValidateTarget(Character user, Character target) {
-        bool sameTeam = user.isAlly == target.isAlly;
-        bool alive = target.derivedStats.health.currentValue > 0;
-        bool notSelf = target != user;
+        var sameTeam = user.isAlly == target.isAlly;
+        var alive = target.Health.Current > 0;
+        var notSelf = target != user;
         return sameTeam && alive && notSelf;
     }
 }

@@ -38,7 +38,7 @@ public class SelfHitAnimate : ISkillAnimation {
         args.source = this;
 
         foreach (var effect in skill.skillEffects)
-            effect.Prepare(args);
+            effect.PrepareArgs(args);
 
         var parent = args.target.SpriteRenderer.transform;
         UnityEngine.Object.Instantiate(skillParticle, parent);

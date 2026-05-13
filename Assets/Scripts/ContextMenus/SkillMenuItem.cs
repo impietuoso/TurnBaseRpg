@@ -20,7 +20,7 @@ namespace TTT.ContextMenus {
         public virtual string Title => Skill.skillName;
         public virtual Sprite Icon => Skill.Icon;
         public virtual Color Color => ContextMenuAssets.Instance.SkillColor;
-        public bool Enabled => User.derivedStats.mana.currentValue >= Skill.Cost;
+        public bool Enabled => User.Mana.Current >= Skill.Cost;
 
         private void Enqueue(ITarget tgt) => User.NextAction = new (Skill, User, tgt);
         private bool Validate(ITarget tgt) => Skill.animation.ValidateTarget(User, tgt);

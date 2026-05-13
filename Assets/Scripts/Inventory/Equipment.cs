@@ -1,23 +1,35 @@
-﻿using UnityEngine;
+﻿using Drafts;
+using UnityEngine;
+
+public enum EquipSlot {
+    None,
+    Infusion,
+    Coat,
+    Core,
+    Misc,
+}
 
 [CreateAssetMenu(menuName = "Scriptable/Item/Equipment", fileName = "New Equipment")]
-public class Equipment : Item {
-    public EquipmentType equipmentType;
-    public Tag categoryTag;
-    public DerivedStatsBase bonusValue;
-    public Skill equipmentSkill;
-    [SerializeReference, TypeDropdown] public IPassiveSkill passiva;
+public class Equipment : InventoryItem, IAttributes, IStats {
+    [SerializeField] private Tag category;
+    [SerializeReference, TypeInstance, Separator] public IPassive passive;
+
+    public virtual EquipSlot EquipSlot { get; }
+    public Tag Category => category;
 
     public string BonusText() {
         var resume = "<b>" + displayName + ":</b>\n";
-        if (bonusValue.damage != 0) resume += $"Damage: {bonusValue.damage}\n";
-        if (bonusValue.health != 0) resume += $"Health: {bonusValue.health}\n";
-        if (bonusValue.mana != 0) resume += $"Mana: {bonusValue.mana}\n";
-        if (bonusValue.shield != 0) resume += $"Shield: {bonusValue.shield}\n";
-        if (bonusValue.speed != 0) resume += $"Speed: {bonusValue.speed}\n";
-        if (bonusValue.armor != 0) resume += $"Armor: {bonusValue.armor}\n";
-        if (bonusValue.resistance != 0) resume += $"Resistance: {bonusValue.resistance}\n";
-        if (bonusValue.evade != 0) resume += $"Evade: {bonusValue.evade}\n";
+        foreach (var attr in Attributes.All) {
+            var v = this[attr];
+            if (v > 0) resume += $"{attr}: {v}\n";
+        }
+        foreach (var stat in Stats.All) {
+            var v = this[stat];
+            if (v > 0) resume += $"{stat}: {v}\n";
+        }
         return resume;
     }
+
+    public virtual int this[Attribute attribute] => 0;
+    public virtual int this[Stat stat] => 0;
 }

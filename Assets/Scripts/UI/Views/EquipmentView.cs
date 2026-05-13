@@ -15,7 +15,7 @@ public class EquipmentView : DataView<Equipment> {
     }
 
     protected override void Subscribe() {
-        if (icon) icon.overrideSprite = Data.sprite;
+        if (icon) icon.overrideSprite = Data.Icon;
         if (nameText) nameText.text = Data.displayName;
         if (descriptionText) descriptionText.text = Data.description;
         if (bonusText) bonusText.text = Data.BonusText();

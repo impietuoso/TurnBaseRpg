@@ -13,7 +13,7 @@ namespace TTT.ContextMenus {
                 PickerArgs = new (Validate, Enqueue)
                 {
                     User = user,
-                    Icon = slot.item.sprite,
+                    Icon = slot.item.Icon,
                     ArrowColor = Color.green,
                 };
         }
@@ -23,7 +23,7 @@ namespace TTT.ContextMenus {
         public Slot<Consumable> Slot { get; }
         public TargetPickerArgs PickerArgs { get; }
         public string Title => Slot.item.displayName + " x" + Slot.amount;
-        public Sprite Icon => Slot.item.sprite;
+        public Sprite Icon => Slot.item.Icon;
         public Color Color => ContextMenuAssets.Instance.ItemColor;
         public bool Enabled => Slot.amount > 0;
         public float Range => 3f;

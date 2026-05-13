@@ -23,31 +23,33 @@ public class CombatArgs {
     public int hitChance;
     public Element skillElement;
     public CombatResult result;
-    public List<StatusSO> statusEffects = new();
+    public List<StatusSO> statusEffects = new ();
     public Action<CombatArgs> OnResolve;
-    
+    public readonly List<ISkillEffect> Effects = new ();
+
     public void Resolve() {
         if (result != null) return;
-        user?.OnAttack?.Invoke(this);
-        target?.OnDefend?.Invoke(this);
-        float chance = Random.Range(0f, 100f);
+        if (!target) throw new ArgumentNullException(nameof(target));
 
+        user?.OnAttack?.Invoke(this);
+        target.OnDefend?.Invoke(this);
+        var chance = Random.Range(0f, 100f);
         var miss = !unavoidable && chance > hitChance;
 
-        int previousHp = target?.derivedStats.health.currentValue ?? 0;
-        int previousMp = target?.derivedStats.mana.currentValue ?? 0;
-        int previousShield = target?.derivedStats.shield.currentValue ?? 0;
-        float currentCriticalChance = Random.Range(0f, 100f);
+        var previousHp = target.Health.Current;
+        var previousMp = target.Mana.Current;
+        var previousShield = target.Shield.Current;
+        var currentCriticalChance = Random.Range(0f, 100f);
 
         if (!ignoreArmor) {
-            damage = Mathf.Max(damage - (target?.derivedStats.armor.currentValue ?? 0), 0);
+            damage = Mathf.Max(damage - target.Stats.Armor.Total, 0);
         }
 
         if (!miss) {
             if (currentCriticalChance <= criticalChance) damage *= 2;
             if (!ignoreShield) {
-                var currentShield = target?.derivedStats.shield.currentValue ?? 0;
-                target?.derivedStats.shield.AddClampedBaseValue(-damage);
+                var currentShield = target.Shield.Current;
+                target.Shield.Current -= damage;
                 damage = Mathf.Max(damage - currentShield, 0);
             }
         } else {
@@ -55,48 +57,47 @@ public class CombatArgs {
         }
 
         if (skillElement) {
-            if (target?.element.weak.Contains(skillElement)??false)
+            if (target.element.weak.Contains(skillElement))
                 damage = (int)(damage * 1.2f);
-            else if (skillElement.weak.Contains(target?.element))
+            else if (skillElement.weak.Contains(target.element))
                 damage = (int)(damage * 0.8f);
         }
 
-        target?.derivedStats.health.AddClampedBaseValue(heal - damage);
-        target?.derivedStats.mana.AddClampedBaseValue(mana);
-        target?.derivedStats.shield.AddClampedBaseValue(shield);
-
-        user?.derivedStats.mana.AddClampedBaseValue(manaHeal);
+        target.Health.Current += heal - damage;
+        target.Mana.Current += mana;
+        target.Shield.Current += shield;
+        if (user) user.Mana.Current += manaHeal;
 
         var resist = false;
 
         foreach (var effect in statusEffects) {
-            if (effect.statusType != StatusType.debuff) target?.StatusEffectList.Apply(effect);
+            if (effect.statusType != StatusType.debuff) target.StatusEffectList.Apply(effect);
             else {
                 if (!actionArgs.Flags.Add(effect)) {
                     continue;
                 }
                 var applyChance = Random.Range(0, 100);
-                if (applyChance <= 100 - target?.derivedStats.resistance.currentValue) {
+                if (applyChance <= 100 - target.Stats.Resistance.Total) {
                     target.StatusEffectList.Apply(effect);
                     resist = false;
-                    Debug.Log(effect.status + " was add to queue " + target?.Member.charName + ".");
+                    Debug.Log(effect.status + " was add to queue " + target.Member.charName + ".");
                 } else
                     resist = true;
             }
         }
 
         result = new CombatResult();
-        result.deltaShield = (target?.derivedStats.shield.currentValue ?? 0) - previousShield;
-        result.deltaHp = (target?.derivedStats.health.currentValue ?? 0) - previousHp;
+        result.deltaShield = target.Shield.Current - previousShield;
+        result.deltaHp = target.Health.Current - previousHp;
         result.isCrit = currentCriticalChance <= criticalChance && !miss;
-        result.isFatal = target?.derivedStats.health.currentValue == 0 && result.deltaHp < 0;
-        result.isRevive = previousHp == 0 && target?.derivedStats.health.currentValue > 0;
+        result.isFatal = target.Health.Current == 0 && result.deltaHp < 0;
+        result.isRevive = previousHp == 0 && target.Health.Current > 0;
         result.miss = miss;
         result.resistStatus = resist;
-        result.deltaMp = (target?.derivedStats.mana.currentValue ?? 0) - previousMp;
+        result.deltaMp = target.Mana.Current - previousMp;
 
         user?.OnResolveAttack?.Invoke(this);
-        target?.OnResolveDefend?.Invoke(this);
+        target.OnResolveDefend?.Invoke(this);
 
         OnResolve?.Invoke(this);
 

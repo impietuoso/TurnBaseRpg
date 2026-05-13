@@ -17,13 +17,13 @@ public class StatusEffectList
 
     public void Apply(StatusSO so)
     {
-        if (statusList.TryGetValue(so, out Status existingStatus))
+        if (statusList.TryGetValue(so, out var existingStatus))
         {
             existingStatus.Stack(target, so.status);
         }
         else
         {
-            Status newStatus = so.Clone();
+            var newStatus = so.Clone();
             if (newStatus == null)
                 return;
             if (so.status.opposite && statusList.ContainsKey(so.status.opposite))
@@ -41,7 +41,7 @@ public class StatusEffectList
 
     public void Remove(StatusSO so)
     {
-        if (statusList.TryGetValue(so, out Status status))
+        if (statusList.TryGetValue(so, out var status))
         {
             status.Remove(target);
             statusList.Remove(so);

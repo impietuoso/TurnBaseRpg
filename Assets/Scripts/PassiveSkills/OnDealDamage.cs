@@ -2,7 +2,7 @@
 using TricksAndTreatsOrThreats.Behaviour;
 
 [Serializable]
-public class OnDealDamage : IPassiveSkill {
+public class OnDealDamage : IPassive {
     public Element element;
     public Skill selfUseSkill;
     public bool castOnSelf;

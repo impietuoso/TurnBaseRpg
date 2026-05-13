@@ -1,4 +1,6 @@
-﻿[System.Serializable]
+﻿using System;
+
+[Obsolete,Serializable]
 public class SpeedStatus : Status {
     public override Observable<int> DisplayValue => duration;
     public Observable<int> duration = new (3);
@@ -6,12 +8,12 @@ public class SpeedStatus : Status {
 
     public override void Apply(Character target) {
         if (TryNullifyOpposite(target)) return;
-        target.derivedStats.speed.AddBonus(this, multiplier);
+        //target.derivedStats.speed.AddBonus(this, multiplier);
         //target.OnEndTurn += OnTurnEnd;
     }
 
     public override void Remove(Character target) {
-        target.derivedStats.speed.RemoveBonus(this);
+        //target.derivedStats.speed.RemoveBonus(this);
         //target.OnEndTurn -= OnTurnEnd;
     }
 

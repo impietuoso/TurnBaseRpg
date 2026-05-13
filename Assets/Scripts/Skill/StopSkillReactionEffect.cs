@@ -1,5 +1,5 @@
 ﻿public class StopSkillReactionEffect : ISkillEffect {
-    public void Prepare(CombatArgs args) {
+    public void PrepareArgs(CombatArgs args) {
         args.stopReactionAttacks = true;
     }
 }

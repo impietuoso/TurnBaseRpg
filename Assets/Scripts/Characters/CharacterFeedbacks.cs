@@ -3,15 +3,15 @@ using UnityEngine;
 [RequireComponent(typeof(Character))]
 public class CharacterFeedbacks : DataView<Character> {
     [SerializeField] private SpriteRenderer characterSprite;
-    [SerializeField] private StatView healthView;
-    [SerializeField] private StatView shieldView;
+    // [SerializeField] private ResourceStatView healthView;
+    // [SerializeField] private ResourceStatView shieldView;
     [SerializeField] private StatusEffectListView statusEffectView;
 
     private void Start() => SetData(GetComponent<Character>());
 
     protected override void Subscribe() {
-        if (healthView) healthView.SetStat(Data.derivedStats.health);
-        if (shieldView) shieldView.SetStat(Data.derivedStats.shield);
+        // if (healthView) healthView.SetStat(Data.Health);
+        // if (shieldView) shieldView.SetStat(Data.Stats.Shield);
         if (statusEffectView) statusEffectView.SetData(Data.StatusEffectList);
 
         Data.StatusEffectList.OnStatusAdded += HandleNewStat;
@@ -24,7 +24,7 @@ public class CharacterFeedbacks : DataView<Character> {
     }
 
     private void HandleHealthChanged(CombatArgs args) {
-        Color damageColor = args.result switch
+        var damageColor = args.result switch
         {
             { miss: true } => Color.white,
             { resistStatus: true } => Color.orange,

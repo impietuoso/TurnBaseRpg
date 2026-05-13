@@ -8,7 +8,7 @@ public class ManaBurnSkill : ISkillEffect {
     [Range(0f, 1f)]
     public float damagePercentage;
 
-    public void Prepare(CombatArgs args) {
+    public void PrepareArgs(CombatArgs args) {
         if(useDamageDealt) args.OnResolve += GetDamage;
             else args.mana = -manaBurn;
     }

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Scripting;
 
 [Preserve, Serializable]
-public class ApplySkillEffect : IPassiveSkill {
+public class ApplyEffect : IPassive {
     public Element element;
     [SerializeReference, TypeDropdown]
     public ISkillEffect effect;
@@ -17,6 +17,6 @@ public class ApplySkillEffect : IPassiveSkill {
 
     public void ApplyEffect(CombatArgs args) {
         if (element && args.skillElement != element) return;
-        effect.Prepare(args);
+        effect.PrepareArgs(args);
     }
 }

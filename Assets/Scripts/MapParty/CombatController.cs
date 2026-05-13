@@ -20,7 +20,7 @@ namespace TricksAndTreatsOrThreats.Behaviour {
         [SerializeField] private ContextMenuView contextMenu;
         [SerializeField] private CallPopupText callPopup;
 
-        [SerializeField] private float maxActionPoints = 10f;
+        [SerializeField] private float tickRate = .5f;
         [SerializeField] private float manaRegenPercent = .1f;
         [SerializeField] private bool enablePlayerBehaviour;
         [SerializeField] private bool enableEnemyBehaviour;
@@ -41,6 +41,7 @@ namespace TricksAndTreatsOrThreats.Behaviour {
         private readonly List<Character> _enemies = new ();
 
         private Camera _camera;
+        private float _tickCounter;
 
         private void Awake() {
             if (Instance) {
@@ -59,7 +60,7 @@ namespace TricksAndTreatsOrThreats.Behaviour {
         public Character Spawn(PartyMember member, bool isAlly, Vector3 position) {
             var clone = Instantiate(characterPrefab, transform);
             clone.transform.position = position;
-            clone.Initialize(this, member, isAlly);
+            clone.Spawn(this, member, isAlly);
 
             _characters.Add(clone);
             if (isAlly) _allies.Add(clone);
@@ -71,27 +72,32 @@ namespace TricksAndTreatsOrThreats.Behaviour {
         }
 
         private void Update() {
-            foreach (var character in Characters) {
-                TickStatuses(character);
-                ChargeAction(character);
-                ApplyManaRegen(character);
+
+            _tickCounter += Time.deltaTime;
+            if (_tickCounter >= tickRate) {
+                _tickCounter -= tickRate;
+                foreach (var character in Characters) {
+                    if (character.Health.Current <= 0) continue;
+                    TickStatuses(character, tickRate);
+                    ChargeAction(character, tickRate);
+                    ApplyManaRegen(character, tickRate);
+                }
             }
 
             HandleClicks();
         }
 
-        private void ApplyManaRegen(Character character) {
-            if (character.derivedStats.mana.Normalized >= 1) return;
-            var amt = character.derivedStats.mana.maxValue * manaRegenPercent;
-            character.derivedStats.mana.AddClampedBaseValue((int)amt);
+        private void ApplyManaRegen(Character character, float deltaTime) {
+            if (character.Mana.Normalized >= 1) return;
+            var amt = character.Mana.Max * manaRegenPercent * deltaTime;
+            character.Mana.Current += (int)amt;
         }
 
-        private void ChargeAction(Character character) {
+        private void ChargeAction(Character character, float deltaTime) {
             if (character.InAction) return;
-            if (character.derivedStats.health.currentValue <= 0) return;
 
             if (character.NextAction != null) {
-                character.NextAction.Charge(Time.deltaTime);
+                character.NextAction.Charge(deltaTime);
                 return;
             }
 
@@ -101,9 +107,9 @@ namespace TricksAndTreatsOrThreats.Behaviour {
                 _enemyBehaviour.ChooseNextAction(this, character);
         }
 
-        private static void TickStatuses(Character character) {
+        private static void TickStatuses(Character character, float deltaTime) {
             foreach (var status in character.StatusEffectList.StatusList)
-                status.Value.Tick(character, Time.deltaTime);
+                status.Value.Tick(character, deltaTime);
         }
 
         private void HandleClicks() {

@@ -65,7 +65,7 @@ public class MultiHitAnimate : ISkillAnimation {
             args.source = this;
 
             foreach (var effect in skill.skillEffects)
-                effect.Prepare(args);
+                effect.PrepareArgs(args);
 
             if (skillParticle) {
                 var parent = target.SpriteRenderer.transform;
@@ -84,7 +84,7 @@ public class MultiHitAnimate : ISkillAnimation {
     public bool ValidateTarget(Character user, ITarget tgt) {
         if (tgt is not Character target) return false;
         var sameTeam = user.isAlly == target.isAlly;
-        var alive = target.derivedStats.health.currentValue > 0;
+        var alive = target.Health.Current > 0;
         return sameTeam ^ targetEnemy && alive ^ targetDead;
     }
 }

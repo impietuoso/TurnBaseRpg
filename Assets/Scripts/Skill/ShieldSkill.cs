@@ -6,7 +6,7 @@ public class ShieldSkill : ISkillEffect {
     public bool usePercentageOfHealth;
     public int healthPercentage;
 
-    public void Prepare(CombatArgs args) {
-        args.shield = usePercentageOfHealth ? args.target.derivedStats.health.maxValue * healthPercentage : shieldValue;
+    public void PrepareArgs(CombatArgs args) {
+        args.shield = usePercentageOfHealth ? args.target.Health.Max * healthPercentage : shieldValue;
     }
 }

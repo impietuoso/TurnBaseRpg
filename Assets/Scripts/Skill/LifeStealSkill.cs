@@ -6,7 +6,7 @@ public class LifeStealSkill : ISkillEffect {
     [Range(0f, 1f)]
     public float damagePercentage = 0.2f;
 
-    public void Prepare(CombatArgs args) {
+    public void PrepareArgs(CombatArgs args) {
         args.OnResolve += Steal;
     }
 
@@ -14,7 +14,7 @@ public class LifeStealSkill : ISkillEffect {
         args.OnResolve -= Steal;
         var stealHeal = args.result.deltaHp * damagePercentage;
         if (stealHeal == 0) return;
-        CombatArgs newArgs = new CombatArgs();
+        var newArgs = new CombatArgs();
         newArgs.actionArgs = args.actionArgs;
         newArgs.skill = args.skill;
         newArgs.heal = (int)stealHeal;

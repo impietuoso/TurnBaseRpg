@@ -7,7 +7,7 @@ public class ManaDrainSkill : ISkillEffect {
     [Range(0f, 1f)]
     public float damagePercentage = 0.2f;
 
-    public void Prepare(CombatArgs args) {
+    public void PrepareArgs(CombatArgs args) {
         args.OnResolve += Steal;
     }
 
@@ -15,7 +15,7 @@ public class ManaDrainSkill : ISkillEffect {
         args.OnResolve -= Steal;
         var stealMana = args.result.deltaMp * damagePercentage;
         if (stealMana == 0) return;
-        CombatArgs newArgs = new CombatArgs();
+        var newArgs = new CombatArgs();
         newArgs.actionArgs = args.actionArgs;
         newArgs.skill = args.skill;
         newArgs.mana = -(int)stealMana;

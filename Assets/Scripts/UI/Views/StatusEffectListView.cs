@@ -35,14 +35,14 @@ public class StatusEffectListView : MonoBehaviour {
     }
 
     private void OnStatusAdded(Status status) {
-        StatusEffectView newView = Instantiate(template, template.transform.parent);
+        var newView = Instantiate(template, template.transform.parent);
         newView.gameObject.SetActive(true);
         newView.SetInfo(status);
         instantiatedViews.Add(status, newView);
     }
 
     private void OnStatusRemoved(Status status) {
-        if (instantiatedViews.TryGetValue(status, out StatusEffectView view)) {
+        if (instantiatedViews.TryGetValue(status, out var view)) {
             Destroy(view.gameObject);
             instantiatedViews.Remove(status);
         }
