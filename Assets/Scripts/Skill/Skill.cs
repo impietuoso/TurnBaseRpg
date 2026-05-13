@@ -15,7 +15,7 @@ public class Skill : DatabaseItem, IAction {
 
     [Header("Config")]
     [SerializeReference, TypeDropdown] public ISkillAnimation animation;
-    [SerializeReference, TypeDropdown] public ISkillEffect[] skillEffects;
+    [SerializeReference, TypeDropdown] public ICombatEffect[] skillEffects;
     [Obsolete, SerializeReference, TypeDropdown] public IPassive passiva;
 
     public int Cost => cost;
@@ -40,6 +40,11 @@ public class Skill : DatabaseItem, IAction {
     }
 }
 
-public interface ISkillEffect {
-    void PrepareArgs(CombatArgs args);
+public interface ICombatEffect {
+    protected void PrepareEffect(CombatArgs args);
+
+    public sealed void PrepareArgs(CombatArgs args) {
+        PrepareEffect(args);
+        args.Effects.Add(this);
+    }
 }

@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public class DamageSkill : ISkillEffect {
+[Obsolete, Serializable]
+public class DamageSkill : ICombatEffect {
     public Element element;
     public int baseDamage;
     public bool ignoreShield;
@@ -11,25 +11,10 @@ public class DamageSkill : ISkillEffect {
     [Range(0, 100)] public int hitChance;
     [Range(0, 100)] public int criticalChance;
     public float statMultiplier;
-    public Attribute damageEStatScale;
+    public Attribute damageStatScale;
     public float damageRange = 0.15f;
 
-    public void PrepareArgs(CombatArgs args) {
-        int finalDamage;
-        if (isPercentageDamage) {
-            finalDamage = Mathf.RoundToInt(args.target.Health.Max * healthPercentage);
-        } else {
-            var rangedDamage = UnityEngine.Random.Range(1 - damageRange, 1 + damageRange);
-            var damageStat = damageEStatScale;
-            var damageStatValue = args.user[damageStat] * statMultiplier;
-
-            finalDamage = Mathf.RoundToInt((baseDamage + damageStatValue) * rangedDamage);
-        }
-
-        args.skillElement = args.skill.element;
-        args.ignoreShield = ignoreShield;
-        args.damage = finalDamage;
-        args.criticalChance = criticalChance;
-        args.hitChance = hitChance;
+    void ICombatEffect.PrepareEffect(CombatArgs args) {
+        throw new NotImplementedException();
     }
 }

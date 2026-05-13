@@ -33,7 +33,7 @@ public class PoisonStatus : Status {
 
     private void OnTurnEnd(Character target) {
         CombatArgs args = new();
-        args.skillElement = element;
+        args.element = element;
         args.source = this;
         args.unavoidable = true;
         args.ignoreShield = true;

@@ -24,30 +24,29 @@ public class CharacterFeedbacks : DataView<Character> {
     }
 
     private void HandleHealthChanged(CombatArgs args) {
-        var damageColor = args.result switch
-        {
-            { miss: true } => Color.white,
-            { resistStatus: true } => Color.orange,
-            { isCrit: true } => Color.yellow,
-            { deltaHp: > 0 } => Color.green,
-            { deltaHp: < 0 } => Color.red,
-            { deltaMp: > 0 } => Color.blue,
-            { deltaMp: < 0 } => Color.blueViolet,
-            { deltaShield: > 0 } => Color.cyan,
-            { deltaShield: < 0 } => Color.gray3,
+        var damageColor = args.result switch {
+            { Miss: true } => Color.white,
+            { ResistStatus: true } => Color.orange,
+            { Crit: true } => Color.yellow,
+            { Health: { Delta: > 0 } } => Color.green,
+            { Health: { Delta: < 0 } } => Color.red,
+            { Mana: { Delta: > 0 } } => Color.blue,
+            { Mana: { Delta: < 0 } } => Color.blueViolet,
+            { Shield: { Delta: > 0 } } => Color.cyan,
+            { Shield: { Delta: < 0 } } => Color.gray3,
             _ => Color.deepPink
         };
 
-        var statusApplied = args.statusEffects.Count > 0 && !args.result.resistStatus;
+        var statusApplied = args.statusEffects.Count > 0 && !args.result.ResistStatus;
         if (statusApplied && args.damage == 0) return;
 
-        var popupValue = args.result.deltaShield + args.result.deltaHp;
+        var popupValue = args.result.Shield.Delta + args.result.Health.Delta;
         if (args.user == args.target && popupValue == 0) return;
 
-        var popupText = args.result.miss ? "Miss" : popupValue.ToString();
+        var popupText = args.result.Miss ? "Miss" : popupValue.ToString();
         var popup = Data.CombatController.CallPopup;
 
-        if (!args.result.miss && args.result.resistStatus) {
+        if (!args.result.Miss && args.result.ResistStatus) {
             if (popupValue == 0)
                 popupText = "Resist";
             else
@@ -55,8 +54,8 @@ public class CharacterFeedbacks : DataView<Character> {
         }
 
         if (characterSprite) StartCoroutine(popup.Pop(popupText, damageColor, characterSprite.transform));
-        if (args.result.isFatal && characterSprite) characterSprite.color = new Color(1, 1, 1, 0.5f);
-        if (args.result.isRevive && characterSprite) characterSprite.color = new Color(1, 1, 1, 1f);
+        if (args.result.IsFatal && characterSprite) characterSprite.color = new Color(1, 1, 1, 0.5f);
+        if (args.result.IsRevive && characterSprite) characterSprite.color = new Color(1, 1, 1, 1f);
     }
 
     private void HandleNewStat(Status status) {

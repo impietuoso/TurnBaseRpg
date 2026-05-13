@@ -3,7 +3,7 @@ using UnityEngine;
 
 [Obsolete]
 [Serializable]
-public class DefenseSkill : ISkillEffect {
+public class DefenseSkill : ICombatEffect {
     [Range(0f, 1f)]
     public float damageReduction;
 
@@ -11,8 +11,8 @@ public class DefenseSkill : ISkillEffect {
         return user == target;
     }
 
-    public void PrepareArgs(CombatArgs args) {
-        args.skillElement = args.skill.element;
+    void ICombatEffect.PrepareEffect(CombatArgs args) {
+        args.element = args.skill.element;
         //TODO args.user.OnStartTurn += OnStartTurn;
         args.user.OnDefend += OnDefend;
         args.unavoidable = true;

@@ -16,10 +16,10 @@ public class OnDealDamage : IPassive {
     }
 
     public void ConsequencesOfSeuActs(CombatArgs args) {
-        if (element && args.skillElement != element) return;
-        if (args.result.deltaHp >= 0) return;
+        if (element && args.element != element) return;
+        if (args.result.Health.Delta >= 0) return;
         if (args.stopReactionAttacks) return;
-        if (!args.actionArgs.Flags.Add(this)) return;
+        if (!args.actionArgs2.Flags.Add(this)) return;
         
         var cc = args.user.CombatController;
         var newTarget = castOnSelf ? args.user : args.target;

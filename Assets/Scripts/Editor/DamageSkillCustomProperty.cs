@@ -6,67 +6,77 @@ public class DamageSkillCustomProperty : PropertyDrawer {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
         EditorGUI.BeginProperty(position, label, property);
 
-        // Draw label
-        position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), label);
+        var foldoutRect = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
+        property.isExpanded = EditorGUI.Foldout(foldoutRect, property.isExpanded, label, true);
 
-        // Don't make child fields be indented
-        var indent = EditorGUI.indentLevel;
-        EditorGUI.indentLevel = 0;
+        if (property.isExpanded) {
+            // Don't make child fields be indented relative to the foldout, but we usually indent the group
+            EditorGUI.indentLevel++;
+            
+            var lineHeight = EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
+            var drawRect = new Rect(position.x, position.y + lineHeight, position.width, EditorGUIUtility.singleLineHeight);
 
-        // Calculate rects
-        float lineHeight = EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
-        Rect drawRect = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
+            // Get properties
+            var baseDamage = property.FindPropertyRelative("baseDamage");
+            var ignoreShield = property.FindPropertyRelative("ignoreShield");
+            var isPercentageDamage = property.FindPropertyRelative("isPercentageDamage");
+            var healthPercentage = property.FindPropertyRelative("healthPercentage");
+            var hitChance = property.FindPropertyRelative("hitChance");
+            var criticalChance = property.FindPropertyRelative("criticalChance");
+            var statMultiplier = property.FindPropertyRelative("statMultiplier");
+            var damageStatScale = property.FindPropertyRelative("damageStatScale");
+            var damageRange = property.FindPropertyRelative("damageRange");
 
-        // Get properties
-        SerializedProperty baseDamage = property.FindPropertyRelative("baseDamage");
-        SerializedProperty ignoreShield = property.FindPropertyRelative("ignoreShield");
-        SerializedProperty isPercentageDamage = property.FindPropertyRelative("isPercentageDamage");
-        SerializedProperty healthPercentage = property.FindPropertyRelative("healthPercentage");
-        SerializedProperty hitChance = property.FindPropertyRelative("hitChance");
-        SerializedProperty criticalChance = property.FindPropertyRelative("criticalChance");
-        SerializedProperty statMultiplier = property.FindPropertyRelative("statMultiplier");
-        SerializedProperty damageStatScale = property.FindPropertyRelative("damageStatScale");
-        SerializedProperty damageRange = property.FindPropertyRelative("damageRange");
-
-        // Draw fields
-        EditorGUI.PropertyField(drawRect, isPercentageDamage);
-        drawRect.y += lineHeight;
-
-        if (isPercentageDamage.boolValue) {
-            EditorGUI.PropertyField(drawRect, healthPercentage);
+            // Draw fields
+            EditorGUI.PropertyField(drawRect, isPercentageDamage);
             drawRect.y += lineHeight;
-        } else {
-            EditorGUI.PropertyField(drawRect, baseDamage);
+
+            if (isPercentageDamage.boolValue) {
+                EditorGUI.PropertyField(drawRect, healthPercentage);
+                drawRect.y += lineHeight;
+            } else {
+                EditorGUI.PropertyField(drawRect, baseDamage);
+                drawRect.y += lineHeight;
+                EditorGUI.PropertyField(drawRect, statMultiplier);
+                drawRect.y += lineHeight;
+                EditorGUI.PropertyField(drawRect, damageStatScale);
+                drawRect.y += lineHeight;
+            }
+
+            EditorGUI.PropertyField(drawRect, ignoreShield);
             drawRect.y += lineHeight;
-            EditorGUI.PropertyField(drawRect, statMultiplier);
+            EditorGUI.PropertyField(drawRect, hitChance);
             drawRect.y += lineHeight;
-            EditorGUI.PropertyField(drawRect, damageStatScale);
+            EditorGUI.PropertyField(drawRect, criticalChance);
             drawRect.y += lineHeight;
+            EditorGUI.PropertyField(drawRect, damageRange);
+            drawRect.y += lineHeight;
+
+            // Draw damage range label
+            if (!isPercentageDamage.boolValue) {
+                var minimalDamage = baseDamage.intValue * (1 - damageRange.floatValue);
+                var maximalDamage = baseDamage.intValue * (1 + damageRange.floatValue);
+                EditorGUI.LabelField(drawRect, "Final Damage Range: " + minimalDamage.ToString("F1") + " ~ " + maximalDamage.ToString("F1"));
+            } else {
+                var minimalDamage = healthPercentage.floatValue * (1 - damageRange.floatValue);
+                var maximalDamage = healthPercentage.floatValue * (1 + damageRange.floatValue);
+                EditorGUI.LabelField(drawRect, "Final % Range: " + (minimalDamage * 100).ToString("F1") + "% ~ " + (maximalDamage * 100).ToString("F1") + "%");
+            }
+            
+            EditorGUI.indentLevel--;
         }
-
-        EditorGUI.PropertyField(drawRect, ignoreShield);
-        drawRect.y += lineHeight;
-        EditorGUI.PropertyField(drawRect, hitChance);
-        drawRect.y += lineHeight;
-        EditorGUI.PropertyField(drawRect, criticalChance);
-        drawRect.y += lineHeight;
-        EditorGUI.PropertyField(drawRect, damageRange);
-        drawRect.y += lineHeight;
-
-        // Draw damage range at the end as requested
-        var minimalDamage = baseDamage.intValue * (1 - damageRange.floatValue);
-        var maximalDamage = baseDamage.intValue * (1 + damageRange.floatValue);
-        EditorGUI.LabelField(drawRect, "Final Damage Range: " + minimalDamage + " ~ " + maximalDamage);
-
-        // Set indent back to what it was
-        EditorGUI.indentLevel = indent;
 
         EditorGUI.EndProperty();
     }
 
     public override float GetPropertyHeight(SerializedProperty property, GUIContent label) {
-        SerializedProperty isPercentage = property.FindPropertyRelative("isPercentageDamage");
-        int lineCount = isPercentage.boolValue ? 7 : 9;
+        if (!property.isExpanded) {
+            return EditorGUIUtility.singleLineHeight;
+        }
+
+        var isPercentage = property.FindPropertyRelative("isPercentageDamage");
+        // Foldout(1) + isPercentage(1) + (health(1) OR base+mult+scale(3)) + ignore+hit+crit+range(4) + finalLabel(1)
+        var lineCount = isPercentage.boolValue ? 8 : 10;
         return (lineCount * EditorGUIUtility.singleLineHeight) + (lineCount * EditorGUIUtility.standardVerticalSpacing);
     }
 }

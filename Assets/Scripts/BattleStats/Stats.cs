@@ -44,6 +44,7 @@ public class StatCalcHelper : IStats {
         this[Speed] = level + a[Dex] * 4;
         this[Evade] = a[Dex] * 100 / (a[Dex] + 40);
         this[Resistance] = (a[Vit] * 2 + a[Spt]) * 100 / (a[Vit] * 2 + a[Spt] + 60);
+        this[CritDamage] = 150;
 
         foreach (var s in Stats.All)
             _v[(int)s] += stats[s];

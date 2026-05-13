@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 
 [System.Serializable]
-public class BleedingStatus: Status {
+public class BleedingStatus : Status {
     public override Observable<int> DisplayValue => duration;
     public Observable<int> duration = new (3);
     public int damage = 10;
     public Element element;
-    
+
     public override void Apply(Character target) {
         if (TryNullifyOpposite(target)) return;
         target.OnAttack += OnAttack;
@@ -23,18 +23,13 @@ public class BleedingStatus: Status {
             this.duration = otherStatus.duration;
         }
     }
-    
+
     private void OnAttack(CombatArgs args) {
-        var newArgs = new CombatArgs();
-        newArgs.actionArgs = args.actionArgs;
-        newArgs.skill = args.skill;
-        newArgs.skillElement = element;
-        newArgs.source = this;
+        var newArgs = args.Chain(this, args.user);
+        newArgs.element = element;
         newArgs.unavoidable = true;
         newArgs.ignoreShield = true;
         newArgs.ignoreArmor = true;
-        newArgs.stopReactionAttacks = true;
-        newArgs.target = args.user;
         newArgs.damage = damage;
         newArgs.Resolve();
         Debug.Log(newArgs.target.Member.charName + " takes " + damage + " bleed damage.");

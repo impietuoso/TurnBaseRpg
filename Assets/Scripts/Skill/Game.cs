@@ -1,4 +1,5 @@
-﻿using TricksAndTreatsOrThreats;
+﻿using Drafts;
+using TricksAndTreatsOrThreats;
 using UnityEngine;
 
 public static class Game {
@@ -12,6 +13,7 @@ public static class Game {
 
     [RuntimeInitializeOnLoadMethod]
     private static void Init() {
+        TypeCache.SetAssemblies(typeof(Game).Assembly);
         Database.SetRuntimeIndexes();
     }
 

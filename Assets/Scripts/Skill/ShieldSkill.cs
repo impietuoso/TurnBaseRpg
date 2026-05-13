@@ -1,12 +1,12 @@
 ﻿using System;
 
 [Serializable]
-public class ShieldSkill : ISkillEffect {
+public class ShieldSkill : ICombatEffect {
     public int shieldValue;
     public bool usePercentageOfHealth;
     public int healthPercentage;
 
-    public void PrepareArgs(CombatArgs args) {
+    void ICombatEffect.PrepareEffect(CombatArgs args) {
         args.shield = usePercentageOfHealth ? args.target.Health.Max * healthPercentage : shieldValue;
     }
 }

@@ -1,17 +1,18 @@
 ﻿public class SwapElement : IPassive {
     public Element originalElement;
     public Element newElement;
+
     public void Subscribe(Character character) {
-        character.OnAttack += SwapElement;
+        character.OnAttack += Swap;
     }
 
     public void Unsubscribe(Character character) {
-        character.OnAttack -= SwapElement;
+        character.OnAttack -= Swap;
     }
 
-    public void SwapElement(CombatArgs args) {
-        if (args.skillElement  && args.skillElement == originalElement) {
-            args.skillElement = newElement;
+    private void Swap(CombatArgs args) {
+        if (args.element && args.element == originalElement) {
+            args.element = newElement;
         }
     }
 }

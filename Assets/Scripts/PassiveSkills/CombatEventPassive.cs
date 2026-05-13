@@ -12,7 +12,7 @@ public enum Retarget {
 public abstract class CombatArgsPassive : IPassive {
     [SerializeReference, TypeInstance] private ICombatArgsFilter condition;
     [SerializeField] private Retarget retarget = Retarget.User;
-    [SerializeReference, TypeInstance] private ISkillEffect[] effects;
+    [SerializeReference, TypeInstance] private ICombatEffect effect;
 
     protected abstract void SubscribeCondition(Character character);
     protected abstract void UnsubscribeCondition(Character character);
@@ -23,13 +23,9 @@ public abstract class CombatArgsPassive : IPassive {
     protected void Trigger(CombatArgs args) {
         if (!condition.Match(args)) return;
 
-        var triggerArgs = new CombatArgs();
-        triggerArgs.actionArgs = args.actionArgs;
-        triggerArgs.source = this;
-        triggerArgs.user = args.user;
-        triggerArgs.target = retarget == Retarget.User ? args.user : args.target;
-
-        foreach (var e in effects) e.PrepareArgs(triggerArgs);
+        var newTgt = retarget == Retarget.User ? args.user : args.target;
+        var triggerArgs = args.Chain(this, newTgt);
+        effect.PrepareArgs(triggerArgs);
         triggerArgs.Resolve();
     }
 }

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 
 [Serializable]
-public class StatusRemoval : ISkillEffect {
+public class StatusRemoval : ICombatEffect {
     public StatusType statusType;
     public bool removeAll;
     public StatusSO removedStatus;
 
-    public void PrepareArgs(CombatArgs args) {
+    void ICombatEffect.PrepareEffect(CombatArgs args) {
         var statusList = args.target.StatusEffectList.StatusList;
         if (removeAll) {
             var toRemove = new List<StatusSO>();

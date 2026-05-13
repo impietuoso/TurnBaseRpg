@@ -2,19 +2,21 @@
 using UnityEngine;
 
 [Serializable]
-public class ManaBurnSkill : ISkillEffect {
+public class ManaBurnSkill : ICombatEffect {
     public bool useDamageDealt;
     public int manaBurn;
     [Range(0f, 1f)]
     public float damagePercentage;
 
-    public void PrepareArgs(CombatArgs args) {
-        if(useDamageDealt) args.OnResolve += GetDamage;
-            else args.mana = -manaBurn;
+    void ICombatEffect.PrepareEffect(CombatArgs args) {
+        if (useDamageDealt) args.OnResolve += GetDamage;
+        else args.mana = -manaBurn;
     }
 
     public void GetDamage(CombatArgs args) {
-        var damage = args.result.deltaHp * damagePercentage;
-        args.mana = -(int)damage;
+        var burn = args.result.Health.Delta * damagePercentage;
+        var chain = args.Chain(this);
+        chain.mana = -(int)burn;
+        chain.Resolve();
     }
 }

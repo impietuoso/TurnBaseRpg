@@ -44,15 +44,14 @@ public class RandomHitAnimate : ISkillAnimation {
 
         for (var i = 0; i < newHitCount; i++) {
             var args = new CombatArgs();
-            args.actionArgs = aArgs;
+            args.actionArgs2 = aArgs;
             args.skill = skill;
             args.target = targets[Random.Range(0, targets.Count)];
             args.user = aArgs.User;
             args.source = this;
 
-            foreach (var effect in skill.skillEffects) {
+            foreach (var effect in skill.skillEffects) 
                 effect.PrepareArgs(args);
-            }
 
             var parent = args.target.SpriteRenderer.transform;
             UnityEngine.Object.Instantiate(skillParticle, parent);

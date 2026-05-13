@@ -2,10 +2,10 @@
 using UnityEngine;
 
 [Serializable]
-public class ApplyStatusEffect : ISkillEffect {
+public class ApplyStatusEffect : ICombatEffect {
     public StatusSO status;
     public bool targetUser;
-    public void PrepareArgs(CombatArgs args) {
+    void ICombatEffect.PrepareEffect(CombatArgs args) {
         if(args.hitChance == 0) args.hitChance = 100;
         if (targetUser) {
             args.user?.StatusEffectList.Apply(status);

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class HealSkill : ISkillEffect {
+public class HealSkill : ICombatEffect {
     public int healAmount;
     public bool isPercentageHeal;
     [Range(0f, 1f)]
@@ -10,7 +10,7 @@ public class HealSkill : ISkillEffect {
     public float statMultiplier;
     public Attribute healEStatScale;
     
-    public void PrepareArgs(CombatArgs args) {
+    void ICombatEffect.PrepareEffect(CombatArgs args) {
         var finalHeal = 0;
         if (isPercentageHeal) {
             finalHeal = Mathf.RoundToInt(args.target.Health.Max * healthPercentage);
@@ -22,7 +22,7 @@ public class HealSkill : ISkillEffect {
         }
 
         args.heal = finalHeal;
-        args.criticalChance = 0;
+        args.critChance = 0;
         args.hitChance = 100;
     }
 }

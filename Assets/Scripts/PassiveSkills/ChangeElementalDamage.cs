@@ -19,7 +19,7 @@ public class ChangeElementalDamage : IPassive {
     }
 
     public void IncreaseDamage(CombatArgs args) {
-        if (args.skillElement  && args.skillElement == element) {
+        if (args.element  && args.element == element) {
             args.damage = (int)(args.damage * damageIncrease);
         }
     }

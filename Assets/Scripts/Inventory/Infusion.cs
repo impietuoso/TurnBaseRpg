@@ -1,48 +1,39 @@
 ﻿using System;
-using System.Collections;
 using Drafts;
-using TricksAndTreatsOrThreats.Behaviour;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Scriptable/Item/Infusion")]
 public class Infusion : Equipment {
     [SerializeField] private Element element;
     [SerializeField, Separator, TwoColumns] private InfusionStats stats;
-    [SerializeReference, TypeInstance] private ISkillEffect[] effects;
-    [SerializeReference, TypeInstance] private IPassive[] passives;
+    [SerializeReference, TypeInstance] private ICombatEffect effect;
 
-    // [field: SerializeField] public Attribute MainAttribute { get; private set; }
-    // [field: SerializeField] public float StatMult { get; private set; }
+    // [field: SerializeField] public StatScale Stat { get; private set; }
     // [field: SerializeField] public float Variation { get; private set; } = 0.15f;
     // [field: SerializeField] public float RangeAdd { get; private set; }
 
     public override EquipSlot EquipSlot => EquipSlot.Infusion;
     public Element Element => element;
-    public ISkillEffect[] Effects => effects;
-    public IPassive[] Passives => passives;
-
-    public float GetChargeTime(Character user) => user.Stats[Stat.Speed] / 10f;
-    public IEnumerator Execute(ActionArgs args) => throw new NotImplementedException();
-
-    [Obsolete] public Skill basicAttack;
+    public ICombatEffect Effect => effect;
+    
     public override int this[Stat stat] => stats[stat];
 }
 
-[Serializable]
+[Serializable, SingleLine]
 public class InfusionStats : IStats {
-    [field: SerializeField, Range(0, 100)] public int Damage { get; private set; }
-    [field: SerializeField, Range(0, 100)] public int Hit { get; private set; }
-    [field: SerializeField, Range(0, 100)] public int Evade { get; private set; }
-    [field: SerializeField, Range(0, 100)] public int CritChance { get; private set; }
-    [field: SerializeField, Range(0, 100)] public int CritDamage { get; private set; }
-    [field: SerializeField, Range(0, 100)] public int CastSpeed { get; private set; }
+    [field: SerializeField] public int Damage { get; private set; }
+    [field: SerializeField] public int Hit { get; private set; }
+    [field: SerializeField] public int Speed { get; private set; }
+    [field: SerializeField] public int CastSpeed { get; private set; }
+    [field: SerializeField] public int CritChance { get; private set; }
+    [field: SerializeField] public int CritDamage { get; private set; }
 
     public int this[Stat stat] => stat switch {
         Stat.Damage => Damage,
         Stat.Hit => Hit,
-        Stat.Evade => Evade,
         Stat.CritChance => CritChance,
         Stat.CritDamage => CritDamage,
+        Stat.Speed => Speed,
         Stat.CastSpeed => CastSpeed,
         _ => 0
     };

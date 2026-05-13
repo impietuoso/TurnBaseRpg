@@ -8,12 +8,12 @@ using UnityEngine;
 public class Coat : Equipment {
     [SerializeField] private Element element;
     [SerializeField, TwoColumns] private CoatStats stats;
-    [SerializeReference, TypeInstance] private ISkillEffect[] effects;
+    [SerializeReference, TypeInstance] private ICombatEffect[] effects;
     [SerializeReference, TypeInstance] private IPassive[] passives;
 
     public override EquipSlot EquipSlot => EquipSlot.Core;
     public Element Element => element;
-    public ISkillEffect[] Effects => effects;
+    public ICombatEffect[] Effects => effects;
     public IPassive[] Passives => passives;
 
     public float GetChargeTime(Character user) => user.Stats[Stat.Speed] / 10f;

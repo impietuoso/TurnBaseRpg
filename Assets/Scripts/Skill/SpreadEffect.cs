@@ -2,25 +2,18 @@
 using System.Collections;
 using UnityEngine;
 [Serializable]
-public class SpreadEffect : ISkillEffect {
+public class SpreadEffect : ICombatEffect {
     [SerializeReference, TypeDropdown]
-    public ISkillEffect effect;
+    public ICombatEffect effect;
     public float spreadDelay;
     public float radius = 10f;
 
-    public void PrepareArgs(CombatArgs args) {
+    void ICombatEffect.PrepareEffect(CombatArgs args) {
         foreach (var newTarget in args.user.CombatController.Characters) {
-            if (ValidateTarget(args.target, newTarget)) {
-                var newArgs = new CombatArgs();
-                newArgs.actionArgs = args.actionArgs;
-                newArgs.skill = args.skill;
-                newArgs.target = newTarget;
-                newArgs.user = args.user;
-                newArgs.source = args.source;
-                newArgs.unavoidable = true;
-                effect.PrepareArgs(newArgs);
-                args.OnResolve += _=> args.user.CombatController.StartCoroutine(ResolveSpread(newArgs));
-            }
+            if (!ValidateTarget(args.target, newTarget)) continue;
+            var chain = args.Chain(this, newTarget);
+            effect.PrepareArgs(chain);
+            args.OnResolve += _ => args.CombatCoroutine(ResolveSpread(chain));
         }
     }
 

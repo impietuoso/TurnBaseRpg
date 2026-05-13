@@ -6,17 +6,18 @@ using UnityEngine.Scripting;
 public class ApplyEffect : IPassive {
     public Element element;
     [SerializeReference, TypeDropdown]
-    public ISkillEffect effect;
+    public ICombatEffect effect;
+
     public void Subscribe(Character character) {
-        character.OnAttack += ApplyEffect;
+        character.OnAttack += Apply;
     }
 
     public void Unsubscribe(Character character) {
-        character.OnAttack -=ApplyEffect;
+        character.OnAttack -= Apply;
     }
 
-    public void ApplyEffect(CombatArgs args) {
-        if (element && args.skillElement != element) return;
+    public void Apply(CombatArgs args) {
+        if (element && args.element != element) return;
         effect.PrepareArgs(args);
     }
 }

@@ -58,7 +58,7 @@ public class MultiHitAnimate : ISkillAnimation {
         for (var i = 0; i < newHitCount; i++) {
 
             var args = new CombatArgs();
-            args.actionArgs = aArgs;
+            args.actionArgs2 = aArgs;
             args.skill = skill;
             args.target = target;
             args.user = aArgs.User;
