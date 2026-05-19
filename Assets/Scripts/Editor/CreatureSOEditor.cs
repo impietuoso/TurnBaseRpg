@@ -1,11 +1,10 @@
-﻿using UnityEditor;
+﻿using TricksAndTreatsOrThreats;
+using UnityEditor;
 
-[CustomEditor(typeof(PartyMember))]
-public class PartyMemberEditor : Editor {
+[CustomEditor(typeof(CreatureSO))]
+public class CreatureSOEditor : Editor {
     private readonly Stats _stats = new ();
     private bool _applyEquipment;
-
-    public void OnEnable() => UpdateStats();
 
     public override void OnInspectorGUI() {
         EditorGUI.BeginChangeCheck();
@@ -24,8 +23,9 @@ public class PartyMemberEditor : Editor {
     }
 
     private void UpdateStats() {
-        var partyMember = (PartyMember)target;
-        var stats = _applyEquipment ? partyMember : Stats.Zero;
-        _stats.Recalculate(partyMember.level, partyMember, stats);
+        var creature = ((CreatureSO)target).Creature;
+        if (creature == null) return;
+        var stats = _applyEquipment ? creature : Stats.Zero;
+        _stats.Recalculate(creature.level, creature, stats);
     }
 }

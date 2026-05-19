@@ -35,7 +35,7 @@ public class BurningStatus : Status {
         args.target = target;
         args.damage = damage;
         args.Resolve();
-        Debug.Log(target.Member.charName + " takes " + damage + " burning damage.");
+        Debug.Log(target.Creature.DisplayName + " takes " + damage + " burning damage.");
     }
 
     private void OnTurnEnd(Character target) {

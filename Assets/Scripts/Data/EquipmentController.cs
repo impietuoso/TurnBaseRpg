@@ -1,11 +1,17 @@
-﻿public static class EquipmentController {
-    public static void EquipItem(LoadSave load, PartyMember member, Equipment newEquipment, int slot) {
-        var equipSlot = Game.Config.equipmentOrder[slot];
-        if (newEquipment && newEquipment.EquipSlot != equipSlot) return;
+﻿using TricksAndTreatsOrThreats;
 
-        if (member.equips[slot]) load.save.inventory.Add(member.equips[slot], 1);
-        if (newEquipment) load.save.inventory.Remove(newEquipment, 1);
+public class EquipmentController {
+    private ListInventory<InventoryItem> Inventory { get; }
 
-        member.equips[slot] = newEquipment;
+    public EquipmentController(ListInventory<InventoryItem> inventory) => Inventory = inventory;
+
+    public void EquipItem(Creature member, Equipment equip, int slot) {
+        var equipSlot = Game.EquipmentOrder[slot];
+        if (equip && equip.EquipSlot != equipSlot) return;
+
+        if (member.Equips[slot]) Inventory.Add(member.Equips[slot], 1);
+        if (equip) Inventory.Remove(equip, 1);
+
+        member.Equips[slot] = equip;
     }
 }

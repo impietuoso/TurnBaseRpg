@@ -5,6 +5,7 @@ using UnityEngine;
 public class LifeStealSkill : ICombatEffect {
     [Range(0f, 1f)]
     public float damagePercentage = 0.2f;
+    public global::LifeStealSkill a;
 
     void ICombatEffect.PrepareEffect(CombatArgs args) {
         args.OnResolve += Steal;

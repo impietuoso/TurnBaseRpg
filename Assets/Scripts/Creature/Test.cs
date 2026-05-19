@@ -13,16 +13,16 @@ namespace TricksAndTreatsOrThreats
         private void Start()
         {
             foreach (var c in startingCreatures)
-                combatController.Spawn(c.creature, true, c.position.position);
+                combatController.Spawn(c.so.Creature, true, c.position.position);
             
             foreach (var c in startingEnemies)
-                combatController.Spawn(c.creature, false, c.position.position);
+                combatController.Spawn(c.so.Creature, false, c.position.position);
         }
 
         [Serializable]
         public class CreatureSpawn
         {
-            public PartyMember creature;
+            public CreatureSO so;
             public Transform position;
         }
     }

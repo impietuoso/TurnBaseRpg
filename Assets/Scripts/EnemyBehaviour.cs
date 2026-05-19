@@ -19,8 +19,8 @@ public class EnemyBehaviour {
     }
 
     public void ChooseNextAction(CombatController cc, Character user) {
-        Debug.Log("Enemy Turn: " + user.Member.charName);
-        var availableSkills = user.skills.Where(s => s.Available(user)).ToList();
+        Debug.Log("Enemy Turn: " + user.Creature.DisplayName);
+        var availableSkills = user.Creature.Skills.Where(s => s.Available(user)).ToList();
         Skill skill;
 
         if (availableSkills.Count > 0) {

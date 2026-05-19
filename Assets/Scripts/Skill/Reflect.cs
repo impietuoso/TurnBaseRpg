@@ -40,7 +40,7 @@ public class ReflectEffect : Status {
     public IEnumerator ReflectDamage(CombatArgs args) {
         yield return new WaitForSeconds(0.5f);
         args.Resolve();
-        Debug.Log(args.target.Member.charName + " takes " + args.damage + " reflect damage.");
+        Debug.Log(args.target.Creature.DisplayName + " takes " + args.damage + " reflect damage.");
     }
 
     private void OnTurnEnd(Character target) {

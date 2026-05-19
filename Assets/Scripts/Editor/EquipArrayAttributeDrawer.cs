@@ -7,7 +7,7 @@ public class EquipArrayAttributeDrawer : PropertyDrawer {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
         var listProperty = property.FindPropertyRelative("list");
 
-        var slots = Game.Config.equipmentOrder.Select(s => new GUIContent(s.ToString())).ToArray();
+        var slots = Game.EquipmentOrder.Select(s => new GUIContent(s.ToString())).ToArray();
         var arrayMaxSize = slots.Length;
         if (listProperty.arraySize != arrayMaxSize)
             listProperty.arraySize = arrayMaxSize;

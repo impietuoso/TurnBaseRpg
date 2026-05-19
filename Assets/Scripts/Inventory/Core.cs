@@ -1,43 +1,34 @@
 ﻿using System;
-using System.Collections;
 using Drafts;
-using TricksAndTreatsOrThreats.Behaviour;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Scriptable/Item/Core")]
 public class Core : Equipment {
     [SerializeField] private Element element;
-    [SerializeField, TwoColumns] private CoreStats stats;
-    [SerializeReference, TypeInstance] private ICombatEffect[] effects;
-    [SerializeReference, TypeInstance] private IPassive[] passives;
+    [SerializeField] private CoreStats stats;
+    [SerializeReference, TypeInstance, Separator] private IPassive passive;
 
     public override EquipSlot EquipSlot => EquipSlot.Core;
-    public Element Element => element;
-    public ICombatEffect[] Effects => effects;
-    public IPassive[] Passives => passives;
+    public Element Element => stats.Element;
+    public override IPassive Passive => passive;
 
-    public float GetChargeTime(Character user) => user.Stats[Stat.Speed] / 10f;
-    public IEnumerator Execute(ActionArgs args) => throw new NotImplementedException();
-
-    [Obsolete] public Skill basicAttack;
     public override int this[Stat stat] => stats[stat];
 }
 
 [Serializable]
-public class CoreStats : IStats {
-    [field: SerializeField, Range(0, 100)] public int Damage { get; private set; }
-    [field: SerializeField, Range(0, 100)] public int Hit { get; private set; }
-    [field: SerializeField, Range(0, 100)] public int Evade { get; private set; }
-    [field: SerializeField, Range(0, 100)] public int CritChance { get; private set; }
-    [field: SerializeField, Range(0, 100)] public int CritDamage { get; private set; }
-    [field: SerializeField, Range(0, 100)] public int CastSpeed { get; private set; }
+public class CoreStats : IStats, ITwoColumnsDrawer {
+    [field: SerializeField] public Element Element { get; private set; }
+    [field: SerializeField] public int MaxHealth { get; private set; }
+    [field: SerializeField] public int MaxMana { get; private set; }
+    [field: SerializeField] public int Armor { get; private set; }
+    [field: SerializeField] public int Speed { get; private set; }
+    [field: SerializeField] public int CastSpeed { get; private set; }
 
     public int this[Stat stat] => stat switch {
-        Stat.Damage => Damage,
-        Stat.Hit => Hit,
-        Stat.Evade => Evade,
-        Stat.CritChance => CritChance,
-        Stat.CritDamage => CritDamage,
+        Stat.MaxHealth => MaxHealth,
+        Stat.MaxMana => MaxMana,
+        Stat.Armor => Armor,
+        Stat.Speed => Speed,
         Stat.CastSpeed => CastSpeed,
         _ => 0
     };

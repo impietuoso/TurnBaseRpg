@@ -1,5 +1,7 @@
+using TricksAndTreatsOrThreats;
+
 public class SaveFile {
-    public ObservableList<PartyMember> currentParty;
-    public ObservableList<PartyMember> players;
+    public ObservableList<Creature> currentParty;
+    public ObservableList<Creature> players;
     public ListInventory<InventoryItem> inventory;
 }

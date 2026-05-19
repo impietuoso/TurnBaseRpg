@@ -17,7 +17,7 @@ namespace TTT.ContextMenus
 
         public IEnumerable<IContextMenuItem> GetItems()
         {
-            foreach (var skill in Creature.skills)
+            foreach (var skill in Creature.Creature.Skills)
             {
                 if (!Actions.TryGetValue(skill, out var action))
                     Actions[skill] = action = new SkillMenuItem(Creature, skill);

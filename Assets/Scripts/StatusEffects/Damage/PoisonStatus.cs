@@ -42,7 +42,7 @@ public class PoisonStatus : Status {
         args.target = target;
         args.damage = damage;
         args.Resolve();
-        Debug.Log(target.Member.charName + " takes " + damage + " poison damage.");
+        Debug.Log(target.Creature.DisplayName + " takes " + damage + " poison damage.");
         
         duration.Value--;
         if (duration.Value <= 0) {

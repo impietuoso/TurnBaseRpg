@@ -1,9 +1,10 @@
 ﻿using TMPro;
+using TricksAndTreatsOrThreats.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SingleStatManager : MonoBehaviour {
-    public PartyMemberView member;
+    public CreatureView targetView;
     public StatsManager manager;
     public Attribute eStat;
 
@@ -13,12 +14,12 @@ public class SingleStatManager : MonoBehaviour {
     public Button downButton;
 
     public void LevelUp() {
-        if (member.Data.GetUnusedPoints() > 0) member.Data.usedStats[eStat]++;
+        if (targetView.Data.GetUnusedPoints() > 0) targetView.Data.LevelAttributes[eStat]++;
         manager.UpdateStatsValue();
     }
 
     public void LevelDown() {
-        if (member.Data.usedStats[eStat] > 5) member.Data.usedStats[eStat]--;
+        if (targetView.Data.LevelAttributes[eStat] > 5) targetView.Data.LevelAttributes[eStat]--;
         manager.UpdateStatsValue();
     }
 

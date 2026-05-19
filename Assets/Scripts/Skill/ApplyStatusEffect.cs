@@ -9,7 +9,7 @@ public class ApplyStatusEffect : ICombatEffect {
         if(args.hitChance == 0) args.hitChance = 100;
         if (targetUser) {
             args.user?.StatusEffectList.Apply(status);
-            Debug.Log(status.status.statusName + " was apply on " + args.user?.Member.charName + ".");
+            Debug.Log(status.status.statusName + " was apply on " + args.user?.Creature.DisplayName + ".");
         } else args.statusEffects.Add(status);
     }
 }

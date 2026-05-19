@@ -57,10 +57,10 @@ namespace TricksAndTreatsOrThreats.Behaviour {
             contextMenu.gameObject.SetActive(false);
         }
 
-        public Character Spawn(PartyMember member, bool isAlly, Vector3 position) {
+        public Character Spawn(Creature creature, bool isAlly, Vector3 position) {
             var clone = Instantiate(characterPrefab, transform);
             clone.transform.position = position;
-            clone.Spawn(this, member, isAlly);
+            clone.Spawn(this, creature, isAlly);
 
             _characters.Add(clone);
             if (isAlly) _allies.Add(clone);

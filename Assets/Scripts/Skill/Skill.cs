@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using TricksAndTreatsOrThreats;
 using TricksAndTreatsOrThreats.Behaviour;
@@ -6,9 +5,8 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "Scriptable/Skill", fileName = "New Skill")]
 public class Skill : DatabaseItem, IAction {
-    public string skillName;
-    [TextArea(3, 6)]
-    public string skillDescription;
+    [SerializeField] private string displayName;
+    [TextArea(3, 6)] public string skillDescription;
     [field: SerializeField] public float Range { get; private set; } = 5;
     [SerializeField] private int cost;
     public Element element;
@@ -16,9 +14,9 @@ public class Skill : DatabaseItem, IAction {
     [Header("Config")]
     [SerializeReference, TypeDropdown] public ISkillAnimation animation;
     [SerializeReference, TypeDropdown] public ICombatEffect[] skillEffects;
-    [Obsolete, SerializeReference, TypeDropdown] public IPassive passiva;
 
     public int Cost => cost;
+    public override string DisplayName => displayName;
 
     public bool Available(Character user) {
         if (user.Mana.Current < Cost) return false;

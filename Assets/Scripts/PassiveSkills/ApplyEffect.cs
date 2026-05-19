@@ -1,11 +1,12 @@
 ﻿using System;
+using Drafts;
 using UnityEngine;
 using UnityEngine.Scripting;
 
 [Preserve, Serializable]
 public class ApplyEffect : IPassive {
     public Element element;
-    [SerializeReference, TypeDropdown]
+    [SerializeReference, TypeInstance]
     public ICombatEffect effect;
 
     public void Subscribe(Character character) {

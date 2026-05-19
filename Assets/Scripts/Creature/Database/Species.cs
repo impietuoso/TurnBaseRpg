@@ -10,8 +10,10 @@ namespace TricksAndTreatsOrThreats
         [SerializeField] private List<Race> races;
         private ScoreList<BonusStat> _stats;
         private ScoreList<Activity> _activities;
+        [SerializeField] private Attributes attributes;
 
         public IReadOnlyList<Race> Races => races ??= GetRaces(this);
+        public Attributes Attributes => attributes;
 
         public IScoreList<BonusStat> Stats => _stats ??= Races.Aggregate(
             new ScoreList<BonusStat>(), (result, r) =>

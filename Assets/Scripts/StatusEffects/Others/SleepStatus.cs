@@ -24,7 +24,7 @@ public class SleepStatus : Status {
 
     private void OnDefend(CombatArgs args) {
         if (args.damage > 0) {
-            Debug.Log(args.target.Member.charName + " woke up from damage!");
+            Debug.Log(args.target.Creature.DisplayName + " woke up from damage!");
             args.target.StatusEffectList.Remove(source);
         }
     }

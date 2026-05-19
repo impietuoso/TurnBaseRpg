@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using TMPro;
+using TricksAndTreatsOrThreats.UI;
 using UnityEngine;
 
 public class StatsManager : MonoBehaviour {
-    public PartyMemberView memberView;
+    public CreatureView targetView;
     public TextMeshProUGUI availablePointsText;
     public StatsView statsView;
     public List<SingleStatManager> stats;
@@ -11,27 +12,25 @@ public class StatsManager : MonoBehaviour {
     private void Awake() => statsView.SetData(new ());
 
     public void RouboUp() {
-        if (memberView.Data.level < 20) memberView.Data.level++;
+        if (targetView.Data.level < 20) targetView.Data.level++;
         UpdateStatsValue();
     }
 
     public void RouboDown() {
-        if (memberView.Data.level > 1) memberView.Data.level--;
+        if (targetView.Data.level > 1) targetView.Data.level--;
         UpdateStatsValue();
     }
 
     public void UpdateStatsValue() {
-        var member = memberView.Data;
-        var hasPointsLeft = member.GetUnusedPoints() > 0;
+        var creature = targetView.Data;
+        var hasPointsLeft = creature.GetUnusedPoints() > 0;
         foreach (var stat in stats) {
             stat.upButton.interactable = hasPointsLeft;
-            stat.downButton.interactable = member.usedStats[stat.eStat] > 0;
-            var characterStat = member.usedStats[stat.eStat];
-            var professionStats = member.profession.InitialStats[stat.eStat];
-            stat.atributeValueText.text = (characterStat + professionStats).ToString();
+            stat.downButton.interactable = creature.LevelAttributes[stat.eStat] > 0;
+            stat.atributeValueText.text = creature[stat.eStat].ToString();
         }
 
-        statsView.Data.Recalculate(member.level, member, member);
-        availablePointsText.text = member.GetUnusedPoints() + " points left";
+        statsView.Data.Recalculate(creature.level, creature, creature);
+        availablePointsText.text = creature.GetUnusedPoints() + " points left";
     }
 }

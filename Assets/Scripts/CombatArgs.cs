@@ -85,9 +85,9 @@ public class CombatArgs {
 
         // element bonus
         if (hit && element) {
-            if (target.element.weak.Contains(element))
+            if (target.Element.weak.Contains(element))
                 damage = (int)(damage * 1.2f);
-            else if (element.weak.Contains(target.element))
+            else if (element.weak.Contains(target.Element))
                 damage = (int)(damage * 0.8f);
         }
 
@@ -104,7 +104,7 @@ public class CombatArgs {
                 var applyChance = Random.Range(0, 100);
                 if (applyChance <= 100 - target[Resistance]) {
                     target.StatusEffectList.Apply(effect);
-                    Debug.Log($"{effect.status} applied to {target.Member.charName}.");
+                    Debug.Log($"{effect.status} applied to {target.Creature.DisplayName}.");
                 } else
                     result.ResistStatus = true;
             }

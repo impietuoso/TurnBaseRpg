@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Drafts;
+using UnityEngine;
 
 public enum Attribute {
     Str,
@@ -11,19 +13,19 @@ public enum Attribute {
 }
 
 public interface IAttributes {
-    int this[Attribute attribute] { get; }
+    int this[Attribute a] { get; }
 }
 
 [Serializable]
-public class Attributes : IAttributes {
+public class Attributes : IAttributes, IThreeColumnsDrawer {
     public static int Count => All.Count;
     public static IReadOnlyList<Attribute> All { get; } = Enum.GetValues(typeof(Attribute)).OfType<Attribute>().ToList();
 
-    public int strength = 5;
-    public int intelligence = 5;
-    public int dexterity = 5;
-    public int vitality = 5;
-    public int spirit = 5;
+    [Label("STR")] public int strength;
+    [Label("INT")] public int intelligence;
+    [Label("DEX")] public int dexterity;
+    [Label("VIT")] public int vitality;
+    [Label("SPT")] public int spirit;
 
     public int Sum() => strength + intelligence + dexterity + vitality + spirit;
 
@@ -32,8 +34,8 @@ public class Attributes : IAttributes {
             this[a] = other[a];
     }
 
-    public int this[Attribute attribute] {
-        get => attribute switch {
+    public int this[Attribute a] {
+        get => a switch {
             Attribute.Str => strength,
             Attribute.Int => intelligence,
             Attribute.Dex => dexterity,
@@ -42,7 +44,7 @@ public class Attributes : IAttributes {
             _ => 0,
         };
         set {
-            switch (attribute) {
+            switch (a) {
                 case Attribute.Str: strength = value; break;
                 case Attribute.Int: intelligence = value; break;
                 case Attribute.Dex: dexterity = value; break;

@@ -17,7 +17,7 @@ namespace TTT.ContextMenus {
         public Character User { get; }
         public Skill Skill { get; }
         private TargetPickerArgs PickerArgs { get; }
-        public virtual string Title => Skill.skillName;
+        public virtual string Title => Skill.DisplayName;
         public virtual Sprite Icon => Skill.Icon;
         public virtual Color Color => ContextMenuAssets.Instance.SkillColor;
         public bool Enabled => User.Mana.Current >= Skill.Cost;

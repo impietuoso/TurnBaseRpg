@@ -29,7 +29,7 @@ public class SelfHitAnimate : ISkillAnimation {
         } else
             yield return new WaitForSeconds(0.1f);
 
-        Debug.Log(aArgs.User.Member.charName + " Defends!");
+        Debug.Log(aArgs.User.Creature.DisplayName + " Defends!");
         var args = new CombatArgs();
         args.actionArgs2 = aArgs;
         args.skill = skill;

@@ -71,7 +71,7 @@ public class MultiHitAnimate : ISkillAnimation {
                 var parent = target.SpriteRenderer.transform;
                 UnityEngine.Object.Instantiate(skillParticle, parent);
             } else
-                Debug.LogError("No Particle, add it to: " + skill.skillName, skill);
+                Debug.LogError("No Particle, add it to: " + skill.DisplayName, skill);
 
             yield return new WaitForSeconds(damageDelay);
             args.Resolve();

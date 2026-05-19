@@ -32,7 +32,7 @@ public class BleedingStatus : Status {
         newArgs.ignoreArmor = true;
         newArgs.damage = damage;
         newArgs.Resolve();
-        Debug.Log(newArgs.target.Member.charName + " takes " + damage + " bleed damage.");
+        Debug.Log(newArgs.target.Creature.DisplayName + " takes " + damage + " bleed damage.");
     }
 
     private void OnTurnEnd(Character target) {

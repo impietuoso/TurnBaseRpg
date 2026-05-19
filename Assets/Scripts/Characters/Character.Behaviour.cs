@@ -21,10 +21,6 @@ public partial class Character : MonoBehaviour, ITarget {
         _billboarding = GetComponentInChildren<Billboarding>();
     }
 
-    private void UpdateBehaviour() {
-        SpriteRenderer.sprite = Member.characterSprite;
-    }
-
     private void Update() {
         HandleAction();
     }

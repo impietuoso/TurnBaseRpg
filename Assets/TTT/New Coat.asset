@@ -9,31 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d70ad0b65e4d468fad8d06d15b5e7744, type: 3}
-  m_Name: Axe 3
-  m_EditorClassIdentifier: Assembly-CSharp::Equipment
+  m_Script: {fileID: 11500000, guid: ef41fdd972404113b8751bf8a581ba7e, type: 3}
+  m_Name: New Coat
+  m_EditorClassIdentifier: Assembly-CSharp::Coat
   icon: {fileID: 0}
-  <displayName>k__BackingField: Waraxe
+  <displayName>k__BackingField: 
   <description>k__BackingField: 
-  category: {fileID: 11400000, guid: 0545834921d87da4b812d5fb07d92c4d, type: 2}
+  category: {fileID: 0}
   element: {fileID: 0}
-  stats:
-    <Damage>k__BackingField: 0
-    <Hit>k__BackingField: 0
-    <Speed>k__BackingField: 0
-    <CastSpeed>k__BackingField: 0
-    <CritChance>k__BackingField: 0
-    <CritDamage>k__BackingField: 0
-  effect:
-    rid: -2
   passive:
-    rid: 5967445705007825213
+    rid: 5967445705007825384
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 5967445705007825213
+    - rid: 5967445705007825384
       type: {class: OnAttack, ns: , asm: Assembly-CSharp}
       data:
         condition:

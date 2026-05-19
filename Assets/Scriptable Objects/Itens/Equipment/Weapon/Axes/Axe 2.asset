@@ -12,21 +12,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d70ad0b65e4d468fad8d06d15b5e7744, type: 3}
   m_Name: Axe 2
   m_EditorClassIdentifier: Assembly-CSharp::Equipment
+  icon: {fileID: 0}
   <displayName>k__BackingField: Magic Axe
   <description>k__BackingField: 
-  <sprite>k__BackingField: {fileID: 21300000, guid: 18555770d949cd140aa9c8e31d5a1211, type: 3}
-  <maxStack>k__BackingField: 99
-  equipmentType: {fileID: 11400000, guid: 25617ff5ff885b742b9ab6a5fbd84654, type: 2}
-  categoryTag: {fileID: 11400000, guid: 0545834921d87da4b812d5fb07d92c4d, type: 2}
-  bonusValue:
-    <damage>k__BackingField: 0
-    <health>k__BackingField: 0
-    <shield>k__BackingField: 0
-    <mana>k__BackingField: 0
-    <speed>k__BackingField: 0
-    <armor>k__BackingField: 0
-    <resistance>k__BackingField: 0
-    <evade>k__BackingField: 0
-  equipmentSkill: {fileID: 0}
-  twoHanded: 0
-  basicAttack: {fileID: 11400000, guid: ac0d7530c6b0bfd47932e888a33e15f7, type: 2}
+  category: {fileID: 0}
+  element: {fileID: 0}
+  stats:
+    <Damage>k__BackingField: 0
+    <Hit>k__BackingField: 0
+    <Speed>k__BackingField: 0
+    <CastSpeed>k__BackingField: 0
+    <CritChance>k__BackingField: 0
+    <CritDamage>k__BackingField: 0
+  effect:
+    rid: 5967445705007825364
+  passive:
+    rid: 5967445705007825356
+  references:
+    version: 2
+    RefIds:
+    - rid: 5967445705007825356
+      type: {class: ApplyEffect, ns: , asm: Assembly-CSharp}
+      data:
+        element: {fileID: 0}
+        effect:
+          rid: 5967445705007825359
+    - rid: 5967445705007825359
+      type: {class: DamageSkill, ns: , asm: Assembly-CSharp}
+      data:
+        element: {fileID: 0}
+        baseDamage: 0
+        ignoreShield: 0
+        isPercentageDamage: 1
+        healthPercentage: 0.26
+        hitChance: 61
+        criticalChance: 11
+        statMultiplier: 0
+        damageStatScale: 0
+        damageRange: 1.04
+    - rid: 5967445705007825364
+      type: {class: PercentDamage, ns: CombatEffects, asm: Assembly-CSharp}
+      data:
+        element: {fileID: 0}
+        percent: 0.544
+        hitChance: 72

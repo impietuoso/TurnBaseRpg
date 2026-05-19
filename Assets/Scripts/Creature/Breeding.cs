@@ -8,28 +8,24 @@ using Random = UnityEngine.Random;
 //ab ac ad bc bd cd
 //abc abd acd bcd
 //abcd
-namespace TricksAndTreatsOrThreats
-{
+namespace TricksAndTreatsOrThreats {
     [CreateAssetMenu(menuName = "TTT/Breeding")]
-    public class Breeding : ScriptableObject
-    {
-        public Creature Breed(Creature a, Creature b, BreedArgs args, BreedEnv env)
-        {
-            var species = a.race.Species;
-            var race = DRandom.From(a.race, b.race);
-            var stats = species.Stats.Select(max => new ScoreT<BonusStat>(max.Key,
-                RollStat(args, a.stats[max.Key], b.stats[max.Key], max.Score)));
+    public class Breeding : ScriptableObject {
+        public Creature Breed(Creature a, Creature b, BreedArgs args, BreedEnv env) {
+            var species = a.Race.Species;
+            var race = DRandom.From(a.Race, b.Race);
+            var attributes = new Attributes();
 
-            return new Creature
-            {
-                race = race,
-                stats = new(stats),
-                //activities = a.activities.Union(b.activities).ToList(),
-            };
+            foreach (var attr in Attributes.All)
+                attributes[attr] = RollStat(args,
+                    a.BornAttributes[attr],
+                    b.BornAttributes[attr],
+                    species.Attributes[attr]);
+
+            return new Creature(race, attributes);
         }
 
-        private int RollStat(BreedArgs args, float x, float y, float max)
-        {
+        private int RollStat(BreedArgs args, int x, int y, int max) {
             var r = Random.value < args.maxChance
                 ? Mathf.Max(x, y)
                 : Mathf.LerpUnclamped(x, y, Mathf.Round(Random.value));
@@ -45,8 +41,7 @@ namespace TricksAndTreatsOrThreats
     public class BreedEnv { }
 
     [Serializable]
-    public class BreedArgs
-    {
+    public class BreedArgs {
         public float maxChance = .5f;
         public float upgradeChance = .25f;
         public float upgradeMult = 1.15f;

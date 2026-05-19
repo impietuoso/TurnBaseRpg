@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
+using TricksAndTreatsOrThreats.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class EquipmentManager : MonoBehaviour {
-    public PartyMemberView memberView;
+    public CreatureView targetView;
     public LoadSave load;
     public ListView inventoryView;
     public EquipmentView newItensStats;
@@ -13,8 +14,10 @@ public class EquipmentManager : MonoBehaviour {
     public Button swapButton;
     private int selectedItemIndex;
     private EquipSlot equipFilter = (EquipSlot)(-1);
-
+    private EquipmentController _ctrl;
+    
     private void OnEnable() {
+        _ctrl ??= new (load.save.inventory); 
         ApplyFilter(EquipSlot.None);
     }
 
@@ -24,13 +27,12 @@ public class EquipmentManager : MonoBehaviour {
     }
 
     public void ApplyFilter(EquipmentView view) {
-        var orderIndex = Game.Config.equipmentDrawOrder[view.transform.GetSiblingIndex() - 1];
-        equipFilter = Game.Config.equipmentOrder[orderIndex];
+        equipFilter = Game.EquipmentOrder[view.transform.GetSiblingIndex() - 1];
         ApplyFilter(equipFilter);
     }
 
     public void ApplyFilter(EquipSlot newFilter) {
-        memberView.SetData(memberView.Data);
+        targetView.SetData(targetView.Data);
         equipFilter = newFilter;
         if (newFilter == EquipSlot.None) {
             ResetFilter();
@@ -53,25 +55,21 @@ public class EquipmentManager : MonoBehaviour {
     public void SwapEquipmentButton() {
         if (newItensStats.Data == null) return;
 
-        var removedEquipment = memberView.Data.equips[selectedItemIndex];
-
-        EquipmentController.EquipItem(load, memberView.Data, newItensStats.Data, selectedItemIndex);
+        var removedEquipment = targetView.Data.Equips[selectedItemIndex];
+        _ctrl.EquipItem(targetView.Data, newItensStats.Data, selectedItemIndex);
 
         newItensStats.SetData(removedEquipment);
-        currentItemStats.SetData(memberView.Data.equips[selectedItemIndex]);
+        currentItemStats.SetData(targetView.Data.Equips[selectedItemIndex]);
         ApplyFilter(currentItemStats.Data.EquipSlot);
     }
-
-
+    
     public void SwapFromEquipment(GameObject drop, PointerEventData eventData) {
         if (eventData.pointerDrag.transform.parent == drop.transform.parent) return;
 
         var inventoryItem = drop.GetComponent<EquipmentView>().Data;
-        var drawIndex = eventData.pointerDrag.transform.GetSiblingIndex() - 1;
-        var equipedItemIndex = Game.Config.equipmentDrawOrder[drawIndex];
+        var index = eventData.pointerDrag.transform.GetSiblingIndex() - 1;
 
-        EquipmentController.EquipItem(load, memberView.Data, inventoryItem, equipedItemIndex);
-
+        _ctrl.EquipItem(targetView.Data, inventoryItem, index);
         ApplyFilter(equipFilter);
     }
 
@@ -80,21 +78,17 @@ public class EquipmentManager : MonoBehaviour {
 
         var inventoryItem = eventData.pointerDrag.GetComponent<EquipmentView>().Data;
         var drawIndex = drop.transform.GetSiblingIndex() - 1;
-        var equipedItemIndex = Game.Config.equipmentDrawOrder[drawIndex];
 
-        EquipmentController.EquipItem(load, memberView.Data, inventoryItem, equipedItemIndex);
-
+        _ctrl.EquipItem(targetView.Data, inventoryItem, drawIndex);
         ApplyFilter(equipFilter);
     }
 
     public void UnequipEquipment(EquipmentView view) {
-        if (view.Data == null) return;
+        if (!view.Data) return;
 
         var drawIndex = view.transform.GetSiblingIndex() - 1;
-        var targetIndex = Game.Config.equipmentDrawOrder[drawIndex];
 
-        EquipmentController.EquipItem(load, memberView.Data, null, targetIndex);
-
+        _ctrl.EquipItem(targetView.Data, null, drawIndex);
         ApplyFilter(equipFilter);
     }
 }

@@ -12,8 +12,9 @@ namespace CombatEffects {
         void ICombatEffect.PrepareEffect(CombatArgs args) {
             var damage = Mathf.RoundToInt(args.target.Health.Max * percent);
             args.damage = damage;
-            args.ignoreArmor = true;
             args.hitChance = hitChance;
+            args.ignoreArmor = true;
+            args.cannotCrit = true;
 
             if (element) args.element = element;
         }

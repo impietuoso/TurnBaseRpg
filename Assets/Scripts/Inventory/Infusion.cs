@@ -5,22 +5,20 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Scriptable/Item/Infusion")]
 public class Infusion : Equipment {
     [SerializeField] private Element element;
-    [SerializeField, Separator, TwoColumns] private InfusionStats stats;
-    [SerializeReference, TypeInstance] private ICombatEffect effect;
-
-    // [field: SerializeField] public StatScale Stat { get; private set; }
-    // [field: SerializeField] public float Variation { get; private set; } = 0.15f;
-    // [field: SerializeField] public float RangeAdd { get; private set; }
+    [SerializeField] private InfusionStats stats;
+    [SerializeReference, TypeInstance, Separator] private ICombatEffect effect;
+    [SerializeReference, TypeInstance, Separator] private IPassive passive;
 
     public override EquipSlot EquipSlot => EquipSlot.Infusion;
     public Element Element => element;
     public ICombatEffect Effect => effect;
-    
+    public override IPassive Passive => passive;
+
     public override int this[Stat stat] => stats[stat];
 }
 
-[Serializable, SingleLine]
-public class InfusionStats : IStats {
+[Serializable]
+public class InfusionStats : IStats, ITwoColumnsDrawer {
     [field: SerializeField] public int Damage { get; private set; }
     [field: SerializeField] public int Hit { get; private set; }
     [field: SerializeField] public int Speed { get; private set; }

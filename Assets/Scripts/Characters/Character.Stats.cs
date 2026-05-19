@@ -7,7 +7,7 @@ public partial class Character : IAttributes, IStats {
     [field: SerializeField] public ResourceStat Mana { get; private set; } = new ();
     [field: SerializeField] public StatsSummary Stats { get; private set; }
 
-    public int this[Attribute a] => member[a];
+    public int this[Attribute a] => creature[a];
     public int this[Stat s] => Stats[s];
 
     private void InitializeStats() {
@@ -18,6 +18,6 @@ public partial class Character : IAttributes, IStats {
         Stats.MaxShield.OnChanged += v => Shield.Max = v;
         Stats.MaxMana.OnChanged += v => Mana.Max = v;
 
-        Stats.Recalculate(member.level, member, member);
+        Stats.Recalculate(creature.level, creature, creature);
     }
 }

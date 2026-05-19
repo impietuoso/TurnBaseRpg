@@ -1,67 +1,72 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using DefaultNamespace;
+using TricksAndTreatsOrThreats;
 using TricksAndTreatsOrThreats.Behaviour;
 
 public partial class Character {
     public CombatController CombatController { get; private set; }
 
     [Header("Info")]
-    private PartyMember member;
+    private Creature creature;
     public bool isAlly;
-    public Element element;
     [Obsolete] public List<Skill> basicAttack = new ();
-    public List<Skill> skills = new ();
     public StatusEffectList StatusEffectList;
+
+    public Element Element { get; private set; }
 
     public Action<CombatArgs> OnDefend;
     public Action<CombatArgs> OnAttack;
     public Action<CombatArgs> OnResolveDefend;
     public Action<CombatArgs> OnResolveAttack;
 
-    private List<IPassive> passives = new ();
-
-    public PartyMember Member => member;
+    public Creature Creature => creature;
     public DataMap DataMap = new ();
 
-    public void Spawn(CombatController cc, PartyMember memberOjb, bool allyTeam) {
+    public void Spawn(CombatController cc, Creature creature, bool allyTeam) {
         CombatController = cc;
-        member = memberOjb;
-        name = member.charName;
+        this.creature = creature;
+        name = this.creature.DisplayName;
         isAlly = allyTeam;
+        SpriteRenderer.sprite = Creature.Race.Sprite;
+
         if (!allyTeam) name += " (wild)";
-
-        element = member.element;
-        skills = member.equipedSkills.Where(s => s && s.animation != null).ToList();
-
+        this.creature.Equips.OnChanged += UpdateEquipPassives;
 
         InitializeStats();
-        UpdateBehaviour();
+        SubscribePassives();
         SubscribePassives();
     }
 
     public void Despawn() {
+        creature.Equips.OnChanged -= UpdateEquipPassives;
+
         UnsubscribePassives();
         Destroy(gameObject);
     }
 
+    private void UpdateEquipPassives(ListChangedArgs<Equipment> e) {
+        if (e.action != ListAction.Replace) throw new Exception("Replace expected");
+        if (e.oldItem) e.oldItem.Passive?.Subscribe(this);
+        if (e.newItem) e.newItem.Passive?.Subscribe(this);
+    }
+
     private void SubscribePassives() {
-        foreach (var equip in member.equips)
-            if (equip && equip.passive != null)
-                equip.passive.Subscribe(this);
-        foreach (var skill in member.equipedSkills)
-            if (skill && skill.passiva != null)
-                skill.passiva.Subscribe(this);
+        foreach (var equip in creature.Equips)
+            if (equip)
+                equip.Passive?.Subscribe(this);
+        foreach (var passive in creature.Passives)
+            if (passive)
+                passive.Subscribe(this);
     }
 
     private void UnsubscribePassives() {
-        foreach (var equip in member.equips)
-            if (equip && equip.passive != null)
-                equip.passive.Unsubscribe(this);
-        foreach (var skill in member.equipedSkills)
-            if (skill && skill.passiva != null)
-                skill.passiva.Unsubscribe(this);
+        foreach (var equip in creature.Equips)
+            if (equip)
+                equip.Passive?.Unsubscribe(this);
+        foreach (var passive in creature.Passives)
+            if (passive)
+                passive.Unsubscribe(this);
     }
 }

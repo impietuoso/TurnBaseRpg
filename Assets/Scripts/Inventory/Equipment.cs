@@ -1,5 +1,4 @@
-﻿using Drafts;
-using UnityEngine;
+﻿using UnityEngine;
 
 public enum EquipSlot {
     None,
@@ -10,12 +9,12 @@ public enum EquipSlot {
 }
 
 [CreateAssetMenu(menuName = "Scriptable/Item/Equipment", fileName = "New Equipment")]
-public class Equipment : InventoryItem, IAttributes, IStats {
+public abstract class Equipment : InventoryItem, IAttributes, IStats {
     [SerializeField] private Tag category;
-    [SerializeReference, TypeInstance, Separator] public IPassive passive;
 
-    public virtual EquipSlot EquipSlot { get; }
+    public abstract EquipSlot EquipSlot { get; }
     public Tag Category => category;
+    public abstract IPassive Passive { get; }
 
     public string BonusText() {
         var resume = "<b>" + displayName + ":</b>\n";
@@ -30,6 +29,6 @@ public class Equipment : InventoryItem, IAttributes, IStats {
         return resume;
     }
 
-    public virtual int this[Attribute attribute] => 0;
+    public virtual int this[Attribute a] => 0;
     public virtual int this[Stat stat] => 0;
 }

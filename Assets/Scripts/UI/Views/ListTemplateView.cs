@@ -9,7 +9,7 @@ public class ListTemplateView : MonoBehaviour {
 
     public void UpdateTemplateUI(Skill skill) {
         if(icon) icon.sprite = skill.Icon;
-        if(nameText) nameText.text = skill.skillName;
+        if(nameText) nameText.text = skill.DisplayName;
         if(extraText) extraText.text = skill.Cost + "\n <size=14>MP</size>";
     }
     

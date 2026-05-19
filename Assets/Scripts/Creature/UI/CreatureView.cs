@@ -1,32 +1,28 @@
-using System.Linq;
 using Drafts;
 using TMPro;
 using UnityEngine;
 
-namespace TricksAndTreatsOrThreats.UI
-{
-    public class CreatureView : DataView<Creature>
-    {
+namespace TricksAndTreatsOrThreats.UI {
+    public class CreatureView : DataView<Creature> {
+        [SerializeField] private TMP_Text displayName;
+        [SerializeField] private TMP_Text level;
         [SerializeField] private DatabaseItemView species;
         [SerializeField] private RaceView race;
-        [SerializeField] private CollectionView stats;
+        [SerializeField] private IStatsView stats;
+        [SerializeField] private CollectionView skills;
+        [SerializeField] private CollectionView equips;
         [SerializeField] private CollectionView activities;
-        [SerializeField] private TMP_Text displayName;
 
-        protected override void Subscribe()
-        {
-            var activityPairs = Data.activities.Select(a => ((IScore)a, a.Key.Icons));
-
-            species.TrySetData(Data.race.Species);
-            race.TrySetData(Data.race);
-            stats.TrySetData(Data.stats);
-            activities.TrySetData(activityPairs);
+        protected override void Subscribe() {
             displayName.TrySetText(Data.DisplayName);
+            level.TrySetText(Data.level);
+            species.TrySetData(Data.Race.Species);
+            race.TrySetData(Data.Race);
+            stats.TrySetData(Data);
+            skills.TrySetData(Data.Skills);
+            equips.TrySetData(Data.Equips);
         }
 
-        protected override void Unsubscribe()
-        {
-            throw new System.NotImplementedException();
-        }
+        protected override void Unsubscribe() { }
     }
 }

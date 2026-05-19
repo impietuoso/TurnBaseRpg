@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using TricksAndTreatsOrThreats;
 using UnityEngine;
 
 public class LoadSave : MonoBehaviour {
     public SaveFile save;
-    public List<PartyMember> initialParty;
-    public List<PartyMember> availableCharacters;
+    public List<CreatureSO> initialParty;
+    public List<CreatureSO> availableCharacters;
     public ListInventory<InventoryItem> initialItens;
     public List<EnemyEncounter> encounters;
     public SaveView views;
@@ -18,26 +19,22 @@ public class LoadSave : MonoBehaviour {
             save = JsonUtility.FromJson<SaveFile>(key);
         } else {
             save = new SaveFile {
-                currentParty = new ObservableList<PartyMember>(),
-                players = new ObservableList<PartyMember>(),
+                currentParty = new ObservableList<Creature>(),
+                players = new ObservableList<Creature>(),
                 inventory = initialItens
             };
 
-            foreach (var character in initialParty) {
-                save.currentParty.Add(Instantiate(character));
-            }
+            foreach (var so in initialParty) 
+                save.currentParty.Add(Instantiate(so).Creature);
 
-            while (save.currentParty.Count < 4) {
+            while (save.currentParty.Count < 4) 
                 save.currentParty.Add(null);
-            }
 
-            foreach (var character in availableCharacters) {
-                save.players.Add(Instantiate(character));
-            }
+            foreach (var so in availableCharacters) 
+                save.players.Add(Instantiate(so).Creature);
 
-            while (save.players.Count < 8) {
+            while (save.players.Count < 8) 
                 save.players.Add(null);
-            }
 
             views.SetData(save);
         }

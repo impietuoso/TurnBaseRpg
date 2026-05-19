@@ -34,7 +34,7 @@ public class CharacterUI : DataView<Character> {
         Data.Stats.Speed.OnChanged += ChangedSpeedColor;
 
         if (statusEffectView) statusEffectView.SetData(Data.StatusEffectList);
-        characterSprite.TrySetSprite(Data.Member.uiSprite);
+        characterSprite.TrySetSprite(Data.Creature.Race.Icon);
 
         ChangedSpeedColor(Data.Stats.Speed.Total);
     }
